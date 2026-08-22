@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CL 24303 — Tutorial 0 Solutions</title>
+<style>
+/* ---------- tokens: light ---------- */
+:root{
+  --ground:#F5F7F5;
+  --surface:#FFFFFF;
+  --surface-2:#EDF1EF;
+  --ink:#141B1A;
+  --ink-2:#4B5957;
+  --ink-3:#7C8A87;
+  --rule:#DCE2DF;
+  --rule-strong:#C3CDC9;
+  --accent:#0B6A5E;
+  --accent-soft:#E1EFEB;
+  --mark:#8A4A14;
+  --mark-soft:#F5EBE0;
+  --shadow:0 1px 2px rgba(20,27,26,.05), 0 6px 18px -10px rgba(20,27,26,.18);
+
+  --font-body:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --font-ui:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --font-mono:"Cascadia Mono",Consolas,"SF Mono",ui-monospace,Menlo,monospace;
+}
+/* ---------- tokens: dark (system default, un-stamped) ---------- */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D1312;
+    --surface:#141C1B;
+    --surface-2:#1B2524;
+    --ink:#E7EEEB;
+    --ink-2:#A4B3B0;
+    --ink-3:#7B8A87;
+    --rule:#26322F;
+    --rule-strong:#35443F;
+    --accent:#4FC0AE;
+    --accent-soft:#11322D;
+    --mark:#D8A05D;
+    --mark-soft:#2B2318;
+    --shadow:0 1px 2px rgba(0,0,0,.35), 0 6px 18px -10px rgba(0,0,0,.6);
+  }
+}
+/* ---------- tokens: dark (explicit) ---------- */
+:root[data-theme="dark"]{
+  --ground:#0D1312;
+  --surface:#141C1B;
+  --surface-2:#1B2524;
+  --ink:#E7EEEB;
+  --ink-2:#A4B3B0;
+  --ink-3:#7B8A87;
+  --rule:#26322F;
+  --rule-strong:#35443F;
+  --accent:#4FC0AE;
+  --accent-soft:#11322D;
+  --mark:#D8A05D;
+  --mark-soft:#2B2318;
+  --shadow:0 1px 2px rgba(0,0,0,.35), 0 6px 18px -10px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.62;
+  font-kerning:normal;
+}
+.wrap{max-width:50rem;margin:0 auto;padding:2.5rem 1.25rem 5rem}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:1.1rem;
+  margin-bottom:2.25rem;
+  display:flex;flex-direction:column;gap:.55rem;
+}
+.dept{
+  font-family:var(--font-ui);font-size:.68rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+}
+.masthead h1{
+  font-family:var(--font-ui);font-weight:650;font-size:clamp(1.5rem,4.4vw,2.05rem);
+  line-height:1.15;letter-spacing:-.018em;margin:0;text-wrap:balance;
+}
+.masthead .sub{font-family:var(--font-ui);font-size:.9rem;color:var(--ink-2);margin:0}
+.meta{
+  display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-top:.35rem;
+  font-family:var(--font-ui);font-size:.78rem;color:var(--ink-3);
+}
+.meta b{color:var(--ink-2);font-weight:600}
+
+/* ---------- question cards ---------- */
+.q{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  box-shadow:var(--shadow);
+  margin:0 0 1.75rem;
+  overflow:hidden;
+}
+.q > header{
+  display:flex;align-items:flex-start;gap:.85rem;
+  padding:.85rem 1.35rem;
+  background:var(--surface-2);
+  border-bottom:1px solid var(--rule);
+}
+.qnum{
+  flex:0 0 auto;
+  font-family:var(--font-ui);font-size:.72rem;font-weight:700;letter-spacing:.08em;
+  color:var(--surface);background:var(--accent);
+  border-radius:2px;padding:.2rem .5rem;margin-top:.2rem;
+}
+.qtitle{
+  flex:1 1 auto;font-family:var(--font-ui);font-weight:600;font-size:1rem;
+  line-height:1.35;margin:0;text-wrap:balance;
+}
+.marks{
+  flex:0 0 auto;font-family:var(--font-ui);font-size:.68rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--mark);background:var(--mark-soft);
+  border:1px solid var(--rule);border-radius:2px;
+  padding:.2rem .45rem;margin-top:.25rem;white-space:nowrap;
+}
+.body{padding:1.25rem 1.35rem 1.45rem;display:flex;flex-direction:column;gap:.95rem}
+.body > *{margin:0}
+
+/* ---------- prose bits ---------- */
+.label{
+  font-family:var(--font-ui);font-size:.7rem;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+}
+.given{
+  border-left:2px solid var(--rule-strong);
+  padding:.15rem 0 .15rem .9rem;
+  color:var(--ink-2);font-size:.95rem;
+}
+ul,ol{margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:.45rem}
+li::marker{color:var(--ink-3)}
+p{margin:0}
+.note{font-size:.93rem;color:var(--ink-2)}
+b,strong{font-weight:600}
+.sym{font-style:italic;font-family:var(--font-body)}
+code{font-family:var(--font-mono);font-size:.88em;background:var(--surface-2);
+  padding:.08em .32em;border-radius:2px}
+
+/* ---------- math ---------- */
+.eq{overflow-x:auto;overflow-y:hidden;padding:.35rem 0;text-align:center}
+math{font-family:var(--font-body);color:var(--ink)}
+math[display="block"]{font-size:1.12em;margin:0}
+.eq-note{
+  font-family:var(--font-ui);font-size:.76rem;color:var(--ink-3);
+  text-align:center;margin-top:-.25rem;
+}
+
+/* ---------- answer box ---------- */
+.ans{
+  background:var(--accent-soft);
+  border:1px solid var(--accent);
+  border-left-width:3px;
+  border-radius:2px;
+  padding:.8rem 1rem;
+  display:flex;flex-direction:column;gap:.4rem;
+}
+.ans .label{color:var(--accent)}
+.ans .eq{padding:.15rem 0}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:2px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-family:var(--font-ui)}
+caption{
+  caption-side:top;text-align:left;font-family:var(--font-ui);font-size:.76rem;
+  color:var(--ink-3);padding:.5rem .7rem;border-bottom:1px solid var(--rule);
+  background:var(--surface-2);
+}
+th,td{padding:.5rem .7rem;text-align:left;border-bottom:1px solid var(--rule)}
+thead th{
+  font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-2);font-weight:700;background:var(--surface-2);
+}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--font-mono);font-size:.86rem}
+tr.best td{background:var(--accent-soft);font-weight:600}
+tr.best td.num{color:var(--accent)}
+
+/* ---------- figures ---------- */
+figure{margin:0;display:flex;flex-direction:column;gap:.5rem}
+.figrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.fig-card{
+  border:1px solid var(--rule);border-radius:2px;padding:.7rem;
+  background:var(--surface);display:flex;flex-direction:column;gap:.4rem;
+}
+svg{display:block;width:100%;height:auto}
+figcaption{font-family:var(--font-ui);font-size:.76rem;color:var(--ink-3);line-height:1.45}
+.svg-label{font-family:var(--font-ui);font-size:9px;fill:var(--ink-2)}
+.svg-label-strong{font-family:var(--font-ui);font-size:10px;font-weight:600;fill:var(--ink)}
+.svg-axis{stroke:var(--rule-strong);stroke-width:1;fill:none}
+.svg-curve{stroke:var(--ink);stroke-width:1.6;fill:none}
+.svg-pfr{fill:var(--accent);opacity:.38}
+.svg-cstr{fill:var(--mark);opacity:.32}
+.svg-dash{stroke:var(--ink-3);stroke-width:1;stroke-dasharray:3 3;fill:none}
+.svg-box{fill:var(--surface-2);stroke:var(--ink-2);stroke-width:1.3}
+.svg-flow{stroke:var(--ink-2);stroke-width:1.3;fill:none}
+.swatch{display:inline-block;width:.7em;height:.7em;border-radius:1px;vertical-align:baseline}
+
+/* ---------- footer ---------- */
+footer{
+  margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--rule);
+  font-family:var(--font-ui);font-size:.76rem;color:var(--ink-3);
+}
+a{color:var(--accent)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  body{background:#fff}
+  .q{break-inside:avoid;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <span class="dept">Department of Chemical Engineering</span>
+  <h1>Tutorial 0 &mdash; Worked Solutions</h1>
+  <p class="sub">Chemical Reaction Engineering II (CL 24303) &middot; MO2026</p>
+  <div class="meta">
+    <span><b>Assigned</b> 30.07.2026</span>
+    <span><b>Due</b> 09.08.2026, 23:59</span>
+    <span><b>Total</b> 15 marks</span>
+  </div>
+</header>
+
+<!-- ============ Q1 ============ -->
+<article class="q">
+  <header>
+    <span class="qnum">Q1</span>
+    <h2 class="qtitle">Define the rate of reaction.</h2>
+    <span class="marks">1 mark</span>
+  </header>
+  <div class="body">
+    <p>The <b>rate of reaction</b> is an <i>intensive</i> measure of how fast a chemical change proceeds: the number of moles of a species formed or consumed per unit time, per unit of a chosen reference quantity (volume of reacting fluid, mass of catalyst, interfacial area, and so on).</p>
+
+    <p>Based on <b>unit volume of reacting fluid</b> &mdash; the definition used throughout homogeneous kinetics:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mo>&#8722;</mo><msub><mi>r</mi><mi>A</mi></msub>
+        <mo>=</mo>
+        <mo>&#8722;</mo><mfrac><mn>1</mn><mi>V</mi></mfrac>
+        <mfrac><mrow><mi>d</mi><msub><mi>N</mi><mi>A</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac>
+        <mo>=</mo>
+        <mfrac>
+          <mrow><mo>(</mo><mtext>moles of A disappearing</mtext><mo>)</mo></mrow>
+          <mrow><mo>(</mo><mtext>volume</mtext><mo>)</mo><mo>&#8290;</mo><mo>(</mo><mtext>time</mtext><mo>)</mo></mrow>
+        </mfrac>
+      </mrow></math>
+    </div>
+    <p class="eq-note">units: mol L<sup>&#8722;1</sup> s<sup>&#8722;1</sup></p>
+
+    <p>For a <b>constant-density</b> (constant-volume) system this reduces to the familiar form, since <span class="sym">C<sub>A</sub></span> = <span class="sym">N<sub>A</sub></span>/<span class="sym">V</span>:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mo>&#8722;</mo><msub><mi>r</mi><mi>A</mi></msub><mo>=</mo>
+        <mo>&#8722;</mo><mfrac><mrow><mi>d</mi><msub><mi>C</mi><mi>A</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac>
+      </mrow></math>
+    </div>
+
+    <p class="label">Points that matter</p>
+    <ul>
+      <li><b>It is intensive, not extensive.</b> The rate is a property of the reacting mixture at a given composition and temperature &mdash; it does <i>not</i> depend on the type or size of reactor. The reactor only decides <i>where</i> on the composition scale the rate is evaluated.</li>
+      <li><b>Sign convention.</b> <span class="sym">&#8722;r<sub>A</sub></span> is written for a reactant so that it comes out positive; <span class="sym">r<sub>R</sub></span> is positive for a product.</li>
+      <li><b>Rates of different species are linked by stoichiometry.</b> For <span class="sym">aA</span> + <span class="sym">bB</span> &rarr; <span class="sym">rR</span> + <span class="sym">sS</span>:
+        <div class="eq">
+          <math display="block"><mrow>
+            <mfrac><mrow><mo>&#8722;</mo><msub><mi>r</mi><mi>A</mi></msub></mrow><mi>a</mi></mfrac><mo>=</mo>
+            <mfrac><mrow><mo>&#8722;</mo><msub><mi>r</mi><mi>B</mi></msub></mrow><mi>b</mi></mfrac><mo>=</mo>
+            <mfrac><msub><mi>r</mi><mi>R</mi></msub><mi>r</mi></mfrac><mo>=</mo>
+            <mfrac><msub><mi>r</mi><mi>S</mi></msub><mi>s</mi></mfrac>
+          </mrow></math>
+        </div>
+      </li>
+      <li><b>Other bases</b> are used when the reaction is not homogeneous &mdash; per unit mass of catalyst, <span class="sym">&#8722;r&prime;<sub>A</sub></span> = &#8722;(1/<span class="sym">W</span>)&#8201;d<span class="sym">N<sub>A</sub></span>/d<span class="sym">t</span>; per unit interfacial area, <span class="sym">&#8722;r&Prime;<sub>A</sub></span>; per unit volume of reactor, <span class="sym">&#8722;r&#8202;&#8942;<sub>A</sub></span>. They are related by the amount of each phase present.</li>
+    </ul>
+  </div>
+</article>
+
+<!-- ============ Q2 ============ -->
+<article class="q">
+  <header>
+    <span class="qnum">Q2</span>
+    <h2 class="qtitle">What is Arrhenius&rsquo; Law? Explain with the required expression.</h2>
+    <span class="marks">2 marks</span>
+  </header>
+  <div class="body">
+    <p>For most reactions the rate can be split into a temperature-dependent part and a composition-dependent part:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mo>&#8722;</mo><msub><mi>r</mi><mi>A</mi></msub><mo>=</mo>
+        <mi>k</mi><mo>(</mo><mi>T</mi><mo>)</mo>
+        <mo>&#8290;</mo><mi>f</mi><mo>(</mo><msub><mi>C</mi><mi>i</mi></msub><mo>)</mo>
+      </mrow></math>
+    </div>
+    <p><b>Arrhenius&rsquo; Law</b> states that the temperature dependence of the rate constant <span class="sym">k</span> is exponential:</p>
+    <div class="ans">
+      <span class="label">Arrhenius equation</span>
+      <div class="eq">
+        <math display="block"><mrow>
+          <mi>k</mi><mo>=</mo><msub><mi>k</mi><mn>0</mn></msub>
+          <mo>&#8290;</mo>
+          <msup><mi>e</mi><mrow><mo>&#8722;</mo><mfrac><msub><mi>E</mi><mi>a</mi></msub><mrow><mi>R</mi><mi>T</mi></mrow></mfrac></mrow></msup>
+        </mrow></math>
+      </div>
+    </div>
+
+    <p class="label">Meaning of each term</p>
+    <ul>
+      <li><span class="sym">k<sub>0</sub></span> &mdash; the <b>pre-exponential</b> or <b>frequency factor</b>. It carries the units of <span class="sym">k</span> (which depend on the reaction order) and represents the rate constant extrapolated to infinite temperature: the collision frequency together with the orientation (steric) requirement.</li>
+      <li><span class="sym">E<sub>a</sub></span> &mdash; the <b>activation energy</b>, J&#8201;mol<sup>&#8722;1</sup>. The minimum energy a colliding pair must carry for reaction to occur.</li>
+      <li><span class="sym">R</span> &mdash; the gas constant, 8.314&#8201;J&#8201;mol<sup>&#8722;1</sup>&#8201;K<sup>&#8722;1</sup>.</li>
+      <li><span class="sym">T</span> &mdash; <b>absolute</b> temperature, K.</li>
+    </ul>
+
+    <p>The exponential factor <span class="sym">e</span><sup>&#8722;<span class="sym">E<sub>a</sub></span>/<span class="sym">RT</span></sup> is, from the Maxwell&ndash;Boltzmann distribution, the fraction of molecular collisions energetic enough to react. Raising <span class="sym">T</span> raises that fraction sharply, which is why rates are so temperature-sensitive.</p>
+
+    <p class="label">Working forms</p>
+    <p><b>(i) Linearised form</b> &mdash; used to extract <span class="sym">E<sub>a</sub></span> from data. A plot of ln&#8201;<span class="sym">k</span> against 1/<span class="sym">T</span> is a straight line of slope &#8722;<span class="sym">E<sub>a</sub></span>/<span class="sym">R</span> and intercept ln&#8201;<span class="sym">k<sub>0</sub></span>:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mi>ln</mi><mo>&#8289;</mo><mi>k</mi><mo>=</mo>
+        <mi>ln</mi><mo>&#8289;</mo><msub><mi>k</mi><mn>0</mn></msub>
+        <mo>&#8722;</mo>
+        <mfrac><msub><mi>E</mi><mi>a</mi></msub><mi>R</mi></mfrac>
+        <mo>&#8290;</mo><mfrac><mn>1</mn><mi>T</mi></mfrac>
+      </mrow></math>
+    </div>
+
+    <p><b>(ii) Two-temperature form</b> &mdash; for finding <span class="sym">E<sub>a</sub></span> from two rate constants, or <span class="sym">k</span> at a new temperature:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mi>ln</mi><mo>&#8289;</mo>
+        <mfrac><msub><mi>k</mi><mn>2</mn></msub><msub><mi>k</mi><mn>1</mn></msub></mfrac>
+        <mo>=</mo>
+        <mfrac><msub><mi>E</mi><mi>a</mi></msub><mi>R</mi></mfrac>
+        <mrow><mo>(</mo>
+          <mfrac><mn>1</mn><msub><mi>T</mi><mn>1</mn></msub></mfrac>
+          <mo>&#8722;</mo>
+          <mfrac><mn>1</mn><msub><mi>T</mi><mn>2</mn></msub></mfrac>
+        <mo>)</mo></mrow>
+      </mrow></math>
+    </div>
+
+    <p class="note"><b>Consequence:</b> a reaction with a high activation energy is strongly temperature-sensitive, while one with a low <span class="sym">E<sub>a</sub></span> is comparatively insensitive. This is the basis for choosing operating temperature to favour a desired reaction in a multiple-reaction system.</p>
+  </div>
+</article>
+
+<!-- ============ Q3 ============ -->
+<article class="q">
+  <header>
+    <span class="qnum">Q3</span>
+    <h2 class="qtitle">If &#8722;r<sub>A</sub> = &#8722;(dC<sub>A</sub>/dt) = 0.2 mol/(lit&middot;s) when C<sub>A</sub> = 1 mol/lit, what is the rate when C<sub>A</sub> = 10 mol/lit if the order of the reaction is not known?</h2>
+    <span class="marks">1 mark</span>
+  </header>
+  <div class="body">
+    <p>Assume an <span class="sym">n</span>th-order rate law at fixed temperature:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mo>&#8722;</mo><msub><mi>r</mi><mi>A</mi></msub><mo>=</mo>
+        <mi>k</mi><mo>&#8290;</mo><msubsup><mi>C</mi><mi>A</mi><mi>n</mi></msubsup>
+      </mrow></math>
+    </div>
+
+    <p>The single data point fixes <span class="sym">k</span>, because <span class="sym">C<sub>A</sub></span> = 1 makes <span class="sym">C<sub>A</sub><sup>n</sup></span> = 1 for <i>every</i> <span class="sym">n</span>:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mn>0.2</mn><mo>=</mo><mi>k</mi><mo>&#8290;</mo><msup><mrow><mo>(</mo><mn>1</mn><mo>)</mo></mrow><mi>n</mi></msup>
+        <mo>&#8658;</mo>
+        <mi>k</mi><mo>=</mo><mn>0.2</mn>
+      </mrow></math>
+    </div>
+    <p class="eq-note">units of k: (mol/lit)<sup>1&#8722;n</sup> s<sup>&#8722;1</sup></p>
+
+    <p>At <span class="sym">C<sub>A</sub></span> = 10 mol/lit:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mo>&#8722;</mo><msub><mi>r</mi><mi>A</mi></msub><mo>=</mo>
+        <mn>0.2</mn><mo>&#215;</mo><msup><mrow><mo>(</mo><mn>10</mn><mo>)</mo></mrow><mi>n</mi></msup>
+      </mrow></math>
+    </div>
+
+    <div class="ans">
+      <span class="label">Answer</span>
+      <p>The rate <b>cannot be determined</b>. One rate&ndash;concentration pair fixes only the constant <span class="sym">k</span>; it says nothing about how the rate <i>scales</i> with concentration. Since <span class="sym">n</span> is unknown, &#8722;<span class="sym">r<sub>A</sub></span> = 0.2 &times; 10<sup><span class="sym">n</span></sup> is indeterminate &mdash; it spans several orders of magnitude over the physically common range of <span class="sym">n</span>.</p>
+    </div>
+
+    <div class="tw">
+      <table>
+        <caption>How badly the answer depends on the unknown order</caption>
+        <thead>
+          <tr><th>Order n</th><th class="num">10<sup>n</sup></th><th class="num">&#8722;r<sub>A</sub> at C<sub>A</sub> = 10 &nbsp;[mol/(lit&middot;s)]</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0 (zero order)</td><td class="num">1</td><td class="num">0.2</td></tr>
+          <tr><td>&frac12;</td><td class="num">3.16</td><td class="num">0.632</td></tr>
+          <tr><td>1 (first order)</td><td class="num">10</td><td class="num">2.0</td></tr>
+          <tr><td>2 (second order)</td><td class="num">100</td><td class="num">20.0</td></tr>
+          <tr><td>3 (third order)</td><td class="num">1000</td><td class="num">200.0</td></tr>
+          <tr><td>&#8722;1 (inhibited)</td><td class="num">0.1</td><td class="num">0.02</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note"><b>Common trap:</b> answering &ldquo;2 mol/(lit&middot;s)&rdquo; silently assumes first order. To answer numerically you need at least one more independent rate&ndash;concentration measurement, from which <span class="sym">n</span> follows as the slope of ln(&#8722;<span class="sym">r<sub>A</sub></span>) vs. ln&#8201;<span class="sym">C<sub>A</sub></span>.</p>
+  </div>
+</article>
+
+<!-- ============ Q4 ============ -->
+<article class="q">
+  <header>
+    <span class="qnum">Q4</span>
+    <h2 class="qtitle">What is the difference between space-time and residence time?</h2>
+    <span class="marks">2 marks</span>
+  </header>
+  <div class="body">
+    <p><b>Space-time</b> <span class="sym">&tau;</span> is a <i>design parameter</i>. It is the time required to process one reactor volume of feed, measured at specified inlet conditions:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mi>&#964;</mi><mo>=</mo>
+        <mfrac><mi>V</mi><msub><mi>v</mi><mn>0</mn></msub></mfrac>
+        <mo>=</mo>
+        <mfrac><mrow><msub><mi>C</mi><mrow><mi>A</mi><mn>0</mn></mrow></msub><mi>V</mi></mrow><msub><mi>F</mi><mrow><mi>A</mi><mn>0</mn></mrow></msub></mfrac>
+        <mo>,</mo><mspace width="1.2em"/>
+        <mtext>space velocity</mtext><mo>=</mo><mfrac><mn>1</mn><mi>&#964;</mi></mfrac>
+      </mrow></math>
+    </div>
+    <p class="eq-note">v<sub>0</sub> = volumetric feed rate evaluated at a chosen reference state (usually reactor inlet)</p>
+
+    <p><b>Residence time</b> <span class="sym">t</span> is a <i>physical quantity</i>: the actual time a given element of fluid spends inside the reactor. In a real vessel different elements take different paths, so residence time is a <i>distribution</i>, <span class="sym">E</span>(<span class="sym">t</span>), whose mean is</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mover><mi>t</mi><mo>&#175;</mo></mover><mo>=</mo>
+        <msubsup><mo>&#8747;</mo><mn>0</mn><mi>&#8734;</mi></msubsup>
+        <mi>t</mi><mo>&#8290;</mo><mi>E</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>&#8290;</mo><mi>d</mi><mi>t</mi>
+        <mspace width="1em"/><mtext>and in general</mtext><mspace width="1em"/>
+        <mover><mi>t</mi><mo>&#175;</mo></mover><mo>=</mo>
+        <msubsup><mo>&#8747;</mo><mn>0</mn><mi>V</mi></msubsup>
+        <mfrac><mrow><mi>d</mi><mi>V</mi></mrow><mrow><mi>v</mi><mo>(</mo><mi>V</mi><mo>)</mo></mrow></mfrac>
+      </mrow></math>
+    </div>
+
+    <div class="tw">
+      <table>
+        <caption>Side-by-side comparison</caption>
+        <thead>
+          <tr><th>&nbsp;</th><th>Space-time &tau;</th><th>Residence time t</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>Nature</b></td><td>Defined / calculated design quantity</td><td>Measured physical quantity of a fluid element</td></tr>
+          <tr><td><b>Based on</b></td><td>Volumetric flow at <i>inlet</i> (reference) conditions, v<sub>0</sub></td><td>Actual local flow rate inside the reactor, v(V)</td></tr>
+          <tr><td><b>Single value?</b></td><td>Yes &mdash; one number per reactor</td><td>No &mdash; a distribution E(t); only its mean is a single number</td></tr>
+          <tr><td><b>Depends on reaction?</b></td><td>No (V and v<sub>0</sub> only)</td><td>Yes, if the reaction changes density or moles</td></tr>
+          <tr><td><b>Formula</b></td><td>&tau; = V / v<sub>0</sub></td><td>t&#772; = &#8747; dV / v</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="label">When are they equal?</p>
+    <ul>
+      <li><b>Constant-density systems</b> (all liquids; gases with &epsilon;<sub>A</sub> = 0 at constant <span class="sym">T</span> and <span class="sym">P</span>): <span class="sym">v</span> = <span class="sym">v<sub>0</sub></span> everywhere, so <span class="sym">&tau;</span> = <span class="sym">t&#772;</span>. This is the usual case in this course.</li>
+      <li><b>They differ</b> when density varies &mdash; gas-phase reactions with a change in mole number (&epsilon;<sub>A</sub> &ne; 0), or with a temperature or pressure gradient along the reactor. Then <span class="sym">v</span> &ne; <span class="sym">v<sub>0</sub></span> and <span class="sym">t&#772;</span> &ne; <span class="sym">V</span>/<span class="sym">v<sub>0</sub></span>. For an expanding gas (&epsilon;<sub>A</sub> &gt; 0) the fluid speeds up, so <span class="sym">t&#772;</span> &lt; <span class="sym">&tau;</span>.</li>
+      <li>Even when the <i>mean</i> residence time equals <span class="sym">&tau;</span>, the <i>spread</i> can be enormous. In an ideal PFR every element stays exactly <span class="sym">&tau;</span>; in an ideal CSTR the exit-age distribution is <span class="sym">E</span>(<span class="sym">t</span>) = (1/<span class="sym">&tau;</span>)<span class="sym">e</span><sup>&#8722;<span class="sym">t</span>/<span class="sym">&tau;</span></sup>, so some molecules leave almost immediately and others linger &mdash; despite both reactors having the same <span class="sym">&tau;</span>.</li>
+    </ul>
+    <p class="note">This last point is exactly why two reactors with identical space-time can give very different conversions, and it is the subject of RTD analysis.</p>
+  </div>
+</article>
+
+<!-- ============ Q5 ============ -->
+<article class="q">
+  <header>
+    <span class="qnum">Q5</span>
+    <h2 class="qtitle">Aqueous A reacts to form R (A &rarr; R). In the first minute in a batch reactor its concentration drops from C<sub>A0</sub> = 2.03 mol/liter to C<sub>Af</sub> = 1.97 mol/liter. Find the rate equation if the kinetics are second order in A.</h2>
+    <span class="marks">2 marks</span>
+  </header>
+  <div class="body">
+    <div class="given">
+      <b>Given</b> &mdash; batch reactor; aqueous (so constant density, <span class="sym">V</span> = const);
+      <span class="sym">C<sub>A0</sub></span> = 2.03 mol/L, <span class="sym">C<sub>Af</sub></span> = 1.97 mol/L at <span class="sym">t</span> = 1 min; order <span class="sym">n</span> = 2.
+      <br><b>Find</b> &mdash; the complete rate equation.
+    </div>
+
+    <p class="label">Step 1 &mdash; Set up and integrate</p>
+    <p>For a constant-volume batch reactor with second-order kinetics:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mo>&#8722;</mo><msub><mi>r</mi><mi>A</mi></msub><mo>=</mo>
+        <mo>&#8722;</mo><mfrac><mrow><mi>d</mi><msub><mi>C</mi><mi>A</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac>
+        <mo>=</mo><mi>k</mi><mo>&#8290;</mo><msubsup><mi>C</mi><mi>A</mi><mn>2</mn></msubsup>
+      </mrow></math>
+    </div>
+    <p>Separating variables and integrating from (<span class="sym">C<sub>A0</sub></span>, 0) to (<span class="sym">C<sub>A</sub></span>, <span class="sym">t</span>):</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mo>&#8722;</mo>
+        <msubsup><mo>&#8747;</mo><msub><mi>C</mi><mrow><mi>A</mi><mn>0</mn></mrow></msub><msub><mi>C</mi><mi>A</mi></msub></msubsup>
+        <mfrac><mrow><mi>d</mi><msub><mi>C</mi><mi>A</mi></msub></mrow><msubsup><mi>C</mi><mi>A</mi><mn>2</mn></msubsup></mfrac>
+        <mo>=</mo>
+        <mi>k</mi><msubsup><mo>&#8747;</mo><mn>0</mn><mi>t</mi></msubsup><mi>d</mi><mi>t</mi>
+        <mspace width="1.4em"/><mo>&#8658;</mo><mspace width="1.4em"/>
+        <mfrac><mn>1</mn><msub><mi>C</mi><mi>A</mi></msub></mfrac>
+        <mo>&#8722;</mo>
+        <mfrac><mn>1</mn><msub><mi>C</mi><mrow><mi>A</mi><mn>0</mn></mrow></msub></mfrac>
+        <mo>=</mo><mi>k</mi><mi>t</mi>
+      </mrow></math>
+    </div>
+
+    <p class="label">Step 2 &mdash; Substitute the data</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mi>k</mi><mo>=</mo>
+        <mfrac>
+          <mrow><mfrac><mn>1</mn><msub><mi>C</mi><mrow><mi>A</mi><mi>f</mi></mrow></msub></mfrac><mo>&#8722;</mo><mfrac><mn>1</mn><msub><mi>C</mi><mrow><mi>A</mi><mn>0</mn></mrow></msub></mfrac></mrow>
+          <mi>t</mi>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac>
+          <mrow><msub><mi>C</mi><mrow><mi>A</mi><mn>0</mn></mrow></msub><mo>&#8722;</mo><msub><mi>C</mi><mrow><mi>A</mi><mi>f</mi></mrow></msub></mrow>
+          <mrow><msub><mi>C</mi><mrow><mi>A</mi><mn>0</mn></mrow></msub><mo>&#8290;</mo><msub><mi>C</mi><mrow><mi>A</mi><mi>f</mi></mrow></msub><mo>&#8290;</mo><mi>t</mi></mrow>
+        </mfrac>
+      </mrow></math>
+    </div>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mi>k</mi><mo>=</mo>
+        <mfrac>
+          <mrow><mn>2.03</mn><mo>&#8722;</mo><mn>1.97</mn></mrow>
+          <mrow><mo>(</mo><mn>2.03</mn><mo>)</mo><mo>(</mo><mn>1.97</mn><mo>)</mo><mo>(</mo><mn>1</mn><mo>)</mo></mrow>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac><mn>0.06</mn><mn>3.9991</mn></mfrac>
+        <mo>=</mo><mn>0.0150</mn>
+      </mrow></math>
+    </div>
+    <p class="eq-note">equivalently 1/1.97 &#8722; 1/2.03 = 0.507614 &#8722; 0.492611 = 0.015003 L&#8201;mol<sup>&#8722;1</sup>, over t = 1 min</p>
+
+    <div class="ans">
+      <span class="label">Answer &mdash; rate equation</span>
+      <div class="eq">
+        <math display="block"><mrow>
+          <mo>&#8722;</mo><msub><mi>r</mi><mi>A</mi></msub><mo>=</mo>
+          <mn>0.015</mn><mo>&#8290;</mo><msubsup><mi>C</mi><mi>A</mi><mn>2</mn></msubsup>
+          <mspace width="1.2em"/>
+          <mrow><mo>[</mo>
+            <msup><mtext>mol&#8201;L</mtext><mrow><mo>&#8722;</mo><mn>1</mn></mrow></msup>
+            <msup><mtext>&#8201;min</mtext><mrow><mo>&#8722;</mo><mn>1</mn></mrow></msup>
+          <mo>]</mo></mrow>
+        </mrow></math>
+      </div>
+      <p style="font-family:var(--font-ui);font-size:.85rem">with <b>k = 0.0150 L mol<sup>&#8722;1</sup> min<sup>&#8722;1</sup></b> &nbsp;(= 2.50 &times; 10<sup>&#8722;4</sup> L mol<sup>&#8722;1</sup> s<sup>&#8722;1</sup>)</p>
+    </div>
+
+    <p class="note"><b>Sanity check.</b> The conversion here is tiny (only 3&#8201;%), so the rate is nearly constant over the minute. The crude average-rate estimate gives &#8722;<span class="sym">r<sub>A</sub></span> &asymp; &Delta;<span class="sym">C<sub>A</sub></span>/&Delta;<span class="sym">t</span> = 0.06 mol/(L&middot;min) at a mean concentration of 2.00 mol/L, so <span class="sym">k</span> &asymp; 0.06/2.00<sup>2</sup> = 0.0150 &mdash; identical to three figures, confirming the integration.</p>
+  </div>
+</article>
+
+<!-- ============ Q6 ============ -->
+<article class="q">
+  <header>
+    <span class="qnum">Q6</span>
+    <h2 class="qtitle">1 liter/min of liquid containing A and B (C<sub>A0</sub> = 0.10, C<sub>B0</sub> = 0.01 mol/liter) flows into a mixed reactor of volume V = 1 liter. The stoichiometry is unknown. The outlet contains A, B and C (C<sub>Af</sub> = 0.02, C<sub>Bf</sub> = 0.03, C<sub>Cf</sub> = 0.04 mol/liter). Find the rate of reaction of A, B and C.</h2>
+    <span class="marks">2 marks</span>
+  </header>
+  <div class="body">
+    <div class="given">
+      <b>Given</b> &mdash; mixed-flow (CSTR), steady state, liquid (constant density);
+      <span class="sym">v<sub>0</sub></span> = 1 L/min, <span class="sym">V</span> = 1 L.
+      <br><b>Key insight</b> &mdash; you do <i>not</i> need the stoichiometry. A CSTR mole balance gives each rate directly.
+    </div>
+
+    <p class="label">Step 1 &mdash; Space-time</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mi>&#964;</mi><mo>=</mo><mfrac><mi>V</mi><msub><mi>v</mi><mn>0</mn></msub></mfrac>
+        <mo>=</mo><mfrac><mrow><mn>1</mn><mtext>&#8201;L</mtext></mrow><mrow><mn>1</mn><mtext>&#8201;L/min</mtext></mrow></mfrac>
+        <mo>=</mo><mn>1</mn><mtext>&#8201;min</mtext>
+      </mrow></math>
+    </div>
+
+    <p class="label">Step 2 &mdash; Steady-state mole balance on a CSTR</p>
+    <p>For any species <span class="sym">i</span>: <i>in &#8722; out + generation = 0</i>. Because the vessel is perfectly mixed, the composition everywhere inside equals the outlet composition, so the rate is uniform and comes straight out of the balance &mdash; no integration:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>v</mi><mn>0</mn></msub><msub><mi>C</mi><mrow><mi>i</mi><mn>0</mn></mrow></msub>
+        <mo>&#8722;</mo>
+        <msub><mi>v</mi><mn>0</mn></msub><msub><mi>C</mi><mrow><mi>i</mi><mi>f</mi></mrow></msub>
+        <mo>+</mo><msub><mi>r</mi><mi>i</mi></msub><mi>V</mi><mo>=</mo><mn>0</mn>
+        <mspace width="1.6em"/><mo>&#8658;</mo><mspace width="1.6em"/>
+        <mo>&#8722;</mo><msub><mi>r</mi><mi>i</mi></msub><mo>=</mo>
+        <mfrac>
+          <mrow><msub><mi>C</mi><mrow><mi>i</mi><mn>0</mn></mrow></msub><mo>&#8722;</mo><msub><mi>C</mi><mrow><mi>i</mi><mi>f</mi></mrow></msub></mrow>
+          <mi>&#964;</mi>
+        </mfrac>
+      </mrow></math>
+    </div>
+
+    <p class="label">Step 3 &mdash; Apply to each species</p>
+    <div class="tw">
+      <table>
+        <caption>Rates evaluated at the reactor (= outlet) composition, &tau; = 1 min</caption>
+        <thead>
+          <tr>
+            <th>Species</th>
+            <th class="num">C<sub>i0</sub></th>
+            <th class="num">C<sub>if</sub></th>
+            <th class="num">(C<sub>i0</sub> &#8722; C<sub>if</sub>)/&tau;</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>A</b></td><td class="num">0.10</td><td class="num">0.02</td><td class="num">+0.08</td>
+            <td>&#8722;r<sub>A</sub> = <b>0.08</b> &mdash; A is <b>consumed</b></td>
+          </tr>
+          <tr>
+            <td><b>B</b></td><td class="num">0.01</td><td class="num">0.03</td><td class="num">&#8722;0.02</td>
+            <td>r<sub>B</sub> = <b>+0.02</b> &mdash; B is <b>formed</b> (net)</td>
+          </tr>
+          <tr>
+            <td><b>C</b></td><td class="num">0</td><td class="num">0.04</td><td class="num">&#8722;0.04</td>
+            <td>r<sub>C</sub> = <b>+0.04</b> &mdash; C is <b>formed</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ans">
+      <span class="label">Answer &mdash; all rates in mol L<sup>&#8722;1</sup> min<sup>&#8722;1</sup></span>
+      <ul style="font-family:var(--font-ui);font-size:.9rem">
+        <li><b>A:</b> &#8722;r<sub>A</sub> = 0.08 &nbsp;(disappearing at 0.08 mol L<sup>&#8722;1</sup> min<sup>&#8722;1</sup>)</li>
+        <li><b>B:</b> &#8722;r<sub>B</sub> = &#8722;0.02, i.e. r<sub>B</sub> = +0.02 &nbsp;(B is <i>produced</i> on balance, even though it is fed &mdash; its outlet concentration is higher than its inlet)</li>
+        <li><b>C:</b> &#8722;r<sub>C</sub> = &#8722;0.04, i.e. r<sub>C</sub> = +0.04 &nbsp;(produced; C<sub>C0</sub> = 0 since C is absent from the feed)</li>
+      </ul>
+    </div>
+
+    <p class="label">Comments</p>
+    <ul>
+      <li><b>Why this works without stoichiometry.</b> A CSTR operates entirely at its exit composition, so the mole balance is algebraic. The rate is obtained by simple difference &mdash; this is precisely why the mixed-flow reactor is the preferred device for collecting kinetic data on complicated systems.</li>
+      <li><b>Deducing an overall stoichiometry.</b> The net rates are in the ratio
+        &nbsp;<span class="sym">r<sub>A</sub></span> : <span class="sym">r<sub>B</sub></span> : <span class="sym">r<sub>C</sub></span> = &#8722;0.08 : +0.02 : +0.04 = &#8722;4 : 1 : 2,
+        which is consistent with an overall change <b>4A &rarr; B + 2C</b>. Note this is only the <i>net</i> (observed) stoichiometry; the underlying mechanism may well involve B being consumed and regenerated in several steps.</li>
+      <li>The sign convention does all the bookkeeping: a positive (<span class="sym">C<sub>i0</sub></span> &#8722; <span class="sym">C<sub>if</sub></span>) means consumption, a negative one means net production.</li>
+    </ul>
+  </div>
+</article>
+
+<!-- ============ Q7 ============ -->
+<article class="q">
+  <header>
+    <span class="qnum">Q7</span>
+    <h2 class="qtitle">A real reactor modelled as two different reactor systems, with &tau;<sub>PFR</sub> = &tau;<sub>CSTR</sub> = 1 min, k = 1.0 m&sup3;/(kmol&middot;min) and C<sub>A0</sub> = 1.0 kmol/m&sup3;. Find the conversion for (a) CSTR followed by PFR and (b) PFR followed by CSTR, for reaction order n = 1 and n = 2. Comment on the result.</h2>
+    <span class="marks">5 marks</span>
+  </header>
+  <div class="body">
+    <div class="given">
+      <b>Given</b> &mdash; liquid-phase (constant density), isothermal, &tau; = 1 min for <i>each</i> unit, so the <b>total space-time is 2 min in both arrangements</b> &mdash; that is what makes the comparison fair.
+      <span class="sym">C<sub>A0</sub></span> = 1.0 kmol/m&sup3;.
+      <br><b>Note on units</b> &mdash; the constant <span class="sym">k</span> = 1.0 m&sup3;/(kmol&middot;min) is the second-order value. Units of <span class="sym">k</span> must change with order, so for <span class="sym">n</span> = 1 we take <span class="sym">k</span> = 1.0 min<sup>&#8722;1</sup> (numerically 1.0 in both cases, as intended by the problem).
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 340 178" role="img" aria-label="Two reactor arrangements: system (a) CSTR then PFR, system (b) PFR then CSTR, with second-order outlet concentrations">
+        <!-- ROW A -->
+        <text class="svg-label-strong" x="0" y="12">System (a) &#8212; CSTR &#8594; PFR</text>
+        <line class="svg-flow" x1="6" y1="46" x2="46" y2="46"/>
+        <polygon points="46,46 40,43 40,49" fill="var(--ink-2)"/>
+        <rect class="svg-box" x="48" y="26" width="78" height="40" rx="3"/>
+        <line class="svg-flow" x1="87" y1="26" x2="87" y2="48"/>
+        <line class="svg-flow" x1="79" y1="48" x2="95" y2="48"/>
+        <text class="svg-label-strong" x="87" y="62" text-anchor="middle">CSTR</text>
+        <line class="svg-flow" x1="126" y1="46" x2="166" y2="46"/>
+        <polygon points="166,46 160,43 160,49" fill="var(--ink-2)"/>
+        <rect class="svg-box" x="168" y="34" width="108" height="24" rx="3"/>
+        <text class="svg-label-strong" x="222" y="50" text-anchor="middle">PFR</text>
+        <line class="svg-flow" x1="276" y1="46" x2="316" y2="46"/>
+        <polygon points="316,46 310,43 310,49" fill="var(--ink-2)"/>
+        <text class="svg-label" x="8" y="38">C&#8320; = 1.000</text>
+        <text class="svg-label" x="128" y="38">0.618</text>
+        <text class="svg-label" x="278" y="38">0.382</text>
+        <text class="svg-label" x="278" y="74" fill="var(--accent)">X = 61.8&#8201;%</text>
+
+        <!-- ROW B -->
+        <text class="svg-label-strong" x="0" y="110">System (b) &#8212; PFR &#8594; CSTR</text>
+        <line class="svg-flow" x1="6" y1="144" x2="46" y2="144"/>
+        <polygon points="46,144 40,141 40,147" fill="var(--ink-2)"/>
+        <rect class="svg-box" x="48" y="132" width="108" height="24" rx="3"/>
+        <text class="svg-label-strong" x="102" y="148" text-anchor="middle">PFR</text>
+        <line class="svg-flow" x1="156" y1="144" x2="196" y2="144"/>
+        <polygon points="196,144 190,141 190,147" fill="var(--ink-2)"/>
+        <rect class="svg-box" x="198" y="124" width="78" height="40" rx="3"/>
+        <line class="svg-flow" x1="237" y1="124" x2="237" y2="146"/>
+        <line class="svg-flow" x1="229" y1="146" x2="245" y2="146"/>
+        <text class="svg-label-strong" x="237" y="160" text-anchor="middle">CSTR</text>
+        <line class="svg-flow" x1="276" y1="144" x2="316" y2="144"/>
+        <polygon points="316,144 310,141 310,147" fill="var(--ink-2)"/>
+        <text class="svg-label" x="8" y="136">C&#8320; = 1.000</text>
+        <text class="svg-label" x="158" y="136">0.500</text>
+        <text class="svg-label" x="278" y="136">0.366</text>
+        <text class="svg-label" x="278" y="172" fill="var(--accent)">X = 63.4&#8201;%</text>
+      </svg>
+      <figcaption>The two trains. Stream values shown are the second-order (n = 2) concentrations in kmol/m&sup3;; each unit has &tau; = 1 min.</figcaption>
+    </figure>
+
+    <p class="label">Design equations used</p>
+    <p>Constant density, so <span class="sym">X</span> = 1 &#8722; <span class="sym">C<sub>A</sub></span>/<span class="sym">C<sub>A0</sub></span> and each unit is handled on a concentration basis, taking the outlet of one unit as the inlet of the next.</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mtext>CSTR:</mtext>
+        <mspace width="0.6em"/>
+        <mi>&#964;</mi><mo>=</mo>
+        <mfrac>
+          <mrow><msub><mi>C</mi><mtext>in</mtext></msub><mo>&#8722;</mo><msub><mi>C</mi><mtext>out</mtext></msub></mrow>
+          <mrow><mi>k</mi><mo>&#8290;</mo><msubsup><mi>C</mi><mtext>out</mtext><mi>n</mi></msubsup></mrow>
+        </mfrac>
+        <mspace width="2.4em"/>
+        <mtext>PFR:</mtext>
+        <mspace width="0.6em"/>
+        <mi>&#964;</mi><mo>=</mo>
+        <msubsup><mo>&#8747;</mo><msub><mi>C</mi><mtext>out</mtext></msub><msub><mi>C</mi><mtext>in</mtext></msub></msubsup>
+        <mfrac><mrow><mi>d</mi><mi>C</mi></mrow><mrow><mi>k</mi><mo>&#8290;</mo><msup><mi>C</mi><mi>n</mi></msup></mrow></mfrac>
+      </mrow></math>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--rule);margin:.4rem 0">
+
+    <p class="label">Case n = 1 &nbsp;(k = 1.0 min<sup>&#8722;1</sup>)</p>
+    <p>The integrated forms are <span class="sym">C</span><sub>out</sub> = <span class="sym">C</span><sub>in</sub>/(1 + <span class="sym">k&tau;</span>) for the CSTR and <span class="sym">C</span><sub>out</sub> = <span class="sym">C</span><sub>in</sub><span class="sym">e</span><sup>&#8722;<span class="sym">k&tau;</span></sup> for the PFR. With <span class="sym">k&tau;</span> = 1:</p>
+    <div class="tw">
+      <table>
+        <caption>First order &mdash; stage-by-stage concentrations, kmol/m&sup3;</caption>
+        <thead>
+          <tr><th>System</th><th>Unit 1</th><th class="num">C after unit 1</th><th>Unit 2</th><th class="num">C after unit 2</th><th class="num">Final X</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>(a)</b></td><td>CSTR</td><td class="num">1/2 = 0.5000</td><td>PFR</td><td class="num">0.5&thinsp;e<sup>&#8722;1</sup> = 0.1839</td><td class="num">0.8161</td></tr>
+          <tr><td><b>(b)</b></td><td>PFR</td><td class="num">e<sup>&#8722;1</sup> = 0.3679</td><td>CSTR</td><td class="num">0.3679/2 = 0.1839</td><td class="num">0.8161</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ans">
+      <span class="label">Result for n = 1</span>
+      <p><b>X = 0.816 (81.6&#8201;%) for both arrangements &mdash; the order makes no difference.</b> The reason is structural: for first order each unit applies a <i>multiplicative</i> factor to the concentration, and multiplication commutes:</p>
+      <div class="eq">
+        <math display="block"><mrow>
+          <msub><mi>C</mi><mtext>out</mtext></msub><mo>=</mo>
+          <msub><mi>C</mi><mrow><mi>A</mi><mn>0</mn></mrow></msub>
+          <mo>&#8290;</mo>
+          <mrow><mo>(</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mi>k</mi><msub><mi>&#964;</mi><mi>m</mi></msub></mrow></mfrac><mo>)</mo></mrow>
+          <mo>&#8290;</mo>
+          <msup><mi>e</mi><mrow><mo>&#8722;</mo><mi>k</mi><msub><mi>&#964;</mi><mi>p</mi></msub></mrow></msup>
+        </mrow></math>
+      </div>
+      <p style="font-family:var(--font-ui);font-size:.85rem">&hellip; and this expression contains no information about which unit came first.</p>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--rule);margin:.4rem 0">
+
+    <p class="label">Case n = 2 &nbsp;(k = 1.0 m&sup3; kmol<sup>&#8722;1</sup> min<sup>&#8722;1</sup>)</p>
+    <p>Now the CSTR equation becomes a quadratic, <span class="sym">k&tau;C</span><sub>out</sub><sup>2</sup> + <span class="sym">C</span><sub>out</sub> &#8722; <span class="sym">C</span><sub>in</sub> = 0, and the PFR integrates to 1/<span class="sym">C</span><sub>out</sub> &#8722; 1/<span class="sym">C</span><sub>in</sub> = <span class="sym">k&tau;</span>.</p>
+
+    <p><b>System (a) &mdash; CSTR then PFR.</b> CSTR: 1 = (1 &#8722; <span class="sym">C</span><sub>1</sub>)/<span class="sym">C</span><sub>1</sub><sup>2</sup> &rArr; <span class="sym">C</span><sub>1</sub><sup>2</sup> + <span class="sym">C</span><sub>1</sub> &#8722; 1 = 0 &rArr; <span class="sym">C</span><sub>1</sub> = (&radic;5 &#8722; 1)/2 = <b>0.6180</b>. PFR: 1/<span class="sym">C</span><sub>2</sub> = 1/0.6180 + 1 = 2.6180 &rArr; <span class="sym">C</span><sub>2</sub> = <b>0.3820</b>.</p>
+
+    <p><b>System (b) &mdash; PFR then CSTR.</b> PFR: 1/<span class="sym">C</span><sub>1</sub> = 1 + 1 = 2 &rArr; <span class="sym">C</span><sub>1</sub> = <b>0.5000</b>. CSTR: 1 = (0.5 &#8722; <span class="sym">C</span><sub>2</sub>)/<span class="sym">C</span><sub>2</sub><sup>2</sup> &rArr; <span class="sym">C</span><sub>2</sub><sup>2</sup> + <span class="sym">C</span><sub>2</sub> &#8722; 0.5 = 0 &rArr; <span class="sym">C</span><sub>2</sub> = (&radic;3 &#8722; 1)/2 = <b>0.3660</b>.</p>
+
+    <div class="tw">
+      <table>
+        <caption>Second order &mdash; stage-by-stage concentrations, kmol/m&sup3;</caption>
+        <thead>
+          <tr><th>System</th><th>Unit 1</th><th class="num">C after unit 1</th><th>Unit 2</th><th class="num">C after unit 2</th><th class="num">Final X</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>(a)</b></td><td>CSTR</td><td class="num">0.6180</td><td>PFR</td><td class="num">0.3820</td><td class="num">0.6180</td></tr>
+          <tr class="best"><td><b>(b)</b></td><td>PFR</td><td class="num">0.5000</td><td>CSTR</td><td class="num">0.3660</td><td class="num">0.6340</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ans">
+      <span class="label">Summary of all four answers</span>
+      <div class="tw" style="border-color:var(--accent)">
+        <table>
+          <thead>
+            <tr><th>Arrangement</th><th class="num">X, n = 1</th><th class="num">X, n = 2</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>(a) CSTR &rarr; PFR</td><td class="num">0.8161</td><td class="num">0.6180</td></tr>
+            <tr><td>(b) PFR &rarr; CSTR</td><td class="num">0.8161</td><td class="num">0.6340</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="label">Comment on the result</p>
+    <ol>
+      <li><b>For n = 1 the sequence is irrelevant</b> (both give 81.61&#8201;%). A first-order rate depends linearly on concentration, so no arrangement can exploit a concentration advantage.</li>
+      <li><b>For n = 2 the sequence matters:</b> PFR-first wins, 63.40&#8201;% against 61.80&#8201;% &mdash; a gain of 1.60 percentage points, or about 2.6&#8201;% relative, for exactly the same total reactor volume. Free conversion, purely from piping order.</li>
+      <li><b>The general rule (Levenspiel):</b> for <b>n &gt; 1</b> put the <b>plug-flow unit first</b> and the mixed-flow unit last; for <b>n &lt; 1</b> reverse it; for <b>n = 1</b> it does not matter. The physical reason is that a CSTR instantly dilutes its feed down to <i>exit</i> concentration and reacts entirely at that lowest concentration. When <span class="sym">n</span> &gt; 1 the rate is very sensitive to concentration, so you want to keep <span class="sym">C<sub>A</sub></span> high for as long as possible &mdash; which means <i>not</i> squandering the rich, fast-reacting feed on a back-mixed vessel. Send it through the PFR first, and give the CSTR the already-dilute stream, where the penalty for back-mixing is small.</li>
+      <li><b>Bounds check.</b> With the same total &tau; = 2 min and n = 2, a single PFR would give <span class="sym">X</span> = 0.667 (the best any arrangement can do) and a single CSTR <span class="sym">X</span> = 0.500 (the worst). Both mixed arrangements fall between: 0.500 &lt; 0.618 &lt; 0.634 &lt; 0.667. &#10003;</li>
+    </ol>
+
+    <p class="label">Why, graphically</p>
+    <p>On a Levenspiel plot of 1/(&#8722;<span class="sym">r<sub>A</sub></span>) against <span class="sym">X</span>, space-time is <i>area</i>. A PFR consumes the area <i>under</i> the curve; a CSTR consumes a <i>rectangle</i> whose height is set by its <b>outlet</b> conditions. The shaded areas below are equal (1 min each, 2 min total) in both panels &mdash; but panel (b) reaches further to the right.</p>
+
+    <div class="figrow">
+      <div class="fig-card">
+        <svg viewBox="0 0 300 222" role="img" aria-label="Levenspiel plot for system a: CSTR rectangle from X=0 to 0.382 followed by PFR area to X=0.618">
+          <polygon class="svg-pfr" points="175.97,190 175.97,134.37 182.14,130.95 199.29,119.74 216.43,105.00 233.57,85.07 250.71,57.19 256.89,44.35 256.89,190"/>
+          <rect class="svg-cstr" x="45" y="134.37" width="130.97" height="55.63"/>
+          <polyline class="svg-curve" points="45,168.75 62.14,166.46 79.29,163.76 96.43,160.59 113.57,156.78 130.71,152.22 147.86,146.63 165.00,139.70 182.14,130.95 199.29,119.74 216.43,105.00 233.57,85.07 250.71,57.19 266.60,20.00"/>
+          <line class="svg-dash" x1="256.89" y1="44.35" x2="256.89" y2="190"/>
+          <path class="svg-axis" d="M45,20 L45,190 L285,190"/>
+          <text class="svg-label" x="45" y="203" text-anchor="middle">0</text>
+          <text class="svg-label" x="113.57" y="203" text-anchor="middle">0.2</text>
+          <text class="svg-label" x="182.14" y="203" text-anchor="middle">0.4</text>
+          <text class="svg-label" x="250.71" y="203" text-anchor="middle">0.6</text>
+          <text class="svg-label" x="165" y="217" text-anchor="middle">conversion X</text>
+          <text class="svg-label" x="10" y="105" text-anchor="middle" transform="rotate(-90 10 105)">1 / (&#8722;r&#8336;)</text>
+          <text class="svg-label-strong" x="256" y="36" text-anchor="end" fill="var(--accent)">X = 0.618</text>
+          <text class="svg-label-strong" x="52" y="16">(a) CSTR &#8594; PFR</text>
+        </svg>
+        <figcaption><span class="swatch" style="background:var(--mark);opacity:.5"></span> CSTR rectangle spans a wide &Delta;X = 0.382 and wastes a lot of area above the curve.</figcaption>
+      </div>
+
+      <div class="fig-card">
+        <svg viewBox="0 0 300 222" role="img" aria-label="Levenspiel plot for system b: PFR area from X=0 to 0.5 followed by CSTR rectangle to X=0.634">
+          <rect class="svg-cstr" x="216.43" y="31.39" width="45.94" height="158.61"/>
+          <polygon class="svg-pfr" points="45,190 45,168.75 62.14,166.46 79.29,163.76 96.43,160.59 113.57,156.78 130.71,152.22 147.86,146.63 165.00,139.70 182.14,130.95 199.29,119.74 216.43,105.00 216.43,190"/>
+          <polyline class="svg-curve" points="45,168.75 62.14,166.46 79.29,163.76 96.43,160.59 113.57,156.78 130.71,152.22 147.86,146.63 165.00,139.70 182.14,130.95 199.29,119.74 216.43,105.00 233.57,85.07 250.71,57.19 266.60,20.00"/>
+          <line class="svg-dash" x1="262.37" y1="31.39" x2="262.37" y2="190"/>
+          <path class="svg-axis" d="M45,20 L45,190 L285,190"/>
+          <text class="svg-label" x="45" y="203" text-anchor="middle">0</text>
+          <text class="svg-label" x="113.57" y="203" text-anchor="middle">0.2</text>
+          <text class="svg-label" x="182.14" y="203" text-anchor="middle">0.4</text>
+          <text class="svg-label" x="250.71" y="203" text-anchor="middle">0.6</text>
+          <text class="svg-label" x="165" y="217" text-anchor="middle">conversion X</text>
+          <text class="svg-label" x="10" y="105" text-anchor="middle" transform="rotate(-90 10 105)">1 / (&#8722;r&#8336;)</text>
+          <text class="svg-label-strong" x="262" y="26" text-anchor="end" fill="var(--accent)">X = 0.634</text>
+          <text class="svg-label-strong" x="52" y="16">(b) PFR &#8594; CSTR</text>
+        </svg>
+        <figcaption><span class="swatch" style="background:var(--accent);opacity:.5"></span> PFR hugs the curve first; the CSTR rectangle is tall and narrow (&Delta;X = 0.134), so it wastes less.</figcaption>
+      </div>
+    </div>
+
+    <p class="note">Quantitatively, the area a CSTR wastes above the curve is 0.382 min in system (a) but only 0.268 min in system (b). That difference of 0.114 min of &ldquo;usefully spent&rdquo; space-time is exactly what buys the extra 1.6 percentage points of conversion.</p>
+  </div>
+</article>
+
+<footer>
+  <p>CL 24303 &mdash; Chemical Reaction Engineering II &middot; Tutorial 0 &middot; MO2026. All numerical results verified by back-substitution into the governing design equations.</p>
+</footer>
+
+</div>
+</body>
+</html>
