@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CL 24303 &mdash; Tutorial 1 Answer Script</title>
+<style>
+/* ---------- tokens: light ---------- */
+:root{
+  --ground:#F5F7F5;
+  --surface:#FFFFFF;
+  --surface-2:#EDF1EF;
+  --ink:#141B1A;
+  --ink-2:#4B5957;
+  --ink-3:#7C8A87;
+  --rule:#DCE2DF;
+  --rule-strong:#C3CDC9;
+  --accent:#0B6A5E;
+  --accent-soft:#E1EFEB;
+  --mark:#8A4A14;
+  --mark-soft:#F5EBE0;
+  --shadow:0 1px 2px rgba(20,27,26,.05), 0 6px 18px -10px rgba(20,27,26,.18);
+
+  --font-body:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --font-ui:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --font-mono:"Cascadia Mono",Consolas,"SF Mono",ui-monospace,Menlo,monospace;
+}
+/* ---------- tokens: dark (system default, un-stamped) ---------- */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D1312;
+    --surface:#141C1B;
+    --surface-2:#1B2524;
+    --ink:#E7EEEB;
+    --ink-2:#A4B3B0;
+    --ink-3:#7B8A87;
+    --rule:#26322F;
+    --rule-strong:#35443F;
+    --accent:#4FC0AE;
+    --accent-soft:#11322D;
+    --mark:#D8A05D;
+    --mark-soft:#2B2318;
+    --shadow:0 1px 2px rgba(0,0,0,.35), 0 6px 18px -10px rgba(0,0,0,.6);
+  }
+}
+/* ---------- tokens: dark (explicit) ---------- */
+:root[data-theme="dark"]{
+  --ground:#0D1312;
+  --surface:#141C1B;
+  --surface-2:#1B2524;
+  --ink:#E7EEEB;
+  --ink-2:#A4B3B0;
+  --ink-3:#7B8A87;
+  --rule:#26322F;
+  --rule-strong:#35443F;
+  --accent:#4FC0AE;
+  --accent-soft:#11322D;
+  --mark:#D8A05D;
+  --mark-soft:#2B2318;
+  --shadow:0 1px 2px rgba(0,0,0,.35), 0 6px 18px -10px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.62;
+  font-kerning:normal;
+}
+.wrap{max-width:50rem;margin:0 auto;padding:2.5rem 1.25rem 5rem}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:1.1rem;
+  margin-bottom:2.25rem;
+  display:flex;flex-direction:column;gap:.55rem;
+}
+.dept{
+  font-family:var(--font-ui);font-size:.68rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+}
+.masthead h1{
+  font-family:var(--font-ui);font-weight:650;font-size:clamp(1.5rem,4.4vw,2.05rem);
+  line-height:1.15;letter-spacing:-.018em;margin:0;text-wrap:balance;
+}
+.masthead .sub{font-family:var(--font-ui);font-size:.9rem;color:var(--ink-2);margin:0}
+.meta{
+  display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-top:.35rem;
+  font-family:var(--font-ui);font-size:.78rem;color:var(--ink-3);
+}
+.meta b{color:var(--ink-2);font-weight:600}
+
+/* ---------- question cards ---------- */
+.q{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  box-shadow:var(--shadow);
+  margin:0 0 1.75rem;
+  overflow:hidden;
+}
+.q > header{
+  display:flex;align-items:flex-start;gap:.85rem;
+  padding:.85rem 1.35rem;
+  background:var(--surface-2);
+  border-bottom:1px solid var(--rule);
+}
+.qnum{
+  flex:0 0 auto;
+  font-family:var(--font-ui);font-size:.72rem;font-weight:700;letter-spacing:.08em;
+  color:var(--surface);background:var(--accent);
+  border-radius:2px;padding:.2rem .5rem;margin-top:.2rem;
+}
+.qtitle{
+  flex:1 1 auto;font-family:var(--font-ui);font-weight:600;font-size:1rem;
+  line-height:1.35;margin:0;text-wrap:balance;
+}
+.marks{
+  flex:0 0 auto;font-family:var(--font-ui);font-size:.68rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--mark);background:var(--mark-soft);
+  border:1px solid var(--rule);border-radius:2px;
+  padding:.2rem .45rem;margin-top:.25rem;white-space:nowrap;
+}
+.body{padding:1.25rem 1.35rem 1.45rem;display:flex;flex-direction:column;gap:.95rem}
+.body > *{margin:0}
+
+/* ---------- prose bits ---------- */
+.label{
+  font-family:var(--font-ui);font-size:.7rem;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+}
+.given{
+  border-left:2px solid var(--rule-strong);
+  padding:.15rem 0 .15rem .9rem;
+  color:var(--ink-2);font-size:.95rem;
+}
+ul,ol{margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:.45rem}
+li::marker{color:var(--ink-3)}
+p{margin:0}
+.note{font-size:.93rem;color:var(--ink-2)}
+b,strong{font-weight:600}
+.sym{font-style:italic;font-family:var(--font-body)}
+code{font-family:var(--font-mono);font-size:.88em;background:var(--surface-2);
+  padding:.08em .32em;border-radius:2px}
+
+/* ---------- math ---------- */
+.eq{overflow-x:auto;overflow-y:hidden;padding:.35rem 0;text-align:center}
+math{font-family:var(--font-body);color:var(--ink)}
+math[display="block"]{font-size:1.12em;margin:0}
+.eq-note{
+  font-family:var(--font-ui);font-size:.76rem;color:var(--ink-3);
+  text-align:center;margin-top:-.25rem;
+}
+
+/* ---------- answer box ---------- */
+.ans{
+  background:var(--accent-soft);
+  border:1px solid var(--accent);
+  border-left-width:3px;
+  border-radius:2px;
+  padding:.8rem 1rem;
+  display:flex;flex-direction:column;gap:.4rem;
+}
+.ans .label{color:var(--accent)}
+.ans .eq{padding:.15rem 0}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:2px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-family:var(--font-ui)}
+caption{
+  caption-side:top;text-align:left;font-family:var(--font-ui);font-size:.76rem;
+  color:var(--ink-3);padding:.5rem .7rem;border-bottom:1px solid var(--rule);
+  background:var(--surface-2);
+}
+th,td{padding:.5rem .7rem;text-align:left;border-bottom:1px solid var(--rule)}
+thead th{
+  font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-2);font-weight:700;background:var(--surface-2);
+}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--font-mono);font-size:.86rem}
+tr.best td{background:var(--accent-soft);font-weight:600}
+tr.best td.num{color:var(--accent)}
+
+/* ---------- figures ---------- */
+figure{margin:0;display:flex;flex-direction:column;gap:.5rem}
+.figrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.fig-card{
+  border:1px solid var(--rule);border-radius:2px;padding:.7rem;
+  background:var(--surface);display:flex;flex-direction:column;gap:.4rem;
+}
+svg{display:block;width:100%;height:auto}
+figcaption{font-family:var(--font-ui);font-size:.76rem;color:var(--ink-3);line-height:1.45}
+.svg-label{font-family:var(--font-ui);font-size:9px;fill:var(--ink-2)}
+.svg-label-strong{font-family:var(--font-ui);font-size:10px;font-weight:600;fill:var(--ink)}
+.svg-axis{stroke:var(--rule-strong);stroke-width:1;fill:none}
+.svg-curve{stroke:var(--ink);stroke-width:1.6;fill:none}
+.svg-pfr{fill:var(--accent);opacity:.38}
+.svg-cstr{fill:var(--mark);opacity:.32}
+.svg-dash{stroke:var(--ink-3);stroke-width:1;stroke-dasharray:3 3;fill:none}
+.svg-box{fill:var(--surface-2);stroke:var(--ink-2);stroke-width:1.3}
+.svg-flow{stroke:var(--ink-2);stroke-width:1.3;fill:none}
+.swatch{display:inline-block;width:.7em;height:.7em;border-radius:1px;vertical-align:baseline}
+
+/* ---------- footer ---------- */
+footer{
+  margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--rule);
+  font-family:var(--font-ui);font-size:.76rem;color:var(--ink-3);
+}
+a{color:var(--accent)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  body{background:#fff}
+  .q{break-inside:avoid;box-shadow:none}
+}
+</style></head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <span class="dept">Department of Chemical Engineering &middot; MO2026</span>
+  <h1>CRE&nbsp;II &mdash; Tutorial 1 &middot; Answer Script</h1>
+  <p class="sub">Exam-length solutions, sized to the marks. Each question carries a mark map showing where the credit sits; nothing beyond that is written.</p>
+  <div class="meta">
+    <span><b>Course</b> CL24303</span>
+    <span><b>Due</b> 23.08.2026, 23:59</span>
+    <span><b>Marks</b> Q1&nbsp;3 &middot; Q2&nbsp;2 &middot; Q3&nbsp;4 &middot; Q4&nbsp;6 &middot; Q5&nbsp;3 &middot; Q6&nbsp;4</span>
+  </div>
+</header>
+
+<article class="q">
+  <header>
+    <span class="qnum">Q1</span>
+    <h2 class="qtitle">Industrial catalytic processes &mdash; commercial name and shape, synthesis and characterisation, reactor type, manufacturers in India.</h2>
+    <span class="marks">3 marks</span>
+  </header>
+  <div class="body">
+    <p class="note"><b>Mark map</b> &mdash; 1 for catalysts (name + shape), 1 for synthesis/characterisation, 1 for reactors + manufacturers. A representative set of six processes is enough; an exhaustive list earns nothing extra.</p>
+
+    <div class="tw">
+      <table>
+        <caption>(i) Commercial name and shape &nbsp;&middot;&nbsp; (iii) Reactor &nbsp;&middot;&nbsp; (iv) Manufacturer and Indian presence</caption>
+        <thead><tr><th>Process</th><th>Catalyst &mdash; commercial name</th><th>Shape / size</th><th>Reactor</th><th>Maker &middot; India</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>Ammonia synthesis</b></td>
+            <td>Promoted Fe (K<sub>2</sub>O, Al<sub>2</sub>O<sub>3</sub>, CaO) &mdash; Topsoe KM&nbsp;111, Clariant AmoMax&nbsp;10</td>
+            <td>Irregular granules, 1.5&ndash;3 and 6&ndash;10&nbsp;mm</td>
+            <td>Multibed adiabatic fixed bed, quench-cooled, 150&ndash;300&nbsp;bar</td>
+            <td>Topsoe &middot; Gurugram; Clariant (S&uuml;d-Chemie) &middot; Cochin, Vadodara</td>
+          </tr>
+          <tr>
+            <td><b>Steam methane reforming</b></td>
+            <td>Ni/&alpha;-Al<sub>2</sub>O<sub>3</sub> &mdash; Topsoe R-67-7H, JM KATALCO 25-4Q</td>
+            <td>7-hole cartwheel / Raschig rings, ~16&nbsp;mm (low &Delta;P)</td>
+            <td>Fired multitubular reactor in a radiant box, 800&ndash;900&nbsp;&deg;C</td>
+            <td>Johnson Matthey &middot; Chennai, Taloja; Clariant &middot; Cochin</td>
+          </tr>
+          <tr>
+            <td><b>Fluid catalytic cracking</b></td>
+            <td>USY <b>Zeolite&nbsp;Y</b> in silica&ndash;alumina/kaolin matrix &mdash; Grace MIDAS, BASF Fourte, IOCL INDMAX</td>
+            <td><b>Spray-dried microspheres, 20&ndash;150&nbsp;&micro;m</b></td>
+            <td>Riser (transport bed) + fluidised regenerator &mdash; catalyst circulates because coking is fast</td>
+            <td>W.&nbsp;R.&nbsp;Grace &middot; Mumbai; BASF &middot; Dahej, Chennai; IOCL R&amp;D &middot; Faridabad</td>
+          </tr>
+          <tr>
+            <td><b>Hydrotreating / HDS</b></td>
+            <td>Co&ndash;Mo or Ni&ndash;Mo sulfide on &gamma;-Al<sub>2</sub>O<sub>3</sub> &mdash; Criterion DC/DN, Albemarle KF-757 STARS</td>
+            <td>Trilobe / quadralobe extrudates, 1.3&ndash;2.5&nbsp;mm</td>
+            <td>Trickle bed (gas&ndash;liquid&ndash;solid downflow fixed bed)</td>
+            <td>Shell/Criterion &middot; Bengaluru; Albemarle &middot; Navi Mumbai; Axens &middot; Delhi</td>
+          </tr>
+          <tr>
+            <td><b>Sulfuric acid (contact)</b></td>
+            <td>V<sub>2</sub>O<sub>5</sub>&ndash;K<sub>2</sub>S<sub>2</sub>O<sub>7</sub> on silica &mdash; Topsoe VK-69, BASF O4-115</td>
+            <td>Ribbed / daisy rings, 10&ndash;12&nbsp;mm</td>
+            <td>Multibed adiabatic with intercoolers, double absorption</td>
+            <td>Topsoe &middot; Gurugram; BASF &middot; Mumbai</td>
+          </tr>
+          <tr>
+            <td><b>Auto exhaust control</b></td>
+            <td>Pt/Pd/Rh + CeO<sub>2</sub>&ndash;ZrO<sub>2</sub>; Cu-zeolite SCR &mdash; JM, Umicore, BASF</td>
+            <td>Washcoated cordierite monolith honeycomb, 400&ndash;900&nbsp;cpsi</td>
+            <td>Monolith (structured) reactor &mdash; near-zero &Delta;P</td>
+            <td>Umicore &middot; Pune; Johnson Matthey &middot; Chennai; BASF &middot; Chennai</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="label">(ii) Synthesis and characterisation</p>
+    <p><b>Synthesis</b> &mdash; <i>fusion</i> (ammonia Fe), <i>precipitation/co-precipitation</i> (Cu&ndash;ZnO methanol, Fe&ndash;Cr shift), <i>impregnation</i> to incipient wetness (Co&ndash;Mo/Al<sub>2</sub>O<sub>3</sub>, Ni/Al<sub>2</sub>O<sub>3</sub>, Pt/Al<sub>2</sub>O<sub>3</sub>), <i>ion exchange</i> and <i>hydrothermal crystallisation</i> (zeolite Y, ZSM-5), <i>spray drying</i> (FCC microspheres), followed by <i>forming</i> &mdash; extrusion, tabletting, oil-drop, washcoating &mdash; then drying, calcination and reduction or sulfidation.</p>
+    <p><b>Characterisation</b> &mdash; N<sub>2</sub> physisorption/<b>BET</b> for surface area; <b>He&ndash;Hg displacement</b> for pore volume, densities and porosity; Hg porosimetry and BJH for pore-size distribution; selective <b>chemisorption</b> for active-metal area and dispersion; <b>XRD</b> for phases and crystallite size; SEM&ndash;EDX and TEM for morphology; XPS for surface oxidation state; <b>TPR/TPD/TPO</b> for reducibility, acidity and coke; crush strength and attrition index for mechanical integrity.</p>
+
+    <div class="ans">
+      <span class="label">Answer</span>
+      <p><b>1.</b> Shape is set by the reactor: microspheres &rarr; fluidised/riser; lobed extrudates &rarr; trickle bed; rings and multi-hole cylinders &rarr; fired tubes and low-&Delta;P adiabatic beds; monolith &rarr; zero-&Delta;P exhaust; gauze &rarr; millisecond contact; powder &rarr; slurry.</p>
+      <p><b>2.</b> Synthesis is fusion, precipitation, impregnation, ion exchange or hydrothermal, then forming; characterisation splits into texture (BET, He&ndash;Hg, porosimetry), chemistry (XRD, XPS, TPR/TPD) and function (chemisorption, isotherms).</p>
+      <p><b>3.</b> In India the suppliers are Clariant/S&uuml;d-Chemie (Cochin, Vadodara), Johnson Matthey (Chennai, Taloja), BASF (Dahej, Chennai), Umicore (Pune), with Topsoe, UOP, Axens and Shell as licensors and IOCL R&amp;D as the indigenous developer.</p>
+    </div>
+  </div>
+</article>
+
+<article class="q">
+  <header>
+    <span class="qnum">Q2</span>
+    <h2 class="qtitle">External surface area per unit volume of a 100&nbsp;&micro;m spherical Zeolite&nbsp;Y FCC catalyst, and the size needed for 320&nbsp;m<sup>2</sup>/g. &rho;<sub>p</sub> = 1.5&nbsp;g/cm<sup>3</sup>.</h2>
+    <span class="marks">2 marks</span>
+  </header>
+  <div class="body">
+    <p class="note"><b>Mark map</b> &mdash; 1 for S<sub>v</sub>, 1 for the required particle size.</p>
+
+    <p>For a sphere, external area per unit volume and per unit mass are</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>v</mi></msub><mo>=</mo>
+        <mfrac><mrow><mi>&#960;</mi><msubsup><mi>d</mi><mi>p</mi><mn>2</mn></msubsup></mrow><mrow><mi>&#960;</mi><msubsup><mi>d</mi><mi>p</mi><mn>3</mn></msubsup><mo>/</mo><mn>6</mn></mrow></mfrac>
+        <mo>=</mo><mfrac><mn>6</mn><msub><mi>d</mi><mi>p</mi></msub></mfrac>
+        <mspace width="2em"/>
+        <msub><mi>S</mi><mi>g</mi></msub><mo>=</mo><mfrac><msub><mi>S</mi><mi>v</mi></msub><msub><mi>&#961;</mi><mi>p</mi></msub></mfrac>
+        <mo>=</mo><mfrac><mn>6</mn><mrow><msub><mi>&#961;</mi><mi>p</mi></msub><msub><mi>d</mi><mi>p</mi></msub></mrow></mfrac>
+      </mrow></math>
+    </div>
+
+    <p><b>(a)</b> <span class="sym">d<sub>p</sub></span> = 100&nbsp;&micro;m = 1&times;10<sup>&minus;4</sup>&nbsp;m = 1&times;10<sup>&minus;2</sup>&nbsp;cm:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>v</mi></msub><mo>=</mo><mfrac><mn>6</mn><mrow><mn>1</mn><mo>&#215;</mo><msup><mn>10</mn><mrow><mo>&#8722;</mo><mn>4</mn></mrow></msup></mrow></mfrac>
+        <mo>=</mo><mn>6</mn><mo>&#215;</mo><msup><mn>10</mn><mn>4</mn></msup><mtext>&#8201;</mtext><msup><mtext>m</mtext><mn>2</mn></msup><mo>/</mo><msup><mtext>m</mtext><mn>3</mn></msup>
+        <mspace width="1.5em"/><mo>&#8658;</mo><mspace width="0.8em"/>
+        <msub><mi>S</mi><mi>g</mi></msub><mo>=</mo><mfrac><mn>600</mn><mn>1.5</mn></mfrac><mo>=</mo><mn>400</mn><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>2</mn></msup><mo>/</mo><mtext>g</mtext><mo>=</mo><mn>0.04</mn><mtext>&#8201;</mtext><msup><mtext>m</mtext><mn>2</mn></msup><mo>/</mo><mtext>g</mtext>
+      </mrow></math>
+    </div>
+
+    <p><b>(b)</b> For <span class="sym">S<sub>g</sub></span> = 320&nbsp;m<sup>2</sup>/g = 3.2&times;10<sup>6</sup>&nbsp;cm<sup>2</sup>/g:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>d</mi><mi>p</mi></msub><mo>=</mo><mfrac><mn>6</mn><mrow><msub><mi>&#961;</mi><mi>p</mi></msub><msub><mi>S</mi><mi>g</mi></msub></mrow></mfrac>
+        <mo>=</mo><mfrac><mn>6</mn><mrow><mn>1.5</mn><mo>&#215;</mo><mn>3.2</mn><mo>&#215;</mo><msup><mn>10</mn><mn>6</mn></msup></mrow></mfrac>
+        <mo>=</mo><mn>1.25</mn><mo>&#215;</mo><msup><mn>10</mn><mrow><mo>&#8722;</mo><mn>6</mn></mrow></msup><mtext>&#8201;cm</mtext>
+      </mrow></math>
+    </div>
+
+    <div class="ans">
+      <span class="label">Answer</span>
+      <p><b>(a)</b> S<sub>v</sub> = <b>6&times;10<sup>4</sup> m<sup>2</sup>/m<sup>3</sup></b>, i.e. only 0.04&nbsp;m<sup>2</sup>/g.&nbsp; <b>(b)</b> d<sub>p</sub> = <b>1.25&times;10<sup>&minus;6</sup> cm</b> = 12.5&nbsp;nm (radius 6.25&times;10<sup>&minus;7</sup>&nbsp;cm).</p>
+      <p class="note">Such particles cannot be made or fluidised commercially &mdash; hence the 200&ndash;300&nbsp;m<sup>2</sup>/g of an FCC catalyst must come from <b>internal porosity</b>, not external area.<br>
+      <b>Key convention:</b> the printed answers (3&times;10<sup>4</sup>&nbsp;m<sup>2</sup>/m<sup>3</sup>, 6.25&times;10<sup>&minus;7</sup>&nbsp;cm) take 100&nbsp;&micro;m as a <i>radius</i> and quote a radius; they are the same physics, halved.</p>
+    </div>
+  </div>
+</article>
+<article class="q">
+  <header>
+    <span class="qnum">Q3</span>
+    <h2 class="qtitle">Langmuir isotherm for CO<sub>2</sub> on Zeolite-13X at 40 and 100&nbsp;&deg;C &mdash; evaluate q<sub>max</sub> and K.</h2>
+    <span class="marks">4 marks</span>
+  </header>
+  <div class="body">
+    <p class="note"><b>Mark map</b> &mdash; 1 for the linearisation, 1 for the tabulated p/q and the fit, 1 for q<sub>max</sub> and K at 40&nbsp;&deg;C, 1 for 100&nbsp;&deg;C plus the physical check.</p>
+
+    <p>Rearranging <span class="sym">q</span> = <span class="sym">q<sub>max</sub>Kp</span>/(1+<span class="sym">Kp</span>) into the Hanes form:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mfrac><mi>p</mi><mi>q</mi></mfrac><mo>=</mo>
+        <mfrac><mn>1</mn><mrow><msub><mi>q</mi><mtext>max</mtext></msub><mi>K</mi></mrow></mfrac>
+        <mo>+</mo><mfrac><mi>p</mi><msub><mi>q</mi><mtext>max</mtext></msub></mfrac>
+        <mspace width="2em"/>
+        <msub><mi>q</mi><mtext>max</mtext></msub><mo>=</mo><mfrac><mn>1</mn><mi>s</mi></mfrac>
+        <mo>,</mo><mspace width="1.2em"/>
+        <mi>K</mi><mo>=</mo><mfrac><mi>s</mi><mi>i</mi></mfrac>
+      </mrow></math>
+    </div>
+    <p class="eq-note">plot p/q vs p &mdash; slope <span class="sym">s</span> = 1/q<sub>max</sub>, intercept <span class="sym">i</span> = 1/(q<sub>max</sub>K)</p>
+
+    <div class="tw">
+      <table>
+        <caption>Linearised data. The 40&nbsp;&deg;C point (0.01,&nbsp;0.01) is a clear outlier (p/q = 1.0) and is excluded.</caption>
+        <thead><tr><th class="num">p</th><th class="num">q</th><th class="num">p/q &mdash; 40&nbsp;&deg;C</th><th class="num">p</th><th class="num">q</th><th class="num">p/q &mdash; 100&nbsp;&deg;C</th></tr></thead>
+        <tbody>
+          <tr><td class="num">0.01</td><td class="num">0.01</td><td class="num">1.0000 &#10007;</td><td class="num">0.02</td><td class="num">0.45</td><td class="num">0.0444</td></tr>
+          <tr><td class="num">0.02</td><td class="num">0.50</td><td class="num">0.0400</td><td class="num">0.15</td><td class="num">1.10</td><td class="num">0.1364</td></tr>
+          <tr><td class="num">0.13</td><td class="num">2.40</td><td class="num">0.0542</td><td class="num">0.40</td><td class="num">1.90</td><td class="num">0.2105</td></tr>
+          <tr><td class="num">1.10</td><td class="num">3.60</td><td class="num">0.3056</td><td class="num">1.20</td><td class="num">2.70</td><td class="num">0.4444</td></tr>
+          <tr><td class="num">2.50</td><td class="num">4.00</td><td class="num">0.6250</td><td class="num">2.50</td><td class="num">3.40</td><td class="num">0.7353</td></tr>
+          <tr><td class="num">3.80</td><td class="num">4.20</td><td class="num">0.9048</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Least-squares straight lines:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mn>40</mn><mtext>&#8201;&#176;C</mtext><mo>:</mo><mspace width="0.6em"/>
+        <mfrac><mi>p</mi><mi>q</mi></mfrac><mo>=</mo><mn>0.0369</mn><mo>+</mo><mn>0.2312</mn><mi>p</mi>
+        <mspace width="2.5em"/>
+        <mn>100</mn><mtext>&#8201;&#176;C</mtext><mo>:</mo><mspace width="0.6em"/>
+        <mfrac><mi>p</mi><mi>q</mi></mfrac><mo>=</mo><mn>0.0848</mn><mo>+</mo><mn>0.2687</mn><mi>p</mi>
+      </mrow></math>
+    </div>
+
+    <div class="ans">
+      <span class="label">Answer</span>
+      <div class="tw">
+        <table>
+          <thead><tr><th>T</th><th class="num">s = 1/q<sub>max</sub></th><th class="num">i = 1/(q<sub>max</sub>K)</th><th class="num">q<sub>max</sub> (mmol/g)</th><th class="num">K (atm<sup>&minus;1</sup>)</th><th class="num">R<sup>2</sup></th></tr></thead>
+          <tbody>
+            <tr><td><b>40&nbsp;&deg;C</b></td><td class="num">0.2312</td><td class="num">0.0369</td><td class="num"><b>4.33</b></td><td class="num"><b>6.27</b></td><td class="num">0.999</td></tr>
+            <tr><td><b>100&nbsp;&deg;C</b></td><td class="num">0.2687</td><td class="num">0.0848</td><td class="num"><b>3.72</b></td><td class="num"><b>3.17</b></td><td class="num">0.986</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note"><b>Checks:</b> K falls with temperature (6.27 &rarr; 3.17) as it must for exothermic adsorption &mdash; a van&rsquo;t Hoff fit gives &Delta;H<sub>ads</sub> &asymp; &minus;11&nbsp;kJ/mol. q<sub>max</sub> is nearly T-independent (4.33 &rarr; 3.72) because it counts sites. Including the outlier drops R<sup>2</sup> to 0.25 and gives an unphysical q<sub>max</sub> = 7.45.</p>
+    </div>
+  </div>
+</article>
+
+<article class="q">
+  <header>
+    <span class="qnum">Q4</span>
+    <h2 class="qtitle">From the BET plot, estimate the surface area per gram of silica gel for (a) N<sub>2</sub> at &minus;195.8&nbsp;&deg;C and (b) O<sub>2</sub> at &minus;183&nbsp;&deg;C.</h2>
+    <span class="marks">6 marks</span>
+  </header>
+  <div class="body">
+    <p class="note"><b>Mark map</b> &mdash; 1 BET equation and what its slope/intercept mean; 1 reading <span class="sym">i</span> and <span class="sym">s</span> off the plot; 1 monolayer volume <span class="sym">v<sub>m</sub></span>; 1 the area equation and &alpha;; 1 S<sub>g</sub> for N<sub>2</sub>; 1 S<sub>g</sub> for O<sub>2</sub>.</p>
+
+    <p><b>Step 1 &mdash; BET equation.</b> Langmuir extended to multilayers:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mfrac><mi>p</mi><mrow><mi>v</mi><mo>(</mo><msub><mi>p</mi><mn>0</mn></msub><mo>&#8722;</mo><mi>p</mi><mo>)</mo></mrow></mfrac>
+        <mo>=</mo><mfrac><mn>1</mn><mrow><msub><mi>v</mi><mi>m</mi></msub><mi>C</mi></mrow></mfrac>
+        <mo>+</mo><mfrac><mrow><mo>(</mo><mi>C</mi><mo>&#8722;</mo><mn>1</mn><mo>)</mo><mi>p</mi></mrow><mrow><mi>C</mi><msub><mi>v</mi><mi>m</mi></msub><msub><mi>p</mi><mn>0</mn></msub></mrow></mfrac>
+        <mspace width="1.8em"/><mo>&#8658;</mo><mspace width="0.8em"/>
+        <msub><mi>v</mi><mi>m</mi></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mi>i</mi><mo>+</mo><mi>s</mi></mrow></mfrac>
+        <mo>,</mo><mspace width="1em"/><mi>C</mi><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><mi>s</mi><mi>i</mi></mfrac>
+      </mrow></math>
+    </div>
+
+    <p><b>Step 2 &mdash; read the line.</b> The ordinate axis starts at 1.0, so the intercept must be obtained by extrapolating to <span class="sym">p</span>/<span class="sym">p</span><sub>0</sub> = 0, not read off the axis.</p>
+    <figure class="fig-card">
+      <svg viewBox="0 0 330 222" role="img" aria-label="BET plot with slope and intercept construction">
+        <line class="svg-axis" x1="45" y1="188" x2="308" y2="188"/>
+        <line class="svg-axis" x1="45" y1="188" x2="45" y2="15"/>
+        <g class="svg-label">
+          <text x="45" y="200" text-anchor="middle">0.00</text>
+          <text x="108" y="200" text-anchor="middle">0.10</text>
+          <text x="171" y="200" text-anchor="middle">0.20</text>
+          <text x="234" y="200" text-anchor="middle">0.30</text>
+          <text x="297" y="200" text-anchor="middle">0.40</text>
+          <text x="40" y="191" text-anchor="end">0</text>
+          <text x="40" y="149" text-anchor="end">2</text>
+          <text x="40" y="107" text-anchor="end">4</text>
+          <text x="40" y="65" text-anchor="end">6</text>
+          <text x="40" y="23" text-anchor="end">8</text>
+        </g>
+        <text class="svg-label-strong" x="176" y="212" text-anchor="middle">p / p&#8320;</text>
+        <text class="svg-label-strong" x="13" y="102" text-anchor="middle" transform="rotate(-90 13 102)">p/[v(p&#8320;&#8722;p)] &#215; 10&#8315;&#179; cm&#8315;&#179;</text>
+        <line class="svg-curve" x1="45" y1="167" x2="266" y2="20"/>
+        <g fill="none" stroke="var(--ink)" stroke-width="1.4">
+          <circle cx="76.5" cy="146" r="3.4"/><circle cx="108" cy="125" r="3.4"/><circle cx="139.5" cy="102" r="3.4"/><circle cx="171" cy="81" r="3.4"/><circle cx="202.5" cy="62" r="3.4"/><circle cx="234" cy="41" r="3.4"/>
+        </g>
+        <g class="svg-dash">
+          <line x1="45" y1="167" x2="80" y2="167"/>
+          <line x1="76.5" y1="146" x2="234" y2="146"/>
+          <line x1="234" y1="146" x2="234" y2="41"/>
+        </g>
+        <circle cx="45" cy="167" r="3" fill="var(--accent)"/>
+        <text class="svg-label" x="84" y="171"><tspan font-style="italic">i</tspan> = 1.0 &#215; 10&#8315;&#179;</text>
+        <text class="svg-label" x="240" y="98">&#916;y = 5.0</text>
+        <text class="svg-label" x="148" y="159">&#916;x = 0.25</text>
+        <text class="svg-label-strong" x="198" y="30" text-anchor="end"><tspan font-style="italic">s</tspan> = 20 &#215; 10&#8315;&#179;</text>
+      </svg>
+      <figcaption>Through (0.05, 2.0&times;10<sup>&minus;3</sup>) and (0.30, 7.0&times;10<sup>&minus;3</sup>): <b>s = 5.0/0.25 = 20&times;10<sup>&minus;3</sup> cm<sup>&minus;3</sup></b>, <b>i = 2.0&times;10<sup>&minus;3</sup> &minus; 20&times;10<sup>&minus;3</sup>(0.05) = 1.0&times;10<sup>&minus;3</sup> cm<sup>&minus;3</sup></b>.</figcaption>
+    </figure>
+
+    <p><b>Step 3 &mdash; monolayer volume.</b></p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>v</mi><mi>m</mi></msub><mo>=</mo>
+        <mfrac><mn>1</mn><mrow><mo>(</mo><mn>1.0</mn><mo>+</mo><mn>20</mn><mo>)</mo><mo>&#215;</mo><msup><mn>10</mn><mrow><mo>&#8722;</mo><mn>3</mn></mrow></msup></mrow></mfrac>
+        <mo>=</mo><mn>47.6</mn><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>3</mn></msup><mo>(</mo><mtext>STP</mtext><mo>)</mo><mo>/</mo><mtext>g</mtext>
+        <mspace width="1.5em"/><mo>(</mo><mi>C</mi><mo>=</mo><mn>21</mn><mo>)</mo>
+      </mrow></math>
+    </div>
+
+    <p><b>Step 4 &mdash; area equation.</b></p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>g</mi></msub><mo>=</mo>
+        <mfrac><mrow><msub><mi>v</mi><mi>m</mi></msub><msub><mi>N</mi><mn>0</mn></msub><mi>&#945;</mi></mrow><mi>V</mi></mfrac>
+        <mspace width="1.2em"/>
+        <mrow><mo>(</mo><msub><mi>N</mi><mn>0</mn></msub><mo>=</mo><mn>6.02</mn><mo>&#215;</mo><msup><mn>10</mn><mn>23</mn></msup><mo>,</mo><mspace width="0.5em"/><mi>V</mi><mo>=</mo><mn>22400</mn><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>3</mn></msup><mo>/</mo><mtext>mol</mtext><mo>)</mo></mrow>
+      </mrow></math>
+    </div>
+    <p class="eq-note">&alpha; = 1.09[M/(N<sub>0</sub>&rho;)]<sup>2/3</sup> gives 16.2&times;10<sup>&minus;16</sup>&nbsp;cm<sup>2</sup> for N<sub>2</sub> (&rho; = 0.808) and 14.2&times;10<sup>&minus;16</sup>&nbsp;cm<sup>2</sup> for O<sub>2</sub> (&rho; = 1.14) &mdash; as given</p>
+
+    <p><b>Step 5 &mdash; (a) nitrogen.</b></p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>g</mi></msub><mo>=</mo>
+        <mfrac><mrow><mn>47.6</mn><mo>&#215;</mo><mn>6.02</mn><mo>&#215;</mo><msup><mn>10</mn><mn>23</mn></msup><mo>&#215;</mo><mn>16.2</mn><mo>&#215;</mo><msup><mn>10</mn><mrow><mo>&#8722;</mo><mn>16</mn></mrow></msup></mrow><mn>22400</mn></mfrac>
+        <mo>=</mo><mn>2.07</mn><mo>&#215;</mo><msup><mn>10</mn><mn>6</mn></msup><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>2</mn></msup><mo>/</mo><mtext>g</mtext>
+      </mrow></math>
+    </div>
+    <p class="eq-note">= 207&nbsp;m<sup>2</sup>/g &nbsp;(shortcut: S<sub>g</sub> = 4.35&nbsp;v<sub>m</sub>)</p>
+
+    <p><b>Step 6 &mdash; (b) oxygen.</b> Only &alpha; changes, so S<sub>g</sub> = 3.82&times;10<sup>4</sup>&nbsp;v<sub>m</sub>. Reading the O<sub>2</sub> line the same way gives v<sub>m</sub> &asymp; 53.5&nbsp;cm<sup>3</sup>/g:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>g</mi></msub><mo>=</mo><mn>3.82</mn><mo>&#215;</mo><msup><mn>10</mn><mn>4</mn></msup><mo>&#215;</mo><mn>53.5</mn>
+        <mo>=</mo><mn>2.04</mn><mo>&#215;</mo><msup><mn>10</mn><mn>6</mn></msup><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>2</mn></msup><mo>/</mo><mtext>g</mtext>
+      </mrow></math>
+    </div>
+
+    <div class="ans">
+      <span class="label">Answer</span>
+      <p><b>(a)</b> v<sub>m</sub> = 47.6&nbsp;cm<sup>3</sup>/g &rarr; <b>S<sub>g</sub> &asymp; 207&ndash;210&nbsp;m<sup>2</sup>/g</b> &nbsp;&middot;&nbsp; <b>(b)</b> <b>S<sub>g</sub> &asymp; 204&nbsp;m<sup>2</sup>/g</b>. Both lie in the 200&ndash;600&nbsp;m<sup>2</sup>/g band quoted for silica gels.</p>
+      <p class="note">The 1&ndash;2&nbsp;% spread against the key (209.65) is intercept-extrapolation error &mdash; quote your <span class="sym">i</span> and <span class="sym">s</span>. Part (b) needs the O<sub>2</sub> line read separately: keeping v<sub>m</sub> = 47.6 and changing only &alpha; gives 182&nbsp;m<sup>2</sup>/g. The gases disagree because Eq. (8-14) assumes bulk-liquid packing &mdash; which is why <b>N<sub>2</sub> at &minus;195.8&nbsp;&deg;C is the accepted standard</b>.</p>
+    </div>
+  </div>
+</article>
+<article class="q">
+  <header>
+    <span class="qnum">Q5</span>
+    <h2 class="qtitle">JM Smith Example 8-4 &mdash; pore volume, solid density and porosity of activated silica by helium&ndash;mercury displacement.</h2>
+    <span class="marks">3 marks</span>
+  </header>
+  <div class="body">
+    <p class="note"><b>Mark map</b> &mdash; 1 for V<sub>g</sub>, 1 for &rho;<sub>s</sub>, 1 for &epsilon;<sub>p</sub>.</p>
+
+    <div class="given">
+      m = 101.5&nbsp;g &nbsp;&middot;&nbsp; V<sub>He</sub> = 45.1&nbsp;cm<sup>3</sup> &nbsp;&middot;&nbsp; V<sub>Hg</sub> = 82.7&nbsp;cm<sup>3</sup>
+    </div>
+    <p>Helium enters the pores, so V<sub>He</sub> is the <b>solid skeleton</b> volume; mercury does not enter at 1&nbsp;atm, so V<sub>Hg</sub> is the <b>envelope</b> volume. The difference is the pore volume.</p>
+
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>V</mi><mi>g</mi></msub><mo>=</mo>
+        <mfrac><mrow><mn>82.7</mn><mo>&#8722;</mo><mn>45.1</mn></mrow><mn>101.5</mn></mfrac>
+        <mo>=</mo><mn>0.371</mn><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>3</mn></msup><mo>/</mo><mtext>g</mtext>
+      </mrow></math>
+    </div>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#961;</mi><mi>s</mi></msub><mo>=</mo><mfrac><mn>101.5</mn><mn>45.1</mn></mfrac><mo>=</mo><mn>2.25</mn><mtext>&#8201;g/c</mtext><msup><mtext>m</mtext><mn>3</mn></msup>
+        <mspace width="2.5em"/>
+        <msub><mi>&#961;</mi><mi>p</mi></msub><mo>=</mo><mfrac><mn>101.5</mn><mn>82.7</mn></mfrac><mo>=</mo><mn>1.23</mn><mtext>&#8201;g/c</mtext><msup><mtext>m</mtext><mn>3</mn></msup>
+      </mrow></math>
+    </div>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#949;</mi><mi>p</mi></msub><mo>=</mo>
+        <mfrac><mrow><msub><mi>V</mi><mi>g</mi></msub><msub><mi>&#961;</mi><mi>s</mi></msub></mrow><mrow><msub><mi>V</mi><mi>g</mi></msub><msub><mi>&#961;</mi><mi>s</mi></msub><mo>+</mo><mn>1</mn></mrow></mfrac>
+        <mo>=</mo><mfrac><mrow><mn>0.371</mn><mo>&#215;</mo><mn>2.25</mn></mrow><mrow><mn>0.371</mn><mo>&#215;</mo><mn>2.25</mn><mo>+</mo><mn>1</mn></mrow></mfrac>
+        <mo>=</mo><mfrac><mn>0.834</mn><mn>1.834</mn></mfrac><mo>=</mo><mn>0.455</mn>
+      </mrow></math>
+    </div>
+    <p class="eq-note">check: &epsilon;<sub>p</sub> = V<sub>g</sub>&rho;<sub>p</sub> = 0.371 &times; 1.23 = 0.455 &#10003;</p>
+
+    <div class="ans">
+      <span class="label">Answer</span>
+      <p><b>V<sub>g</sub> = 0.371&nbsp;cm<sup>3</sup>/g</b> &nbsp;&middot;&nbsp; <b>&rho;<sub>s</sub> = 2.25&nbsp;g/cm<sup>3</sup></b> &nbsp;&middot;&nbsp; <b>&rho;<sub>p</sub> = 1.23&nbsp;g/cm<sup>3</sup></b> &nbsp;&middot;&nbsp; <b>&epsilon;<sub>p</sub> = 0.455</b></p>
+      <p class="note">&epsilon;<sub>p</sub> &asymp; 0.5 is the expected value &mdash; with a bed voidage of 0.4 this gives the standard fixed-bed split of ~30&nbsp;% pore, ~30&nbsp;% solid, ~40&nbsp;% interparticle void.</p>
+    </div>
+  </div>
+</article>
+
+<article class="q">
+  <header>
+    <span class="qnum">Q6</span>
+    <h2 class="qtitle">JM Smith Example 8-5 &mdash; bidisperse Ni/Al<sub>2</sub>O<sub>3</sub> pellet: densities, void fractions and solid fraction.</h2>
+    <span class="marks">4 marks</span>
+  </header>
+  <div class="body">
+    <p class="note"><b>Mark map</b> &mdash; 8 parts, &frac12; mark each. Watch the basis: <b>macropore volume is per pellet, micropore volume is per gram of particles.</b></p>
+
+    <div class="given">
+      m = 3.15&nbsp;g &nbsp;&middot;&nbsp; V<sub>pellet</sub> = 3.22&nbsp;cm<sup>3</sup> &nbsp;&middot;&nbsp; macropore volume = 0.645&nbsp;cm<sup>3</sup> per pellet &nbsp;&middot;&nbsp; micropore volume = 0.40&nbsp;cm<sup>3</sup>/g of particles
+    </div>
+    <p>Micropores lie <i>inside</i> the alumina particles (they carry the surface area); macropores are the voids <i>between</i> particles, created by pelleting. The closure relation is <span class="sym">&epsilon;<sub>M</sub></span> + <span class="sym">&epsilon;<sub>&mu;</sub></span> + <span class="sym">&epsilon;<sub>s</sub></span> = 1.</p>
+
+    <div class="tw">
+      <table>
+        <caption>Worked step by step</caption>
+        <thead><tr><th>Part</th><th>Relation</th><th class="num">Result</th></tr></thead>
+        <tbody>
+          <tr><td>(a) Pellet density</td><td><span class="sym">&rho;<sub>P</sub></span> = 3.15 / 3.22</td><td class="num"><b>0.978 g/cm<sup>3</sup></b></td></tr>
+          <tr><td>(b) Macropore volume per gram</td><td>(V<sub>g</sub>)<sub>M</sub> = 0.645 / 3.15</td><td class="num"><b>0.205 cm<sup>3</sup>/g</b></td></tr>
+          <tr><td>(c) Macropore void fraction</td><td><span class="sym">&epsilon;<sub>M</sub></span> = (V<sub>g</sub>)<sub>M</sub> / (1/<span class="sym">&rho;<sub>P</sub></span>) = 0.205 &times; 0.978</td><td class="num"><b>0.200</b></td></tr>
+          <tr><td>(d) Micropore void fraction</td><td><span class="sym">&epsilon;<sub>&mu;</sub></span> = (V<sub>g</sub>)<sub>&mu;</sub> / (1/<span class="sym">&rho;<sub>P</sub></span>) = 0.40 &times; 0.978</td><td class="num"><b>0.391</b></td></tr>
+          <tr><td>(e) Solid fraction</td><td><span class="sym">&epsilon;<sub>s</sub></span> = 1 &minus; 0.200 &minus; 0.391</td><td class="num"><b>0.409</b></td></tr>
+          <tr><td>(f) Particle density</td><td><span class="sym">&rho;<sub>p</sub></span> = 3.15 / (3.22 &minus; 0.645) = 3.15 / 2.575</td><td class="num"><b>1.22 g/cm<sup>3</sup></b></td></tr>
+          <tr><td>(g) Solid-phase density</td><td><span class="sym">&rho;<sub>s</sub></span> = <span class="sym">&rho;<sub>P</sub></span> / <span class="sym">&epsilon;<sub>s</sub></span> = 0.978 / 0.409</td><td class="num"><b>2.39 g/cm<sup>3</sup></b></td></tr>
+          <tr><td>(h) Particle void fraction</td><td><span class="sym">&epsilon;<sub>p</sub></span> = <span class="sym">&rho;<sub>p</sub></span>(V<sub>g</sub>)<sub>&mu;</sub> = 1.22 &times; 0.40</td><td class="num"><b>0.49</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ans">
+      <span class="label">Answer</span>
+      <p><b>&rho;<sub>P</sub> = 0.978</b>, <b>(V<sub>g</sub>)<sub>M</sub> = 0.205&nbsp;cm<sup>3</sup>/g</b>, <b>&epsilon;<sub>M</sub> = 0.200</b>, <b>&epsilon;<sub>&mu;</sub> = 0.391</b>, <b>&epsilon;<sub>s</sub> = 0.409</b>, <b>&rho;<sub>p</sub> = 1.22</b>, <b>&rho;<sub>s</sub> = 2.39&nbsp;g/cm<sup>3</sup></b>, <b>&epsilon;<sub>p</sub> = 0.49</b>.</p>
+      <p class="note">The pellet is 0.591 void and 0.409 solid; the particles alone are 0.49 void. Do not confuse (d) with (h) &mdash; both are micropore porosity, but (d) is per pellet and (h) is per particle.</p>
+    </div>
+  </div>
+</article>
+
+<footer>
+  <p><b>References.</b> J. M. Smith, <i>Chemical Engineering Kinetics</i>, 3rd ed., &sect;8-4 to &sect;8-6, Examples 8-1 to 8-5, Tables 8-2 and 8-3. Q3 data: <i>Sep. Purif. Technol.</i> <b>85</b> (2012) 17&ndash;27.</p>
+  <p>CL24303 &middot; Tutorial 1 &middot; concise answer script &middot; MO2026 &mdash; a fuller version with complete book derivations is in <code>Tutorial1_Solutions.html</code>.</p>
+</footer>
+
+</div>
+</body>
+</html>
