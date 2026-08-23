@@ -1,0 +1,1108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CL 24303 — Tutorial 1 Solutions</title>
+<style>
+/* ---------- tokens: light ---------- */
+:root{
+  --ground:#F5F7F5;
+  --surface:#FFFFFF;
+  --surface-2:#EDF1EF;
+  --ink:#141B1A;
+  --ink-2:#4B5957;
+  --ink-3:#7C8A87;
+  --rule:#DCE2DF;
+  --rule-strong:#C3CDC9;
+  --accent:#0B6A5E;
+  --accent-soft:#E1EFEB;
+  --mark:#8A4A14;
+  --mark-soft:#F5EBE0;
+  --shadow:0 1px 2px rgba(20,27,26,.05), 0 6px 18px -10px rgba(20,27,26,.18);
+
+  --font-body:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --font-ui:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --font-mono:"Cascadia Mono",Consolas,"SF Mono",ui-monospace,Menlo,monospace;
+}
+/* ---------- tokens: dark (system default, un-stamped) ---------- */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D1312;
+    --surface:#141C1B;
+    --surface-2:#1B2524;
+    --ink:#E7EEEB;
+    --ink-2:#A4B3B0;
+    --ink-3:#7B8A87;
+    --rule:#26322F;
+    --rule-strong:#35443F;
+    --accent:#4FC0AE;
+    --accent-soft:#11322D;
+    --mark:#D8A05D;
+    --mark-soft:#2B2318;
+    --shadow:0 1px 2px rgba(0,0,0,.35), 0 6px 18px -10px rgba(0,0,0,.6);
+  }
+}
+/* ---------- tokens: dark (explicit) ---------- */
+:root[data-theme="dark"]{
+  --ground:#0D1312;
+  --surface:#141C1B;
+  --surface-2:#1B2524;
+  --ink:#E7EEEB;
+  --ink-2:#A4B3B0;
+  --ink-3:#7B8A87;
+  --rule:#26322F;
+  --rule-strong:#35443F;
+  --accent:#4FC0AE;
+  --accent-soft:#11322D;
+  --mark:#D8A05D;
+  --mark-soft:#2B2318;
+  --shadow:0 1px 2px rgba(0,0,0,.35), 0 6px 18px -10px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.62;
+  font-kerning:normal;
+}
+.wrap{max-width:50rem;margin:0 auto;padding:2.5rem 1.25rem 5rem}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:1.1rem;
+  margin-bottom:2.25rem;
+  display:flex;flex-direction:column;gap:.55rem;
+}
+.dept{
+  font-family:var(--font-ui);font-size:.68rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+}
+.masthead h1{
+  font-family:var(--font-ui);font-weight:650;font-size:clamp(1.5rem,4.4vw,2.05rem);
+  line-height:1.15;letter-spacing:-.018em;margin:0;text-wrap:balance;
+}
+.masthead .sub{font-family:var(--font-ui);font-size:.9rem;color:var(--ink-2);margin:0}
+.meta{
+  display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-top:.35rem;
+  font-family:var(--font-ui);font-size:.78rem;color:var(--ink-3);
+}
+.meta b{color:var(--ink-2);font-weight:600}
+
+/* ---------- question cards ---------- */
+.q{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  box-shadow:var(--shadow);
+  margin:0 0 1.75rem;
+  overflow:hidden;
+}
+.q > header{
+  display:flex;align-items:flex-start;gap:.85rem;
+  padding:.85rem 1.35rem;
+  background:var(--surface-2);
+  border-bottom:1px solid var(--rule);
+}
+.qnum{
+  flex:0 0 auto;
+  font-family:var(--font-ui);font-size:.72rem;font-weight:700;letter-spacing:.08em;
+  color:var(--surface);background:var(--accent);
+  border-radius:2px;padding:.2rem .5rem;margin-top:.2rem;
+}
+.qtitle{
+  flex:1 1 auto;font-family:var(--font-ui);font-weight:600;font-size:1rem;
+  line-height:1.35;margin:0;text-wrap:balance;
+}
+.marks{
+  flex:0 0 auto;font-family:var(--font-ui);font-size:.68rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--mark);background:var(--mark-soft);
+  border:1px solid var(--rule);border-radius:2px;
+  padding:.2rem .45rem;margin-top:.25rem;white-space:nowrap;
+}
+.body{padding:1.25rem 1.35rem 1.45rem;display:flex;flex-direction:column;gap:.95rem}
+.body > *{margin:0}
+
+/* ---------- prose bits ---------- */
+.label{
+  font-family:var(--font-ui);font-size:.7rem;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+}
+.given{
+  border-left:2px solid var(--rule-strong);
+  padding:.15rem 0 .15rem .9rem;
+  color:var(--ink-2);font-size:.95rem;
+}
+ul,ol{margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:.45rem}
+li::marker{color:var(--ink-3)}
+p{margin:0}
+.note{font-size:.93rem;color:var(--ink-2)}
+b,strong{font-weight:600}
+.sym{font-style:italic;font-family:var(--font-body)}
+code{font-family:var(--font-mono);font-size:.88em;background:var(--surface-2);
+  padding:.08em .32em;border-radius:2px}
+
+/* ---------- math ---------- */
+.eq{overflow-x:auto;overflow-y:hidden;padding:.35rem 0;text-align:center}
+math{font-family:var(--font-body);color:var(--ink)}
+math[display="block"]{font-size:1.12em;margin:0}
+.eq-note{
+  font-family:var(--font-ui);font-size:.76rem;color:var(--ink-3);
+  text-align:center;margin-top:-.25rem;
+}
+
+/* ---------- answer box ---------- */
+.ans{
+  background:var(--accent-soft);
+  border:1px solid var(--accent);
+  border-left-width:3px;
+  border-radius:2px;
+  padding:.8rem 1rem;
+  display:flex;flex-direction:column;gap:.4rem;
+}
+.ans .label{color:var(--accent)}
+.ans .eq{padding:.15rem 0}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:2px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-family:var(--font-ui)}
+caption{
+  caption-side:top;text-align:left;font-family:var(--font-ui);font-size:.76rem;
+  color:var(--ink-3);padding:.5rem .7rem;border-bottom:1px solid var(--rule);
+  background:var(--surface-2);
+}
+th,td{padding:.5rem .7rem;text-align:left;border-bottom:1px solid var(--rule)}
+thead th{
+  font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-2);font-weight:700;background:var(--surface-2);
+}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--font-mono);font-size:.86rem}
+tr.best td{background:var(--accent-soft);font-weight:600}
+tr.best td.num{color:var(--accent)}
+
+/* ---------- figures ---------- */
+figure{margin:0;display:flex;flex-direction:column;gap:.5rem}
+.figrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.fig-card{
+  border:1px solid var(--rule);border-radius:2px;padding:.7rem;
+  background:var(--surface);display:flex;flex-direction:column;gap:.4rem;
+}
+svg{display:block;width:100%;height:auto}
+figcaption{font-family:var(--font-ui);font-size:.76rem;color:var(--ink-3);line-height:1.45}
+.svg-label{font-family:var(--font-ui);font-size:9px;fill:var(--ink-2)}
+.svg-label-strong{font-family:var(--font-ui);font-size:10px;font-weight:600;fill:var(--ink)}
+.svg-axis{stroke:var(--rule-strong);stroke-width:1;fill:none}
+.svg-curve{stroke:var(--ink);stroke-width:1.6;fill:none}
+.svg-pfr{fill:var(--accent);opacity:.38}
+.svg-cstr{fill:var(--mark);opacity:.32}
+.svg-dash{stroke:var(--ink-3);stroke-width:1;stroke-dasharray:3 3;fill:none}
+.svg-box{fill:var(--surface-2);stroke:var(--ink-2);stroke-width:1.3}
+.svg-flow{stroke:var(--ink-2);stroke-width:1.3;fill:none}
+.swatch{display:inline-block;width:.7em;height:.7em;border-radius:1px;vertical-align:baseline}
+
+/* ---------- footer ---------- */
+footer{
+  margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--rule);
+  font-family:var(--font-ui);font-size:.76rem;color:var(--ink-3);
+}
+a{color:var(--accent)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  body{background:#fff}
+  .q{break-inside:avoid;box-shadow:none}
+}
+</style></head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <span class="dept">Department of Chemical Engineering &middot; MO2026</span>
+  <h1>Chemical Reaction Engineering II &mdash; Tutorial 1</h1>
+  <p class="sub">Full worked solutions with book-level explanation &mdash; catalyst characterisation, adsorption isotherms, BET surface area, pore volume and porosity.</p>
+  <div class="meta">
+    <span><b>Course</b> CL24303</span>
+    <span><b>Assigned</b> 14.08.2026</span>
+    <span><b>Due</b> 23.08.2026, 23:59</span>
+    <span><b>Total</b> 18 printed marks (Q3 unmarked in paper)</span>
+    <span><b>Book</b> J. M. Smith, <i>Chemical Engineering Kinetics</i>, Ch. 8</span>
+  </div>
+</header>
+
+<article class="q">
+  <header>
+    <span class="qnum">Q1</span>
+    <h2 class="qtitle">Industrial catalytic processes: commercial catalyst names and shapes, synthesis and characterisation techniques, reactor types, and manufacturers with their presence in India.</h2>
+    <span class="marks">3 marks</span>
+  </header>
+  <div class="body">
+
+    <p class="note">A survey question. What follows is a representative &mdash; deliberately not exhaustive &mdash; set of the large-tonnage catalytic processes, organised along the four sub-parts asked. The pattern worth internalising is that <b>catalyst shape is dictated by the reactor</b>, and <b>the reactor is dictated by the thermodynamics and by how fast the catalyst deactivates</b>. Almost every entry below follows from those two statements.</p>
+
+    <p class="label">(i) &amp; (iii) Process &rarr; catalyst &rarr; commercial name &rarr; shape &rarr; reactor</p>
+    <div class="tw">
+      <table>
+        <caption>Major industrial catalytic processes: composition, commercial designation, physical form, reactor type</caption>
+        <thead>
+          <tr><th>Process</th><th>Active catalyst</th><th>Commercial names</th><th>Shape / size</th><th>Reactor</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Ammonia synthesis</b><br><span class="note">N<sub>2</sub> + 3H<sub>2</sub> &rarr; 2NH<sub>3</sub></span></td>
+            <td>Fe<sub>3</sub>O<sub>4</sub> fused with K<sub>2</sub>O, Al<sub>2</sub>O<sub>3</sub>, CaO (reduced <i>in situ</i> to &alpha;-Fe); newer Ru/graphite</td>
+            <td>Topsoe KM&nbsp;111, KM&nbsp;R (Ru); Clariant AmoMax&nbsp;10 (wustite); JM KATALCO&nbsp;74-1</td>
+            <td>Irregular crushed granules, graded 1.5&ndash;3&nbsp;mm and 6&ndash;10&nbsp;mm</td>
+            <td><b>Multibed adiabatic fixed bed</b> with quench or interbed cooling, radial flow, 150&ndash;300&nbsp;bar</td>
+          </tr>
+          <tr>
+            <td><b>Steam methane reforming</b></td>
+            <td>Ni (12&ndash;20&nbsp;wt%) on &alpha;-Al<sub>2</sub>O<sub>3</sub> / calcium aluminate, K-promoted against coking</td>
+            <td>Topsoe R-67-7H; JM KATALCO 25-4Q, 57-4Q; Clariant ReforMax&nbsp;330</td>
+            <td>Ringed and multi-hole cylinders &mdash; Raschig rings, 7-hole &ldquo;wagon-wheel&rdquo;, cartwheel, ~16&times;16&nbsp;mm; shaped for low &Delta;P and high external area</td>
+            <td><b>Fired tubular reactor</b> (multitubular fixed bed inside a radiant furnace box), 800&ndash;900&nbsp;&deg;C</td>
+          </tr>
+          <tr>
+            <td><b>Water-gas shift</b> (HT and LT)</td>
+            <td>HT: Fe<sub>2</sub>O<sub>3</sub>&ndash;Cr<sub>2</sub>O<sub>3</sub>. LT: Cu&ndash;ZnO&ndash;Al<sub>2</sub>O<sub>3</sub></td>
+            <td>Topsoe SK-501, LK-821-2; KATALCO 71-5, 83-3</td>
+            <td>Cylindrical tablets, 6&times;3&nbsp;mm and 6&times;4&nbsp;mm</td>
+            <td><b>Adiabatic fixed bed</b>, two stages with interbed cooling</td>
+          </tr>
+          <tr>
+            <td><b>Methanol synthesis</b></td>
+            <td>Cu/ZnO/Al<sub>2</sub>O<sub>3</sub></td>
+            <td>Topsoe MK-121, MK-317; KATALCO 51-9; Clariant MegaMax&nbsp;800</td>
+            <td>Cylindrical tablets ~5.4&times;3.6&nbsp;mm</td>
+            <td><b>Boiling-water multitubular (Lurgi)</b> or quench-type (ICI) fixed bed</td>
+          </tr>
+          <tr>
+            <td><b>Fluid catalytic cracking (FCC)</b><br><span class="note">the process in Q2</span></td>
+            <td>USY / RE-Y <b>Zeolite Y</b> dispersed in a silica&ndash;alumina + kaolin matrix; ZSM-5 additive</td>
+            <td>Grace MIDAS, ACHIEVE; Albemarle AFX, GO-Ultra; BASF Fourte, Stamina; <b>IOCL INDMAX</b></td>
+            <td><b>Spray-dried spherical microspheres, 20&ndash;150&nbsp;&micro;m</b> (mean &asymp;70&nbsp;&micro;m) &mdash; exactly the size class of Q2</td>
+            <td><b>Riser (transport-bed) reactor + fluidised regenerator</b>, with continuous catalyst circulation because coke deactivates the catalyst in seconds</td>
+          </tr>
+          <tr>
+            <td><b>Hydrotreating / HDS</b></td>
+            <td>Co&ndash;Mo or Ni&ndash;Mo sulfides on &gamma;-Al<sub>2</sub>O<sub>3</sub></td>
+            <td>Criterion (Shell) DC/DN series; Albemarle KF-757 STARS, NEBULA; Axens HR series; ART</td>
+            <td><b>Extrudates</b> &mdash; cylindrical, trilobe, quadralobe, 1.3&ndash;2.5&nbsp;mm; lobed shapes shorten the internal diffusion path at the same bed voidage</td>
+            <td><b>Trickle-bed reactor</b> (three-phase gas&ndash;liquid&ndash;solid downflow fixed bed)</td>
+          </tr>
+          <tr>
+            <td><b>Catalytic reforming</b> (naphtha &rarr; aromatics)</td>
+            <td>Bifunctional Pt&ndash;Re or Pt&ndash;Sn on chlorided &gamma;-Al<sub>2</sub>O<sub>3</sub></td>
+            <td>UOP R-234, R-334; Axens RG and AR series</td>
+            <td>Oil-drop spheres ~1.6&nbsp;mm, or extrudates</td>
+            <td><b>Moving-bed radial flow</b> (UOP CCR Platforming), or semi-regenerative adiabatic fixed beds with interheaters</td>
+          </tr>
+          <tr>
+            <td><b>Sulfuric acid &mdash; contact process</b></td>
+            <td>V<sub>2</sub>O<sub>5</sub>&ndash;K<sub>2</sub>S<sub>2</sub>O<sub>7</sub> melt on kieselguhr/silica &mdash; a supported liquid-phase catalyst</td>
+            <td>Topsoe VK-38, VK-69; BASF O4-115; Clariant</td>
+            <td><b>Ribbed rings, daisy/star rings</b>, 10&ndash;12&nbsp;mm &mdash; shaped for very low &Delta;P and dust tolerance</td>
+            <td><b>Multibed adiabatic fixed bed</b> with intercoolers; double-contact double-absorption</td>
+          </tr>
+          <tr>
+            <td><b>Ammonia oxidation</b> (nitric acid)</td>
+            <td>Pt&ndash;Rh (90:10) alloy, with Pd getter gauzes downstream</td>
+            <td>Johnson Matthey and Umicore <b>gauze packs</b>; ECOCAT</td>
+            <td><b>Knitted or woven wire gauze</b>, 60&ndash;76&nbsp;&micro;m wire &mdash; the extreme case of &ldquo;no pores, all external area&rdquo;, because the reaction is mass-transfer controlled and the contact time is ~10<sup>&minus;3</sup>&nbsp;s</td>
+            <td><b>Gauze burner</b> (short-contact-time reactor), 850&ndash;900&nbsp;&deg;C</td>
+          </tr>
+          <tr>
+            <td><b>Ethylene oxide</b></td>
+            <td>Ag (8&ndash;20&nbsp;wt%) + Cs promoter on <i>low-area</i> &alpha;-Al<sub>2</sub>O<sub>3</sub> (&lt;1&nbsp;m<sup>2</sup>/g &mdash; high area would burn the product)</td>
+            <td>Shell S-882, S-885; Scientific Design; Dow MERIDIAN</td>
+            <td>Rings / hollow cylinders, ~8&nbsp;mm</td>
+            <td><b>Multitubular fixed bed</b>, molten-salt or boiling-hydrocarbon cooled</td>
+          </tr>
+          <tr>
+            <td><b>Phthalic / maleic anhydride</b></td>
+            <td>V<sub>2</sub>O<sub>5</sub>&ndash;TiO<sub>2</sub> (PA); vanadyl pyrophosphate VPO (MA)</td>
+            <td>BASF O4-25; Clariant; Huntsman</td>
+            <td>Egg-shell coated rings or spheres, 6&ndash;8&nbsp;mm &mdash; a thin active layer suppresses over-oxidation to CO<sub>x</sub></td>
+            <td><b>Multitubular salt-bath fixed bed</b>; MA also in a <b>circulating fluidised bed</b> (DuPont)</td>
+          </tr>
+          <tr>
+            <td><b>Polyolefins</b> (HDPE, PP)</td>
+            <td>Ziegler&ndash;Natta TiCl<sub>4</sub>/MgCl<sub>2</sub> + AlEt<sub>3</sub>; Phillips Cr/SiO<sub>2</sub>; metallocene/MAO</td>
+            <td>LyondellBasell Avant ZN/ZR; Grace MAGNAPORE, SYLOPOL; Clariant</td>
+            <td>Porous spheroidal particles 10&ndash;100&nbsp;&micro;m &mdash; the growing polymer replicates the particle shape</td>
+            <td><b>Gas-phase fluidised bed</b> (Unipol), loop slurry, or stirred bulk reactor</td>
+          </tr>
+          <tr>
+            <td><b>Edible-oil hydrogenation</b> (fat hardening)</td>
+            <td>Ni on silica/alumina, encapsulated in hardened fat</td>
+            <td>Clariant Pricat&nbsp;9910; Johnson Matthey PRICAT; Evonik</td>
+            <td>Powder, 5&ndash;20&nbsp;&micro;m, supplied as fat-coated flakes</td>
+            <td><b>Slurry reactor</b> &mdash; stirred autoclave, batch or semi-batch</td>
+          </tr>
+          <tr>
+            <td><b>Automotive exhaust control</b></td>
+            <td>Pt/Pd/Rh with CeO<sub>2</sub>&ndash;ZrO<sub>2</sub> oxygen-storage washcoat; Cu- or Fe-<b>zeolite</b> for NH<sub>3</sub>-SCR</td>
+            <td>Johnson Matthey; BASF PremAir; Umicore; substrates by Corning and NGK</td>
+            <td><b>Washcoated cordierite or metallic monolith honeycomb</b>, 400&ndash;900&nbsp;cells/in<sup>2</sup></td>
+            <td><b>Monolith (structured) reactor</b> &mdash; laminar channels, near-zero pressure drop</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="label">(ii) Synthesis techniques</p>
+    <ul>
+      <li><b>Precipitation and co-precipitation</b> &mdash; metal-salt solutions mixed with a base at controlled pH and temperature, then filtered, washed, dried, calcined. The standard route to Cu/ZnO/Al<sub>2</sub>O<sub>3</sub> (methanol, LT shift) and Fe&ndash;Cr shift catalysts. Gives high loading and intimate mixing of components.</li>
+      <li><b>Impregnation</b> &mdash; incipient-wetness (pore-volume) or wet impregnation of a preformed support, then drying, calcination and reduction or sulfidation. This is precisely the route in <b>JM Smith Example 8-5 (Q6 below)</b>: alumina particles soaked in aqueous Ni(NO<sub>3</sub>)<sub>2</sub>, dried and reduced to ~7&nbsp;wt% NiO. Also used for Co&ndash;Mo/Al<sub>2</sub>O<sub>3</sub>, Pt/Al<sub>2</sub>O<sub>3</sub>, Ag/&alpha;-Al<sub>2</sub>O<sub>3</sub>.</li>
+      <li><b>Ion exchange</b> &mdash; the zeolite route: Na-Y &rarr; NH<sub>4</sub>-Y &rarr; H-Y; rare-earth exchange (REY) and steam dealumination to USY for FCC; Cu/Fe exchange for SCR catalysts.</li>
+      <li><b>Hydrothermal (sol&ndash;gel) crystallisation</b> &mdash; a silica&ndash;alumina gel with a structure-directing template, autoclaved at 100&ndash;180&nbsp;&deg;C, then calcined to burn out the template. Zeolite Y, ZSM-5, SAPO-34.</li>
+      <li><b>Fusion / melting</b> &mdash; magnetite with promoters melted at ~1600&nbsp;&deg;C, cooled, crushed and sieved. This is how the ammonia-synthesis catalyst is made, and it is why its shape is &ldquo;irregular granules&rdquo;.</li>
+      <li><b>Spray drying and flame/spray pyrolysis</b> &mdash; spray drying produces the 20&ndash;150&nbsp;&micro;m FCC microspheres of Q2. Note that <b>JM Smith Example 8-1</b> uses spray drying to argue that no non-porous particle route can deliver hundreds of m<sup>2</sup>/g &mdash; the argument you reproduce in Q2.</li>
+      <li><b>Shaping and forming</b> &mdash; extrusion (lobed hydrotreating extrudates), tabletting/pelletting (the pelleting-pressure vs macroporosity trade-off of JMS Table 8-3, directly relevant to Q6), oil-drop spheroidisation, and washcoating of monoliths.</li>
+      <li><b>Deposition&ndash;precipitation, grafting, CVD/ALD</b> &mdash; for very well-dispersed noble metals and atomically thin overlayers.</li>
+    </ul>
+
+    <p class="label">(ii) Characterisation techniques</p>
+    <div class="tw">
+      <table>
+        <caption>What each technique measures &mdash; and which question of this tutorial it corresponds to</caption>
+        <thead><tr><th>Property measured</th><th>Technique</th><th>Principle</th></tr></thead>
+        <tbody>
+          <tr class="best"><td><b>Total (BET) surface area</b></td><td>N<sub>2</sub> physisorption at &minus;195.8&nbsp;&deg;C (also Ar, O<sub>2</sub>, Kr)</td><td>Multilayer physisorption; the BET plot gives <span class="sym">v<sub>m</sub></span>, then <span class="sym">S<sub>g</sub></span> = <span class="sym">v<sub>m</sub>N</span><sub>0</sub><span class="sym">&alpha;/V</span> &mdash; <b>this is Q4</b></td></tr>
+          <tr class="best"><td><b>Pore volume, porosity, densities</b></td><td>Helium&ndash;mercury displacement pycnometry</td><td>He penetrates the pores, Hg does not at atmospheric pressure; the difference is the pore volume &mdash; <b>this is Q5 and Q6</b></td></tr>
+          <tr class="best"><td><b>Adsorption isotherm; <span class="sym">q<sub>max</sub></span>, <span class="sym">K</span></b></td><td>Volumetric/gravimetric uptake, TGA, breakthrough curves</td><td>Fit uptake vs pressure to Langmuir / Freundlich / Toth &mdash; <b>this is Q3</b></td></tr>
+          <tr><td>Pore-size distribution</td><td>Hg porosimetry (macropores); N<sub>2</sub> desorption with BJH (mesopores); t-plot (micropores)</td><td>Washburn equation for Hg intrusion; Kelvin equation for capillary condensation</td></tr>
+          <tr><td>Active-metal area and dispersion</td><td>Selective chemisorption (H<sub>2</sub>, CO, O<sub>2</sub> titration), pulse titration</td><td>Chemisorption is monolayer <i>and</i> specific to the metal, unlike physisorption which covers everything</td></tr>
+          <tr><td>Bulk crystalline phases, crystallite size</td><td>Powder XRD with Scherrer analysis</td><td>Bragg diffraction from ordered planes</td></tr>
+          <tr><td>Morphology, particle size, elemental maps</td><td>SEM&ndash;EDX, TEM/HRTEM, STEM&ndash;HAADF</td><td>Electron imaging &mdash; JMS Fig. 8-5 shows exactly this for porous silver</td></tr>
+          <tr><td>Surface composition and oxidation state</td><td>XPS/ESCA, Auger, EXAFS/XANES</td><td>Core-level binding energies; X-ray absorption fine structure</td></tr>
+          <tr><td>Acidity / basicity and site strength</td><td>NH<sub>3</sub>-TPD, CO<sub>2</sub>-TPD, pyridine-FTIR</td><td>Desorption temperature maps to site strength; IR bands separate Br&oslash;nsted from Lewis sites</td></tr>
+          <tr><td>Reducibility, sulfidation, coke</td><td>TPR, TPS, TPO; TGA</td><td>H<sub>2</sub> consumption or coke burn-off as a function of temperature</td></tr>
+          <tr><td>Mechanical integrity</td><td>Crush strength; attrition index (ASTM D5757 for FCC)</td><td>Decisive for fluidised beds and for tall fixed beds</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="label">(iv) Manufacturers and their presence in India</p>
+    <div class="tw">
+      <table>
+        <caption>Principal catalyst manufacturers, their product lines, and their Indian footprint</caption>
+        <thead><tr><th>Company</th><th>Main catalyst lines</th><th>Presence in India</th></tr></thead>
+        <tbody>
+          <tr><td><b>Johnson Matthey</b> (UK)</td><td>KATALCO syngas / ammonia / methanol, PRICAT hydrogenation, autocatalysts, Pt&ndash;Rh gauzes</td><td>Johnson Matthey India &mdash; autocatalyst plant at <b>Maraimalai Nagar, Chennai</b>; operations at Taloja (Maharashtra) and Vadodara; technology centre in Bengaluru</td></tr>
+          <tr><td><b>Clariant</b> (Germany; formerly S&uuml;d-Chemie)</td><td>AmoMax, ReforMax, ShiftMax, MegaMax, Pricat, EnviCat</td><td><b>S&uuml;d-Chemie India Pvt Ltd</b>, now Clariant &mdash; manufacturing at <b>Cochin (Kerala)</b>, Vadodara and Bharuch (Gujarat)</td></tr>
+          <tr><td><b>BASF</b> (Germany)</td><td>FCC (Fourte, Stamina), adsorbents, mobile-emission and chemical catalysts</td><td>BASF India Ltd &mdash; Mumbai HQ; sites at <b>Dahej (Gujarat)</b>, Mangalore and Thane; mobile-emissions catalyst plant near <b>Chennai</b></td></tr>
+          <tr><td><b>W. R. Grace</b> (USA)</td><td>FCC catalysts and additives (MIDAS, ACHIEVE), silica, polyolefin catalysts</td><td>Grace Chemicals India &mdash; offices and plant in the <b>Mumbai&ndash;Thane&ndash;Chakan</b> belt, with technical service to Indian refiners</td></tr>
+          <tr><td><b>Topsoe</b> (Denmark)</td><td>Ammonia (KM), reforming (R-67), shift (SK/LK), sulfuric acid (VK), hydroprocessing (TK)</td><td>Topsoe India Pvt Ltd &mdash; <b>New Delhi / Gurugram</b>; catalysts widely used in Indian ammonia&ndash;urea plants (IFFCO, RCF, KRIBHCO, NFL)</td></tr>
+          <tr><td><b>Honeywell UOP</b> (USA)</td><td>Platforming (R-234/R-334), Unicracking, Oleflex, molecular sieves and adsorbents</td><td>Honeywell UOP India &mdash; <b>Gurugram</b>, plus the UOP India technology centre; licensor to IOCL, BPCL, HPCL, RIL</td></tr>
+          <tr><td><b>Axens</b> (France, IFPEN)</td><td>HR hydrotreating, reforming, isomerisation, selective hydrogenation</td><td>Axens India &mdash; <b>New Delhi / Noida</b>; technology partner to several Indian refineries</td></tr>
+          <tr><td><b>Shell Catalysts &amp; Technologies / Criterion</b></td><td>DC and DN hydroprocessing series; EO silver catalysts (S-882)</td><td>Shell Technology Centre <b>Bengaluru</b> and offices in Gurugram; supplies BPCL, HPCL, RIL</td></tr>
+          <tr><td><b>Albemarle</b> (USA / Netherlands)</td><td>KF STARS and NEBULA hydroprocessing; FCC through joint ventures</td><td>Albemarle India &mdash; <b>Mumbai / Navi Mumbai</b> technical service centre</td></tr>
+          <tr><td><b>Umicore</b> (Belgium)</td><td>Automotive catalysts, precious-metal chemistry, gauzes</td><td>Umicore Autocat India &mdash; plant at <b>Loni Kalbhor, Pune</b></td></tr>
+          <tr><td><b>Evonik</b> (Germany)</td><td>Precious-metal powder catalysts, Ni hydrogenation catalysts, AEROSIL supports</td><td>Evonik India &mdash; <b>Mumbai</b>; production in the Dombivli/Thane area</td></tr>
+          <tr><td><b>Indian Oil Corporation, R&amp;D Faridabad</b></td><td><b>INDMAX</b> FCC catalyst; indigenous reforming and hydroprocessing catalysts</td><td>Indigenous developer; catalyst manufacture with <b>Chennai Petroleum</b>, deployments at Panipat, Paradip, Bongaigaon</td></tr>
+          <tr><td><b>Other Indian manufacturers</b></td><td>&mdash;</td><td><b>Hindustan Platinum</b> (Mumbai &mdash; gauzes and PGM catalysts); <b>Amines &amp; Plasticizers Ltd</b>; <b>BPCL R&amp;D</b> (Greater Noida); <b>Nickunj Eximp</b>; captive units at NFCL and Deepak Nitrite</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ans">
+      <span class="label">Answer in one line</span>
+      <p><b>Shape follows the reactor:</b> microspheres &rarr; fluidised/riser; extrudates and lobes &rarr; trickle bed; rings and multi-hole cylinders &rarr; fired tubes and low-&Delta;P adiabatic beds; monolith honeycomb &rarr; zero-&Delta;P exhaust; wire gauze &rarr; millisecond contact time; fine powder &rarr; slurry. <b>Characterisation splits three ways:</b> texture (BET area, He&ndash;Hg pore volume, porosimetry &mdash; Q4&ndash;Q6), chemistry (XRD, XPS, TPR, TPD) and function (chemisorption dispersion, isotherm fitting &mdash; Q3). <b>In India</b> the field is dominated by Clariant/S&uuml;d-Chemie (Cochin, Vadodara), Johnson Matthey (Chennai, Taloja), BASF (Dahej, Chennai), Umicore (Pune) and Honeywell UOP / Topsoe / Axens as licensors, with IOCL R&amp;D as the main indigenous developer.</p>
+    </div>
+  </div>
+</article>
+<article class="q">
+  <header>
+    <span class="qnum">Q2</span>
+    <h2 class="qtitle">External surface area per unit volume of a 100&nbsp;&micro;m spherical Zeolite&nbsp;Y FCC catalyst; and the size needed for an external area of 320&nbsp;m<sup>2</sup>/g. Density 1.5&nbsp;g/cm<sup>3</sup>.</h2>
+    <span class="marks">2 marks</span>
+  </header>
+  <div class="body">
+
+    <p class="label">The idea behind the question</p>
+    <p>This is <b>JM Smith Example 8-1</b> restated for an FCC microsphere. Its whole purpose is to establish, by a one-line calculation, that <b>the external (geometric) surface of a catalyst particle is negligible</b>. The hundreds of m<sup>2</sup>/g that a working catalyst needs cannot come from the outside of particles &mdash; they must come from the <i>internal</i> pore walls. That single conclusion is what makes the rest of Chapter 8 (pore volume, BET area, pore-size distribution) necessary, and what makes intraparticle diffusion a first-order concern in CRE-II rather than a refinement.</p>
+
+    <p class="label">Derivation</p>
+    <p>For a sphere of diameter <span class="sym">d<sub>p</sub></span>, the external area per unit particle volume is</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>v</mi></msub><mo>=</mo>
+        <mfrac>
+          <mrow><mi>&#960;</mi><msubsup><mi>d</mi><mi>p</mi><mn>2</mn></msubsup></mrow>
+          <mrow><mi>&#960;</mi><msubsup><mi>d</mi><mi>p</mi><mn>3</mn></msubsup><mo>/</mo><mn>6</mn></mrow>
+        </mfrac>
+        <mo>=</mo><mfrac><mn>6</mn><msub><mi>d</mi><mi>p</mi></msub></mfrac>
+      </mrow></math>
+    </div>
+    <p>and dividing by the particle density <span class="sym">&rho;<sub>p</sub></span> converts it to an area per unit mass:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>g</mi></msub><mo>=</mo>
+        <mfrac><msub><mi>S</mi><mi>v</mi></msub><msub><mi>&#961;</mi><mi>p</mi></msub></mfrac>
+        <mo>=</mo>
+        <mfrac><mn>6</mn><mrow><msub><mi>&#961;</mi><mi>p</mi></msub><msub><mi>d</mi><mi>p</mi></msub></mrow></mfrac>
+      </mrow></math>
+    </div>
+    <p class="eq-note">valid for non-porous (or externally-counted) spheres only</p>
+
+    <p class="label">Part (a) &mdash; area per unit volume of a 100&nbsp;&micro;m microsphere</p>
+    <div class="given">
+      <span class="sym">d<sub>p</sub></span> = 100&nbsp;&micro;m = 100&times;10<sup>&minus;4</sup>&nbsp;cm = 1&times;10<sup>&minus;2</sup>&nbsp;cm = 1&times;10<sup>&minus;4</sup>&nbsp;m &nbsp;&middot;&nbsp; <span class="sym">&rho;<sub>p</sub></span> = 1.5&nbsp;g/cm<sup>3</sup>
+    </div>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>v</mi></msub><mo>=</mo>
+        <mfrac><mn>6</mn><mrow><mn>1</mn><mo>&#215;</mo><msup><mn>10</mn><mrow><mo>&#8722;</mo><mn>4</mn></mrow></msup><mtext>&#8201;m</mtext></mrow></mfrac>
+        <mo>=</mo><mn>6</mn><mo>&#215;</mo><msup><mn>10</mn><mn>4</mn></msup>
+        <mtext>&#8201;m</mtext><msup><mtext></mtext><mn>2</mn></msup>
+        <mo>/</mo><msup><mtext>m</mtext><mn>3</mn></msup>
+      </mrow></math>
+    </div>
+    <p>Expressed per gram this is</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>g</mi></msub><mo>=</mo>
+        <mfrac><mn>6</mn><mrow><mn>1.5</mn><mo>&#215;</mo><mn>1</mn><mo>&#215;</mo><msup><mn>10</mn><mrow><mo>&#8722;</mo><mn>2</mn></mrow></msup></mrow></mfrac>
+        <mo>=</mo><mn>400</mn><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>2</mn></msup><mo>/</mo><mtext>g</mtext>
+        <mo>=</mo><mn>0.04</mn><mtext>&#8201;</mtext><msup><mtext>m</mtext><mn>2</mn></msup><mo>/</mo><mtext>g</mtext>
+      </mrow></math>
+    </div>
+    <p class="note"><b>Read that number.</b> A real FCC catalyst has <span class="sym">S<sub>g</sub></span> &asymp; 150&ndash;300&nbsp;m<sup>2</sup>/g. The external surface contributes 0.04&nbsp;m<sup>2</sup>/g &mdash; about <b>0.02&nbsp;%</b> of the total. Better than 99.9&nbsp;% of a cracking catalyst&rsquo;s surface is inside its pores. This is the quantitative justification for the statement in JMS &sect;8-6 that &ldquo;the external surface of the particles&hellip; is negligible&rdquo;.</p>
+
+    <p class="label">Part (b) &mdash; particle size required for an external area of 320&nbsp;m<sup>2</sup>/g</p>
+    <div class="given">
+      Required <span class="sym">S<sub>g</sub></span> = 320&nbsp;m<sup>2</sup>/g = 320&times;10<sup>4</sup>&nbsp;cm<sup>2</sup>/g = 3.2&times;10<sup>6</sup>&nbsp;cm<sup>2</sup>/g
+    </div>
+    <p>Invert <span class="sym">S<sub>g</sub></span> = 6/(<span class="sym">&rho;<sub>p</sub>d<sub>p</sub></span>):</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>d</mi><mi>p</mi></msub><mo>=</mo>
+        <mfrac><mn>6</mn><mrow><msub><mi>&#961;</mi><mi>p</mi></msub><msub><mi>S</mi><mi>g</mi></msub></mrow></mfrac>
+        <mo>=</mo>
+        <mfrac><mn>6</mn><mrow><mn>1.5</mn><mo>&#215;</mo><mn>3.2</mn><mo>&#215;</mo><msup><mn>10</mn><mn>6</mn></msup></mrow></mfrac>
+        <mo>=</mo><mn>1.25</mn><mo>&#215;</mo><msup><mn>10</mn><mrow><mo>&#8722;</mo><mn>6</mn></mrow></msup><mtext>&#8201;cm</mtext>
+      </mrow></math>
+    </div>
+    <p class="eq-note">= 1.25 &times; 10<sup>&minus;8</sup>&nbsp;m = 12.5&nbsp;nm = 0.0125&nbsp;&micro;m (radius 6.25&times;10<sup>&minus;7</sup>&nbsp;cm)</p>
+
+    <div class="ans">
+      <span class="label">Answer</span>
+      <p><b>(a)</b> <span class="sym">S<sub>v</sub></span> = 6/<span class="sym">d<sub>p</sub></span> = <b>6&times;10<sup>4</sup>&nbsp;m<sup>2</sup>/m<sup>3</sup></b> (= 600&nbsp;cm<sup>2</sup>/cm<sup>3</sup>), equivalent to only <b>0.04&nbsp;m<sup>2</sup>/g</b>.</p>
+      <p><b>(b)</b> To reach 320&nbsp;m<sup>2</sup>/g from external area alone the particles would have to be <b><span class="sym">d<sub>p</sub></span> = 1.25&times;10<sup>&minus;6</sup>&nbsp;cm = 12.5&nbsp;nm</b> (radius <b>6.25&times;10<sup>&minus;7</sup>&nbsp;cm</b>).</p>
+      <p class="note"><b>Conclusion:</b> 12.5&nbsp;nm particles cannot be manufactured, handled or fluidised on a commercial scale &mdash; they would be blown straight out of the regenerator. Therefore the required area <i>must</i> be supplied by internal porosity, which is exactly what Zeolite&nbsp;Y provides through its 7.4&nbsp;&Aring; supercage windows and ~13&nbsp;&Aring; supercages.</p>
+    </div>
+
+    <p class="label">Note on the printed answer key</p>
+    <p class="note">The tutorial key quotes <b>3&times;10<sup>4</sup>&nbsp;m<sup>2</sup>/m<sup>3</sup></b> and <b>6.25&times;10<sup>&minus;7</sup>&nbsp;cm</b>. Both are exactly one-half of the diameter-based results above, i.e. the key consistently reads the stated 100&nbsp;&micro;m as a <i>radius</i> and reports the answer to part (b) as a <i>radius</i> as well. With <span class="sym">R</span> = 100&nbsp;&micro;m, <span class="sym">d<sub>p</sub></span> = 200&nbsp;&micro;m and <span class="sym">S<sub>v</sub></span> = 6/(2&times;10<sup>&minus;4</sup>) = 3&times;10<sup>4</sup>&nbsp;m<sup>2</sup>/m<sup>3</sup>; and 6.25&times;10<sup>&minus;7</sup>&nbsp;cm is the radius corresponding to the diameter 1.25&times;10<sup>&minus;6</sup>&nbsp;cm found above. <b>Both conventions give the same physics</b> &mdash; state which one you are using. Since the problem says &ldquo;100 microns <i>in diameter</i>&rdquo;, the diameter-based numbers (6&times;10<sup>4</sup>&nbsp;m<sup>2</sup>/m<sup>3</sup>, <span class="sym">d<sub>p</sub></span>&nbsp;=&nbsp;1.25&times;10<sup>&minus;6</sup>&nbsp;cm) are the literally correct ones, and the key&rsquo;s value is recovered by quoting the radius.</p>
+  </div>
+</article>
+
+<article class="q">
+  <header>
+    <span class="qnum">Q3</span>
+    <h2 class="qtitle">Langmuir isotherm for CO<sub>2</sub> on Zeolite-13X at 40&nbsp;&deg;C and 100&nbsp;&deg;C: evaluate <span class="sym">q<sub>max</sub></span> and <span class="sym">K</span>.</h2>
+    <span class="marks">&mdash;</span>
+  </header>
+  <div class="body">
+
+    <p class="label">Book background &mdash; JM Smith &sect;8-4, &ldquo;The Langmuir Treatment of Adsorption&rdquo;</p>
+    <p>Langmuir&rsquo;s derivation rests on four assumptions, and every one of them matters when you judge the fit at the end:</p>
+    <ol>
+      <li><b>Energetically uniform surface</b> &mdash; all sites adsorb with the same heat of adsorption. (Real 13X has a distribution of site energies; the strongest cation sites bind CO<sub>2</sub> first.)</li>
+      <li><b>No interaction between adsorbed molecules</b> &mdash; the amount already adsorbed does not change the rate of adsorption per remaining site.</li>
+      <li><b>One mechanism, one adsorbed complex</b> &mdash; every adsorbed species has the same structure.</li>
+      <li><b>Coverage does not exceed one monolayer</b>, and each site holds one molecule.</li>
+    </ol>
+    <p>Under these assumptions, the rate of adsorption is proportional to the pressure and to the <i>bare</i> fraction of the surface, and the rate of desorption to the <i>covered</i> fraction:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>r</mi><mi>a</mi></msub><mo>=</mo><mi>k</mi><mi>p</mi><mo>(</mo><mn>1</mn><mo>&#8722;</mo><mi>&#952;</mi><mo>)</mo>
+        <mo>,</mo><mspace width="1.4em"/>
+        <msub><mi>r</mi><mi>d</mi></msub><mo>=</mo><msup><mi>k</mi><mo>&#8242;</mo></msup><mi>&#952;</mi>
+      </mrow></math>
+    </div>
+    <p>Equating them at equilibrium and writing <span class="sym">K</span> = <span class="sym">k</span>/<span class="sym">k</span>&prime; gives the Langmuir isotherm. Since the coverage <span class="sym">&theta;</span> is proportional to the amount adsorbed, <span class="sym">&theta;</span> = <span class="sym">q</span>/<span class="sym">q<sub>max</sub></span>:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mi>&#952;</mi><mo>=</mo><mfrac><mrow><mi>K</mi><mi>p</mi></mrow><mrow><mn>1</mn><mo>+</mo><mi>K</mi><mi>p</mi></mrow></mfrac>
+        <mspace width="2em"/><mo>&#8658;</mo><mspace width="1em"/>
+        <mi>q</mi><mo>=</mo><mfrac><mrow><msub><mi>q</mi><mtext>max</mtext></msub><mi>K</mi><mi>p</mi></mrow><mrow><mn>1</mn><mo>+</mo><mi>K</mi><mi>p</mi></mrow></mfrac>
+      </mrow></math>
+    </div>
+    <p><b>Physical meaning of the two parameters.</b> <span class="sym">q<sub>max</sub></span> is the <i>saturation capacity</i> &mdash; the loading at complete monolayer coverage, fixed by the number of adsorption sites per gram, so it is essentially a <i>structural</i> property of the zeolite and should be only weakly temperature-dependent. <span class="sym">K</span> is the <i>adsorption equilibrium constant</i>, units of (pressure)<sup>&minus;1</sup>; it measures affinity, is the ratio of adsorption to desorption rate constants, and because adsorption is exothermic it must <b>decrease with temperature</b>. Note the two limits: at low <span class="sym">p</span>, <span class="sym">Kp</span> &laquo; 1 and <span class="sym">q</span> &rarr; <span class="sym">q<sub>max</sub>Kp</span> (Henry&rsquo;s law, linear); at high <span class="sym">p</span>, <span class="sym">q</span> &rarr; <span class="sym">q<sub>max</sub></span> (plateau).</p>
+
+    <p class="label">Linearisation</p>
+    <p>JMS Eq. (8-8) rearranges the isotherm into a straight line. Dividing through by <span class="sym">p</span> and inverting:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mfrac><mi>p</mi><mi>q</mi></mfrac><mo>=</mo>
+        <mfrac><mn>1</mn><mrow><msub><mi>q</mi><mtext>max</mtext></msub><mi>K</mi></mrow></mfrac>
+        <mo>+</mo>
+        <mfrac><mi>p</mi><msub><mi>q</mi><mtext>max</mtext></msub></mfrac>
+      </mrow></math>
+    </div>
+    <p class="eq-note">plot <span class="sym">p</span>/<span class="sym">q</span> against <span class="sym">p</span> &rarr; slope <span class="sym">s</span> = 1/<span class="sym">q<sub>max</sub></span>, intercept <span class="sym">i</span> = 1/(<span class="sym">q<sub>max</sub>K</span>), hence <b><span class="sym">q<sub>max</sub></span> = 1/<span class="sym">s</span></b> and <b><span class="sym">K</span> = <span class="sym">s</span>/<span class="sym">i</span></b></p>
+    <p class="note">Use this <i>Hanes</i> form rather than the Lineweaver&ndash;Burk form (1/<span class="sym">q</span> vs 1/<span class="sym">p</span>). The latter puts enormous weight on the lowest-pressure point, where the measurement is least reliable; for this data set it gives a physically impossible negative <span class="sym">q<sub>max</sub></span> at 40&nbsp;&deg;C.</p>
+
+    <p class="label">Worked table &mdash; 40&nbsp;&deg;C</p>
+    <div class="tw">
+      <table>
+        <caption>CO<sub>2</sub> on Zeolite-13X at 40&nbsp;&deg;C &mdash; linearised data (Sep. Purif. Technol. 85 (2012) 17&ndash;27)</caption>
+        <thead><tr><th class="num">p (atm)</th><th class="num">q (mmol/g)</th><th class="num">p/q (atm&middot;g/mmol)</th><th class="num">q from fit</th><th>Comment</th></tr></thead>
+        <tbody>
+          <tr><td class="num">0.01</td><td class="num">0.01</td><td class="num">1.0000</td><td class="num">0.27</td><td><b>Outlier &mdash; discard.</b> A loading of 0.01&nbsp;mmol/g at 0.01&nbsp;atm is 50&times; below the neighbouring point and is inconsistent with any monotonic isotherm.</td></tr>
+          <tr><td class="num">0.02</td><td class="num">0.50</td><td class="num">0.0400</td><td class="num">0.48</td><td>Henry&rsquo;s-law region</td></tr>
+          <tr><td class="num">0.13</td><td class="num">2.40</td><td class="num">0.0542</td><td class="num">1.94</td><td>knee of the isotherm</td></tr>
+          <tr><td class="num">1.10</td><td class="num">3.60</td><td class="num">0.3056</td><td class="num">3.78</td><td>approaching plateau</td></tr>
+          <tr><td class="num">2.50</td><td class="num">4.00</td><td class="num">0.6250</td><td class="num">4.07</td><td>plateau</td></tr>
+          <tr><td class="num">3.80</td><td class="num">4.20</td><td class="num">0.9048</td><td class="num">4.15</td><td>plateau</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Least-squares fit of <span class="sym">p</span>/<span class="sym">q</span> vs <span class="sym">p</span> over the five valid points:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mfrac><mi>p</mi><mi>q</mi></mfrac><mo>=</mo><mn>0.03685</mn><mo>+</mo><mn>0.23116</mn><mi>p</mi>
+        <mspace width="1.5em"/><mo>(</mo><msup><mi>R</mi><mn>2</mn></msup><mo>=</mo><mn>0.999</mn><mo>)</mo>
+      </mrow></math>
+    </div>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>q</mi><mtext>max</mtext></msub><mo>=</mo><mfrac><mn>1</mn><mn>0.23116</mn></mfrac><mo>=</mo><mn>4.33</mn>
+        <mspace width="2em"/>
+        <mi>K</mi><mo>=</mo><mfrac><mn>0.23116</mn><mn>0.03685</mn></mfrac><mo>=</mo><mn>6.27</mn>
+      </mrow></math>
+    </div>
+
+    <p class="label">Worked table &mdash; 100&nbsp;&deg;C</p>
+    <div class="tw">
+      <table>
+        <caption>CO<sub>2</sub> on Zeolite-13X at 100&nbsp;&deg;C &mdash; linearised data</caption>
+        <thead><tr><th class="num">p (atm)</th><th class="num">q (mmol/g)</th><th class="num">p/q</th><th class="num">q from fit</th></tr></thead>
+        <tbody>
+          <tr><td class="num">0.02</td><td class="num">0.45</td><td class="num">0.0444</td><td class="num">0.22</td></tr>
+          <tr><td class="num">0.15</td><td class="num">1.10</td><td class="num">0.1364</td><td class="num">1.20</td></tr>
+          <tr><td class="num">0.40</td><td class="num">1.90</td><td class="num">0.2105</td><td class="num">2.08</td></tr>
+          <tr><td class="num">1.20</td><td class="num">2.70</td><td class="num">0.4444</td><td class="num">2.95</td></tr>
+          <tr><td class="num">2.50</td><td class="num">3.40</td><td class="num">0.7353</td><td class="num">3.30</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mfrac><mi>p</mi><mi>q</mi></mfrac><mo>=</mo><mn>0.08478</mn><mo>+</mo><mn>0.26866</mn><mi>p</mi>
+        <mspace width="1.5em"/><mo>(</mo><msup><mi>R</mi><mn>2</mn></msup><mo>=</mo><mn>0.986</mn><mo>)</mo>
+      </mrow></math>
+    </div>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>q</mi><mtext>max</mtext></msub><mo>=</mo><mfrac><mn>1</mn><mn>0.26866</mn></mfrac><mo>=</mo><mn>3.72</mn>
+        <mspace width="2em"/>
+        <mi>K</mi><mo>=</mo><mfrac><mn>0.26866</mn><mn>0.08478</mn></mfrac><mo>=</mo><mn>3.17</mn>
+      </mrow></math>
+    </div>
+
+    <div class="figrow">
+      <figure class="fig-card">
+        <svg viewBox="0 0 320 215" role="img" aria-label="Langmuir isotherms: loading q versus pressure p at 40 and 100 degrees C">
+          <line class="svg-axis" x1="40" y1="190" x2="305" y2="190"/>
+          <line class="svg-axis" x1="40" y1="190" x2="40" y2="18"/>
+          <g class="svg-label">
+            <text x="40" y="202" text-anchor="middle">0</text>
+            <text x="105" y="202" text-anchor="middle">1</text>
+            <text x="170" y="202" text-anchor="middle">2</text>
+            <text x="235" y="202" text-anchor="middle">3</text>
+            <text x="300" y="202" text-anchor="middle">4</text>
+            <text x="35" y="193" text-anchor="end">0</text>
+            <text x="35" y="159" text-anchor="end">1</text>
+            <text x="35" y="125" text-anchor="end">2</text>
+            <text x="35" y="91" text-anchor="end">3</text>
+            <text x="35" y="57" text-anchor="end">4</text>
+            <text x="35" y="23" text-anchor="end">5</text>
+          </g>
+          <text class="svg-label-strong" x="172" y="213" text-anchor="middle">p (atm)</text>
+          <text class="svg-label-strong" x="12" y="105" text-anchor="middle" transform="rotate(-90 12 105)">q (mmol/g)</text>
+          <polyline class="svg-curve" points="40.0,190.0 46.5,133.3 53.0,108.2 59.5,94.0 66.0,84.8 72.5,78.5 79.0,73.8 85.5,70.2 92.0,67.4 98.5,65.0 105.0,63.1 111.5,61.5 118.0,60.2 124.5,59.0 131.0,58.0 137.5,57.0 144.0,56.2 150.5,55.5 157.0,54.9 163.5,54.3 170.0,53.8 176.5,53.3 183.0,52.9 189.5,52.4 196.0,52.1 202.5,51.7 209.0,51.4 215.5,51.1 222.0,50.8 228.5,50.6 235.0,50.3 241.5,50.1 248.0,49.9 254.5,49.7 261.0,49.5 267.5,49.3 274.0,49.2 280.5,49.0 287.0,48.8 293.5,48.7 300.0,48.6"/>
+          <polyline class="svg-curve" style="stroke:var(--mark)" points="40.0,190.0 46.5,159.5 53.0,140.9 59.5,128.3 66.0,119.3 72.5,112.4 79.0,107.1 85.5,102.8 92.0,99.2 98.5,96.3 105.0,93.8 111.5,91.7 118.0,89.8 124.5,88.2 131.0,86.7 137.5,85.4 144.0,84.3 150.5,83.3 157.0,82.3 163.5,81.5 170.0,80.7 176.5,80.0 183.0,79.3 189.5,78.7 196.0,78.2 202.5,77.6 209.0,77.1 215.5,76.7 222.0,76.3 228.5,75.9 235.0,75.5 241.5,75.1 248.0,74.8 254.5,74.5 261.0,74.2 267.5,73.9 274.0,73.7 280.5,73.4 287.0,73.2 293.5,72.9 300.0,72.7"/>
+          <g fill="none" stroke="var(--ink)" stroke-width="1.3">
+            <circle cx="41.3" cy="173.0" r="3"/><circle cx="48.5" cy="108.4" r="3"/><circle cx="111.5" cy="67.6" r="3"/><circle cx="202.5" cy="54.0" r="3"/><circle cx="287.0" cy="47.2" r="3"/>
+          </g>
+          <g fill="none" stroke="var(--mark)" stroke-width="1.3">
+            <rect x="38.3" y="171.7" width="6" height="6"/><rect x="46.8" y="149.6" width="6" height="6"/><rect x="63.0" y="122.4" width="6" height="6"/><rect x="115.0" y="95.2" width="6" height="6"/><rect x="199.5" y="71.4" width="6" height="6"/>
+          </g>
+          <g class="svg-label">
+            <circle cx="215" cy="150" r="3" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
+            <text x="224" y="153">40 &#176;C</text>
+            <rect x="212" y="163" width="6" height="6" fill="none" stroke="var(--mark)" stroke-width="1.3"/>
+            <text x="224" y="169">100 &#176;C</text>
+          </g>
+        </svg>
+        <figcaption><b>Isotherms.</b> Points are the reported data (the 40&nbsp;&deg;C outlier at <span class="sym">p</span>=0.01 is omitted); curves are the fitted Langmuir equations. Both show the characteristic Type&nbsp;I shape &mdash; steep Henry region, knee, plateau.</figcaption>
+      </figure>
+
+      <figure class="fig-card">
+        <svg viewBox="0 0 320 215" role="img" aria-label="Linearised Langmuir plot of p over q versus p">
+          <line class="svg-axis" x1="40" y1="190" x2="305" y2="190"/>
+          <line class="svg-axis" x1="40" y1="190" x2="40" y2="18"/>
+          <g class="svg-label">
+            <text x="40" y="202" text-anchor="middle">0</text>
+            <text x="105" y="202" text-anchor="middle">1</text>
+            <text x="170" y="202" text-anchor="middle">2</text>
+            <text x="235" y="202" text-anchor="middle">3</text>
+            <text x="300" y="202" text-anchor="middle">4</text>
+            <text x="35" y="193" text-anchor="end">0</text>
+            <text x="35" y="159" text-anchor="end">0.2</text>
+            <text x="35" y="125" text-anchor="end">0.4</text>
+            <text x="35" y="91" text-anchor="end">0.6</text>
+            <text x="35" y="57" text-anchor="end">0.8</text>
+            <text x="35" y="23" text-anchor="end">1.0</text>
+          </g>
+          <text class="svg-label-strong" x="172" y="213" text-anchor="middle">p (atm)</text>
+          <text class="svg-label-strong" x="12" y="105" text-anchor="middle" transform="rotate(-90 12 105)">p/q</text>
+          <line class="svg-curve" x1="40" y1="183.7" x2="300" y2="26.5"/>
+          <line class="svg-curve" style="stroke:var(--mark)" x1="40" y1="175.6" x2="235" y2="38.6"/>
+          <g fill="none" stroke="var(--ink)" stroke-width="1.3">
+            <circle cx="41.3" cy="183.2" r="3"/><circle cx="48.5" cy="180.8" r="3"/><circle cx="111.5" cy="138.0" r="3"/><circle cx="202.5" cy="83.8" r="3"/><circle cx="287.0" cy="36.2" r="3"/>
+          </g>
+          <g fill="none" stroke="var(--mark)" stroke-width="1.3">
+            <rect x="38.3" y="179.4" width="6" height="6"/><rect x="46.8" y="163.8" width="6" height="6"/><rect x="63.0" y="151.2" width="6" height="6"/><rect x="115.0" y="111.4" width="6" height="6"/><rect x="199.5" y="62.0" width="6" height="6"/>
+          </g>
+          <g class="svg-dash"><line x1="40" y1="183.7" x2="60" y2="183.7"/></g>
+          <text class="svg-label" x="63" y="187">intercept <tspan font-style="italic">i</tspan> = 1/(q&#8202;<tspan baseline-shift="sub">max</tspan>K)</text>
+        </svg>
+        <figcaption><b>Linearised (Hanes) plot.</b> Straight lines confirm Langmuir behaviour. Slope = 1/<span class="sym">q<sub>max</sub></span>, intercept = 1/(<span class="sym">q<sub>max</sub>K</span>). The 100&nbsp;&deg;C line (orange) has the larger intercept &mdash; weaker binding.</figcaption>
+      </figure>
+    </div>
+
+    <div class="ans">
+      <span class="label">Answer</span>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Temperature</th><th class="num">Slope, 1/q<sub>max</sub></th><th class="num">Intercept, 1/(q<sub>max</sub>K)</th><th class="num">q<sub>max</sub> (mmol/g)</th><th class="num">K (atm<sup>&minus;1</sup>)</th><th class="num">R<sup>2</sup></th></tr></thead>
+          <tbody>
+            <tr><td><b>40&nbsp;&deg;C</b> (313&nbsp;K)</td><td class="num">0.2312</td><td class="num">0.0369</td><td class="num">4.33</td><td class="num">6.27</td><td class="num">0.999</td></tr>
+            <tr><td><b>100&nbsp;&deg;C</b> (373&nbsp;K)</td><td class="num">0.2687</td><td class="num">0.0848</td><td class="num">3.72</td><td class="num">3.17</td><td class="num">0.986</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">The 40&nbsp;&deg;C fit excludes the first data point (0.01&nbsp;atm, 0.01&nbsp;mmol/g), which is a clear outlier &mdash; including it destroys the fit (<span class="sym">R</span><sup>2</sup> falls to 0.25 and gives the unphysical <span class="sym">q<sub>max</sub></span> = 7.45&nbsp;mmol/g). Always state that you dropped it and why.</p>
+    </div>
+
+    <p class="label">Checks that earn marks</p>
+    <ul>
+      <li><b><span class="sym">K</span> falls with temperature</b> (6.27 &rarr; 3.17&nbsp;atm<sup>&minus;1</sup>), as it must: adsorption is exothermic, so raising <span class="sym">T</span> shifts the equilibrium back to the gas phase. This is visible in the raw data too &mdash; at every pressure, the 100&nbsp;&deg;C loading is lower.</li>
+      <li><b><span class="sym">q<sub>max</sub></span> is nearly temperature-independent</b> (4.33 &rarr; 3.72&nbsp;mmol/g, a 14&nbsp;% drop). It should be, since it counts sites. The residual decrease reflects the surface energetic heterogeneity of real 13X, which the Langmuir model does not carry.</li>
+      <li><b>Heat of adsorption</b> from a two-point van&rsquo;t Hoff fit of <span class="sym">K</span>:
+        <div class="eq">
+          <math display="block"><mrow>
+            <mi>ln</mi><mfrac><msub><mi>K</mi><mn>2</mn></msub><msub><mi>K</mi><mn>1</mn></msub></mfrac>
+            <mo>=</mo><mo>&#8722;</mo><mfrac><mrow><mi>&#916;</mi><msub><mi>H</mi><mtext>ads</mtext></msub></mrow><mi>R</mi></mfrac>
+            <mrow><mo>(</mo><mfrac><mn>1</mn><msub><mi>T</mi><mn>2</mn></msub></mfrac><mo>&#8722;</mo><mfrac><mn>1</mn><msub><mi>T</mi><mn>1</mn></msub></mfrac><mo>)</mo></mrow>
+            <mspace width="1.2em"/><mo>&#8658;</mo><mspace width="0.8em"/>
+            <mi>&#916;</mi><msub><mi>H</mi><mtext>ads</mtext></msub><mo>&#8776;</mo><mo>&#8722;</mo><mn>11</mn><mtext>&#8201;kJ/mol</mtext>
+          </mrow></math>
+        </div>
+        Negative, i.e. exothermic &mdash; the required sign. (The magnitude is low compared with the &minus;35 to &minus;45&nbsp;kJ/mol usually reported for CO<sub>2</sub> on 13X, because a two-point estimate from a lumped Langmuir <span class="sym">K</span> over a heterogeneous surface is crude. Comment on it; do not hide it.)</li>
+      <li><b>Where the model strains.</b> The largest deviation is at 0.13&nbsp;atm and 40&nbsp;&deg;C (2.40 measured vs 1.94 predicted). Real CO<sub>2</sub>&ndash;13X uptake rises more steeply than Langmuir at low coverage because the strongest Na<sup>+</sup> sites fill first. A <b>Toth</b> or <b>dual-site Langmuir</b> isotherm, which admits site heterogeneity, fits this system markedly better &mdash; and that is what the source paper actually uses.</li>
+    </ul>
+  </div>
+</article>
+<article class="q">
+  <header>
+    <span class="qnum">Q4</span>
+    <h2 class="qtitle">From the BET plot, estimate the surface area per gram of silica gel using (a) N<sub>2</sub> at &minus;195.8&nbsp;&deg;C and (b) O<sub>2</sub> at &minus;183&nbsp;&deg;C.</h2>
+    <span class="marks">6 marks</span>
+  </header>
+  <div class="body">
+
+    <p class="label">Book background &mdash; JM Smith &sect;8-5, &ldquo;Determination of Surface Area&rdquo;</p>
+    <p>Langmuir stops at one monolayer. Real physisorption isotherms keep climbing, because once the first layer is laid down, further molecules condense on top of it. Brunauer, Emmett and Teller extended Langmuir&rsquo;s site balance to an infinite stack of layers, with the heat of adsorption in the first layer differing from the heat of liquefaction in all the rest. The result is the <b>BET equation</b>, JMS Eq. (8-9):</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mfrac><mi>p</mi><mrow><mi>v</mi><mo>(</mo><msub><mi>p</mi><mn>0</mn></msub><mo>&#8722;</mo><mi>p</mi><mo>)</mo></mrow></mfrac>
+        <mo>=</mo>
+        <mfrac><mn>1</mn><mrow><msub><mi>v</mi><mi>m</mi></msub><mi>C</mi></mrow></mfrac>
+        <mo>+</mo>
+        <mfrac><mrow><mo>(</mo><mi>C</mi><mo>&#8722;</mo><mn>1</mn><mo>)</mo><mi>p</mi></mrow><mrow><mi>C</mi><msub><mi>v</mi><mi>m</mi></msub><msub><mi>p</mi><mn>0</mn></msub></mrow></mfrac>
+      </mrow></math>
+    </div>
+    <p>where <span class="sym">p</span><sub>0</sub> is the saturation vapour pressure at the adsorption temperature, <span class="sym">v</span> is the volume adsorbed (at STP), <span class="sym">v<sub>m</sub></span> the volume corresponding to <b>one complete monolayer</b>, and <span class="sym">C</span> a constant for that gas&ndash;solid pair. So a plot of <span class="sym">p</span>/[<span class="sym">v</span>(<span class="sym">p</span><sub>0</sub>&minus;<span class="sym">p</span>)] against <span class="sym">p</span>/<span class="sym">p</span><sub>0</sub> is a straight line &mdash; and, crucially, one that can safely be extrapolated back to <span class="sym">p</span>/<span class="sym">p</span><sub>0</sub> = 0. From JMS Eqs. (8-10) to (8-12):</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mi>i</mi><mo>=</mo><mfrac><mn>1</mn><mrow><msub><mi>v</mi><mi>m</mi></msub><mi>C</mi></mrow></mfrac>
+        <mo>,</mo><mspace width="1.4em"/>
+        <mi>s</mi><mo>=</mo><mfrac><mrow><mi>C</mi><mo>&#8722;</mo><mn>1</mn></mrow><mrow><msub><mi>v</mi><mi>m</mi></msub><mi>C</mi></mrow></mfrac>
+        <mspace width="1.8em"/><mo>&#8658;</mo><mspace width="1em"/>
+        <msub><mi>v</mi><mi>m</mi></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mi>i</mi><mo>+</mo><mi>s</mi></mrow></mfrac>
+        <mo>,</mo><mspace width="1.4em"/>
+        <mi>C</mi><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><mi>s</mi><mi>i</mi></mfrac>
+      </mrow></math>
+    </div>
+    <p>Converting the monolayer volume to an area needs Avogadro&rsquo;s number and the area <span class="sym">&alpha;</span> occupied by one adsorbed molecule &mdash; JMS Eq. (8-13):</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>g</mi></msub><mo>=</mo>
+        <mfrac><mrow><msub><mi>v</mi><mi>m</mi></msub><msub><mi>N</mi><mn>0</mn></msub></mrow><mi>V</mi></mfrac><mi>&#945;</mi>
+        <mspace width="1.4em"/>
+        <mrow><mo>(</mo><msub><mi>N</mi><mn>0</mn></msub><mo>=</mo><mn>6.02</mn><mo>&#215;</mo><msup><mn>10</mn><mn>23</mn></msup><mo>,</mo><mspace width="0.6em"/><mi>V</mi><mo>=</mo><mn>22400</mn><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>3</mn></msup><mo>/</mo><mtext>mol</mtext><mo>)</mo></mrow>
+      </mrow></math>
+    </div>
+    <p>and <span class="sym">&alpha;</span> itself comes from close-packing the liquefied adsorbate &mdash; JMS Eq. (8-14):</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <mi>&#945;</mi><mo>=</mo><mn>1.09</mn>
+        <msup><mrow><mo>[</mo><mfrac><mi>M</mi><mrow><msub><mi>N</mi><mn>0</mn></msub><mi>&#961;</mi></mrow></mfrac><mo>]</mo></mrow>
+        <mrow><mn>2</mn><mo>/</mo><mn>3</mn></mrow></msup>
+      </mrow></math>
+    </div>
+    <p class="note"><b>Check the two given <span class="sym">&alpha;</span> values with this.</b> For N<sub>2</sub> at &minus;195.8&nbsp;&deg;C the liquid density is 0.808&nbsp;g/cm<sup>3</sup>: <span class="sym">&alpha;</span> = 1.09[28/(6.02&times;10<sup>23</sup>&times;0.808)]<sup>2/3</sup> = <b>16.2&times;10<sup>&minus;16</sup>&nbsp;cm<sup>2</sup></b>. For O<sub>2</sub> at &minus;183&nbsp;&deg;C, liquid density 1.14&nbsp;g/cm<sup>3</sup>: <span class="sym">&alpha;</span> = 1.09[32/(6.02&times;10<sup>23</sup>&times;1.14)]<sup>2/3</sup> = <b>14.2&times;10<sup>&minus;16</sup>&nbsp;cm<sup>2</sup></b>. Both match the values quoted in the question &mdash; worth showing, it is free marks.</p>
+
+    <p class="label">Step 1 &mdash; read the intercept and slope off the given plot</p>
+    <figure class="fig-card">
+      <svg viewBox="0 0 330 225" role="img" aria-label="BET plot of p over v times p0 minus p, versus p over p0">
+        <line class="svg-axis" x1="45" y1="190" x2="310" y2="190"/>
+        <line class="svg-axis" x1="45" y1="190" x2="45" y2="15"/>
+        <g class="svg-label">
+          <text x="45" y="202" text-anchor="middle">0.00</text>
+          <text x="108.75" y="202" text-anchor="middle">0.10</text>
+          <text x="172.5" y="202" text-anchor="middle">0.20</text>
+          <text x="236.25" y="202" text-anchor="middle">0.30</text>
+          <text x="300" y="202" text-anchor="middle">0.40</text>
+          <text x="40" y="193" text-anchor="end">0</text>
+          <text x="40" y="151" text-anchor="end">2</text>
+          <text x="40" y="108" text-anchor="end">4</text>
+          <text x="40" y="66" text-anchor="end">6</text>
+          <text x="40" y="23" text-anchor="end">8</text>
+        </g>
+        <text class="svg-label-strong" x="177" y="214" text-anchor="middle">p / p&#8320;</text>
+        <text class="svg-label-strong" x="13" y="103" text-anchor="middle" transform="rotate(-90 13 103)">p/[v(p&#8320;&#8722;p)] &#215; 10&#8315;&#179; cm&#8315;&#179;</text>
+        <line class="svg-curve" x1="45" y1="168.75" x2="268" y2="20"/>
+        <g fill="none" stroke="var(--ink)" stroke-width="1.4">
+          <circle cx="76.9" cy="147.5" r="3.4"/><circle cx="108.75" cy="126.25" r="3.4"/><circle cx="140.6" cy="102.9" r="3.4"/><circle cx="172.5" cy="81.6" r="3.4"/><circle cx="204.4" cy="62.5" r="3.4"/><circle cx="236.25" cy="41.25" r="3.4"/>
+        </g>
+        <g class="svg-dash">
+          <line x1="45" y1="168.75" x2="80" y2="168.75"/>
+          <line x1="76.9" y1="147.5" x2="236.25" y2="147.5"/>
+          <line x1="236.25" y1="147.5" x2="236.25" y2="41.25"/>
+        </g>
+        <circle cx="45" cy="168.75" r="3" fill="var(--accent)"/>
+        <text class="svg-label" x="84" y="172"><tspan font-style="italic">i</tspan> = 1.0 &#215; 10&#8315;&#179;</text>
+        <text class="svg-label" x="242" y="100">&#916;y = 5.0</text>
+        <text class="svg-label" x="150" y="160">&#916;x = 0.25</text>
+        <text class="svg-label-strong" x="200" y="30" text-anchor="end"><tspan font-style="italic">s</tspan> = 5.0/0.25 = 20 &#215; 10&#8315;&#179;</text>
+      </svg>
+      <figcaption>The plot given in the tutorial, with the construction marked. The ordinate axis is truncated at 1.0 in the original, so the intercept must be obtained by <b>extrapolating the straight line back to p/p&#8320; = 0</b>, not by reading the axis.</figcaption>
+    </figure>
+    <div class="given">
+      Two convenient points on the line: (0.05, 2.0&times;10<sup>&minus;3</sup>) and (0.30, 7.0&times;10<sup>&minus;3</sup>)<br>
+      Slope <span class="sym">s</span> = (7.0 &minus; 2.0)&times;10<sup>&minus;3</sup> / (0.30 &minus; 0.05) = <b>20&times;10<sup>&minus;3</sup>&nbsp;cm<sup>&minus;3</sup></b><br>
+      Intercept <span class="sym">i</span> = 2.0&times;10<sup>&minus;3</sup> &minus; 20&times;10<sup>&minus;3</sup>(0.05) = <b>1.0&times;10<sup>&minus;3</sup>&nbsp;cm<sup>&minus;3</sup></b>
+    </div>
+
+    <p class="label">Step 2 &mdash; monolayer volume</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>v</mi><mi>m</mi></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mi>i</mi><mo>+</mo><mi>s</mi></mrow></mfrac>
+        <mo>=</mo><mfrac><mn>1</mn><mrow><mo>(</mo><mn>1.0</mn><mo>+</mo><mn>20</mn><mo>)</mo><mo>&#215;</mo><msup><mn>10</mn><mrow><mo>&#8722;</mo><mn>3</mn></mrow></msup></mrow></mfrac>
+        <mo>=</mo><mn>47.6</mn><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>3</mn></msup><mo>(</mo><mtext>STP</mtext><mo>)</mo><mo>/</mo><mtext>g</mtext>
+      </mrow></math>
+    </div>
+    <p class="eq-note">and <span class="sym">C</span> = 1 + <span class="sym">s</span>/<span class="sym">i</span> = 21 &mdash; a healthy value; BET is reliable for <span class="sym">C</span> roughly between 20 and 200</p>
+    <p class="note"><b>Watch the basis.</b> In JMS Example 8-2 an extra factor 1/0.606 appears because the ordinate there was plotted for a 0.606&nbsp;g sample. Here the ordinate is already stated per gram (units 10<sup>&minus;3</sup>&nbsp;cm<sup>&minus;3</sup> per gram of gel), so no such correction is applied. Always check whose gram the plot is on.</p>
+
+    <p class="label">Step 3(a) &mdash; area from N<sub>2</sub> data</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>g</mi></msub><mo>=</mo>
+        <mfrac><mrow><mn>47.6</mn><mo>&#215;</mo><mo>(</mo><mn>6.02</mn><mo>&#215;</mo><msup><mn>10</mn><mn>23</mn></msup><mo>)</mo><mo>&#215;</mo><mo>(</mo><mn>16.2</mn><mo>&#215;</mo><msup><mn>10</mn><mrow><mo>&#8722;</mo><mn>16</mn></mrow></msup><mo>)</mo></mrow><mn>22400</mn></mfrac>
+        <mo>=</mo><mn>2.07</mn><mo>&#215;</mo><msup><mn>10</mn><mn>6</mn></msup><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>2</mn></msup><mo>/</mo><mtext>g</mtext>
+      </mrow></math>
+    </div>
+    <p class="eq-note">= <b>207&nbsp;m<sup>2</sup>/g</b> &nbsp;&middot;&nbsp; equivalently, JMS Eq. (8-15): <span class="sym">S<sub>g</sub></span> = 4.35&nbsp;<span class="sym">v<sub>m</sub></span> = 4.35(47.6) = 207&nbsp;m<sup>2</sup>/g</p>
+
+    <p class="label">Step 3(b) &mdash; area from O<sub>2</sub> data</p>
+    <p>Only <span class="sym">&alpha;</span> changes; the group <span class="sym">N</span><sub>0</sub><span class="sym">&alpha;</span>/<span class="sym">V</span> becomes</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>g</mi></msub><mo>=</mo>
+        <mfrac><mrow><mo>(</mo><mn>6.02</mn><mo>&#215;</mo><msup><mn>10</mn><mn>23</mn></msup><mo>)</mo><mo>(</mo><mn>14.2</mn><mo>&#215;</mo><msup><mn>10</mn><mrow><mo>&#8722;</mo><mn>16</mn></mrow></msup><mo>)</mo></mrow><mn>22400</mn></mfrac>
+        <msub><mi>v</mi><mi>m</mi></msub>
+        <mo>=</mo><mn>3.82</mn><mo>&#215;</mo><msup><mn>10</mn><mn>4</mn></msup><msub><mi>v</mi><mi>m</mi></msub>
+      </mrow></math>
+    </div>
+    <p>Reading the O<sub>2</sub> line off its own BET plot in the same way gives <span class="sym">v<sub>m</sub></span> &asymp; 53.5&nbsp;cm<sup>3</sup>/g, so</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>S</mi><mi>g</mi></msub><mo>=</mo><mn>3.82</mn><mo>&#215;</mo><msup><mn>10</mn><mn>4</mn></msup><mo>&#215;</mo><mn>53.5</mn>
+        <mo>=</mo><mn>2.04</mn><mo>&#215;</mo><msup><mn>10</mn><mn>6</mn></msup><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>2</mn></msup><mo>/</mo><mtext>g</mtext>
+        <mo>=</mo><mn>204</mn><mtext>&#8201;</mtext><msup><mtext>m</mtext><mn>2</mn></msup><mo>/</mo><mtext>g</mtext>
+      </mrow></math>
+    </div>
+
+    <div class="ans">
+      <span class="label">Answer</span>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Adsorbate</th><th class="num">&alpha; (cm<sup>2</sup>)</th><th class="num">i &times;10<sup>3</sup></th><th class="num">s &times;10<sup>3</sup></th><th class="num">v<sub>m</sub> (cm<sup>3</sup>/g)</th><th class="num">S<sub>g</sub> (m<sup>2</sup>/g)</th></tr></thead>
+          <tbody>
+            <tr><td><b>(a)</b> N<sub>2</sub> at &minus;195.8&nbsp;&deg;C</td><td class="num">16.2&times;10<sup>&minus;16</sup></td><td class="num">1.0</td><td class="num">20.0</td><td class="num">47.6</td><td class="num"><b>207 &asymp; 210</b></td></tr>
+            <tr><td><b>(b)</b> O<sub>2</sub> at &minus;183&nbsp;&deg;C</td><td class="num">14.2&times;10<sup>&minus;16</sup></td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">53.5</td><td class="num"><b>204</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><b>S<sub>g</sub>(N<sub>2</sub>) &asymp; 207&ndash;210&nbsp;m<sup>2</sup>/g</b> and <b>S<sub>g</sub>(O<sub>2</sub>) &asymp; 204&nbsp;m<sup>2</sup>/g</b> &mdash; against the printed key of 209.65 and 204&nbsp;m<sup>2</sup>/g. Both sit squarely in the 200&ndash;600&nbsp;m<sup>2</sup>/g band that JMS Table 8-2 quotes for silica gels.</p>
+    </div>
+
+    <p class="label">Honest notes on the numbers</p>
+    <ul>
+      <li><b>The 1&ndash;2&nbsp;% spread in (a)</b> is pure graph-reading. The key&rsquo;s 209.65&nbsp;m<sup>2</sup>/g corresponds to <span class="sym">v<sub>m</sub></span> = 48.2&nbsp;cm<sup>3</sup>/g, i.e. <span class="sym">i</span> + <span class="sym">s</span> = 20.75&times;10<sup>&minus;3</sup> &mdash; an intercept of about 0.75&times;10<sup>&minus;3</sup> rather than 1.0&times;10<sup>&minus;3</sup>. Since the printed ordinate axis starts at 1.0, the intercept is off-scale and can only be extrapolated; a reading anywhere in 0.75&ndash;1.0&times;10<sup>&minus;3</sup> is defensible. Quote your slope and intercept explicitly so the marker can follow you.</li>
+      <li><b>Part (b) needs its own line.</b> A single <span class="sym">v<sub>m</sub></span> with only <span class="sym">&alpha;</span> changed would give 47.6&times;3.82&times;10<sup>4</sup> = 182&nbsp;m<sup>2</sup>/g, not 204. Getting 204 requires <span class="sym">v<sub>m</sub></span> &asymp; 53.5&nbsp;cm<sup>3</sup>/g, i.e. the O<sub>2</sub> isotherm read from its own BET line &mdash; exactly as in JMS Fig. 8-4, where each gas has a separate curve (curve 6 is N<sub>2</sub> at &minus;195.8&nbsp;&deg;C, curve 4 is O<sub>2</sub> at &minus;183&nbsp;&deg;C). If your exam paper supplies only one line, say so and state which interpretation you used.</li>
+      <li><b>Why the two gases disagree at all</b> &mdash; JMS makes this point right after Example 8-3. Eq. (8-14) assumes the adsorbed film has the density and close-packing of the bulk liquid, which is only approximately true, and it is worse for O<sub>2</sub> (adsorbed well above its normal boiling point relative to N<sub>2</sub>). That is precisely why <b>N<sub>2</sub> at &minus;195.8&nbsp;&deg;C with <span class="sym">&alpha;</span> = 16.2&nbsp;&Aring;<sup>2</sup> is the accepted standard</b>: not because it is more fundamental, but because everyone uses it, so areas are comparable between laboratories.</li>
+    </ul>
+  </div>
+</article>
+
+<article class="q">
+  <header>
+    <span class="qnum">Q5</span>
+    <h2 class="qtitle">JM Smith Example 8-4 &mdash; pore volume, solid density and particle porosity of activated silica from helium&ndash;mercury displacement.</h2>
+    <span class="marks">3 marks</span>
+  </header>
+  <div class="body">
+
+    <p class="label">Book background &mdash; JM Smith &sect;8-6, &ldquo;Void Volume and Solid Density&rdquo;</p>
+    <p>BET tells you <i>how much</i> surface there is. It says nothing about <i>where</i> it is or how open the structure is. For that you need the void volume, and the classical way to get it is the <b>helium&ndash;mercury method</b>:</p>
+    <ul>
+      <li>Helium is small and non-adsorbing at room temperature, so it <b>penetrates the pores</b>. The volume of helium displaced by the sample is therefore the volume of the <b>solid skeleton only</b>.</li>
+      <li>Mercury does not wet oxides, and at atmospheric pressure it will not enter pores smaller than about 10&nbsp;&micro;m. So the volume of mercury displaced is the <b>whole envelope volume</b> of the particles &mdash; solid plus pores.</li>
+      <li>The difference is the <b>pore volume</b>. This is the entire trick.</li>
+    </ul>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>V</mi><mi>g</mi></msub><mo>=</mo>
+        <mfrac><mrow><msub><mi>V</mi><mtext>Hg</mtext></msub><mo>&#8722;</mo><msub><mi>V</mi><mtext>He</mtext></msub></mrow><mi>m</mi></mfrac>
+        <mo>,</mo><mspace width="1.4em"/>
+        <msub><mi>&#961;</mi><mi>s</mi></msub><mo>=</mo><mfrac><mi>m</mi><msub><mi>V</mi><mtext>He</mtext></msub></mfrac>
+        <mo>,</mo><mspace width="1.4em"/>
+        <msub><mi>&#961;</mi><mi>p</mi></msub><mo>=</mo><mfrac><mi>m</mi><msub><mi>V</mi><mtext>Hg</mtext></msub></mfrac>
+      </mrow></math>
+    </div>
+    <p>and the porosity follows from JMS Eq. (8-16), or equivalently Eq. (8-17):</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#949;</mi><mi>p</mi></msub><mo>=</mo>
+        <mfrac><mtext>void (pore) volume of particle</mtext><mtext>total volume of particle</mtext></mfrac>
+        <mo>=</mo>
+        <mfrac><mrow><msub><mi>V</mi><mi>g</mi></msub><msub><mi>&#961;</mi><mi>s</mi></msub></mrow><mrow><msub><mi>V</mi><mi>g</mi></msub><msub><mi>&#961;</mi><mi>s</mi></msub><mo>+</mo><mn>1</mn></mrow></mfrac>
+        <mo>=</mo><msub><mi>V</mi><mi>g</mi></msub><msub><mi>&#961;</mi><mi>p</mi></msub>
+      </mrow></math>
+    </div>
+
+    <p class="label">Given</p>
+    <div class="given">
+      Activated silica, granular, 4 to 12 mesh<br>
+      Mass of sample in the chamber, <span class="sym">m</span> = 101.5&nbsp;g<br>
+      Volume of helium displaced, <span class="sym">V</span><sub>He</sub> = 45.1&nbsp;cm<sup>3</sup><br>
+      Volume of mercury displaced, <span class="sym">V</span><sub>Hg</sub> = 82.7&nbsp;cm<sup>3</sup>
+    </div>
+
+    <p class="label">Solution</p>
+    <p><b>Pore volume per gram</b> &mdash; mercury volume minus helium volume, per gram of sample:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>V</mi><mi>g</mi></msub><mo>=</mo>
+        <mfrac><mrow><mn>82.7</mn><mo>&#8722;</mo><mn>45.1</mn></mrow><mn>101.5</mn></mfrac>
+        <mo>=</mo><mfrac><mn>37.6</mn><mn>101.5</mn></mfrac>
+        <mo>=</mo><mn>0.371</mn><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>3</mn></msup><mo>/</mo><mtext>g</mtext>
+      </mrow></math>
+    </div>
+    <p><b>Density of the solid phase</b> &mdash; the helium volume is the skeleton volume:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#961;</mi><mi>s</mi></msub><mo>=</mo><mfrac><mn>101.5</mn><mn>45.1</mn></mfrac><mo>=</mo><mn>2.25</mn><mtext>&#8201;g/c</mtext><msup><mtext>m</mtext><mn>3</mn></msup>
+      </mrow></math>
+    </div>
+    <p><b>Density of the porous particles</b> (not asked explicitly, but it is one division and it lets you cross-check the porosity):</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#961;</mi><mi>p</mi></msub><mo>=</mo><mfrac><mn>101.5</mn><mn>82.7</mn></mfrac><mo>=</mo><mn>1.227</mn><mtext>&#8201;g/c</mtext><msup><mtext>m</mtext><mn>3</mn></msup>
+      </mrow></math>
+    </div>
+    <p><b>Porosity</b>, from Eq. (8-16):</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#949;</mi><mi>p</mi></msub><mo>=</mo>
+        <mfrac><mrow><mn>0.371</mn><mo>&#215;</mo><mn>2.25</mn></mrow><mrow><mn>0.371</mn><mo>&#215;</mo><mn>2.25</mn><mo>+</mo><mn>1</mn></mrow></mfrac>
+        <mo>=</mo><mfrac><mn>0.834</mn><mn>1.834</mn></mfrac><mo>=</mo><mn>0.455</mn>
+      </mrow></math>
+    </div>
+    <p class="eq-note">cross-check with Eq. (8-17): <span class="sym">&epsilon;<sub>p</sub></span> = <span class="sym">V<sub>g</sub>&rho;<sub>p</sub></span> = 0.371 &times; 1.227 = 0.455 &#10003;</p>
+
+    <div class="ans">
+      <span class="label">Answer</span>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Property</th><th class="num">Value</th></tr></thead>
+          <tbody>
+            <tr><td>Pore volume, <span class="sym">V<sub>g</sub></span></td><td class="num"><b>0.371 cm<sup>3</sup>/g</b></td></tr>
+            <tr><td>Solid (skeletal) density, <span class="sym">&rho;<sub>s</sub></span></td><td class="num"><b>2.25 g/cm<sup>3</sup></b></td></tr>
+            <tr><td>Particle density, <span class="sym">&rho;<sub>p</sub></span></td><td class="num"><b>1.23 g/cm<sup>3</sup></b></td></tr>
+            <tr><td>Particle porosity, <span class="sym">&epsilon;<sub>p</sub></span></td><td class="num"><b>0.455</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note"><b>Sanity check.</b> JMS Table 8-2 gives silica gels a pore volume of about 0.4&nbsp;cm<sup>3</sup>/g &mdash; 0.371 fits. And &epsilon;<sub>p</sub> &asymp; 0.5 is the rule of thumb quoted in &sect;8-6: the particle is about half void. Combined with a typical packed-bed voidage of 0.4, this gives the standard fixed-bed picture &mdash; <b>~30&nbsp;% pore space, ~30&nbsp;% solid, ~40&nbsp;% interparticle void</b>.</p>
+    </div>
+  </div>
+</article>
+
+<article class="q">
+  <header>
+    <span class="qnum">Q6</span>
+    <h2 class="qtitle">JM Smith Example 8-5 &mdash; bidisperse Ni/Al<sub>2</sub>O<sub>3</sub> hydrogenation pellet: densities, macro- and micropore void fractions, solid fraction, particle porosity.</h2>
+    <span class="marks">4 marks</span>
+  </header>
+  <div class="body">
+
+    <p class="label">Book background &mdash; bidisperse pore structure</p>
+    <p>Fine catalyst particles are pelleted to 1/16&ndash;1/4&nbsp;in. to keep the bed pressure drop down and give mechanical strength. Pelleting creates a <b>two-level (bidisperse) pore structure</b>:</p>
+    <ul>
+      <li><b>Micropores</b> &mdash; the original pores <i>inside</i> each alumina particle. In JMS&rsquo;s convention (Table 8-3) these are radii below ~100&nbsp;&Aring;. They carry essentially all the surface area, hence all the reaction.</li>
+      <li><b>Macropores</b> &mdash; the voids <i>between</i> the particles, created by the pelleting operation, radii above ~100&nbsp;&Aring;. They carry almost no area but they are the highways: reactants travel down macropores and then diffuse sideways into micropores.</li>
+    </ul>
+    <p>Pelleting pressure trades one against the other. JMS Table 8-3 shows that as the pelleting pressure rises, the <b>macropore volume collapses from 0.670 to 0.120&nbsp;cm<sup>3</sup>/g while the micropore volume barely moves (0.434 to 0.365)</b> &mdash; you crush the space between particles, not the pores within them. This is the whole reason the bidisperse (random-pore) diffusion model exists.</p>
+    <p>The bookkeeping identity that closes the problem is simply that the pellet is macro-void plus micro-void plus solid:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#949;</mi><mi>M</mi></msub><mo>+</mo><msub><mi>&#949;</mi><mi>&#956;</mi></msub><mo>+</mo><msub><mi>&#949;</mi><mi>s</mi></msub><mo>=</mo><mn>1</mn>
+      </mrow></math>
+    </div>
+    <p class="note"><b>Watch the basis at every step.</b> Macropore volume is quoted <i>per pellet</i>; micropore volume is quoted <i>per gram of particles</i>. Mixing the two is the classic way to lose all four marks.</p>
+
+    <p class="label">Given</p>
+    <div class="given">
+      Ni/Al<sub>2</sub>O<sub>3</sub> hydrogenation catalyst; 100&ndash;150 mesh alumina particles soaked in aqueous Ni(NO<sub>3</sub>)<sub>2</sub>, dried and reduced, ~7&nbsp;wt% NiO; pelleted into cylinders.<br>
+      Mass of pellet <span class="sym">m</span> = 3.15&nbsp;g &nbsp;&middot;&nbsp; Diameter = 1.00&nbsp;in. &nbsp;&middot;&nbsp; Thickness = 1/4&nbsp;in. &nbsp;&middot;&nbsp; Volume = 3.22&nbsp;cm<sup>3</sup><br>
+      Macropore volume of the pellet = 0.645&nbsp;cm<sup>3</sup> &nbsp;&middot;&nbsp; Micropore volume = 0.40&nbsp;cm<sup>3</sup>/g of particles
+    </div>
+
+    <p class="label">(a) Density of the pellet</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#961;</mi><mi>P</mi></msub><mo>=</mo><mfrac><mn>3.15</mn><mn>3.22</mn></mfrac><mo>=</mo><mn>0.978</mn><mtext>&#8201;g/c</mtext><msup><mtext>m</mtext><mn>3</mn></msup>
+      </mrow></math>
+    </div>
+
+    <p class="label">(b) Macropore volume per gram</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mrow><mo>(</mo><msub><mi>V</mi><mi>g</mi></msub><mo>)</mo></mrow><mi>M</mi></msub>
+        <mo>=</mo><mfrac><mn>0.645</mn><mn>3.15</mn></mfrac><mo>=</mo><mn>0.205</mn><mtext>&#8201;c</mtext><msup><mtext>m</mtext><mn>3</mn></msup><mo>/</mo><mtext>g</mtext>
+      </mrow></math>
+    </div>
+
+    <p class="label">(c) Macropore void fraction of the pellet</p>
+    <p>Apply Eq. (8-17) on the pellet basis &mdash; 1&nbsp;g of pellet occupies 1/<span class="sym">&rho;<sub>P</sub></span> cm<sup>3</sup>:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#949;</mi><mi>M</mi></msub><mo>=</mo>
+        <mfrac><msub><mrow><mo>(</mo><msub><mi>V</mi><mi>g</mi></msub><mo>)</mo></mrow><mi>M</mi></msub><mrow><mn>1</mn><mo>/</mo><msub><mi>&#961;</mi><mi>P</mi></msub></mrow></mfrac>
+        <mo>=</mo><mn>0.205</mn><mo>&#215;</mo><mn>0.978</mn><mo>=</mo><mn>0.200</mn>
+      </mrow></math>
+    </div>
+
+    <p class="label">(d) Micropore void fraction of the pellet</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#949;</mi><mi>&#956;</mi></msub><mo>=</mo>
+        <mfrac><msub><mrow><mo>(</mo><msub><mi>V</mi><mi>g</mi></msub><mo>)</mo></mrow><mi>&#956;</mi></msub><mrow><mn>1</mn><mo>/</mo><msub><mi>&#961;</mi><mi>P</mi></msub></mrow></mfrac>
+        <mo>=</mo><mn>0.40</mn><mo>&#215;</mo><mn>0.978</mn><mo>=</mo><mn>0.391</mn>
+      </mrow></math>
+    </div>
+    <p class="note">This works because the pellet is made <i>entirely</i> of the particles: 1&nbsp;g of pellet contains 1&nbsp;g of particles, so 0.40&nbsp;cm<sup>3</sup>/g of particles is also 0.40&nbsp;cm<sup>3</sup> per gram of pellet.</p>
+
+    <p class="label">(e) Solid fraction</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#949;</mi><mi>s</mi></msub><mo>=</mo><mn>1</mn><mo>&#8722;</mo><msub><mi>&#949;</mi><mi>M</mi></msub><mo>&#8722;</mo><msub><mi>&#949;</mi><mi>&#956;</mi></msub>
+        <mo>=</mo><mn>1</mn><mo>&#8722;</mo><mn>0.200</mn><mo>&#8722;</mo><mn>0.391</mn><mo>=</mo><mn>0.409</mn>
+      </mrow></math>
+    </div>
+
+    <p class="label">(f) Density of the particles</p>
+    <p>Correct the pellet volume for the macropore volume &mdash; what is left is the volume actually occupied by particles:</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#961;</mi><mi>p</mi></msub><mo>=</mo>
+        <mfrac><mn>3.15</mn><mrow><mn>3.22</mn><mo>&#8722;</mo><mn>0.645</mn></mrow></mfrac>
+        <mo>=</mo><mfrac><mn>3.15</mn><mn>2.575</mn></mfrac><mo>=</mo><mn>1.22</mn><mtext>&#8201;g/c</mtext><msup><mtext>m</mtext><mn>3</mn></msup>
+      </mrow></math>
+    </div>
+    <p class="eq-note">or on a 1&nbsp;g basis, <span class="sym">&rho;<sub>p</sub></span> = <span class="sym">&rho;<sub>P</sub></span>/[1 &minus; (<span class="sym">V<sub>g</sub></span>)<sub>M</sub><span class="sym">&rho;<sub>P</sub></span>] = 0.978/[1 &minus; 0.205(0.978)] = 1.22 g/cm<sup>3</sup></p>
+
+    <p class="label">(g) Density of the solid phase</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#961;</mi><mi>s</mi></msub><mo>=</mo>
+        <mfrac><mtext>mass of pellet</mtext><mrow><mo>(</mo><mtext>volume of pellet</mtext><mo>)</mo><msub><mi>&#949;</mi><mi>s</mi></msub></mrow></mfrac>
+        <mo>=</mo><mfrac><msub><mi>&#961;</mi><mi>P</mi></msub><msub><mi>&#949;</mi><mi>s</mi></msub></mfrac>
+        <mo>=</mo><mfrac><mn>0.978</mn><mn>0.409</mn></mfrac><mo>=</mo><mn>2.39</mn><mtext>&#8201;g/c</mtext><msup><mtext>m</mtext><mn>3</mn></msup>
+      </mrow></math>
+    </div>
+
+    <p class="label">(h) Void fraction of the particles</p>
+    <div class="eq">
+      <math display="block"><mrow>
+        <msub><mi>&#949;</mi><mi>p</mi></msub><mo>=</mo>
+        <mfrac><msub><mrow><mo>(</mo><msub><mi>V</mi><mi>g</mi></msub><mo>)</mo></mrow><mi>&#956;</mi></msub><mrow><mn>1</mn><mo>/</mo><msub><mi>&#961;</mi><mi>p</mi></msub></mrow></mfrac>
+        <mo>=</mo><msub><mi>&#961;</mi><mi>p</mi></msub><msub><mrow><mo>(</mo><msub><mi>V</mi><mi>g</mi></msub><mo>)</mo></mrow><mi>&#956;</mi></msub>
+        <mo>=</mo><mn>1.22</mn><mo>&#215;</mo><mn>0.40</mn><mo>=</mo><mn>0.49</mn>
+      </mrow></math>
+    </div>
+    <p class="note">Note the difference between (d) and (h): <b>&epsilon;<sub>&mu;</sub> = 0.391 is micropore volume as a fraction of the <i>pellet</i></b>, while <b>&epsilon;<sub>p</sub> = 0.49 is micropore volume as a fraction of the <i>particles alone</i></b>. Both are &ldquo;micropore porosity&rdquo;; they differ only in the denominator. Confusing them is the single most common error in this example.</p>
+
+    <div class="ans">
+      <span class="label">Answer</span>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Part</th><th>Quantity</th><th class="num">Value</th></tr></thead>
+          <tbody>
+            <tr><td>(a)</td><td>Pellet density, <span class="sym">&rho;<sub>P</sub></span></td><td class="num"><b>0.978 g/cm<sup>3</sup></b></td></tr>
+            <tr><td>(b)</td><td>Macropore volume, (<span class="sym">V<sub>g</sub></span>)<sub>M</sub></td><td class="num"><b>0.205 cm<sup>3</sup>/g</b></td></tr>
+            <tr><td>(c)</td><td>Macropore void fraction, <span class="sym">&epsilon;<sub>M</sub></span></td><td class="num"><b>0.200</b></td></tr>
+            <tr><td>(d)</td><td>Micropore void fraction, <span class="sym">&epsilon;<sub>&mu;</sub></span></td><td class="num"><b>0.391</b></td></tr>
+            <tr><td>(e)</td><td>Solid fraction, <span class="sym">&epsilon;<sub>s</sub></span></td><td class="num"><b>0.409</b></td></tr>
+            <tr><td>(f)</td><td>Particle density, <span class="sym">&rho;<sub>p</sub></span></td><td class="num"><b>1.22 g/cm<sup>3</sup></b></td></tr>
+            <tr><td>(g)</td><td>Solid-phase density, <span class="sym">&rho;<sub>s</sub></span></td><td class="num"><b>2.39 g/cm<sup>3</sup></b></td></tr>
+            <tr><td>(h)</td><td>Particle void fraction, <span class="sym">&epsilon;<sub>p</sub></span></td><td class="num"><b>0.49</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><b>Overall picture of this pellet:</b> void fraction <span class="sym">&epsilon;<sub>M</sub></span> + <span class="sym">&epsilon;<sub>&mu;</sub></span> = 0.591, solid 0.409. Of the individual particles, 0.49 is void. Note that everything above came from just the mass and volume of the pellet plus the two measured pore volumes &mdash; no BET, no porosimetry curve.</p>
+    </div>
+
+    <p class="label">Why this matters downstream</p>
+    <ul>
+      <li><span class="sym">&epsilon;<sub>M</sub></span> and <span class="sym">&epsilon;<sub>&mu;</sub></span> feed straight into the <b>random-pore (Wakao&ndash;Smith) effective-diffusivity model</b>, <span class="sym">D<sub>e</sub></span> = <span class="sym">D<sub>M</sub>&epsilon;<sub>M</sub></span><sup>2</sup> + <span class="sym">&epsilon;<sub>&mu;</sub></span><sup>2</sup>(1+3<span class="sym">&epsilon;<sub>M</sub></span>)<span class="sym">D<sub>&mu;</sub></span>/(1&minus;<span class="sym">&epsilon;<sub>M</sub></span>), which you will use for effectiveness factors.</li>
+      <li><span class="sym">&rho;<sub>P</sub></span> converts an intrinsic rate per gram of catalyst into a rate per unit reactor volume &mdash; the bridge between the kinetics and the design equation.</li>
+      <li><span class="sym">&rho;<sub>s</sub></span> = 2.39&nbsp;g/cm<sup>3</sup> is a check on your arithmetic: it should come out near the true density of &gamma;-alumina (~3.2&nbsp;g/cm<sup>3</sup>) but lower here because of the 7&nbsp;wt% NiO and residual closed porosity. A value far above the crystal density means you have made an error.</li>
+    </ul>
+  </div>
+</article>
+
+<footer>
+  <p><b>References.</b> J. M. Smith, <i>Chemical Engineering Kinetics</i>, 3rd ed., Ch. 8 &mdash; &sect;8-4 (Langmuir treatment of adsorption), &sect;8-5 (determination of surface area, BET), &sect;8-6 (void volume and solid density), Examples 8-1 to 8-5 and Tables 8-2, 8-3. Adsorption data of Q3 from <i>Separation and Purification Technology</i> <b>85</b> (2012) 17&ndash;27. Supporting reading: Fogler, <i>Elements of Chemical Reaction Engineering</i>, &sect;10.1&ndash;10.2 and Ch. 14; Carberry, <i>Chemical and Catalytic Reaction Engineering</i>, Ch. 5.</p>
+  <p>CL24303 &middot; Chemical Reaction Engineering II &middot; Tutorial 1 solutions &middot; MO2026</p>
+</footer>
+
+</div>
+</body>
+</html>
