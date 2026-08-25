@@ -1,0 +1,582 @@
+ Catalyst Characterization Primer 
+ CL 24303 · CRE II Quiz 1 · Module 1 
+ Theme 
+ Catalyst Characterization Primer 
+ Everything J. M. Smith says about heterogeneous reactors and solid catalysts that was taught on or before 14 August — Chapter 7 in full, Chapter 8 through §8-10 — condensed, derived, and worked. 
+ Source Smith, Chemical Engineering Kinetics, pp. 273–323 
+ Lectures 5–9, 11–12 
+ Quiz 24 Aug 2026 
+ Start here 
+ ⏱ How long this takes 
+ Chapter 7 
+ 7 Global vs intrinsic rate 
+ 7-1 The seven steps 
+ 7-1 Deriving the global rate 
+ 7-1 Three measured cases 
+ 7-2 Types of heterogeneous reaction 
+ Chapter 8 
+ 8-1 Nature of catalysis 
+ 8-2 Mechanism of catalysis 
+ 8-3 Physisorption vs chemisorption 
+ 8-4 Langmuir isotherm 
+ 8-5 Surface area — BET 
+ 8-6 Void volume & densities 
+ 8-7 Pore-volume distribution 
+ 8-8 Classification of catalysts 
+ 8-9 Catalyst preparation 
+ 8-10 Promoters & inhibitors 
+ Revision 
+ § Formula sheet 
+ § Self-check 
+ Before you start Quiz: Mon 24 Aug 
+ How long this takes 
+ Costed from what is actually on this page: 11,800 words, 46 equations, 12 worked examples, 16 tables, 10 figures, 11 self-check questions. 
+ Full preparation, starting from scratch 
+ Pass What you do Time 
+ 1 — Read Straight through for understanding. Do not stop to memorise. Technical prose with equations runs about 120 words/min. 90 – 110 min 
+ 2 — Work Re-derive Eqs. (7-4), (8-3), (8-12) and (8-26) on paper, then redo all 12 worked examples closed-book . About 8 min each. 80 – 100 min 
+ 3 — Fix Memorise the formula sheet, Table 8-1, the seven steps and the five characteristics. 30 – 40 min 
+ 4 — Test All 11 self-check questions, written out, before opening any answer. 25 – 35 min 
+ Total Spread over two sittings with a night in between, ideally. 4 – 5 hours 
+ If you have less than that 
+ You have Do this 
+ ~2 hours (you attended the lectures) Skim Pass 1 at section level, reading only the pinned callouts and table rows. Then Pass 2 on Examples 8-2, 8-4, 8-5 and 8-6 only . Finish with the formula sheet. 
+ ~1 hour (night before) Formula sheet → the 12 worked-example boxes → the 11 self-check questions. Skip all continuous prose. This is the highest-yield hour available. 
+ ~20 minutes (morning of) Formula sheet and “numbers to carry in your head” only. Re-read Table 8-1 and the three-regime table. Nothing else. 
+ Where to spend the time — by what the material can be tested on 
+ Priority Sections Why 
+ Highest §8-5, §8-6, §8-7 These carry six of the seven numbered book examples and every calculable quantity: v m , S g , V g , ε p , the density set, a from pressure, and ā . Numerical questions come from here. 
+ High §8-4, §7-1 Short derivations that are quick to ask: the Langmuir isotherm and its two linearisations; the global-rate expression and its three regimes. 
+ Medium §8-3 Table 8-1 is the single most compressible thing here — eight rows, and a classic compare-and-contrast question. 
+ Recall only §7-2, §8-1, §8-2, §8-8, §8-9, §8-10 Lists and examples, no mathematics. Cheap marks, but read them last — they decay fastest and are the least costly to refresh. 
+ One honest caveat These are reading-and-working times, not mastery times. If Chapter 7 of CRE-I (rate equations, reactor types) is shaky, add an hour before Pass 1 — nothing in §7-1 lands without it. And if you are working from the class notes alongside this, the two agree on everything except the two items flagged “from class” at the foot of the page. 
+ Chapter 7 · pp. 273–281 Lecture 5 · 3 Aug 
+ Heterogeneous Reactors 
+ One idea runs through this whole chapter: keep the homogeneous design equations, and hide every physical resistance inside the rate you feed them. 
+### 7 Global rate vs intrinsic rate 
+ In a homogeneous system the reaction happens everywhere in one phase. In a heterogeneous system a phase boundary is unavoidable , so reactants must physically travel to the catalyst before they can react. Mass and energy transfer are therefore not a correction — they are part of what you measure. 
+ Smith’s strategy is deliberately lazy in the best way. Rather than rewrite the mole balances of Chapters 3–5, he keeps them identical and redefines the rate that goes into them: 
+ The two rates you must never confuse 
+   Intrinsic (chemical) rate Global (overall) rate 
+ What it describes Steps 3–5 only — adsorption, surface reaction, desorption All seven steps lumped together 
+ Written in terms of Conditions at the surface / inside the pellet Conditions in the bulk fluid 
+ How it is measured Fine particles, vigorous turbulence — no gradients The real pellet, as used in the reactor 
+ Depends on pellet size? No Yes 
+ The global rate is normally reported per unit mass of catalyst as r p . To get the per-volume rate the design equations want, multiply by the bulk density of the packed bed: 
+ r v = ρ B r p per-volume 
+ Why the bulk fluid Bulk temperature and concentration are the only quantities you can actually measure or specify as a design requirement . The gas–particle interface conditions are neither. Writing the rate in bulk terms is what makes the design equation solvable. 
+### 7-1 The seven steps of a fluid–solid catalytic reaction 
+ This list is the skeleton of the entire course. Learn it in order and know which steps are physical and which are chemical. 
+ External (interphase) transport of reactant from the bulk fluid to the outer surface of the pellet. 
+ Intraparticle transport of reactant into the pores — only if the pellet is porous. 
+ Adsorption of reactant on interior active sites. 
+ Surface reaction of adsorbed reactant to adsorbed product. 
+ Desorption of the adsorbed product. 
+ Intraparticle transport of product from interior sites back to the outer surface. 
+ External transport of product from the surface into the bulk stream. 
+ Steps 1 and 7 are external physical steps; 2 and 6 are internal physical steps; 3, 4 and 5 are the chemical steps and together make up the intrinsic rate. For a nonporous catalyst, steps 2 and 6 disappear. 
+ The whole method rests on one sentence: at steady state the rates of the individual steps are identical. That equality is what lets you eliminate the interface concentration you cannot measure. 
+### 7-1 Deriving the global rate — the base case 
+ Take the simplest possible heterogeneous reaction and carry it through completely. 
+ Assumptions 
+ Irreversible gas-phase reaction A(g) → B(g) on solid catalyst C. 
+ Catalyst is nonporous → steps 2 and 6 drop out. 
+ Isothermal → no heat-transfer resistance. 
+ Steps 3–5 are lumped into a single first-order surface reaction . 
+ Reaction is irreversible → the surface concentration of B does not affect the rate, so only A need be tracked. 
+ Three steps in series remain: A travels to the surface, A reacts at the surface, B travels away. At steady state the first two are equal, so the disappearance of A can be written two ways — as transport of A to the surface: 
+ r p = k m a m ( C b − C s ) 7-1 
+ or as reaction at the surface: 
+ r p = k a m C s 7-2 
+ k m = mass-transfer coefficient per unit external area · a m = external area per unit mass of catalyst · k = reaction-rate constant per unit surface · C b , C s = bulk and surface concentrations of A. 
+ Because A must run downhill in concentration to reach the solid, C s < C b always: the mass-transfer resistance reduces the rate below what it would be at C s = C b . Now eliminate C s by equating (7-1) and (7-2): 
+ C s = k m k m + k C b 7-3 
+ and substitute back into either equation: 
+ r p = k k m a m k m + k C b = a m 1/ k + 1/ k m C b 7-4 
+ The second form is the one to remember: the chemical and the physical step behave as two resistances in series , 1/ k and 1/ k m , and the global rate is driven by the bulk concentration alone. 
+ [FIG] 
+ Fig. 7-1 Mass transfer between fluid and catalyst surface. The solid line is the intermediate case described by Eq. (7-4); the two dashed lines are the limits. 
+## The three regimes 
+ Limiting forms of Eq. (7-4) 
+ Regime Condition Global rate Profile in Fig. 7-1 
+ Reaction control k << k m r p ≈ k a m C b Flat; C s ≈ C b 
+ Intermediate k ∼ k m Full Eq. (7-4) Sloping; 0 < C s < C b 
+ Diffusion control k m << k r p ≈ k m a m C b Steep; C s ≈ 0 
+ Exam-favourite consequence Under diffusion control the global rate no longer contains k , so it becomes almost insensitive to temperature — the measured (apparent) activation energy collapses. This is also why mass-transfer resistance bites hardest at high temperature: k grows exponentially with T while k m barely changes, so raising T pushes any system towards diffusion control. Increasing turbulence raises k m and therefore raises the global rate. 
+### 7-1 Three measured cases — how big are these effects? 
+ Smith gives three real data sets to show that the corrections are not small. Know at least the qualitative conclusion of each. 
+ Case A — worked 
+ SO 2 oxidation on platinum: mass transfer dominates 
+ Pt deposited on the outer surface of ⅛ × ⅛ in. alumina pellets, so the catalyst is effectively nonporous. Bulk gas 465 °C, mass velocity 350 lb/(hr·ft²), feed 6.5 mol% SO 2 in air at 10% conversion. 
+ Measured global rate = 0.0956 g mol/(hr·g cat). 
+ Eq. (7-1) gives p SO 2 = 0.060 atm in the bulk but only 0.040 atm at the surface — a large drop, so diffusion resistance is large. 
+ Rate evaluated at 0.060 atm, 465 °C = 0.333; at 0.040 atm = 0.0730. 
+ Ignoring the concentration drop therefore inflates the rate by a factor 0.333/0.0730 = 4.6 — about 350% higher than the correct surface value. 
+ Heat-transfer resistance puts the surface about 15 °C hotter (480 °C); ignoring that understates the rate by about 31%. 
+ Ignoring both at once: 0.333/0.0956 = 3.5, i.e. about 250% higher than the measured global rate. 
+ Lesson. For an exothermic reaction the diffusion and thermal resistances push the rate in opposite directions and partly cancel. At lower temperature or higher gas velocity (larger k m ) the mass-transfer effect shrinks. 
+ Case B — worked 
+ H 2 oxidation on Pt/alumina: heat transfer dominates 
+ A single porous pellet 1.86 cm across, suspended in a well-mixed gas (Maymo and Smith). Turbulence kills the external concentration difference, but not the thermal one. Measured temperatures: bulk 89.9 °C, surface 101 °C, centre 147.7 °C. Measured global rate = 49.8 × 10 −6 mol/(g·s). The intrinsic rate, measured separately on fine particles, is 
+ r = 0.655 p O 2 0.804 e −5230/R g T 7-5 
+ With p O 2 = 0.0527 atm (the same in bulk and at the surface): 
+ At the surface temperature, 374 K → r = 54.3 × 10 −6 
+ At the bulk temperature, 363 K → r = 43.6 × 10 −6 
+ Ignoring the external Δ T : (54.3 − 43.6)/54.3 = 20% low . 
+ Using bulk conditions instead of the global value: (49.8 − 43.6)/49.8 = 12.5% low . 
+ Lesson. Inside the pellet the temperature rises towards the centre (raising the rate) while oxygen concentration falls (lowering it). The global rate is the net balance — here the thermal gain more than offsets the diffusional loss. 
+ Case C — worked 
+ Hydrofluorination of UO 2 : a noncatalytic gas–solid reaction 
+ UO 2 (s) + 4HF(g) → UF 4 (s) + 2H 2 O(g), studied on 2 cm spheres in a stirred tank at t → 0, before any UF 4 layer has built up — so it behaves just like a nonporous catalytic pellet. Bulk 377 °C, surface 462 °C; C HF = 1.38 × 10 −5 (bulk) and 1.12 × 10 −5 g mol/cm³ (surface). Observed rate 6.9 × 10 −6 mol UO 2 /(s·cm²). Intrinsic: 
+ r = 40 C HF e −6070/R g T 7-6 
+ At bulk conditions (650 K, 1.38 × 10 −5 ): r = 5.0 × 10 −6 . 
+ At surface conditions (735 K, 1.12 × 10 −5 ): r ≈ 6.9 × 10 −6 — which is exactly the observed global rate, as it must be for a nonporous solid. 
+ Net effect of the external gradients: 5.0 → 6.9, an increase of 38% . 
+ Taken alone, the mass-transfer resistance would cut the rate by the concentration ratio 1.12/1.38, i.e. 19% ; the 85 °C temperature rise overwhelms it. 
+### 7-2 Types of heterogeneous reactions 
+ Classification with the examples Smith names 
+ Type Examples What makes it awkward 
+ Gas–solid, catalytic Cracking, reforming, dehydrogenation (butane → butenes, butadiene), isomerization, desulfurization The industrially dominant class. Operates at steady state ; gets most of the design attention. 
+ Gas–solid, noncatalytic UO 2 + 4HF; roasting ZnS + 3⁄2 O 2 → ZnO + SO 2 ; CaCO 3 → CaO in a lime kiln; 2NaCl + SO 3 + H 2 O → Na 2 SO 4 + 2HCl; burning off coke to regenerate a catalyst A solid reactant is consumed, so the rate changes with time — inherently transient . A solid product layer often builds around the core, adding heat and mass transfer through that shell. 
+ Liquid–solid, catalytic Alkylation over AlCl 3 The catalyst complexes with reactants and products into a poorly defined sludge; hard to analyse. 
+ Gas–liquid–solid Slurry hydrogenation (H 2 bubbled through suspended catalyst); ethylene polymerization; trickle beds for desulfurizing heavy hydrocarbons Several physical steps in series; diffusion of dissolved H 2 to the particle is often the slow one. Stirred tanks are used because the tank’s heat capacity tames the exotherm. 
+ Liquid–liquid Hydrocarbon alkylation with aqueous H 2 SO 4 The catalyst-bearing phase is hard to define, which blunts any fundamental analysis. 
+ Solid–solid Ceramics manufacture Diffusion resistance is probably always present, and could be either volume diffusion or surface diffusion along grain boundaries. Interface kinetics are essentially unknown because every measurement includes diffusion. 
+ Chapter 8 · pp. 282–323 Lectures 5–9, 11–12 
+ Heterogeneous Catalysis 
+ First what catalysis is (§8-1 to §8-3), then the one equation everything hangs on (§8-4), then the four measurable physical properties of a solid catalyst (§8-5 to §8-7), then how catalysts are classified and made (§8-8 to §8-10). 
+### 8-1 The nature of catalytic reactions 
+ Berzelius (1836) reviewed cases such as starch → sugar over acids, H 2 O 2 decomposition in alkali, and H 2 + O 2 on spongy platinum, and proposed a “catalytic force”. The force is gone from modern theory; the word stayed. A catalyst is a substance that changes the rate of a reaction while remaining chemically unaffected — but it is not a bystander: it actively takes part. 
+ The mechanism must be one in which the free energy of activation is lowered . The catalyst opens an alternative path, every step of which has a smaller Δ F than the uncatalyzed reaction. For A + B → C catalyzed by two active centres X 1 and X 2 : 
+ A + X 1 → AX 1    B + X 2 → BX 2    AX 1 + BX 2 → C + X 1 + X 2 cycle 
+ The reaction is truly catalytic because X 1 and X 2 come back at the end. They can still be lost slowly to poisons — the distinction from a non-catalytic reagent is that the complex-and-regenerate cycle runs a great many times before the centre dies. 
+## The five general characteristics 
+ A catalyst accelerates reaction by providing alternate paths , each catalytic step having a lower activation energy than the homogeneous route. 
+ Active centres combine with at least one reactant, then are freed as product appears; the freed centre recombines and the cycle repeats. 
+ Small quantities of catalytic centres produce large amounts of product. 
+ Equilibrium conversion is not altered. A catalyst that accelerates the forward reaction accelerates the reverse one equally. 
+ A catalyst can radically alter selectivity . 
+ Evidence for (3): cupric ion at 10 −9 mol/litre measurably speeds the oxidation of sodium sulfide. But small quantity does not mean quantity is irrelevant — where there is no chain mechanism the rate is usually proportional to catalyst concentration . For H 2 + O 2 on platinum the rate is directly proportional to the platinum surface , because surface area is proportional to the number of centres. 
+ Evidence for (4): SO 2 oxidation has been run over platinum, ferric oxide and vanadium pentoxide — all three give the same equilibrium composition . 
+ Evidence for (5) — the classic ethanol example: 
+ Decomposition of ethanol: same reactant, three product slates 
+ Route Products 
+ Thermal (no catalyst) water, acetaldehyde, ethylene and hydrogen 
+ Over alumina ethylene + water only (dehydration) 
+ Over copper acetaldehyde, essentially alone (dehydrogenation) 
+## Negative catalysis 
+ Some substances decrease the rate. The accepted explanation is chain-breaking: nitric oxide slows the decomposition of acetaldehyde and of ethyl ether, apparently by combining with the free radicals in the mechanism. Halogens, iodine especially, act the same way — in H 2 + O 2 iodine presumably destroys the radicals that propagate the chains. 
+### 8-2 The mechanism of catalytic reactions 
+ The catalyst and one or more reactants form an intermediate complex — loosely bound and unstable — which then reacts on to give products and hand the catalyst back. 
+## Homogeneous illustration: ester hydrolysis catalyzed by HCl 
+ CH 3 COOC 2 H 5 + H + → CH 3 COOC 2 H 5 [H + ] 1 
+ CH 3 COOC 2 H 5 [H + ] + H 2 O → C 2 H 5 OH + H + + CH 3 COOH 2 
+ For this to beat the uncatalyzed hydrolysis, the free energy of activation of each step must be less than Δ F ⁎ for the direct reaction. 
+## Heterogeneous illustration: ethylene hydrogenation 
+ C 2 H 4 + [X 1 ] → C 2 H 4 [X 1 ]  →  +H 2   C 2 H 4 [X 1 ]H 2 → C 2 H 6 + [X 1 ] 1–3 
+ where [X 1 ] is the solid catalyst. Compare with the homogeneous route through an activated complex, C 2 H 4 + H 2 → (C 2 H 4 ·H 2 ) ⁎ → C 2 H 6 , whose barrier is Δ F ⁎ . 
+ Honesty warning from the book These schemes are phenomenological models, not mechanisms . Despite enormous effort, no mechanism for ethylene hydrogenation satisfies all investigators. 
+ Worked 
+ How much does a catalyst actually buy you? 
+ Boudart correlated published data for ethylene hydrogenation as 
+ r hom = 10 27 e −43,000/R g T     r cat = 2 × 10 27 e −13,000/R g T CuO–MgO 
+ At 600 K the pre-exponential factors nearly cancel, so the ratio is set almost entirely by the difference in activation energy: 
+ r cat r hom ≈ e (43,000 − 13,000)/600 R g ≈ 10 11   
+ An eleven-order-of-magnitude speed-up, bought by replacing a difficult homogeneous step with an easier surface reaction. The resulting kinetics — first order in H 2 , zero order in the strongly adsorbed ethylene — are exactly what Wynkoop and Wilhelm observed, and are a preview of the Langmuir–Hinshelwood forms of Chapter 9. 
+ Those three steps make the point that the rate can be limited by adsorption or desorption (steps 1 and 3) or by the surface reaction (step 2). If step 1 or 3 is slow you need adsorption rates ; if step 2 is slow you need the equilibrium surface coverage. Either way you must study adsorption — which is what the rest of the chapter does. 
+### 8-3 Surface chemistry: physical adsorption vs chemisorption 
+ Even a highly polished surface is irregular microscopically — valleys and peaks scattered over the area. At those irregularities the surface atoms have residual force fields that attract molecules from the surrounding fluid. Even pure crystals have nonuniform force fields because of their atomic structure, so they too have sites or active centres where adsorption is enhanced. 
+## Physical adsorption 
+ Nonspecific , similar to condensation; forces are weak. 
+ Heat of adsorption is of the same order as the heat of condensation, < about 5 kcal/g mol . 
+ Equilibrium is reached rapidly and reversibly ; activation energy usually no more than 1 kcal/g mol . 
+ Multilayer adsorption is possible, especially near the condensation temperature — the process becomes progressively more like condensation as layers build. 
+ Falls off rapidly with rising temperature; generally very small above the critical temperature of the adsorbate. 
+ Not sensitive to surface irregularities — roughly proportional to the amount of surface . That is precisely why it is the tool for measuring surface area (§8-5) and pore size (§8-7). 
+ Why physisorption cannot explain catalysis 
+ Two arguments, both worth quoting in an exam: 
+ The forces are too weak to produce a large reduction in activation energy for stable molecules. And all solids physisorb gases under suitable conditions, yet not all solids are catalysts. 
+ Physisorption dies above the critical temperature, but SO 2 oxidation on platinum only becomes appreciable above 300 °C — far above the critical temperature of SO 2 (157 °C) or O 2 (−119 °C). 
+ It is not useless for reaction, though: physisorption concentrates molecules at the surface, and a catalytic reaction can occur between a chemisorbed reactant and a physically adsorbed coreactant . Reactions of atoms and free radicals, which need little activation energy, may also run on physisorbed species. 
+## Chemisorption 
+ Specific ; the molecule is held by valence forces of the same type as bonds within molecules (Langmuir). 
+ Langmuir’s evidence: a stable oxide film formed on tungsten wire in oxygen, chemically unlike normal WO 3 , yet WO 3 came off on desorption — suggesting 3O 2 + 2W → 2[W·O 3 ], then 2[W·O 3 ] → 2WO 3 . 
+ Heats of adsorption are of the order of heats of reaction : 5 to 100 kcal/g mol . Taylor named the phenomenon chemisorption. 
+ Because the chemisorbed molecule’s energy is so different from that of the free molecule, the activation energy of reactions involving it can be far lower . This is the basis of catalysis by solid surfaces. 
+ Monolayer only. Valence forces diminish rapidly with distance and become too small to form the adsorption compound much beyond a normal bond distance. 
+ Activated chemisorption: the rate follows a finite Arrhenius activation energy. Nonactivated (less frequent): adsorption occurs very rapidly, E ≈ 0. Often adsorption starts nonactivated and the later stages are slow and temperature-dependent. 
+ [FIG] 
+ Fig. 8-1 Effect of temperature on physical and activated adsorption. Solid line = amount actually adsorbed; dashed lines = the two equilibrium curves. 
+ How to read Fig. 8-1, left to right. At low temperature physical adsorption dominates and falls as T rises; past the critical temperature it has essentially vanished. Now activated chemisorption becomes fast enough to matter, so the measured amount adsorbed passes through a minimum and rises again . At still higher temperature the falling equilibrium value for chemisorption takes over, the curve goes through a maximum , and the amount adsorbed drops back onto the equilibrium chemisorption line. 
+ The dashed vertical lines mark the range of potential catalyst activity . This is the key structural claim of the section: the temperature range over which a catalyst is effective must coincide with the range where chemisorption of one or more reactants is appreciable. Many metals and metal oxides adsorb oxygen easily — and they are good oxidation catalysts. Where reactions proceed catalytically at low temperature the figure does not apply, and the catalysis is due to nonactivated chemisorption: ethylene is hydrogenated on nickel at −78 °C, where physisorption of ethylene certainly also exists. 
+ Table 8-1 — Physical vs chemical adsorption 
+ Parameter Physical adsorption Chemisorption 
+ Adsorbent All solids Some solids 
+ Adsorbate All gases below the critical temperature Some chemically reactive gases 
+ Temperature range Low temperature Generally high temperature 
+ Heat of adsorption Low — order of Δ H of condensation High — order of Δ H of reaction 
+ Rate (activation energy) Very rapid, low E Nonactivated, low E ; or activated, high E 
+ Coverage Multilayer possible Monolayer 
+ Reversibility Highly reversible Often irreversible 
+ Used for Determining surface area and pore size Determining active-centre area and elucidating surface-reaction kinetics 
+### 8-4 The Langmuir treatment of adsorption 
+ Langmuir’s formulation is the key concept for the quantitative treatment of both kinds of adsorption. His own concern was chemisorption; Brunauer, Emmett and Teller then extended it to physical multilayer adsorption to get surface area (§8-5); and Chapter 9 extends it again to surface-reaction kinetics. 
+## The four assumptions 
+ All the catalyst surface has the same activity for adsorption — it is energetically uniform. (Non-uniform surfaces can be handled by assuming all active centres are equally active and the rest of the surface is inert, or by using an average activity.) 
+ There is no interaction between adsorbed molecules : the amount already adsorbed does not change the rate of adsorption per site. 
+ All adsorption occurs by the same mechanism and every adsorbed complex has the same structure. 
+ Adsorption extends to at most one complete monolayer . (It is also tacitly assumed each site holds only one particle.) 
+## Derivation — coverage form 
+ Molecules strike the surface continually and some adhere; the more energetic adsorbed molecules continually leave. Equilibrium is dynamic : the two rates become equal. 
+ The rate of adsorption equals the collision rate r c times the fraction F that sticks. At fixed temperature the number of collisions is proportional to pressure p and F is constant, so adsorption per unit bare surface is kp . Only the bare fraction (1 − θ) can adsorb: 
+ r a = k p (1 − θ) 8-1 
+ Desorption can only occur from covered surface, so it is proportional to θ: 
+ r d = k ′ θ 8-2 
+ Setting r a = r d and solving for θ gives the Langmuir isotherm : 
+ θ = K p 1 + K p   =   v v m 8-3 
+ K = k / k ′ is the adsorption equilibrium constant, units (pressure) −1 · v = volume adsorbed · v m = volume adsorbed at a complete monolayer. Since adsorption is sub-monolayer, θ is proportional to v , so Eq. (8-3) doubles as a relation between pressure and volume adsorbed. 
+## Derivation — concentration form 
+ The same argument in terms of an adsorbed concentration C (mol per gram of catalyst), with C m the monolayer value and C g the gas concentration: 
+ r a = k c C g ( C m − C )      r d = k ′ c C 8-4, 8-5 
+ C = K c C m C g 1 + K c C g 8-6 
+ K c = k c / k ′ c , expressed in cm³/g mol. Since C / C m = θ, this is the same isotherm. This concentration form is the one used for kinetics in Chapter 9 — learn it in preference to the pressure form. 
+## The two limits worth memorising 
+ Behaviour of Eq. (8-3) 
+ Limit Isotherm becomes Apparent order in the adsorbing species 
+ Weak adsorption, Kp << 1 θ ≈ Kp — linear (Henry’s law) region First order 
+ Strong adsorption, Kp >> 1 θ ≈ 1 — saturated monolayer Zero order 
+ This single table explains why ethylene hydrogenation came out first order in H 2 , zero order in strongly adsorbed ethylene . 
+## Linearised forms — how you extract K and v m from data 
+ Rearranging Eq. (8-3) two different ways gives two straight-line plots. Both are examinable; the first is the one BET builds on. 
+ p v = 1 K v m + p v m 8-8 
+ Plot p / v against p : slope = 1/ v m , intercept = 1/( K v m ). 
+ 1 v = 1 K v m 1 p + 1 v m 8-3 alt. 
+ Plot 1/ v against 1/ p : slope = 1/( K v m ), intercept = 1/ v m . Either way, the ratio slope/intercept isolates K . 
+ [FIG] 
+ Fig. 8-2 Adsorption-equilibrium data for n-butane on silica gel (surface area 832 m²/g) at 50 °C. Circles are experimental; the curve is Eq. (8-6). Note the straight “linear isotherm” region at low C g and the flattening towards a monolayer at high C g . 
+ The caveat Smith insists on Chemisorption data often do not fit Eq. (8-6). The Langmuir model is nevertheless kept, because the ideas underneath it — a dynamic equilibrium between adsorption and desorption rates, and a finite adsorption time — are sound and enormously useful. Equations (8-4) to (8-6) are the foundation of every rate equation in Chapter 9, even for surfaces that violate the postulates . 
+ Physical properties of catalysts Lectures 7–9 · 5–10 Aug 
+ The four measurable properties 
+ Reaction happens on interior surface, and how much of that interior is reachable depends on the void structure. Sections 8-5 to 8-7 measure exactly four things: surface area , void volume , solid density , and the distribution of void volume by pore size . 
+### 8-5 Determination of surface area — the BET method 
+ Surface area has a pronounced effect on both the amount adsorbed and the catalytic activity. Smith’s vivid illustration: hold a sample of fresh Raney nickel — highly porous, large surface — in your hand and the heat of oxygen adsorption is felt immediately. The same mass of nonporous nickel produces no perceptible heat. This relationship has driven the development of materials with areas as high as 1,500 m²/g . Where the catalytic material itself cannot be made that way, it is dispersed on a high-area carrier or support — silica gel and alumina are the usual choices. 
+ Example 8-1 — worked 
+ Why the area must be internal 
+ Spray drying can make particles as small as 2 to 5 microns. Find the external area of nonporous spheres of 2 micron diameter (ρ p = 2.0 g/cm³), and the size needed for 100 m²/g. 
+ External area per unit volume of a sphere is π d p 2 /(π d p 3 /6) = 6/ d p , so per gram: 
+ S g = 6 ρ p d p 8-7 
+ For d p = 2 × 10 −4 cm: S g = 6 / [2.0(2 × 10 −4 )] = 1.5 × 10 4 cm²/g = 1.5 m²/g . That is about the largest area to expect from nonporous particles. 
+ For S g = 100 m²/g = 10 6 cm²/g: d p = 6 / [2.0(10 6 )] = 3 × 10 −6 cm ≈ 0.03 micron — not producible on a commercial scale. For scale, the smaller particles in a fluidized bed are retained on 400 mesh, a sieve opening of 37 microns. 
+ Conclusion. Essentially all catalytic surface is inside the particle. External area is negligible. 
+## The measurement 
+ The standard method rests on physical adsorption of nitrogen at its normal boiling point, −195.8 °C , over a range of pressures below 1 atm. Under those conditions several layers stack on each other, so the whole problem is: identify the amount adsorbed when exactly one molecular layer is complete. 
+ Classical apparatus — an all-glass volumetric system measuring gas volume adsorbed on a sample; volumes corrected to STP (0 °C, 1 atm) and plotted against pressure in mm, or against p / p 0 . 
+ Flow method — a helium + adsorbate mixture flows continuously over the sample at constant total pressure; the partial pressure is varied by changing composition. Once equilibrium is reached the sample is heated in pure helium and the desorbed amount measured with a thermal-conductivity cell. Each composition gives one point on the isotherm. 
+ The area measured is not necessarily the active area Only certain parts of the surface — the active centres — may chemisorb, while nitrogen physisorbs over much more. A nickel-on-kieselguhr catalyst measured 205 m²/g by N 2 physisorption , but H 2 chemisorption at 25 °C put the area covered by nickel atoms at only about 40 m²/g . Chemisorption of the actual reactant at reaction conditions would be more useful but needs troublesome high- T /high- p measurements for every system; nitrogen is fast, routine and reproducible, so the comparison between catalysts is trustworthy even if the absolute number is arguable. 
+ [FIG] 
+ Fig. 8-3 Adsorption isotherms for various gases on a 0.606 g sample of silica gel. Every curve rises steeply at low pressure and then flattens into a linear section at intermediate pressures — and the lower part of that linear region corresponds to complete monolayer coverage . 
+## The BET equation 
+ If the monolayer point could be located precisely you could read v m off Fig. 8-3 directly. BET locate it instead by extending the Langmuir isotherm to multilayer adsorption . Starting from the rearranged Langmuir form, Eq. (8-8), Brunauer, Emmett and Teller obtained 
+ p v ( p 0 − p ) = 1 v m c + ( c − 1) p c v m p 0 8-9 
+ p 0 = saturation (vapour) pressure at the operating temperature · c = a constant for that particular gas–solid system and temperature. From class: c = exp[( E 1 − E L )/ R g T ], where E 1 is the heat of adsorption of the first layer and E L the heat of vaporization — layers beyond the first behave like ordinary condensation. 
+ So a plot of p /[ v ( p 0 − p )] against p / p 0 should be a straight line , and — importantly — one that can safely be extrapolated back to p / p 0 = 0. 
+ [FIG] 
+ Fig. 8-4 The data of Fig. 8-3 replotted according to Eq. (8-9). Curve 6 is N 2 at −195.8 °C — the standard. (The ordinate of curve 7 must be multiplied by 10.) 
+ Reading the intercept I and slope s off that line gives two equations: 
+ I = 1 v m c   at p / p 0 = 0       s = c − 1 v m c 8-10, 8-11 
+ Add them and c cancels — which is the whole trick: 
+ v m = 1 I + s 8-12 
+## From v m to area 
+ v m converts to a number of molecules; to get an area you must choose the area α covered by one adsorbed molecule: 
+ S g = v m N 0 V α 8-13 
+ N 0 = 6.02 × 10 23 molecules/mol · V = 22,400 cm³/g mol, since v m is recorded at STP. The leading term v m N 0 / V is simply the number of molecules adsorbed. With v m per gram of sample, S g is area per gram. 
+ Emmett and Brunauer took α as the projected area of a molecule in close two-dimensional packing: 
+ α = 1.09 M N 0 ρ 2/3 8-14 
+ M = molecular weight · ρ = density of the adsorbed molecules, normally taken as the pure liquid at the adsorption temperature . The bracket is the volume of one adsorbed molecule. 
+ For N 2 at −195.8 °C, ρ = 0.808 g/cm³, which gives α = 16.2 × 10 −16 cm² = 16.2 Å² . Substituting into Eq. (8-13) collapses everything to one number: 
+ S g = 4.35 × 10 4 v m    cm²/g    (i.e. S g [m²/g] = 4.35 v m ) 8-15 
+ Valid only for N 2 at −195.8 °C, with v m in cm³(STP) per gram of solid. 
+ Example 8-2 — worked 
+ Surface area of silica gel from the N 2 data 
+ From curve 6 of Fig. 8-4 (N 2 at −195.8 °C): intercept I = 0.1 × 10 −3 cm −3 , and 
+ s = (5.3 − 0.1) × 10 −3 0.4 − 0 = 13 × 10 −3 cm −3   
+ Then from Eq. (8-12), remembering the plotted data are for a 0.606 g sample while v m must be per gram: 
+ v m = 10 3 0.1 + 13 × 1 0.606 = 126 cm³/g   
+ And Eq. (8-15): S g = 4.35(126) = 550 m²/g . 
+ Example 8-3 — worked 
+ The same gel from the O 2 data — and why we standardise on N 2 
+ Liquid O 2 at −183 °C has ρ = 1.14 g/cm³. From Eq. (8-14): 
+ α = 1.09 32 (6.02 × 10 23 )(1.14) 2/3 = 14.2 × 10 −16 cm²   
+ so Eq. (8-13) becomes S g = v m (6.02 × 10 23 /22,400)(14.2 × 10 −16 ) = 3.8 × 10 4 v m cm²/g. 
+ From curve 4 of Fig. 8-4: I = 0.40 × 10 −3 , s = (5.4 − 0.4) × 10 −3 /0.38 = 13.2 × 10 −3 cm −3 . Then 
+ v m = 10 3 0.4 + 13.2 × 1 0.606 = 122 cm³/g  →  S g ≈ 4.6 × 10 6 cm²/g ≈ 460 m²/g   
+ Point of the example. 460 vs 550 m²/g on the same solid. Even with α computed properly for each gas, different gases give different areas, and the reason is not well understood. Hence the convention: always N 2 at −195.8 °C . Measured that way, different catalysts can be compared with confidence. 
+ Table 8-2 — Typical solid catalysts and carriers 
+ Catalyst Surface area, m²/g Pore volume, cm³/g Mean pore radius, Å 
+ Activated carbons 500–1,500 0.6–0.8 10–20 
+ Silica gels 200–600 0.4 15–100 
+ SiO 2 –Al 2 O 3 cracking catalysts 200–500 0.2–0.7 33–150 
+ Activated clays 150–225 0.4–0.52 100 
+ Activated alumina 175 0.39 45 
+ Celite (kieselguhr) 4.2 1.1 11,000 
+ Synthetic ammonia catalyst, Fe — 0.12 200–1,000 
+ Pumice — 0.38 — 
+ Fused copper — 0.23 — 
+ Read the last three rows against the first: high area always comes with small pores, and a large mean pore radius (celite, 11,000 Å) means almost no area. 
+### 8-6 Void volume and solid density 
+ Three of the four properties come from one experiment. 
+ Crude method. Boil a weighed sample immersed in a liquid such as water; once air is displaced from the pores, superficially dry and reweigh. Weight gain / liquid density = pore volume. 
+ Helium–mercury method (accurate). Measure the volume of helium displaced by the sample; remove the helium; measure the volume of mercury displaced. Mercury will not enter the pores of most catalysts at atmospheric pressure, so Hg volume − He volume = pore volume . The helium volume is the volume occupied by the solid material itself, which with the sample mass gives the solid (true) density ρ s . 
+ ε p = void (pore) volume of particle total volume of particle = V g ρ s V g ρ s + 1 8-16 
+ V g = void volume per gram of particles · ρ s = density of the solid phase. If the sample is instead weighed and divided by the mercury volume you get the density of the porous particle, and then porosity follows directly: 
+ ε p = V g 1/ρ p = V g ρ p 8-17 
+ Density vocabulary — keep these straight 
+ Term Definition 
+ Bulk density ρ B Mass of solid / volume of the loosely packed bed — includes the space between pellets. This is what converts r p to r v . 
+ Tapped (TAP) density Mass of solid / volume when densely packed by tapping. 
+ Pellet density ρ p Mass of pellet / volume of pellet — includes its own pores but no interpellet space (the mercury-displacement value). 
+ Solid density ρ s Mass / volume of the solid skeleton only (the helium-displacement value). 
+ Porosity ε p Void volume of pellet / total volume of pellet. 
+ Rule of thumb worth memorising Values of ε p are of the order of 0.5 — the particle is about half void and half solid. Overall void fraction in packed beds is about 0.4. So for a fixed-bed catalytic reactor: ~30% pore space, ~30% solid catalyst and carrier, ~40% void space between particles. 
+## Bidisperse pore systems 
+ To avoid excessive pressure drop and to improve mechanical strength, porous particles are pelleted to sizes of 1/16 to 1/8 in., usually cylindrical. Agglomerating particles creates two void regions: 
+ Micropores — the void spaces within the individual particles. 
+ Macropores — the void regions between particles. 
+ “Particle” means only the small individual unit from which the pellet is made. Porous alumina particles (20–200 micron, micropores 10–200 Å) are readily made by spray drying and are soft enough to press into pellets; macroporosity and macropore diameter then depend on the pelleting pressure . 
+ Table 8-3 — Alumina pellets, each pressed at a different pelleting pressure 
+ ρ particle ρ pellet Micro V , cm³/g Macro V , cm³/g Total V Macro ε Micro ε 
+ 1.292 1.121 0.365 0.120 0.543 0.134 0.409 
+ 1.264 1.010 0.383 0.198 0.587 0.200 0.387 
+ 1.238 0.896 0.400 0.308 0.634 0.275 0.359 
+ 1.212 0.785 0.416 0.451 0.680 0.353 0.327 
+ 1.188 0.672 0.434 0.670 0.725 0.450 0.275 
+ Read the first and last rows against each other. Pellet density is roughly proportional to pelleting pressure. Going from the lightest to the heaviest pressing, macropore volume collapses from 0.670 to 0.120 while micropore volume barely moves, 0.434 to 0.365 . Pelleting squeezes the space between particles; it does not crush the particles themselves. (Micro = radii < 100 Å, macro = radii > 100 Å.) 
+ Example 8-4 — worked 
+ Monodisperse: pore volume and porosity of activated silica 
+ Sample mass 101.5 g; helium displaced 45.1 cm³; mercury displaced 82.7 cm³. 
+ Pore volume per gram — mercury volume minus helium volume: 
+ V g = 82.7 − 45.1 101.5 = 0.371 cm³/g   
+ Solid density from the helium volume: ρ s = 101.5/45.1 = 2.25 g/cm³ . 
+ Porosity from Eq. (8-16): 
+ ε p = 0.371(2.25) 0.371(2.25) + 1 = 0.455   
+ Example 8-5 — worked 
+ Bidisperse: full property set for a pelleted hydrogenation catalyst 
+ Alumina particles (100–150 mesh) soaked in aqueous NiNO 3 , dried and reduced to ~7 wt% NiO, then pressed into one large cylindrical pellet: mass 3.15 g, volume 3.22 cm³. Measured separately: macropore volume of the pellet = 0.645 cm³ ; micropore volume = 0.40 cm³/g of particles . Note that everything below comes from just the mass, the volume, and those two measurements. 
+ Pellet density. ρ pellet = 3.15/3.22 = 0.978 g/cm³ 
+ Macropore volume per gram. ( V g ) M = 0.645/3.15 = 0.205 cm³/g 
+ Macropore void fraction. Apply Eq. (8-17) to the pellet: ε M = ( V g ) M / (1/ρ pellet ) = 0.205 / (1/0.978) = 0.200 
+ Micropore void fraction. ε μ = 0.40 / (1/0.978) = 0.391 
+ Solid fraction. From 1 = ε M + ε μ + ε s : ε s = 1 − 0.200 − 0.391 = 0.409 
+ Particle density. Correct the pellet volume for macropore volume: ρ particle = 3.15/(3.22 − 0.645) = 1.22 g/cm³ 
+ Solid-phase density. ρ s = ρ pellet /ε s = 0.978/0.409 = 2.39 g/cm³ 
+ Void fraction of the particles alone. ε p = ρ particle ( V g ) μ = 1.22(0.40) = 0.49 
+ Summary of the pellet. ε M + ε μ = 0.591 is void and 0.409 is solid; of the individual particles, 0.49 is void. 
+### 8-7 Pore-volume distribution 
+ Effectiveness of the internal surface depends not only on how much void volume there is but on the size of the openings — so you need the distribution of void volume by size. This is hard, because the void spaces in a particle are non-uniform in size, shape and length, and are normally interconnected . 
+ An honest admission (Fig. 8-5) Scanning electron micrographs of porous silver ( S g = 19.7 m²/g) show large dark regions that are probably voids between particles and smaller dark spaces that are intraparticle voids. The geometry is so complex and random that it is not realistic to describe the void spaces as pores at all , and detailed quantitative descriptions of real void structure are unlikely ever to be available. For a low-porosity material with a continuous solid phase, such as Vycor (ε p = 0.3), the pore picture is more reasonable. 
+ So we adopt a simplified model : in every widely used treatment the void spaces are simulated as cylindrical pores , and the “size” of a void is interpreted as a cylindrical pore radius a . Never mistake the model for the reality. 
+## Two methods, two size ranges 
+ Choosing the measurement 
+   Mercury penetration Nitrogen desorption 
+ Physical basis Mercury has high surface tension and does not wet most catalytic surfaces, so pressure is needed to force it in — and that pressure varies inversely with a . Continue the N 2 adsorption of §8-5 to p / p 0 → 1 so all voids fill by capillary condensation , then desorb stepwise. Vapour pressure over a meniscus depends on capillary radius. 
+ Rough calibration ~100 psi fills a = 10,000 Å; 10,000 psi is needed for a = 100 Å Radii of curvature above about 200 Å barely change the vapour pressure 
+ Practical range Simple equipment down to 100–200 Å; special high-pressure apparatus below 100 Å — which is where most of the surface is Not suitable for pores larger than 200 Å 
+ Best for Macropores Micropores 
+ A combination is normally needed to cover the full 10 to 10,000 Å range of a bidisperse catalyst such as alumina pellets. For a monodisperse solid such as silica gel, nitrogen desorption alone is enough, since there are few pores above 200 Å. 
+ Why you need both halves of the distribution In a bidisperse system the reaction occurs predominantly in pores below about 200 Å — that is where the bulk of the surface resides. But the transport of reactants to those small pores happens mainly in the 200–10,000 Å macropores. The global rate depends on both, so the complete distribution is required. 
+## Mercury-penetration method 
+ Equating the force due to surface tension (which keeps mercury out) to the applied force, Ritter and Drake obtained π a 2 p = −2π a σ cos θ, hence 
+ a = −2σ cos θ p 8-18 
+ θ = contact angle between mercury and pore wall (Fig. 8-6). It varies somewhat with the solid, but 140° is a good average — the cosine is negative, which is what makes a positive. Putting in the numbers gives the working equation: 
+ a (Å) = 8.75 × 10 5 p (psi) 8-19 
+ [FIG] 
+ Fig. 8-6 Mercury penetration in a pore of radius a . Because mercury does not wet the wall, θ > 90°. 
+ Example 8-6 — worked 
+ Porosity and pore-volume distribution of a UO 2 pellet 
+ A 0.624 g uranium dioxide pellet, sintered from nonporous particles at 1000 °C for 2 hr — so all the void space is between the particles (macropores). At the start of the run (1.77 psia) the mercury displaced by the sample was 0.190 cm³. 
+ Step 1 — total volume. By Eq. (8-19), at 1.77 psia only pores larger than about 500,000 Å (50 micron) would be filled. No pores that large are likely, so 0.190 cm³ is the total sample volume . 
+ Step 2 — porosity. At the highest pressure, 3,500 psia, only pores smaller than a = 250 Å remain unfilled; since the pores are macro, few below 250 Å are expected. Neglecting them, 
+ ε p = 0.125 0.190 = 0.66   
+ Step 3 — independent check. An air pycnometer gave a solid volume of 0.0565 cm³, hence a total porosity (0.190 − 0.0565)/0.190 = 0.70 . The gap suggests there were a few pores below 250 Å — though it also includes experimental error in both methods. 
+ Step 4 — the distribution. Correct penetration to a 1 g basis, then reverse the data, starting from V = 0 at 3,500 psia (250 Å). Convert each pressure to a radius with Eq. (8-19). Plotting V against a gives the penetration curve : the penetration volume at any radius a is the volume of all pores larger than a . Its derivative Δ V /Δ a is the volume of pores between a and a + Δ a per unit Δ a — the distribution function . Because radius is customarily plotted on a logarithmic axis, the distribution actually plotted is d V /d(log  a ) . 
+ Table 8-4 — Mercury porosimeter data, 0.624 g UO 2 pellet 
+ p, psi a, Å (Eq. 8-19) Hg penetration, cm³ cm³/g Reversed V, cm³/g 
+ 116 7,540 0.002 0.003 0.196 
+ 310 2,820 0.006 0.010 0.189 
+ 344 2,540 0.010 0.016 0.183 
+ 364 2,400 0.014 0.022 0.177 
+ 410 2,130 0.020 0.032 0.167 
+ 456 1,920 0.026 0.042 0.157 
+ 484 1,810 0.030 0.048 0.151 
+ 540 1,620 0.038 0.061 0.138 
+ 620 1,410 0.050 0.080 0.119 
+ 710 1,230 0.064 0.102 0.097 
+ 800 1,090 0.076 0.122 0.077 
+ 830 1,050 0.080 0.128 0.071 
+ 900 970 0.088 0.141 0.058 
+ 1,050 833 0.100 0.160 0.039 
+ 1,300 673 0.112 0.179 0.020 
+ 1,540 568 0.118 0.189 0.010 
+ 1,900 461 0.122 0.196 0.003 
+ 2,320 377 0.124 0.198 0.001 
+ 3,500 250 0.125 0.199 0 
+ [FIG] 
+ Fig. 8-7 Pore-volume distribution in a UO 2 pellet — the penetration curve and its derivative. 
+ Reading the result. The distribution is reasonably symmetrical, with most of the volume in pores from 300 to 8,000 Å and a most probable pore radius of 1,200 Å . Note also that the flatness of the penetration curve at low radii justifies the earlier decision to neglect pores below 250 Å. 
+ The bottleneck error — applies to both methods Erroneous results are obtained if a large void space is connected only to smaller void spaces. Such “bottleneck” pores fill with mercury at the higher pressure corresponding to the small connecting pore , and so get counted as small. For accurate results each porous region must be connected to at least one larger pore . The same requirement applies to nitrogen desorption. 
+## Nitrogen-desorption method 
+ As the low-temperature nitrogen adsorption is continued to higher pressures, multilayer adsorption thickens the films until they bridge the pore ; further uptake is then capillary condensation . Because vapour pressure falls as capillary size falls, condensation happens first in the smallest pores, and is complete as p / p 0 → 1. 
+ Now reduce the pressure by a small increment. Nitrogen evaporates from the menisci at the ends of the largest remaining pores — those in which the vapour pressure of nitrogen exceeds the chosen pressure. The Kelvin equation links vapour pressure to the radius of the concave meniscus. But some of the nitrogen is adsorbed rather than capillary-condensed, so the Kelvin radius must be corrected by the thickness δ of the adsorbed layer: 
+ a − δ = −2σ V l cos θ R g T ln( p / p 0 ) 8-20 
+ V l = molal volume of the condensed liquid · σ = surface tension · θ = contact angle between surface and condensate. Nitrogen completely wets a nitrogen-covered surface, so θ = 0° and cos θ = 1 — the opposite of the mercury case. 
+ The thickness δ depends on p / p 0 . Halsey’s form is generally used: 
+ δ = A ln p 0 p −1/n 8-21 
+ with A and n depending on the catalyst surface. For nitrogen at −195.8 °C , with lengths in Ångstroms, Eqs. (8-20) and (8-21) become the two working formulae — note that one uses log 10 and the other ln: 
+ a − δ = 9.52 log p 0 p −1       δ (Å) = 7.34 ln p 0 p −1/3 8-22, 8-23 
+ For a chosen p / p 0 these give the pore radius above which all pores are empty of condensate. Measure the amount desorbed at various p / p 0 , build the cumulative volume-vs-radius curve, and differentiate it exactly as in Example 8-6. 
+ [FIG] 
+ Fig. 8-8 Pore-volume distribution in Vycor (porous glass) — a monodisperse , micropore-only material: ρ p = 1.46 g/cm³, V g = 0.208 cm³/g, ε p = 0.304, S g = 90 m²/g. The area came from the low p / p 0 data (§8-5); the distribution came from the desorption curve in the high p / p 0 capillary-condensation region — one experiment, two results. 
+ [FIG] 
+ Fig. 8-9 Cumulative pore volume in alumina (boehmite) pellets, obtained by combining mercury penetration and nitrogen desorption. Curves 1 and 2 differ only in pelleting pressure. 
+ [FIG] 
+ Fig. 8-10 The derivative of Fig. 8-9 — the bidisperse pore system of an alumina pellet, laid out unmistakably. 
+ Table 8-5 — Boehmite (Al 2 O 3 ·H 2 O) pellets; average particle size 85 micron 
+ Pelleting pressure Macropore volume, cm³/g Micropore volume, cm³/g Surface area, m²/g 
+ Low 1.08 0.56 389 
+ High 0.265 0.49 381 
+ What Figs. 8-9, 8-10 and Table 8-5 say together. The micropore range within the particles is narrow, with a most probable radius of 20 Å , and pelleting pressure barely touches it — the particles are not being crushed. The macropores span a far wider range and take the whole hit: in the high-pressure pellet all volume in pores greater than 2,000 Å has been squeezed out , while the low-pressure pellet has a most probable macropore radius of 8,000 Å . Surface area is essentially unchanged (389 → 381 m²/g), confirming that the surface lives in the micropores. 
+## Wheeler’s average pore radius 
+ Some models need only an average radius, not the full distribution — and Wheeler’s expression needs nothing but surface area and pore volume. Suppose all pores in a hypothetical particle are straight, cylindrical, not interconnected, of one radius ā and length L . Write the total surface and total volume of that hypothetical particle and equate them to the real values m p S g and m p V g : 
+ m p S g = (2π āL ) n       m p V g = (π ā 2 L ) n 8-24, 8-25 
+ Divide the second by the first and everything unknowable cancels: 
+ ā = 2 V g S g 8-26 
+ Worked — and a trap 
+ Where Eq. (8-26) works and where it lies 
+ Monodisperse (Vycor). ā = 2(0.208)/(90 × 10 4 ) = 46 × 10 −8 cm = 46 Å . The true volume-average from the distribution curve, 
+ ā = ∫ 0 V g a d V V g   
+ gives 45 Å . Excellent agreement. 
+ Bidisperse (low-pressure alumina) — the trap. Using the total pore volume, 1.08 + 0.56 = 1.64 cm³/g: 
+ ā = 2(1.64) 389 × 10 4 = 84 × 10 −8 cm = 84 Å   
+ But Fig. 8-10 shows there is almost no pore volume anywhere near 84 Å — it falls in the valley between the two peaks. A single ā has no meaning for a bidisperse system. Applied to the micropore region alone (pores below 100 Å): 
+ ā μ = 2(0.56) 389 × 10 4 = 29 Å   
+ which is a fair value for that region. Note it exceeds the most probable radius of 20 Å, because the micropore distribution is asymmetric . Likewise, accurate small areas in macropore systems are hard to measure, so for a pellet like the UO 2 of Example 8-6 the average radius should be obtained by integrating under the cumulative curve of Fig. 8-7, not from Eq. (8-26). 
+ Section summary — why we measured all this 
+ Reaction occurs on the parts of the surface active for chemisorption, and the rate is generally proportional to the extent of surface — so you need S g , from low-temperature physical adsorption of N 2 in the monolayer pressure range. 
+ Essentially all that surface is interior , so its effectiveness depends on the volume and size of the voids — so you need V g and ε p , from simple pycnometer-type (He–Hg) measurements. 
+ For a monodisperse solid the average size follows from Eq. (8-26). For anything else you need the full distribution : mercury penetration, or nitrogen adsorption in the capillary-condensation region, or both. 
+ Worth noting: a single complete nitrogen adsorption–desorption isotherm yields surface area, pore volume and pore-size distribution over 10 Å < a < 200 Å. 
+ Classification and preparation Lecture 8 · 7 Aug 
+ Making and describing catalysts 
+### 8-8 Classification of catalysts 
+ Three historical answers to “what makes a solid a catalyst?”: 
+ Chemical factor (Sabatier) — nickel works as a hydrogenation catalyst by forming a chemical compound, nickel hydride. Still recognised as important. 
+ Geometric factor (Taylor, Balandin, Beeck) — activity depends on the spacing of surface atoms being right for adsorbing the reactant. Over the years most of this evidence has proved suspect , except for metallic films. 
+ Electronic factor (Boudart, Beeck; Dowden 1948) — classify by electron mobility . This is the classification in use. 
+ Dowden’s classification by electron mobility 
+ Class Examples How it works & what it catalyses 
+ Conductors Metals — silver, platinum, vanadium, iron, nickel Chemisorb by electron transfer . They chemisorb O 2 and H 2 , so they are usually good for oxidation–reduction and hydrogenation–dehydrogenation : Pt for SO 2 oxidation, Ni for hydrogenating hydrocarbons. Because O 2 and CO chemisorb so strongly on metals, those gases are poisons for metal hydrogenation catalysts. 
+ Semiconductors Oxides — NiO, Cu 2 O, ZnO; transition-metal oxides MoO 3 , Cr 2 O 3 Can interchange electrons from filled valence bands when given enough energy (e.g. heating), at which point they conduct. They catalyse the same kinds of reactions as metals but often need higher temperature , and are less susceptible to poisoning . MoO 3 and Cr 2 O 3 are good olefin-polymerization catalysts. ( p -type attract electrons from the chemisorbed species, e.g. NiO; n -type donate them, e.g. slightly reduced ZnO.) 
+ Insulators Silica gel, alumina and their combinations; also SiC as a support Electrons cannot move freely even at high temperature. These solids are strong acids , and their activity in hydrocarbon reactions comes from carbonium ions formed at the acid sites — hence alkylation, isomerization, polymerization and especially cracking . 
+ Smith’s own caveat: the electronic theory “is not without uncertainties and at present should be considered a concept in transition” — but it is a convenient and probably helpful way to classify. 
+## Specific and dual-function catalysts 
+ Specific: iron for making hydrocarbons from H 2 + CO — the Fischer–Tropsch synthesis. 
+ Ziegler–Natta: aluminium alkyl + titanium chloride, e.g. Al(C 2 H 5 ) 3 + TiCl 4 , gives isotactic polymers from olefins. 
+ Dual-function catalysts carry two active substances in close proximity. Nickel dispersed on silica–alumina isomerizes n-hexane far better than silica–alumina alone, because olefins isomerize more readily than paraffins: the nickel dehydrogenates hexane to hexene , the silica–alumina isomerizes it to isohexene , and the nickel hydrogenates it back to isohexane . 
+### 8-9 Catalyst preparation 
+ Method matters because chemical composition alone does not determine activity . Surface area, pore size, particle size and particle structure also govern it, and those are set largely by the preparation procedure. 
+ Draw the basic distinction first: 
+ Two families of catalyst 
+ Family Made by 
+ The entire material is the catalyst (unsupported / bulk) Precipitation, gel formation, or simple mixing of the components 
+ Active ingredient dispersed on a high-area support or carrier Impregnation 
+## Precipitation 
+ Add a precipitating agent to aqueous solutions of the desired components; then wash, dry, and sometimes calcine and activate. Example: magnesium oxide catalyst — precipitate magnesium from nitrate solution with sodium carbonate; the MgCO 3 precipitate is washed, dried and calcined to the oxide. 
+ Concentration of the solutions, temperature, and the times of drying and calcining all influence the final surface area and pore structure. That is exactly why catalysts are hard to reproduce and why tested recipes must be followed carefully. The washing step is critical — residual impurities act as poisons. 
+## Gel formation 
+ A special case of precipitation in which a colloidal precipitate gels; the steps are otherwise the same. Silica- and alumina-containing catalysts are especially suited to it, because their precipitates are colloidal. 
+## Mixing 
+ Mix the components with water, mill to the desired grain size, dry, and calcine; then grind and sieve to the proper particle size. A mixed magnesium–calcium oxide catalyst is made this way: the carbonates are wet-milled in a ball machine, extruded, dried, and reduced by heating in an oven. 
+## Impregnation on a carrier 
+ Carriers give a large surface area from a small amount of active material — which matters when the agent is platinum, nickel or silver. The steps: 
+ Evacuate the carrier. 
+ Contact the carrier with the impregnating solution. 
+ Remove the excess solution (drain). 
+ Dry. 
+ Calcine and activate. 
+ Example: a nickel hydrogenation catalyst on alumina — soak evacuated alumina particles in nickel nitrate solution, drain off the excess, and heat in an oven to decompose the nitrate to nickel oxide. The final reduction of NiO to metallic nickel is best done in situ , with the particles already loaded in the reactor, by passing hydrogen through the equipment. Activating in place prevents contamination by air and other gases that would poison the reactive nickel . 
+ Impregnation is attractive because thorough wetting of all the interior carrier surface is relatively simple, and no precipitation is needed. But if the soaking solution contains potential poisons such as chlorides or sulfates , it may be necessary to precipitate the required constituent and wash the poison out. 
+ Worked reasoning — dispersion beats loading 
+ Why 5 wt% NiO can be worse than 0.5 wt% 
+ The support itself affects activity and selectivity, presumably by influencing the surface structure of the dispersed atoms — changing from silica to alumina may change the electronic structure of deposited platinum atoms. That raises the question of optimum loading . 
+ For ortho → para hydrogen conversion over NiO on alumina, the rate was lower at 5.0 wt% NiO than at 0.5 wt%. The 5.0 wt% catalyst was made from a much more concentrated solution, which probably deposited larger nickel particles — many nickel atoms stacked on top of each other, so less uniform dispersion. 
+ Decisive test: 5.0 wt% built up as ten separate depositions of 0.5 wt% was 11 times more active than the same 5.0 wt% added in one treatment. Same total nickel; the individual nickel particles must have been smaller and the active nickel surface much larger. 
+ Takeaway. Beyond a small fraction of a monolayer, adding more catalyst need not help. What matters is dispersion , which is why one measures chemisorption areas (the H 2 /CO technique) rather than trusting weight percent. 
+### 8-10 Promoters and inhibitors 
+ As normally used, “catalyst” means the composite product loaded into the reactor . Its components may include the catalytically active substance itself, a carrier , promoters and inhibitors . 
+ Promoter vs inhibitor 
+   Promoter Inhibitor 
+ Definition (Innes) A substance added during preparation that improves activity or selectivity, or stabilizes the catalytic agent so as to prolong its life The opposite — added in small amounts during manufacture, it lessens activity, stability or selectivity 
+ Amount Small; by itself it has little activity Small 
+ Why you would want it More activity, better selectivity, or longer life To suppress an undesirable side reaction and so raise selectivity 
+ Classic example Iron catalysts for ammonia synthesis. Adding Al 2 O 3 (also CaO, K 2 O) prevented the loss of surface area by sintering during use, giving increased activity over a longer period. Some promoters are also believed to increase the number of active centres. Silver on alumina for ethylene oxide. Silver is an excellent oxidation catalyst, but at the same conditions ethylene also burns completely to CO 2 and H 2 O, so selectivity to C 2 H 4 O is poor. Adding halogen compounds inhibits the complete oxidation and restores satisfactory selectivity. 
+ Most published information on promoters is in the patent literature; Innes tabulated the data appearing from 1942 to 1952. 
+ Just past the syllabus boundary §8-11 Poisons (catalyst life) comes next in the book but was not covered on or before 14 August, so it is outside this quiz. One sentence for orientation: poisons are substances, in the feed or produced by the reaction, that lower catalyst activity; Smith sorts them into deposited (coke on cracking catalysts), chemisorbed (sulfur compounds on Ni, Cu, Pt), selectivity , stability and diffusion poisons. Note the distinction from an inhibitor: an inhibitor is added deliberately during manufacture, a poison arrives during operation. 
+ Revision Last pass before the quiz 
+ One-page formula sheet 
+ Every numbered equation in scope 
+ Eq. Relation Use it when 
+ 7-1 r p = k m a m ( C b − C s ) Rate as external mass transfer 
+ 7-2 r p = k a m C s Rate as surface reaction (first order) 
+ 7-3 C s = k m C b /( k m + k ) Eliminating the unmeasurable surface concentration 
+ 7-4 r p = a m C b / (1/ k + 1/ k m ) Global rate ; resistances in series 
+ 8-1, 8-2 r a = kp (1 − θ); r d = k ′θ Langmuir adsorption / desorption rates 
+ 8-3 θ = Kp /(1 + Kp ) = v / v m Langmuir isotherm , pressure form 
+ 8-4 to 8-6 C = K c C m C g / (1 + K c C g ) Langmuir isotherm , concentration form — basis of Ch. 9 
+ 8-7 S g = 6/(ρ p d p ) External area of nonporous spheres 
+ 8-8 p / v = 1/( Kv m ) + p / v m Linearised Langmuir; BET starts here 
+ 8-9 p /[ v ( p 0 − p )] = 1/( v m c ) + ( c − 1) p /( cv m p 0 ) BET equation ; plot vs p / p 0 
+ 8-10 to 8-12 I = 1/( v m c ), s = ( c −1)/( v m c ), v m = 1/( I + s ) Monolayer volume from a BET plot 
+ 8-13 S g = ( v m N 0 / V )α Area from monolayer volume 
+ 8-14 α = 1.09[ M /( N 0 ρ)] 2/3 Area of one adsorbed molecule 
+ 8-15 S g = 4.35 × 10 4 v m cm²/g N 2 at −195.8 °C only 
+ 8-16 ε p = V g ρ s /( V g ρ s + 1) Porosity from He–Hg data 
+ 8-17 ε p = V g ρ p Porosity from particle density 
+ 8-18, 8-19 a = −2σcosθ/ p ; a (Å) = 8.75 × 10 5 / p (psi) Mercury penetration , θ ≈ 140° 
+ 8-20 a − δ = −2σ V l cosθ / [ R g T ln( p / p 0 )] Kelvin equation , N 2 desorption; θ = 0° 
+ 8-21 δ = A [ln( p 0 / p )] −1/n Halsey — adsorbed layer thickness 
+ 8-22, 8-23 a − δ = 9.52[log( p 0 / p )] −1 ; δ = 7.34[ln( p 0 / p )] −1/3 N 2 at −195.8 °C, in Å. Watch log vs ln. 
+ 8-26 ā = 2 V g / S g Wheeler average radius — monodisperse only 
+ Numbers to carry in your head 
+ N 2 normal boiling point −195.8 °C ; liquid ρ = 0.808 g/cm³; α = 16.2 Å² . 
+ N 0 = 6.02 × 10 23 ; V = 22,400 cm³/g mol at STP. 
+ Heat of physical adsorption < ~5 kcal/mol; chemisorption 5–100 kcal/mol. 
+ Activation energy for physisorption ≤ ~1 kcal/mol. 
+ Micro / macro pore boundary: 100 Å (Table 8-3); reaction happens below 200 Å , transport above it. 
+ Typical ε p ≈ 0.5 ; fixed bed ≈ 30% pore / 30% solid / 40% interparticle. 
+ Mercury contact angle 140° ; nitrogen contact angle 0° . 
+### § Self-check 
+ Answer before opening. The first four are Smith’s own end-of-chapter problems for Chapter 7. 
+ Why does mass-transfer resistance reduce the global rate more at higher temperature than at lower temperature? (Assume no heat-transfer resistance.) 
+ Because k rises exponentially with temperature while k m is nearly temperature-independent. In Eq. (7-4) the total resistance is 1/ k + 1/ k m ; raising T shrinks 1/ k towards zero so the fixed 1/ k m becomes the dominant term. The system drifts from reaction control into diffusion control, and the observed rate falls further and further below the intrinsic rate. 
+ For an endothermic reaction, do mass- and heat-transfer resistances act in complementary or counterbalancing ways on the global rate? 
+ Complementary — both reduce the rate. Mass-transfer resistance always lowers the surface concentration below bulk. For an endothermic reaction, heat is absorbed at the surface, so the surface sits colder than the bulk, which also lowers the rate. The two effects reinforce. (Contrast the exothermic SO 2 case, where the hot surface partly compensates for the depleted surface concentration.) 
+ An isothermal flow reactor with a solid catalyst is believed to be mass-transfer limited. (a) Would increasing gas-phase turbulence raise or lower the global rate? (b) If the system is non-isothermal and the reaction exothermic, what then? 
+ (a) Raise it. More turbulence means a thinner boundary layer and a larger k m , so 1/ k m shrinks and Eq. (7-4) gives a higher r p ; C s moves back up towards C b . (b) Ambiguous — the two effects oppose. Higher turbulence also raises the heat-transfer coefficient, cooling the surface towards bulk temperature. For an exothermic reaction that lowers the rate. The net result depends on which resistance dominates: it is a rate increase where mass transfer controls (as in the SO 2 example) and can be a decrease where the thermal effect dominates (as in the H 2 oxidation example). 
+ Sketch the concentration profiles for a first-order reversible catalytic reaction under (a) reaction control, (b) diffusion control, (c) intermediate. 
+ Same shapes as Fig. 7-1 for reactant A — flat, steeply falling, and sloping respectively — but with one crucial change: because the reaction is reversible, the surface concentration of A cannot fall to zero . Under diffusion control it approaches the equilibrium concentration, not zero. You must also draw a profile for product B, rising from its bulk value towards the surface, since B now influences the rate. 
+ The BET plot of a sample gives intercept I = 0.1 × 10 −3 and slope s = 13 × 10 −3 cm −3 for a 0.606 g sample of silica gel, using N 2 . Find S g . 
+ v m = 1/( I + s ) = 10 3 /13.1 = 76.3 cm³ for the sample; per gram, 76.3/0.606 = 126 cm³/g. Then Eq. (8-15): S g = 4.35(126) = 550 m²/g . The trap is forgetting to divide by the sample mass. 
+ Why is c in the BET equation large for a good adsorbent, and what does c → 1 mean physically? 
+ c = exp[( E 1 − E L )/ R g T ], where E 1 is the heat of adsorption of the first layer and E L the heat of vaporization. Large c means the first layer binds much more strongly than subsequent layers condense, so the monolayer completes cleanly before multilayers begin — giving the sharp knee that makes v m well defined. As c → 1 the first layer is no more special than bulk condensation, the knee disappears, and the monolayer point becomes ill-defined. 
+ A helium–mercury experiment gives 101.5 g of solid displacing 45.1 cm³ of He and 82.7 cm³ of Hg. Which measurement gives ρ s , and why does mercury measure something different? 
+ Helium gives ρ s = 101.5/45.1 = 2.25 g/cm³, because helium penetrates the pores and so displaces only the volume of the solid skeleton. Mercury does not wet and cannot enter the pores at atmospheric pressure , so it displaces the whole particle envelope. The difference, 82.7 − 45.1 = 37.6 cm³, is the pore volume — here V g = 0.371 cm³/g and ε p = 0.455. 
+ An alumina pellet has V g = 1.64 cm³/g and S g = 389 m²/g. A classmate reports a mean pore radius of 84 Å. What is wrong? 
+ The arithmetic is right — Eq. (8-26) gives 2(1.64)/(389 × 10 4 ) = 84 Å — but the application is wrong. Alumina pellets are bidisperse , and 84 Å lands in the empty valley between the micropore peak (~20 Å) and the macropore region. Eq. (8-26) assumes a single population of identical cylindrical pores. Applied to the micropore volume alone it gives a meaningful 2(0.56)/(389 × 10 4 ) = 29 Å . 
+ Why can nitrogen desorption not measure pores above 200 Å, and mercury penetration not easily reach below 100 Å? 
+ Nitrogen: the method reads pore size from the shift in vapour pressure caused by meniscus curvature, and above about 200 Å the radius of curvature no longer changes the vapour pressure significantly — there is nothing left to measure. Mercury: Eq. (8-19) makes the required pressure inversely proportional to radius, so 100 Å needs about 10,000 psi and anything smaller needs special high-pressure apparatus. Since much of the surface lies below 100 Å, the two methods are combined. 
+ You must choose an adsorbate to measure the area of the active nickel on a Ni/kieselguhr catalyst. Nitrogen physisorption or hydrogen chemisorption — and why? 
+ Hydrogen chemisorption. Chemisorption is specific : H 2 bonds to the nickel atoms, not to the kieselguhr, so it counts active area. Physisorption is non-specific and covers the whole support. On exactly this catalyst, N 2 gave 205 m²/g total while H 2 chemisorption at 25 °C gave about 40 m²/g of nickel. Use N 2 /BET for total area and pore structure; use chemisorption for active-centre area and dispersion. 
+ Pressing alumina particles harder into a pellet cuts total pore volume sharply but leaves surface area almost unchanged (389 → 381 m²/g). Explain. 
+ Pelleting pressure closes the space between particles — the macropores, whose volume falls from 1.08 to 0.265 cm³/g. It does not crush the particles themselves, so the micropore volume barely moves (0.56 → 0.49). Since essentially all the surface resides in the micropores , area is nearly untouched. Consequence for the reactor: the reaction sites survive, but the transport highways feeding them have been narrowed. 
+ Scope. Built from J. M. Smith, Chemical Engineering Kinetics , Chapter 7 (pp. 273–281) and Chapter 8 through §8-10 (pp. 282–323), matching the CL 24303 lecture plan for Lectures 5–9 and 11–12 — every session on or before 14 August 2026. Figures are clippings from the book, retained at book quality. §8-11 (poisons) and Chapter 9 (§9-3 to §9-5, rate-law deduction) are after the cut-off and are excluded. 
+ Two items marked “from class” — the BET constant c = exp[( E 1 − E L )/ R g T ] and the density vocabulary in §8-6 — come from the lecture notes rather than the printed text, which states them less explicitly. 

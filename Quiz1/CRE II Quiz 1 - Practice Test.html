@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CRE II - Quiz 1 Practice Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,500;0,600;1,400;1,600&display=swap">
+<style>
+:root{
+  --paper:#F2F4F3; --card:#FFFFFF;
+  --ink:#15191A; --ink2:#3C4749; --muted:#6B7A7C;
+  --rule:#D8DEDC; --rule2:#B9C3C1;
+  --accent:#14596E; --accent-soft:#E2EDF1; --accent-line:#9EC2CE;
+  --ochre:#8A5210; --ochre-soft:#F6EBDC; --ochre-line:#D9BC93;
+  --plum:#6E2846; --plum-soft:#F5E4EA; --plum-line:#D8AFBF;
+  --shadow:0 1px 2px rgba(20,40,45,.06),0 6px 18px rgba(20,40,45,.05);
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,"Segoe UI",Arial,sans-serif;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px 120px}
+
+.mast{border-bottom:2px solid var(--ink);padding:30px 0 20px;margin-bottom:10px}
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:flex;flex-wrap:wrap;gap:8px 18px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,38px);line-height:1.12;margin:12px 0 8px}
+.dek{color:var(--ink2);margin:0;max-width:64ch}
+.mast-foot{display:flex;flex-wrap:wrap;gap:6px 24px;margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-foot b{color:var(--ink2);font-weight:500}
+
+.bar{position:sticky;top:0;z-index:20;background:rgba(242,244,243,.94);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--rule);margin:0 -22px 26px;padding:10px 22px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.clock{font-family:var(--mono);font-size:20px;font-weight:500;letter-spacing:.04em;min-width:86px}
+.clock.low{color:#A32D2D}
+button{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--card);border:1px solid var(--rule2);color:var(--ink2);padding:7px 12px;border-radius:2px;cursor:pointer}
+button:hover{border-color:var(--accent);color:var(--accent)}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button.primary:hover{background:#0E4557;color:#fff}
+.status{font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:auto}
+
+.rules{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--ochre);border-radius:3px;padding:16px 18px;margin:0 0 30px;box-shadow:var(--shadow)}
+.rules .lbl,.sec-note .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ochre);display:block;margin-bottom:8px}
+.rules ul{margin:0;padding-left:20px}
+.rules li{margin-bottom:5px}
+.rules li:last-child{margin-bottom:0}
+
+.part{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+  border-top:2px solid var(--accent);padding-top:10px;margin:52px 0 4px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.part em{font-style:normal;color:var(--muted)}
+.part-title{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.2;margin:0 0 6px}
+.part-note{color:var(--muted);font-size:14px;margin:0 0 18px;max-width:70ch}
+
+.q{background:var(--card);border:1px solid var(--rule);border-radius:3px;margin:16px 0;box-shadow:var(--shadow)}
+.q-head{display:flex;gap:12px;align-items:baseline;padding:14px 16px 0}
+.qid{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--accent);background:var(--accent-soft);
+  border:1px solid var(--accent-line);padding:2px 7px;border-radius:2px;white-space:nowrap}
+.marks{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap}
+.q-body{padding:8px 16px 4px}
+.q-body p{margin:0 0 10px}
+.q-body ul,.q-body ol{margin:0 0 10px;padding-left:22px}
+.q-body li{margin-bottom:4px}
+.dtab{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums;margin:10px 0 12px;max-width:520px}
+.dtab th,.dtab td{border:1px solid var(--rule);padding:5px 10px;text-align:right}
+.dtab th{background:var(--accent-soft);font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--accent);text-align:right}
+.dtab td:first-child,.dtab th:first-child{text-align:left}
+code,.m{font-family:var(--mono);font-size:.93em}
+.hint{font-size:13px;color:var(--muted);font-style:italic;margin:0 0 10px}
+
+textarea{width:100%;min-height:80px;resize:vertical;font-family:var(--mono);font-size:13.5px;line-height:1.55;
+  color:var(--ink);background:#FCFDFD;border:1px solid var(--rule2);border-top:1px solid var(--rule);
+  border-radius:0 0 3px 3px;padding:12px 16px;display:block}
+textarea:focus{outline:2px solid var(--accent-line);outline-offset:-2px;background:#fff}
+textarea.short{min-height:52px}
+.conf{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:9px 16px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.conf label{display:flex;gap:5px;align-items:center;cursor:pointer}
+.conf input{accent-color:var(--accent)}
+.done{border-left:3px solid var(--accent)}
+
+.finish{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--plum);border-radius:3px;
+  padding:18px 20px;margin:48px 0 0;box-shadow:var(--shadow)}
+.finish h2{font-family:var(--serif);font-size:22px;margin:0 0 8px}
+.finish ol{margin:10px 0 14px;padding-left:22px}
+.finish .path{font-family:var(--mono);font-size:12.5px;background:var(--paper);border:1px solid var(--rule);
+  padding:8px 10px;border-radius:2px;display:block;margin:8px 0;word-break:break-all}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+footer{margin-top:60px;padding-top:16px;border-top:2px solid var(--ink);font-size:13px;color:var(--muted)}
+@media (max-width:640px){.bar{gap:8px}.clock{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker"><span>CL 24303 &middot; CRE&nbsp;II</span><span>Quiz&nbsp;1 &middot; Module&nbsp;1</span><span>Practice Test</span></div>
+  <h1>Catalyst Characterization &mdash; Diagnostic Test</h1>
+  <p class="dek">Built from the study material (J. M. Smith, Ch.&nbsp;7 and Ch.&nbsp;8 through &sect;8-10), in the style of Tutorial&nbsp;1. Closed book, no formula sheet &mdash; that is the whole point of the exercise.</p>
+  <div class="mast-foot">
+    <span><b>Time</b> 60 minutes</span>
+    <span><b>Marks</b> 56</span>
+    <span><b>Sections</b> A rapid &middot; B reasoning &middot; C numerical</span>
+  </div>
+</header>
+
+<div class="bar">
+  <span class="clock" id="clock">60:00</span>
+  <button id="startBtn" class="primary">Start</button>
+  <button id="pauseBtn">Pause</button>
+  <button id="saveBtn">Save draft</button>
+  <span class="status" id="status">not started</span>
+</div>
+
+<div class="rules">
+  <span class="lbl">How to take this</span>
+  <ul>
+    <li><b>Closed book.</b> No notes, no formula sheet, no calculator app with your notes open in another tab.</li>
+    <li>A calculator is allowed. Show the working line, not just the number &mdash; the marks are in the route.</li>
+    <li><b>Answer in the box under each question.</b> Everything you type is saved in this browser automatically.</li>
+    <li>Set your <b>confidence</b> honestly on each question. It is what separates &ldquo;knows it&rdquo; from &ldquo;guessed it right&rdquo; in the analysis.</li>
+    <li>If you are stuck, write what you <i>do</i> remember and move on. Blank tells me less than a wrong attempt.</li>
+    <li>When the hour is up, hit <b>Finish &amp; export</b> at the bottom and send me the file.</li>
+  </ul>
+</div>
+
+<main id="paper"></main>
+
+<div class="finish" id="finish">
+  <h2>Finish &amp; export</h2>
+  <p>Download the answer file and tell me where it landed &mdash; I will grade it, score each topic, and turn the result into a short final-revision sheet aimed only at what you actually got wrong.</p>
+  <div class="btnrow">
+    <button class="primary" id="exportBtn">Finish &amp; export answers</button>
+    <button id="copyBtn">Copy answers to clipboard</button>
+    <button id="clearBtn">Clear all answers</button>
+  </div>
+  <span class="path">It saves as &nbsp;CRE2-Quiz1-PracticeTest-answers.json&nbsp; in your Downloads folder. Then just say: &ldquo;done, grade it&rdquo;.</span>
+</div>
+
+<footer>
+  <p>Coverage mirrors the study material and the Tutorial&nbsp;1 pattern: &sect;7 global vs intrinsic rate and the seven steps, &sect;7-1 resistances in series and the three measured cases, &sect;8-3 physisorption vs chemisorption, &sect;8-4 Langmuir, &sect;8-5 BET, &sect;8-6 densities and void volume, &sect;8-7 pore-size distribution, &sect;8-8 to &sect;8-10 classification, preparation, promoters. &sect;8-11 poisons and Chapter&nbsp;9 are out of scope.</p>
+</footer>
+</div>
+
+<script>
+/* ---------------- question bank ---------------- */
+const PAPER = [
+{
+  part:"Section A", num:"10 &times; 1 mark", title:"Rapid fire",
+  note:"One or two lines each. Suggested time: 6 minutes for the whole section — if an item takes longer than 40 seconds, leave it and come back.",
+  short:true,
+  qs:[
+    {id:"A1", topic:"global-vs-intrinsic", marks:1,
+     q:"Which rate — global or intrinsic — changes when you crush a pellet to a finer size? Why?"},
+    {id:"A2", topic:"pore-distribution", marks:1,
+     q:"State the contact angle assumed for mercury penetration and for nitrogen desorption, and say which of the two fluids wets the catalyst surface."},
+    {id:"A3", topic:"physi-vs-chemi", marks:1,
+     q:"Give the heat-of-adsorption ranges (kcal/mol) that separate physical adsorption from chemisorption."},
+    {id:"A4", topic:"pore-distribution", marks:1,
+     q:"What pore radius is the conventional micropore / macropore boundary, and which of the two populations carries essentially all of the surface area?"},
+    {id:"A5", topic:"BET", marks:1,
+     q:"Write v<sub>m</sub> in terms of the BET plot intercept I and slope s, and write the BET constant c in terms of I and s."},
+    {id:"A6", topic:"BET", marks:1,
+     q:"For nitrogen at &minus;195.8&nbsp;&deg;C, state the area per adsorbed molecule &alpha; and the resulting shortcut constant in S<sub>g</sub> = (constant) &times; v<sub>m</sub>, with units."},
+    {id:"A7", topic:"densities", marks:1,
+     q:"Helium displacement gives which density; mercury displacement gives which density? Which measurement requires the pores to stay empty, and what makes them stay empty?"},
+    {id:"A8", topic:"densities", marks:1,
+     q:"For a typical fixed bed of catalyst pellets, give the rough split of total volume between pore space, solid, and interparticle void."},
+    {id:"A9", topic:"classification", marks:1,
+     q:"Classify by electron mobility and give the reaction each class is good for: (i) nickel, (ii) NiO / ZnO / Cu<sub>2</sub>O, (iii) alumina and silica&ndash;alumina."},
+    {id:"A10", topic:"preparation", marks:1,
+     q:"What is a carrier (support), and what is the one thing it buys you? One line."}
+  ]
+},
+{
+  part:"Section B", num:"7 &times; 3 marks", title:"Reasoning and derivation",
+  note:"Three marks each — aim for three substantive points, not an essay. Suggested time: 21 minutes, about 3 minutes each.",
+  qs:[
+    {id:"B1", topic:"seven-steps", marks:3,
+     q:"List the seven steps of a fluid–solid catalytic reaction, in order. Mark each one physical (P) or chemical (C). Which steps disappear for a <b>nonporous</b> catalyst, and which three together make up the intrinsic rate?"},
+    {id:"B2", topic:"global-rate-derivation", marks:3,
+     q:"Starting from <span class='m'>r<sub>p</sub> = k<sub>m</sub>a<sub>m</sub>(C<sub>b</sub> &minus; C<sub>s</sub>)</span> and <span class='m'>r<sub>p</sub> = k a<sub>m</sub> C<sub>s</sub></span>, eliminate C<sub>s</sub> and obtain the global rate. Write the result in resistances-in-series form, then describe the three regimes of Fig.&nbsp;7-1: for each, the shape of the concentration profile from bulk to surface, and which resistance controls."},
+    {id:"B3", topic:"physi-vs-chemi", marks:3,
+     q:"Physical adsorption versus chemisorption: give four points of difference (temperature range, heat, reversibility, and specificity/coverage). Then say which one is used to measure <b>total</b> surface area and which measures <b>active-centre</b> area &mdash; and why that pairing is the right way round."},
+    {id:"B4", topic:"langmuir", marks:3,
+     q:"State the four assumptions behind the Langmuir isotherm. Then show what <span class='m'>&theta; = Kp/(1 + Kp)</span> becomes at very low and at very high pressure, and give the apparent order in the adsorbing species in each limit."},
+    {id:"B5", topic:"external-transport-thermal", marks:3,
+     q:"An <b>exothermic</b> gas–solid catalytic reaction is run in a bed and you raise the gas velocity. Explain why the global rate can move in either direction. Identify which of Smith's measured cases shows each behaviour, and give the rough size of the effect in each."},
+    {id:"B6", topic:"pore-distribution", marks:3,
+     q:"Pressing alumina particles harder into a pellet drops the total pore volume from 1.08 to 0.265&nbsp;cm&sup3;/g, yet the surface area barely moves: 389 &rarr; 381&nbsp;m&sup2;/g. Explain this in terms of macropores and micropores, and state what it does to the pellet's performance in a reactor."},
+    {id:"B7", topic:"promoters", marks:3,
+     q:"Define and distinguish <b>promoter</b>, <b>inhibitor</b> and <b>poison</b>. Then explain why a 5&nbsp;wt% NiO catalyst can be <i>less</i> active than a 0.5&nbsp;wt% one, and name the property that actually decides activity."}
+  ]
+},
+{
+  part:"Section C", num:"25 marks", title:"Numerical problems",
+  note:"Tutorial-1 style. Show the working line and carry units. Suggested time: 33 minutes — roughly 5 / 6 / 8 / 9 / 5 minutes on C1 to C5.",
+  qs:[
+    {id:"C1", topic:"external-area", marks:4,
+     q:"Spherical FCC-type catalyst particles are 60&nbsp;&micro;m in diameter with a particle density of 1.4&nbsp;g/cm&sup3;.<ul>"+
+       "<li>(a) External surface area per unit volume of particle, in m&sup2;/m&sup3;.</li>"+
+       "<li>(b) External surface area per gram, in m&sup2;/g.</li>"+
+       "<li>(c) What particle diameter would be needed for the <i>external</i> area alone to reach 250&nbsp;m&sup2;/g?</li>"+
+       "<li>(d) One sentence: what does your answer to (c) tell you about where the area of a real catalyst lives?</li></ul>"},
+    {id:"C2", topic:"langmuir", marks:5,
+     q:"CO<sub>2</sub> loading on a zeolite at 40&nbsp;&deg;C:"+
+       "<table class='dtab'><tr><th>p (atm)</th><td>0.10</td><td>0.50</td><td>1.00</td><td>2.00</td><td>4.00</td></tr>"+
+       "<tr><th>q (mmol/g)</th><td>0.83</td><td>2.50</td><td>3.33</td><td>4.00</td><td>4.44</td></tr></table>"+
+       "Fit <span class='m'>q = q<sub>max</sub>Kp/(1 + Kp)</span>. Write down the linearised form you used, the numerical slope and intercept you get from it, and hence q<sub>max</sub> and K with units."},
+    {id:"C3", topic:"BET", marks:6,
+     q:"A BET plot of <span class='m'>p/[v(p<sub>0</sub> &minus; p)]</span> against p/p<sub>0</sub> for a <b>0.85&nbsp;g</b> sample of silica&ndash;alumina cracking catalyst, using N<sub>2</sub> at &minus;195.8&nbsp;&deg;C, has intercept <span class='m'>I = 0.30 &times; 10<sup>&minus;3</sup> cm<sup>&minus;3</sup></span> and slope <span class='m'>s = 15.0 &times; 10<sup>&minus;3</sup> cm<sup>&minus;3</sup></span> (v in cm&sup3; at STP).<ul>"+
+       "<li>(a) The monolayer volume v<sub>m</sub>, per gram of catalyst.</li>"+
+       "<li>(b) S<sub>g</sub> in m&sup2;/g by the full route (number of molecules &times; area per molecule, &alpha; = 16.2&nbsp;&Aring;&sup2;), then check it against the nitrogen shortcut.</li>"+
+       "<li>(c) The BET constant c. What does a large c mean physically?</li>"+
+       "<li>(d) If the same sample were run with O<sub>2</sub> at &minus;183&nbsp;&deg;C (&alpha; = 14.2&nbsp;&Aring;&sup2;), what S<sub>g</sub> would you expect, and why?</li></ul>"},
+    {id:"C4", topic:"densities", marks:7,
+     q:"A 50.0&nbsp;g sample of catalyst pellets displaces 20.0&nbsp;cm&sup3; of helium and 42.0&nbsp;cm&sup3; of mercury. Its BET area is 200&nbsp;m&sup2;/g.<ul>"+
+       "<li>(a) Solid (true) density &rho;<sub>s</sub>.</li>"+
+       "<li>(b) Particle density &rho;<sub>p</sub>.</li>"+
+       "<li>(c) Pore volume per gram V<sub>g</sub>.</li>"+
+       "<li>(d) Porosity &epsilon;<sub>p</sub> &mdash; get it two ways, from V<sub>g</sub>&rho;<sub>s</sub> and from V<sub>g</sub>&rho;<sub>p</sub>, and confirm they agree.</li>"+
+       "<li>(e) The Wheeler average pore radius.</li>"+
+       "<li>(f) The mercury pressure (psi) needed to force mercury into pores of that radius.</li>"+
+       "<li>(g) Given (f), which instrument is the right one for this catalyst &mdash; mercury porosimetry or nitrogen desorption?</li></ul>"},
+    {id:"C5", topic:"pore-distribution", marks:3,
+     q:"In a nitrogen desorption run at &minus;195.8&nbsp;&deg;C, a point is taken at p/p<sub>0</sub> = 0.60. Using <span class='m'>a &minus; &delta; = 9.52[log(p<sub>0</sub>/p)]<sup>&minus;1</sup></span> and <span class='m'>&delta; = 7.34[ln(p<sub>0</sub>/p)]<sup>&minus;1/3</sup></span> (both in &Aring;), find the pore radius a. State whether the &delta; correction is worth keeping here, with a number to back it up."}
+  ]
+},
+{
+  part:"Wrap-up", num:"unmarked", title:"Your own read on it",
+  note:"Thirty seconds. This gets compared against how you actually scored — the gap between the two is itself useful.",
+  qs:[
+    {id:"Z1", topic:"self-report", marks:0,
+     q:"Which topic felt shakiest while you were writing? And was there anything you knew was in the material but simply could not recall?"}
+  ]
+}
+];
+
+/* ---------------- render ---------------- */
+const paperEl = document.getElementById('paper');
+PAPER.forEach(sec=>{
+  const h = document.createElement('div');
+  h.innerHTML = '<div class="part"><span>'+sec.part+'</span><em>'+sec.num+'</em></div>'+
+                '<div class="part-title">'+sec.title+'</div>'+
+                '<p class="part-note">'+sec.note+'</p>';
+  paperEl.appendChild(h);
+  sec.qs.forEach(q=>{
+    const d = document.createElement('div');
+    d.className='q'; d.id='q-'+q.id;
+    d.innerHTML =
+      '<div class="q-head"><span class="qid">'+q.id+'</span>'+
+        '<span class="marks">'+(q.marks?q.marks+(q.marks>1?' marks':' mark'):'')+'</span></div>'+
+      '<div class="q-body">'+(q.q.startsWith('<')?q.q:'<p>'+q.q+'</p>')+'</div>'+
+      '<textarea id="a-'+q.id+'" class="'+(sec.short?'short':'')+'" placeholder="Your answer…"></textarea>'+
+      (q.marks? '<div class="conf" data-q="'+q.id+'"><span>Confidence</span>'+
+        ['Sure','Shaky','Guess'].map(c=>'<label><input type="radio" name="c-'+q.id+'" value="'+c+'">'+c+'</label>').join('')+
+      '</div>' : '');
+    paperEl.appendChild(d);
+  });
+});
+
+/* ---------------- storage ---------------- */
+const KEY='cre2-quiz1-practice-v1';
+let store={answers:{},conf:{},elapsed:0,started:null};
+let canStore=true;
+try{ localStorage.setItem(KEY+'-t','1'); localStorage.removeItem(KEY+'-t'); }catch(e){ canStore=false; }
+function load(){
+  if(!canStore) return;
+  try{
+    const raw=localStorage.getItem(KEY);
+    if(raw){ store=Object.assign(store,JSON.parse(raw)); }
+  }catch(e){}
+  Object.keys(store.answers||{}).forEach(id=>{
+    const t=document.getElementById('a-'+id); if(t){ t.value=store.answers[id]; mark(id); }
+  });
+  Object.keys(store.conf||{}).forEach(id=>{
+    const r=document.querySelector('input[name="c-'+id+'"][value="'+store.conf[id]+'"]'); if(r) r.checked=true;
+  });
+}
+function save(quiet){
+  store.elapsed=elapsed();
+  if(canStore){ try{ localStorage.setItem(KEY,JSON.stringify(store)); }catch(e){ canStore=false; } }
+  if(!quiet) flash(canStore?'draft saved':'browser storage blocked — use Finish & export');
+}
+function mark(id){
+  const box=document.getElementById('q-'+id);
+  const t=document.getElementById('a-'+id);
+  if(box) box.classList.toggle('done', t.value.trim().length>0);
+}
+document.addEventListener('input',e=>{
+  if(e.target.tagName==='TEXTAREA'){
+    const id=e.target.id.slice(2);
+    store.answers[id]=e.target.value; mark(id); save(true); flash('saved');
+  }
+});
+document.addEventListener('change',e=>{
+  if(e.target.type==='radio'){ store.conf[e.target.name.slice(2)]=e.target.value; save(true); }
+});
+
+/* ---------------- timer ---------------- */
+const TOTAL=60*60;
+let running=false, t0=null, base=0, tick=null;
+function elapsed(){ return Math.round(base + (running? (Date.now()-t0)/1000 : 0)); }
+function fmt(s){ s=Math.max(0,s); const m=Math.floor(s/60), r=Math.floor(s%60); return (m<10?'0':'')+m+':'+(r<10?'0':'')+r; }
+function paint(){
+  const left=TOTAL-elapsed();
+  const c=document.getElementById('clock');
+  c.textContent=fmt(left);
+  c.classList.toggle('low', left<=5*60);
+  if(left<=0 && running){ toggle(false); flash('time up — finish the line you are on, then export'); }
+}
+function toggle(on){
+  if(on&&!running){ running=true; t0=Date.now(); tick=setInterval(()=>{paint();save(true);},1000); flash('running'); }
+  else if(!on&&running){ base=elapsed(); running=false; clearInterval(tick); paint(); flash('paused'); }
+}
+document.getElementById('startBtn').onclick=()=>toggle(true);
+document.getElementById('pauseBtn').onclick=()=>toggle(false);
+document.getElementById('saveBtn').onclick=()=>save(false);
+let flashT=null;
+function flash(msg){
+  const s=document.getElementById('status'); s.textContent=msg;
+  clearTimeout(flashT); flashT=setTimeout(()=>{ s.textContent = running? 'running · autosaved' : 'autosaved'; },2200);
+}
+
+/* ---------------- export ---------------- */
+function payload(){
+  const out={
+    test:'CRE II CL24303 - Quiz 1 practice diagnostic',
+    version:1,
+    submitted:new Date().toISOString(),
+    minutes_used:Math.round(elapsed()/60*10)/10,
+    total_marks:56,
+    answers:[]
+  };
+  PAPER.forEach(sec=>sec.qs.forEach(q=>{
+    const t=document.getElementById('a-'+q.id);
+    const r=document.querySelector('input[name="c-'+q.id+'"]:checked');
+    out.answers.push({
+      id:q.id, section:sec.part, topic:q.topic, marks:q.marks,
+      question:q.q.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim(),
+      answer:(t?t.value:'').trim(),
+      confidence:r?r.value:null
+    });
+  }));
+  return out;
+}
+function asText(p){
+  let s='CRE II (CL24303) — Quiz 1 practice diagnostic\nSubmitted: '+p.submitted+
+        '\nTime used: '+p.minutes_used+' min\n\n';
+  p.answers.forEach(a=>{
+    s+='['+a.id+']  ('+a.marks+' marks, topic: '+a.topic+', confidence: '+(a.confidence||'not set')+')\n'+
+       'Q: '+a.question+'\n'+'A: '+(a.answer||'(blank)')+'\n\n';
+  });
+  return s;
+}
+document.getElementById('exportBtn').onclick=()=>{
+  save(true);
+  const p=payload();
+  const blob=new Blob([JSON.stringify(p,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='CRE2-Quiz1-PracticeTest-answers.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  const b2=new Blob([asText(p)],{type:'text/plain'});
+  const a2=document.createElement('a');
+  a2.href=URL.createObjectURL(b2);
+  a2.download='CRE2-Quiz1-PracticeTest-answers.txt';
+  document.body.appendChild(a2); setTimeout(()=>{a2.click(); a2.remove();},400);
+  flash('exported to your Downloads folder');
+};
+document.getElementById('copyBtn').onclick=()=>{
+  const txt=asText(payload());
+  const ta=document.createElement('textarea');
+  ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  let ok=false; try{ ok=document.execCommand('copy'); }catch(e){}
+  ta.remove();
+  if(!ok && navigator.clipboard){ navigator.clipboard.writeText(txt).then(()=>flash('copied')); }
+  flash(ok?'copied to clipboard':'select-all in the file instead');
+};
+document.getElementById('clearBtn').onclick=()=>{
+  if(!confirm('Erase every answer and reset the clock?')) return;
+  store={answers:{},conf:{},elapsed:0,started:null};
+  if(canStore){ try{ localStorage.removeItem(KEY); }catch(e){} }
+  document.querySelectorAll('textarea').forEach(t=>{t.value='';});
+  document.querySelectorAll('input[type=radio]').forEach(r=>{r.checked=false;});
+  document.querySelectorAll('.q').forEach(q=>q.classList.remove('done'));
+  base=0; running=false; clearInterval(tick); paint(); flash('cleared');
+};
+window.addEventListener('beforeunload',e=>{
+  if(Object.keys(store.answers).length && !canStore){ e.preventDefault(); e.returnValue=''; }
+});
+
+load();
+base=store.elapsed||0;
+paint();
+if(!canStore) flash('autosave blocked by browser — export often');
+</script>
+</body>
+</html>

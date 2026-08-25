@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quiz 1 Set-B Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,500;0,600;1,400;1,600&display=swap">
+<style>
+:root{
+  --paper:#F2F4F3; --card:#FFFFFF;
+  --ink:#15191A; --ink2:#3C4749; --muted:#6B7A7C;
+  --rule:#D8DEDC; --rule2:#B9C3C1;
+  --accent:#14596E; --accent-soft:#E2EDF1; --accent-line:#9EC2CE;
+  --ochre:#8A5210; --ochre-soft:#F6EBDC; --ochre-line:#D9BC93;
+  --plum:#6E2846; --plum-soft:#F5E4EA; --plum-line:#D8AFBF;
+  --green:#2C5A3E; --green-soft:#E4EFE7; --green-line:#A8C7B4;
+  --shadow:0 1px 2px rgba(20,40,45,.06),0 6px 18px rgba(20,40,45,.05);
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,"Segoe UI",Arial,sans-serif;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.58}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px 90px}
+
+.mast{border-bottom:2px solid var(--ink);padding:30px 0 20px;margin-bottom:32px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.15;margin:10px 0 8px}
+.sub{color:var(--ink2);font-size:15px;max-width:70ch}
+.meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--card);border:1px solid var(--rule2);border-radius:999px;padding:5px 11px;color:var(--ink2)}
+
+.q{background:var(--card);border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow);
+  padding:24px 26px;margin:0 0 26px}
+.qhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:12px;margin-bottom:16px}
+.qno{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--accent);color:#fff;border-radius:6px;padding:4px 9px}
+.qtext{font-family:var(--serif);font-size:19px;font-weight:600;flex:1;min-width:240px}
+.marks{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+h3{font-size:14px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+  margin:22px 0 8px;font-weight:500}
+h3:first-of-type{margin-top:0}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 12px;padding-left:22px}
+li{margin:0 0 6px}
+b,strong{font-weight:600}
+em{font-style:italic}
+
+.eq{font-family:var(--serif);font-size:18px;text-align:center;background:var(--paper);
+  border:1px solid var(--rule);border-left:3px solid var(--accent-line);border-radius:8px;
+  padding:14px 16px;margin:14px 0;overflow-x:auto}
+.eq .lbl{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:7px;line-height:1.5}
+.frac{display:inline-block;vertical-align:middle;text-align:center;margin:0 3px}
+.frac .n{display:block;padding:0 6px 2px;border-bottom:1.4px solid var(--ink)}
+.frac .d{display:block;padding:2px 6px 0}
+sub,sup{font-size:.72em}
+
+.ans{background:var(--green-soft);border:1px solid var(--green-line);border-left:4px solid var(--green);
+  border-radius:8px;padding:12px 15px;margin:16px 0 4px}
+.ans .t{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:5px}
+.ans b{font-family:var(--serif);font-size:18px}
+
+.note{background:var(--ochre-soft);border:1px solid var(--ochre-line);border-left:4px solid var(--ochre);
+  border-radius:8px;padding:12px 15px;margin:16px 0;font-size:14.5px;color:#4a3316}
+.note .t{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ochre);display:block;margin-bottom:5px}
+
+.given{background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:8px;padding:12px 15px;margin:0 0 16px}
+.given .t{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+.given ul{margin:0;padding-left:20px}
+
+.tblwrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:460px}
+th,td{border:1px solid var(--rule2);padding:8px 11px;text-align:left}
+th{background:var(--paper);font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);font-weight:500}
+td.num{font-family:var(--mono)}
+tr.win td{background:var(--green-soft)}
+
+.step{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--plum);
+  border-left:3px solid var(--plum-line);padding-left:9px;margin:20px 0 8px}
+
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--rule2);
+  font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#121516; --card:#191E1F; --ink:#E8EDEC; --ink2:#B7C2C1; --muted:#87979A;
+    --rule:#2A3233; --rule2:#3B4546;
+    --accent:#7FC2D8; --accent-soft:#16292F; --accent-line:#2E5666;
+    --ochre:#D8A462; --ochre-soft:#2A2015; --ochre-line:#5C4526;
+    --plum:#DA9BB4; --plum-soft:#2A1620; --plum-line:#5C3145;
+    --green:#8FCBA4; --green-soft:#152219; --green-line:#2F5540;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.3);
+  }
+  .qno{color:#0d1516}
+  .note{color:#E3D3BD}
+}
+@media print{
+  body{background:#fff;font-size:11.5pt}
+  .q{box-shadow:none;break-inside:avoid;page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="mast">
+  <div class="kicker">Birla Institute of Technology, Mesra &middot; Dept. of Chemical Engineering</div>
+  <h1>Chemical Reaction Engineering&nbsp;&ndash;&nbsp;II &middot; Quiz&nbsp;1 (Set&nbsp;B) &mdash; Worked Solutions</h1>
+  <p class="sub">CL 24303, MO-2026 &middot; 25.08.2026 &middot; Full solutions with every intermediate step, with Q.2 worked for roll number ending <b>657</b>.</p>
+  <div class="meta">
+    <span class="chip">Total 10 marks</span>
+    <span class="chip">CO 1</span>
+    <span class="chip">x = 6 &nbsp; y = 5 &nbsp; z = 7</span>
+    <span class="chip">Module 1 &middot; Catalysis</span>
+  </div>
+</div>
+
+<!-- Q1 -->
+<section class="q">
+  <div class="qhead">
+    <span class="qno">Q.1</span>
+    <span class="qtext">Explain the working principle of the measurement of surface area using the BET.</span>
+    <span class="marks">[2] &middot; BL 1,2</span>
+  </div>
+
+  <h3>Principle</h3>
+  <p>BET determines surface area from the <b>multilayer physical adsorption (physisorption)</b> of an inert gas on the catalyst surface. The standard adsorbate is <b>nitrogen at its normal boiling point, &minus;195.8&nbsp;&deg;C (77.4&nbsp;K)</b>, maintained by a liquid-N<sub>2</sub> bath. Weak van der Waals forces condense the gas onto the surface; from the isotherm one extracts the gas volume needed to complete <b>exactly one monolayer, V<sub>m</sub></b>. Knowing the cross-sectional area &alpha; of a single adsorbed molecule, the total surface area follows directly.</p>
+
+  <h3>Assumptions (BET = Langmuir extended to multilayers)</h3>
+  <ol>
+    <li>Adsorption is <b>physical</b> and occurs on a <b>homogeneous</b> surface of identical sites.</li>
+    <li>Adsorption is <b>multilayer</b> &mdash; an infinite number of layers may form, and a layer need not be complete before the next begins.</li>
+    <li><b>Langmuir kinetics apply to each layer separately</b> (rate of adsorption on layer <i>i</i> = rate of desorption from layer <i>i</i>+1).</li>
+    <li>The heat of adsorption of the <b>first layer is E<sub>1</sub></b>; every layer above the first has heat of adsorption equal to the <b>heat of liquefaction E<sub>L</sub></b>, i.e. they behave like bulk liquid.</li>
+    <li><b>No lateral interaction</b> between adsorbed molecules.</li>
+  </ol>
+
+  <h3>BET equation (linear form)</h3>
+  <div class="eq">
+    <span class="frac"><span class="n">P</span><span class="d">V (P<sub>0</sub> &minus; P)</span></span>
+    =
+    <span class="frac"><span class="n">1</span><span class="d">V<sub>m</sub> C</span></span>
+    +
+    <span class="frac"><span class="n">C &minus; 1</span><span class="d">V<sub>m</sub> C</span></span>
+    &middot;
+    <span class="frac"><span class="n">P</span><span class="d">P<sub>0</sub></span></span>
+    <span class="lbl">C &asymp; exp[(E<sub>1</sub> &minus; E<sub>L</sub>)/RT] &nbsp;&middot;&nbsp; P<sub>0</sub> = saturation vapour pressure of N<sub>2</sub> at 77 K</span>
+  </div>
+
+  <h3>Experimental procedure</h3>
+  <ul>
+    <li>The sample is <b>degassed</b> (heated under vacuum) to strip adsorbed moisture and impurities from the surface.</li>
+    <li>It is cooled in <b>liquid nitrogen</b>, and measured doses of N<sub>2</sub> are admitted volumetrically.</li>
+    <li>The volume adsorbed <i>V</i> is recorded at several relative pressures <i>P/P<sub>0</sub></i>.</li>
+    <li>Plot <i>P/[V(P<sub>0</sub> &minus; P)]</i> against <i>P/P<sub>0</sub></i>. The plot is linear over <b>P/P<sub>0</sub> = 0.05 &ndash; 0.35</b>.</li>
+  </ul>
+
+  <h3>Extracting the answer from the plot</h3>
+  <div class="eq">
+    slope <i>s</i> = <span class="frac"><span class="n">C &minus; 1</span><span class="d">V<sub>m</sub>C</span></span>,&nbsp;&nbsp;
+    intercept <i>i</i> = <span class="frac"><span class="n">1</span><span class="d">V<sub>m</sub>C</span></span>
+    &nbsp;&rArr;&nbsp;
+    <b>V<sub>m</sub> = 1/(s + i)</b>,&nbsp;&nbsp; C = 1 + s/i
+  </div>
+  <div class="eq">
+    S<sub>g</sub> =
+    <span class="frac"><span class="n">V<sub>m</sub></span><span class="d">22414</span></span>
+    &times; N<sub>A</sub> &times; &alpha;
+    <span class="lbl">V<sub>m</sub> in cm&sup3;(STP)/g &middot; 22414 cm&sup3;/mol &middot; N<sub>A</sub> = 6.022&times;10<sup>23</sup> &middot; &alpha;<sub>N2</sub> = 16.2&times;10<sup>&minus;16</sup> cm&sup2;</span>
+  </div>
+  <p><b>In one line:</b> measure how much N<sub>2</sub> it takes to just cover the surface once, convert that to a number of molecules, and multiply by the footprint of one molecule.</p>
+</section>
+
+<!-- Q2 -->
+<section class="q">
+  <div class="qhead">
+    <span class="qno">Q.2</span>
+    <span class="qtext">From the BET plot (N<sub>2</sub> at &minus;195.8&nbsp;&deg;C on 0.yzx g alumina support), intercept = 0.xy&times;10<sup>&minus;3</sup> g/cc and slope = z.yx&times;10<sup>&minus;2</sup> g/cc. Calculate the surface area of the sample.</span>
+    <span class="marks">[3] &middot; BL 3</span>
+  </div>
+
+  <div class="given">
+    <span class="t">Given &mdash; roll number 10657, last three digits 657 &rarr; x = 6, y = 5, z = 7</span>
+    <ul>
+      <li>Intercept &nbsp;<i>i</i> = 0.<b>xy</b>&times;10<sup>&minus;3</sup> = 0.65&times;10<sup>&minus;3</sup> = <b>6.5&times;10<sup>&minus;4</sup> g/cc</b></li>
+      <li>Slope &nbsp;<i>s</i> = <b>z.yx</b>&times;10<sup>&minus;2</sup> = 7.56&times;10<sup>&minus;2</sup> = <b>0.0756 g/cc</b></li>
+      <li>Mass of support = 0.<b>yzx</b> g = <b>0.576 g</b></li>
+      <li>&alpha;<sub>N2</sub> = 16.2&times;10<sup>&minus;16</sup> cm&sup2;, &nbsp; N<sub>A</sub> = 6.022&times;10<sup>23</sup> mol<sup>&minus;1</sup>, &nbsp; molar volume = 22414 cm&sup3;/mol</li>
+    </ul>
+  </div>
+
+  <div class="step">Step 1 &mdash; monolayer volume V<sub>m</sub></div>
+  <p>Adding the slope and the intercept of the BET line eliminates C and leaves 1/V<sub>m</sub>:</p>
+  <div class="eq">
+    s + i = <span class="frac"><span class="n">C &minus; 1</span><span class="d">V<sub>m</sub>C</span></span> + <span class="frac"><span class="n">1</span><span class="d">V<sub>m</sub>C</span></span>
+    = <span class="frac"><span class="n">1</span><span class="d">V<sub>m</sub></span></span>
+  </div>
+  <div class="eq">
+    V<sub>m</sub> = <span class="frac"><span class="n">1</span><span class="d">0.0756 + 0.00065</span></span>
+    = <span class="frac"><span class="n">1</span><span class="d">0.07625</span></span>
+    = <b>13.11 cm&sup3;(STP)/g</b>
+  </div>
+
+  <div class="step">Step 2 &mdash; molecules in the monolayer</div>
+  <div class="eq">
+    n = <span class="frac"><span class="n">13.11</span><span class="d">22414</span></span> = 5.851&times;10<sup>&minus;4</sup> mol/g
+  </div>
+  <div class="eq">
+    N = 5.851&times;10<sup>&minus;4</sup> &times; 6.022&times;10<sup>23</sup> = <b>3.524&times;10<sup>20</sup> molecules/g</b>
+  </div>
+
+  <div class="step">Step 3 &mdash; specific surface area</div>
+  <div class="eq">
+    S<sub>g</sub> = N &times; &alpha; = 3.524&times;10<sup>20</sup> &times; 16.2&times;10<sup>&minus;16</sup> = <b>5.71&times;10<sup>5</sup> cm&sup2;/g</b>
+  </div>
+
+  <div class="step">Step 4 &mdash; area of the 0.576 g sample</div>
+  <div class="eq">
+    S = 5.71&times;10<sup>5</sup> &times; 0.576 = <b>3.29&times;10<sup>5</sup> cm&sup2;</b>
+  </div>
+
+  <div class="ans">
+    <span class="t">Answer</span>
+    <b>S<sub>g</sub> = 5.71&times;10<sup>5</sup> cm&sup2;/g = 57.1 m&sup2;/g</b><br>
+    <b>S<sub>sample</sub> (0.576 g) = 3.29&times;10<sup>5</sup> cm&sup2; &asymp; 32.9 m&sup2;</b>
+  </div>
+
+  <div class="note">
+    <span class="t">Marks-fetching extras</span>
+    <b>BET constant:</b> C = 1 + s/i = 1 + 0.0756/0.00065 = <b>117.3</b>. A large C confirms strong adsorbate&ndash;adsorbent interaction, i.e. the monolayer completes cleanly before multilayers build up, so the BET analysis is valid here.
+    <br><br>
+    <b>Note on units:</b> because the axis quantities are in g/cc, V<sub>m</sub> already emerges <i>per gram</i>. The mass 0.576 g is therefore needed only for the total area &ldquo;of the sample&rdquo;. 57 m&sup2;/g is a physically sensible figure for an alumina support.
+  </div>
+</section>
+
+<!-- Q3 -->
+<section class="q">
+  <div class="qhead">
+    <span class="qno">Q.3</span>
+    <span class="qtext">Two spherical catalysts &mdash; A: d<sub>p</sub> = 50 &micro;m, &rho;<sub>p</sub> = 1.5, &epsilon;<sub>p</sub> = 0.47; B: d<sub>p</sub> = 100 &micro;m, &rho;<sub>p</sub> = 2, &epsilon;<sub>p</sub> = 0.38. Determine which catalyst has higher surface area per unit mass.</span>
+    <span class="marks">[2] &middot; BL 3</span>
+  </div>
+
+  <h3>Working relation</h3>
+  <p>For a sphere, surface/volume = &pi;d<sub>p</sub><sup>2</sup> &divide; (&pi;d<sub>p</sub><sup>3</sup>/6) = 6/d<sub>p</sub>, and volume/mass = 1/&rho;<sub>p</sub>. Hence the external (geometric) specific surface area is</p>
+  <div class="eq">
+    S<sub>g</sub> = <span class="frac"><span class="n">6</span><span class="d">d<sub>p</sub> &rho;<sub>p</sub></span></span>
+    <span class="lbl">1 &micro;m = 10<sup>&minus;4</sup> cm</span>
+  </div>
+
+  <div class="step">Catalyst A</div>
+  <div class="eq">
+    S<sub>A</sub> = <span class="frac"><span class="n">6</span><span class="d">(50&times;10<sup>&minus;4</sup>)(1.5)</span></span>
+    = <span class="frac"><span class="n">6</span><span class="d">7.5&times;10<sup>&minus;3</sup></span></span> = <b>800 cm&sup2;/g</b> &nbsp;(= 0.08 m&sup2;/g)
+  </div>
+
+  <div class="step">Catalyst B</div>
+  <div class="eq">
+    S<sub>B</sub> = <span class="frac"><span class="n">6</span><span class="d">(100&times;10<sup>&minus;4</sup>)(2)</span></span>
+    = <span class="frac"><span class="n">6</span><span class="d">2&times;10<sup>&minus;2</sup></span></span> = <b>300 cm&sup2;/g</b> &nbsp;(= 0.03 m&sup2;/g)
+  </div>
+
+  <div class="tblwrap">
+  <table>
+    <thead>
+      <tr><th>Catalyst</th><th>d<sub>p</sub> (cm)</th><th>&rho;<sub>p</sub> (g/cm&sup3;)</th><th>S<sub>g</sub> = 6/d<sub>p</sub>&rho;<sub>p</sub></th><th>V<sub>g</sub> = &epsilon;<sub>p</sub>/&rho;<sub>p</sub></th></tr>
+    </thead>
+    <tbody>
+      <tr class="win"><td><b>A</b></td><td class="num">5&times;10<sup>&minus;3</sup></td><td class="num">1.5</td><td class="num"><b>800 cm&sup2;/g</b></td><td class="num"><b>0.313 cm&sup3;/g</b></td></tr>
+      <tr><td>B</td><td class="num">1&times;10<sup>&minus;2</sup></td><td class="num">2.0</td><td class="num">300 cm&sup2;/g</td><td class="num">0.190 cm&sup3;/g</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ans">
+    <span class="t">Answer</span>
+    <b>Catalyst A has the higher surface area per unit mass &mdash; 800 cm&sup2;/g against 300 cm&sup2;/g, a ratio S<sub>A</sub>/S<sub>B</sub> = 2.67.</b>
+  </div>
+
+  <div class="note">
+    <span class="t">Why the porosity column matters</span>
+    A is both smaller and lighter, so it wins twice over in 6/d<sub>p</sub>&rho;<sub>p</sub>. The porosity confirms the conclusion: the specific pore volume V<sub>g</sub> = &epsilon;<sub>p</sub>/&rho;<sub>p</sub> is 0.313 cm&sup3;/g for A versus 0.190 cm&sup3;/g for B, so A also carries more <b>internal</b> pore surface per gram. External and internal contributions both favour A. (An exact internal area would require the mean pore radius: S<sub>int</sub> &asymp; 2V<sub>g</sub>/r.)
+  </div>
+</section>
+
+<!-- Q4 -->
+<section class="q">
+  <div class="qhead">
+    <span class="qno">Q.4</span>
+    <span class="qtext">Explain the role of catalyst promoter with an example.</span>
+    <span class="marks">[1] &middot; BL 1</span>
+  </div>
+
+  <h3>Definition</h3>
+  <p>A <b>promoter</b> is a substance added in <b>small quantity</b> to a catalyst which itself possesses <b>little or no catalytic activity</b>, but which appreciably <b>increases the activity, selectivity, or stability/life</b> of the main catalyst.</p>
+
+  <h3>Two roles</h3>
+  <ul>
+    <li><b>Structural (textural) promoter</b> &mdash; physically separates the active crystallites, preventing <b>sintering</b> and crystal growth at reaction temperature, thereby preserving active surface area over the catalyst&rsquo;s life.</li>
+    <li><b>Electronic promoter</b> &mdash; alters the electron density of the active sites, tuning the <b>strength of chemisorption</b> of reactants and products, and hence the rate and selectivity.</li>
+  </ul>
+
+  <h3>Example &mdash; ammonia synthesis (Haber process) over Fe</h3>
+  <ul>
+    <li><b>Al<sub>2</sub>O<sub>3</sub> (&asymp; 3%)</b> &mdash; <i>structural</i> promoter: it spaces out the iron crystallites and stops them sintering at ~450 &deg;C and 200 atm, keeping the surface area high for years of operation.</li>
+    <li><b>K<sub>2</sub>O (&asymp; 1%)</b> &mdash; <i>electronic</i> promoter: it donates electron density to Fe, strengthening back-donation into the N&equiv;N bond and thus assisting the rate-determining <b>dissociative chemisorption of N<sub>2</sub></b>, while weakening NH<sub>3</sub> binding so the product desorbs readily.</li>
+  </ul>
+  <div class="ans">
+    <span class="t">One-line answer</span>
+    <b>A promoter is an essentially inactive additive that enhances a catalyst&rsquo;s activity, selectivity or stability &mdash; e.g. Al<sub>2</sub>O<sub>3</sub> (anti-sintering) and K<sub>2</sub>O (electronic) on the Fe catalyst used for NH<sub>3</sub> synthesis.</b>
+  </div>
+</section>
+
+<!-- Q5 -->
+<section class="q">
+  <div class="qhead">
+    <span class="qno">Q.5</span>
+    <span class="qtext">Explain Langmuir isotherm with expression.</span>
+    <span class="marks">[2] &middot; BL 2</span>
+  </div>
+
+  <h3>Assumptions</h3>
+  <ol>
+    <li>Adsorption is <b>monolayer only</b> &mdash; molecules do not stack on one another.</li>
+    <li>The surface carries a <b>fixed number of identical, energetically uniform sites</b>.</li>
+    <li><b>One molecule occupies one site</b>; the heat of adsorption is independent of coverage.</li>
+    <li><b>No interaction</b> between molecules adsorbed on neighbouring sites.</li>
+    <li>Adsorption is a <b>dynamic equilibrium</b> between adsorption and desorption.</li>
+  </ol>
+
+  <h3>Derivation</h3>
+  <p>Let &theta; be the fraction of sites occupied, so (1 &minus; &theta;) is the fraction vacant:</p>
+  <div class="eq">
+    r<sub>ads</sub> = k<sub>a</sub> P (1 &minus; &theta;) &nbsp;&nbsp;&nbsp;&nbsp; r<sub>des</sub> = k<sub>d</sub> &theta;
+  </div>
+  <p>At equilibrium r<sub>ads</sub> = r<sub>des</sub>, i.e. k<sub>a</sub>P(1 &minus; &theta;) = k<sub>d</sub>&theta;. Rearranging with K = k<sub>a</sub>/k<sub>d</sub>:</p>
+  <div class="eq">
+    &theta; = <span class="frac"><span class="n">K P</span><span class="d">1 + K P</span></span>
+    <span class="lbl">Langmuir adsorption isotherm &middot; K = adsorption equilibrium constant</span>
+  </div>
+
+  <h3>In terms of adsorbed volume (&theta; = V/V<sub>m</sub>)</h3>
+  <div class="eq">
+    V = <span class="frac"><span class="n">V<sub>m</sub> K P</span><span class="d">1 + K P</span></span>
+    &nbsp;&nbsp;&rArr;&nbsp;&nbsp;
+    <span class="frac"><span class="n">P</span><span class="d">V</span></span> =
+    <span class="frac"><span class="n">1</span><span class="d">V<sub>m</sub>K</span></span> +
+    <span class="frac"><span class="n">P</span><span class="d">V<sub>m</sub></span></span>
+    <span class="lbl">Linearised form: plot P/V vs P &rarr; slope = 1/V<sub>m</sub>, intercept = 1/(V<sub>m</sub>K)</span>
+  </div>
+
+  <h3>Limiting behaviour</h3>
+  <ul>
+    <li><b>Low pressure</b> (KP &laquo; 1): &theta; &asymp; KP &mdash; coverage proportional to P, the reaction appears <b>first order</b>.</li>
+    <li><b>High pressure</b> (KP &raquo; 1): &theta; &rarr; 1 &mdash; the surface is <b>saturated</b> and the reaction becomes <b>zero order</b> in that species.</li>
+  </ul>
+
+  <h3>Useful variants</h3>
+  <ul>
+    <li><b>Dissociative adsorption</b> (A<sub>2</sub> &rarr; 2A, requiring two sites): &theta; = &radic;(KP) / (1 + &radic;(KP)).</li>
+    <li><b>Competitive adsorption</b> of several species: &theta;<sub>i</sub> = K<sub>i</sub>P<sub>i</sub> / (1 + &Sigma;K<sub>j</sub>P<sub>j</sub>) &mdash; the basis of all <b>LHHW</b> rate laws.</li>
+  </ul>
+
+  <div class="note">
+    <span class="t">Limitation &rarr; link back to Q.1</span>
+    Being restricted to a single layer, the Langmuir isotherm fails at high P/P<sub>0</sub> where multilayer condensation sets in. Relaxing assumption 1 to allow infinite layers &mdash; with heat of adsorption equal to the heat of liquefaction beyond the first layer &mdash; gives the <b>BET isotherm</b> used for surface-area measurement.
+  </div>
+</section>
+
+<footer>CL 24303 &middot; CRE-II Quiz 1 (Set B) &middot; Q.2 worked for roll no. 10657 &nbsp;(x = 6, y = 5, z = 7)</footer>
+
+</div>
+</body>
+</html>
