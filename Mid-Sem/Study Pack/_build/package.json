@@ -1,0 +1,9 @@
+{
+  "name": "cre2-midsem-study-pack-build",
+  "private": true,
+  "description": "Pre-renders KaTeX in the study-pack sources; check.js needs Google Chrome installed.",
+  "dependencies": {
+    "katex": "^0.16.11",
+    "puppeteer-core": "^23.11.1"
+  }
+}

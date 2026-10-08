@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CRE II Mid-Sem Study Pack</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/study.css">
+<script src="assets/plotly-basic.min.js"></script>
+<script src="assets/katex/katex.min.js"></script>
+<script src="assets/study.js"></script>
+</head>
+<body>
+<header class="topbar"><div class="in">
+  <a class="brand" href="index.html">CRE II · Mid-Sem</a>
+  <nav>
+    <a href="index.html" aria-current="page">Start here</a>
+    <a href="m1-heterogeneous-catalysis.html">M1 Catalysts</a>
+    <a href="m2-rate-laws.html">M2 Rate laws</a>
+    <a href="m3-pore-diffusion.html">M3 Pore diffusion</a>
+    <a href="tutorials.html">Tutorials 1–3</a>
+    <a href="formula-sheet-and-practice.html">Formulas &amp; practice</a>
+  </nav>
+  <button class="btn" id="themeBtn">Theme: system</button>
+</div></header>
+
+<div class="shell">
+<aside class="toc">
+  <b>On this page</b>
+  <a href="#scope">Exam scope</a>
+  <a href="#map">How the modules connect</a>
+  <a href="#pages">The pages</a>
+  <a href="#plan">Study plan</a>
+  <a href="#checklist">Must-know checklist</a>
+  <a href="#exam">In the exam hall</a>
+</aside>
+
+<main>
+<div class="mast">
+  <div class="kicker">CL 24303 · Chemical Reaction Engineering II · MO2026</div>
+  <h1>Mid-Semester Study Pack</h1>
+  <p>Everything the professor listed for the mid-sem, from the books, class notes and Tutorials 1–3. Every equation is typeset, every diagram is drawn to scale, and the charts are live: drag the sliders.</p>
+  <div class="chips">
+    <span class="chip book">J. M. Smith Ch. 7–8</span>
+    <span class="chip book">H. S. Fogler Ch. 10, up to §10.4.4</span>
+    <span class="chip book">O. Levenspiel Ch. 18, up to §18.3</span>
+    <span class="chip book">H. S. Fogler Ch. 15, up to §15.3.1</span>
+    <span class="chip tut">Tutorials 1, 2, 3</span>
+    <span class="chip class">Class notes to 11.09.2026</span>
+  </div>
+</div>
+
+<section class="s" id="scope">
+<h2><span class="num">1</span>Exam scope, exactly as announced</h2>
+<p>From Prof. Sangram Roy's e-mail of 9 September 2026: the mid-semester examination covers topics discussed until the lecture of <b>11.09.2026</b>.</p>
+<div class="tw"><table>
+<thead><tr><th>Module</th><th>Syllabus heading</th><th>Prescribed reading</th><th>Where it is in this pack</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Heterogeneous reactions, intrinsic vs global rate, catalyst formulation and preparation, BET area, pore volume, pore-size distribution</td><td>J. M. Smith, Chapters 7 and 8 (complete)</td><td><a href="m1-heterogeneous-catalysis.html">M1 page</a></td></tr>
+<tr><td>2</td><td>Steps in a catalytic reaction, adsorption isotherms, surface reaction, desorption, rate-limiting step, synthesizing a rate law</td><td>H. S. Fogler, Chapter 10 up to §10.4.4</td><td><a href="m2-rate-laws.html">M2 page</a></td></tr>
+<tr><td>3</td><td>Kinetics of solid-catalysed gas reactions; isothermal internal effectiveness factor</td><td>O. Levenspiel, Chapter 18 up to §18.3; H. S. Fogler, Chapter 15 up to §15.3.1 for extra explanation</td><td><a href="m3-pore-diffusion.html">M3 page</a></td></tr>
+<tr><td>—</td><td>Problem solving</td><td>Tutorials 1, 2 and 3</td><td><a href="tutorials.html">Tutorials page</a></td></tr>
+</tbody></table></div>
+<div class="box warn"><b>What the professor said about Module 3</b>
+<p>You do <em>not</em> need to focus on <em>solving</em> the differential equation for the concentration profile inside the porous catalyst. You <em>do</em> need the <b>formulation of the problem</b> (shell balance, flux law, rate law, boundary conditions) and the concepts of the <b>effectiveness factor</b> \(\eta\) and the <b>Thiele modulus</b> \(\phi\). The M3 page is built around that: formulation is done line by line, solutions are shown but marked "for understanding".</p></div>
+<div class="box book"><b>A note on sources</b>
+<p>The scanned class notes in the folder run to the lecture of 31 August (the toluene example, Fogler §10.4.3). The Module 3 lectures (1–11 September) followed Levenspiel Ch. 18 and Fogler Ch. 15, and those chapters are what the M3 page teaches. Where the notes and a book use different numbers (for example the heat of chemisorption), both are given and labelled.</p>
+<p>The book extracts were checked against the e-mail on 14 September. Three of them stopped a page early and now include the missing pages: Fogler pp. 444–446 (the rest of Example 10-2), Levenspiel p. 391 (the summary, eqs 34 and 35) and Fogler p. 733 (eqs 15-33 and 15-34). All three are taught in this pack.</p></div>
+</section>
+
+<section class="s" id="map">
+<h2><span class="num">2</span>How the three modules fit together</h2>
+<p>The whole mid-sem is one physical picture: a reactant molecule travelling from the bulk gas to an active site inside a porous pellet. Each module zooms into one part of that journey.</p>
+<figure>
+<svg class="dg" viewBox="0 0 820 330" role="img" aria-labelledby="mapT">
+  <title id="mapT">Journey of a reactant molecule mapped onto the three modules</title>
+  <defs>
+    <marker id="mA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ac"/></marker>
+    <marker id="mI" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker>
+  </defs>
+  <!-- boxes -->
+  <rect x="10" y="40" width="160" height="120" rx="12" class="f-s2 s-rule"/>
+  <text x="90" y="72" text-anchor="middle" class="bold">Bulk fluid</text>
+  <m x="90" y="98" w="150">C_{Ab},\ T_b</m>
+  <text x="90" y="124" text-anchor="middle" class="t3 sm">what you can measure</text>
+  <text x="90" y="140" text-anchor="middle" class="t3 sm">and specify</text>
+
+  <rect x="215" y="40" width="170" height="120" rx="12" class="f-bks s-bk"/>
+  <text x="300" y="68" text-anchor="middle" class="bold tb">External film</text>
+  <text x="300" y="92" text-anchor="middle" class="sm">steps 1 and 7</text>
+  <m x="300" y="112" w="160">k_m a_m (C_b - C_s)</m>
+  <text x="300" y="138" text-anchor="middle" class="t2 sm">M1: J. M. Smith §7-1</text>
+
+  <rect x="430" y="40" width="170" height="120" rx="12" class="f-wrs s-wr"/>
+  <text x="515" y="68" text-anchor="middle" class="bold tw">Pore diffusion</text>
+  <text x="515" y="92" text-anchor="middle" class="sm">steps 2 and 6</text>
+  <m x="515" y="112" w="160">\eta,\ \phi,\ M_T,\ M_W</m>
+  <text x="515" y="138" text-anchor="middle" class="t2 sm">M3: OL 18, HSF 15</text>
+
+  <rect x="645" y="40" width="165" height="120" rx="12" class="f-acs s-ac"/>
+  <text x="727" y="64" text-anchor="middle" class="bold ta">Surface chemistry</text>
+  <text x="727" y="86" text-anchor="middle" class="sm">steps 3, 4, 5</text>
+  <text x="727" y="106" text-anchor="middle" class="sm">adsorption · reaction</text>
+  <text x="727" y="122" text-anchor="middle" class="sm">· desorption</text>
+  <text x="727" y="144" text-anchor="middle" class="t2 sm">M2: HSF 10 (LHHW)</text>
+
+  <line x1="172" y1="100" x2="210" y2="100" class="ac" marker-end="url(#mA)"/>
+  <line x1="387" y1="100" x2="425" y2="100" class="ac" marker-end="url(#mA)"/>
+  <line x1="602" y1="100" x2="640" y2="100" class="ac" marker-end="url(#mA)"/>
+
+  <!-- properties bar -->
+  <rect x="215" y="225" width="595" height="80" rx="12" class="f-cls s-cl"/>
+  <text x="512" y="253" text-anchor="middle" class="bold tc">Catalyst physical properties (M1: J. M. Smith Ch. 8)</text>
+  <m x="512" y="280" w="580" c="sm">S_g\ \text{(BET)}\quad V_g,\ \rho_s,\ \rho_p,\ \varepsilon_p\ \text{(He–Hg)}\quad \text{pore radius (Hg porosimetry, Kelvin, Wheeler)}\quad \text{shape, support, promoters}</m>
+  <line x1="515" y1="222" x2="515" y2="165" class="ln" marker-end="url(#mI)"/>
+  <line x1="727" y1="222" x2="727" y2="165" class="ln" marker-end="url(#mI)"/>
+  <line x1="300" y1="222" x2="300" y2="165" class="ln" marker-end="url(#mI)"/>
+  <m x="522" y="200" w="160" a="start" c="t3 sm">D_e \text{ and } L \text{ set } \phi</m>
+  <m x="734" y="200" w="84" a="start" c="t3 sm">\text{sites} \propto \text{area}</m>
+  <m x="307" y="200" w="160" a="start" c="t3 sm">a_m,\ \text{particle size}</m>
+  <text x="90" y="205" text-anchor="middle" class="t2 sm">global rate =</text>
+  <text x="90" y="224" text-anchor="middle" class="t2 sm">all resistances</text>
+  <text x="90" y="243" text-anchor="middle" class="t2 sm">in series</text>
+</svg>
+<figcaption><b>Reading the map.</b> The rate you use in a reactor design equation is the <em>global</em> rate, written with bulk conditions. It is lowered by every resistance on the path: the external film, pore diffusion (measured by \(\eta\)), and the surface steps (described by a Langmuir–Hinshelwood rate law). The catalyst's physical properties set the size of each resistance.</figcaption>
+</figure>
+</section>
+
+<section class="s" id="pages">
+<h2><span class="num">3</span>The pages</h2>
+<div class="hub">
+  <a class="card" href="m1-heterogeneous-catalysis.html">
+    <div class="mod">Module 1 · J. M. Smith 7–8</div>
+    <h3>Heterogeneous catalysis &amp; catalyst characterisation</h3>
+    <p>Global vs intrinsic rate, seven steps, catalyst anatomy, shapes, preparation, poisons, physisorption vs chemisorption, Langmuir, BET, He–Hg densities, Hg porosimetry, Kelvin equation, Wheeler radius.</p>
+    <p class="small">5 live charts · 8 diagrams · self-test</p>
+  </a>
+  <a class="card" href="m2-rate-laws.html">
+    <div class="mod">Module 2 · Fogler 10, up to 10.4.4</div>
+    <h3>Adsorption, surface reaction, desorption &amp; rate laws</h3>
+    <p>Molecular and dissociative isotherms, single/dual-site and Eley–Rideal steps, rate-limiting step, cumene worked three ways, reforming, Table 10-5, PSSH, toluene data analysis, regression and PBR design.</p>
+    <p class="small">7 live charts · 7 diagrams · self-test</p>
+  </a>
+  <a class="card" href="m3-pore-diffusion.html">
+    <div class="mod">Module 3 · Levenspiel 18 + Fogler 15</div>
+    <h3>Pore diffusion, Thiele modulus &amp; effectiveness factor</h3>
+    <p>Kinetic regimes, rate bases, single-pore formulation, porous particles, \(\eta\) for slab/cylinder/sphere, Wagner–Weisz–Wheeler modulus, particle-size tests, falsified kinetics, effective diffusivity, spherical-pellet derivation.</p>
+    <p class="small">6 live charts · 4 diagrams · self-test</p>
+  </a>
+  <a class="card" href="tutorials.html">
+    <div class="mod">Tutorials 1, 2, 3</div>
+    <h3>Every tutorial question, solved</h3>
+    <p>Surface area, Langmuir and BET fits, He–Hg porosity, dissociative adsorption, Tóth and multi-site Langmuir, van't Hoff, LHHW derivations, Fogler P10-3/5/6, toluene regression.</p>
+    <p class="small">9 live charts · 3 diagrams</p>
+  </a>
+  <a class="card" href="formula-sheet-and-practice.html">
+    <div class="mod">Revision</div>
+    <h3>Formula sheet, traps &amp; practice problems</h3>
+    <p>All formulas on one page, decision charts, the mistakes that cost marks, 15 exam-style numerical problems with full solutions, a 90-minute mock paper and 30 rapid-fire questions.</p>
+    <p class="small">3 decision charts · printable</p>
+  </a>
+</div>
+</section>
+
+<section class="s" id="plan">
+<h2><span class="num">4</span>A study plan that works</h2>
+<div class="grid2">
+  <div class="card">
+    <h4>If you have three days</h4>
+    <ol>
+      <li><b>Day 1:</b> M1 page end to end. Redo Tutorial 1 Q2–Q6 on paper without looking.</li>
+      <li><b>Day 2:</b> M2 page. Derive the cumene rate law for all three limiting steps from a blank sheet. Then Tutorial 2 Q1 and Tutorial 3 Q1–Q2, Q6.</li>
+      <li><b>Day 3:</b> M3 page. Write the slab and sphere formulations from memory. Practice problems 9–15. Then the mock paper, timed.</li>
+    </ol>
+  </div>
+  <div class="card">
+    <h4>If you have one evening</h4>
+    <ol>
+      <li>Formula sheet, read twice.</li>
+      <li>The "LHHW algorithm" box on M2 and the "formulation recipe" box on M3.</li>
+      <li>The "Exam traps" section of the practice page.</li>
+      <li>Practice problems 1, 2, 7, 9, 10 and 11 — they cover the most likely numericals.</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section class="s" id="checklist">
+<h2><span class="num">5</span>Must-know checklist</h2>
+<p class="small">Tick an item only when you can do it with the book closed. Your ticks are saved in this browser.</p>
+<div class="progress"><i></i></div>
+<div>
+<label class="check"><input type="checkbox" data-key="c1"><span>List the seven steps of a catalytic reaction and say which are physical and which are chemical.</span></label>
+<label class="check"><input type="checkbox" data-key="c2"><span>Derive the global rate \(r_p = \dfrac{a_m C_b}{1/k + 1/k_m}\) and explain reaction control vs diffusion control.</span></label>
+<label class="check"><input type="checkbox" data-key="c3"><span>Write \((-r_V)V = (-r_W)W = (-r_S)S\) and convert a rate between bases.</span></label>
+<label class="check"><input type="checkbox" data-key="c4"><span>Name the parts of a catalyst (agent, support, promoter, inhibitor) and distinguish inhibitor from poison; list the poison types.</span></label>
+<label class="check"><input type="checkbox" data-key="c5"><span>Tabulate physisorption vs chemisorption (forces, heat, temperature, reversibility, layers, what each measures).</span></label>
+<label class="check"><input type="checkbox" data-key="c6"><span>State Langmuir's assumptions and derive \(\theta = Kp/(1+Kp)\) and its two linear forms.</span></label>
+<label class="check"><input type="checkbox" data-key="c7"><span>Get \(v_m\), \(c\) and \(S_g\) from a BET plot, including the \(\alpha\) formula.</span></label>
+<label class="check"><input type="checkbox" data-key="c8"><span>Compute \(V_g\), \(\rho_s\), \(\rho_p\), \(\varepsilon_p\) from He–Hg data, including a bidisperse pellet.</span></label>
+<label class="check"><input type="checkbox" data-key="c9"><span>Use \(a = -2\sigma\cos\theta/p\), the Kelvin equation and the Wheeler radius \(\bar a = 2V_g/S_g\).</span></label>
+<label class="check"><input type="checkbox" data-key="c10"><span>Derive molecular and dissociative Langmuir isotherms from site balances, and their linear plots.</span></label>
+<label class="check"><input type="checkbox" data-key="c11"><span>Write the rate law for single-site, dual-site (both types) and Eley–Rideal surface reactions, and for desorption.</span></label>
+<label class="check"><input type="checkbox" data-key="c12"><span>Derive the cumene rate law for adsorption, surface-reaction and desorption control and sketch the initial-rate curves.</span></label>
+<label class="check"><input type="checkbox" data-key="c13"><span>Show \(K_P = K_C K_S / K_B\) and explain why the equilibrium constant appears in every limiting case.</span></label>
+<label class="check"><input type="checkbox" data-key="c14"><span>Read a rate law backwards: squared denominator, square roots, missing species, gas-phase reactant in numerator only.</span></label>
+<label class="check"><input type="checkbox" data-key="c15"><span>Deduce the toluene rate law from the 16 runs, propose the Eley–Rideal mechanism and linearise for regression.</span></label>
+<label class="check"><input type="checkbox" data-key="c16"><span>Set up the PBR design for toluene hydrodemethylation with pressure drop; compute a fluidised-CSTR weight.</span></label>
+<label class="check"><input type="checkbox" data-key="c17"><span>Name Levenspiel's five rate-influencing factors and when each matters.</span></label>
+<label class="check"><input type="checkbox" data-key="c18"><span>Write the single-pore balance, its boundary conditions, \(m=\sqrt{2k''/(\mathscr{D} r)}\), and \(\eta = \tanh mL / mL\).</span></label>
+<label class="check"><input type="checkbox" data-key="c19"><span>Write the spherical-pellet shell balance through to \(\dfrac{d^2\psi}{d\lambda^2} + \dfrac{2}{\lambda}\dfrac{d\psi}{d\lambda} - \phi_n^2\psi^n = 0\) with its boundary conditions.</span></label>
+<label class="check"><input type="checkbox" data-key="c20"><span>Define \(\eta\) in words and symbols, the Thiele modulus, and the characteristic length \(L = V_p/A_{ext}\) for slab, cylinder and sphere.</span></label>
+<label class="check"><input type="checkbox" data-key="c21"><span>Use the Wagner modulus \(M_W = L^2(-r'''_A)_{obs}/(\mathscr{D}_e C_{As})\) to diagnose the regime from an observed rate.</span></label>
+<label class="check"><input type="checkbox" data-key="c22"><span>Predict what happens to rate, apparent order and apparent activation energy under strong pore resistance.</span></label>
+<label class="check"><input type="checkbox" data-key="c23"><span>Compute \(\mathscr{D}_e = D_{AB}\varphi_p\sigma_c/\tilde\tau\) and convert between \(k''\), \(k'\) and \(k'''\).</span></label>
+<label class="check"><input type="checkbox" data-key="c24"><span>Explain the rate ratio for two particle sizes in the diffusion-free and strong-resistance regimes.</span></label>
+<label class="check"><input type="checkbox" data-key="c25"><span>Write Levenspiel's summary (eq. 34) from memory and state the best particle size, \(M_T \cong 0.4\) or \(M_W \cong 0.15\) (eq. 35).</span></label>
+<label class="check"><input type="checkbox" data-key="c26"><span>Write the internal-diffusion-limited rate \(-r_A = \dfrac{3}{R}\sqrt{D_ek_1}\,C_{As}\) and explain why it varies inversely with pellet size.</span></label>
+<label class="check"><input type="checkbox" data-key="c27"><span>Explain why \(P_B\) passes through a maximum along the toluene PBR, and why pressure drop cuts conversion from 0.79 to 0.682.</span></label>
+</div>
+</section>
+
+<section class="s" id="exam">
+<h2><span class="num">6</span>In the exam hall</h2>
+<div class="grid2">
+  <div class="box key"><b>Derivation questions</b>
+  <p>Examiners mark each stage, so always write them in this order:</p>
+  <ol class="steps">
+  <li>The mechanism, every step as an elementary reaction.</li>
+  <li>The rate of the limiting step.</li>
+  <li>Quasi-equilibrium relations for the other steps.</li>
+  <li>The site balance.</li>
+  <li>The final rate law.</li>
+  <li>One line on what its form tells you.</li>
+  </ol>
+  <p class="small">The same template is drawn as a flowchart on the <a href="formula-sheet-and-practice.html#decide">formula page</a>.</p></div>
+  <div class="box key"><b>Numerical questions</b>
+  <p>Write the formula symbolically first, then the numbers with units. State the regime you land in (for example "\(M_T = 2.0\), intermediate, so neither limiting form applies").</p></div>
+  <div class="box warn"><b>Units that catch people</b>
+  <p>BET \(v\) in \(\mathrm{cm^{3}(STP)/g}\); Hg pressure in psi for \(a(\text{Å}) = 8.75\times10^5/p\); Thiele modulus needs \(k'''\) per volume of <em>pellet</em>, not per kg; tutorial rate tables scaled by \(10^{10}\).</p></div>
+  <div class="box warn"><b>Two different "L"s</b>
+  <p>Levenspiel's \(L\) for a sphere is \(R/3\), and his \(M_T = L\sqrt{k'''/\mathscr{D}_e}\). Fogler's sphere modulus uses \(R\): \(\phi_1 = R\sqrt{k_1/D_e} = 3M_T\). Say which one you are using.</p></div>
+</div>
+</section>
+
+<footer class="pg">Built from the prescribed book extracts, class notes, tutorials and the course policy in the <code>Mid-Sem</code> folder. Charts use Plotly and equations use KaTeX, both bundled in <code>assets/</code> so the pack works offline.</footer>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Module 2 — Catalytic Rate Laws</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/study.css">
+<script src="assets/plotly-basic.min.js"></script>
+<script src="assets/katex/katex.min.js"></script>
+<script src="assets/study.js"></script>
+</head>
+<body>
+<header class="topbar"><div class="in">
+  <a class="brand" href="index.html">CRE II · Mid-Sem</a>
+  <nav>
+    <a href="index.html">Start here</a>
+    <a href="m1-heterogeneous-catalysis.html">M1 Catalysts</a>
+    <a href="m2-rate-laws.html" aria-current="page">M2 Rate laws</a>
+    <a href="m3-pore-diffusion.html">M3 Pore diffusion</a>
+    <a href="tutorials.html">Tutorials 1–3</a>
+    <a href="formula-sheet-and-practice.html">Formulas &amp; practice</a>
+  </nav>
+  <button class="btn" id="revealBtn">Show all answers</button>
+  <button class="btn" id="themeBtn">Theme: system</button>
+</div></header>
+
+<div class="shell">
+<aside class="toc">
+  <b>Module 2</b>
+  <a href="#overview">1 · Where we are heading</a>
+  <a href="#transport">2 · Steps 1–2 in brief</a>
+  <a href="#iso">3 · Adsorption isotherms</a>
+  <a href="#sr">4 · Surface reaction</a>
+  <a href="#des">5 · Desorption</a>
+  <a href="#rls">6 · Rate-limiting step</a>
+  <a href="#cumene">7 · Cumene, three ways</a>
+  <a href="#cum-ads" class="sub">Adsorption limiting</a>
+  <a href="#cum-sr" class="sub">Surface reaction limiting</a>
+  <a href="#cum-des" class="sub">Desorption limiting</a>
+  <a href="#cum-sum" class="sub">Which one? Data</a>
+  <a href="#reform">8 · Reforming &amp; the algorithm</a>
+  <a href="#table105">9 · Reading a rate law</a>
+  <a href="#pssh">10 · PSSH &amp; temperature</a>
+  <a href="#toluene">11 · Toluene data analysis</a>
+  <a href="#design">12 · Reactor design</a>
+  <a href="#test">13 · Self-test</a>
+</aside>
+
+<main>
+<div class="mast">
+  <div class="kicker">Module 2 · H. S. Fogler, Elements of CRE 5e, §10.1 to §10.4.4</div>
+  <h1>Adsorption, surface reaction, desorption and catalytic rate laws</h1>
+  <p>How to postulate a mechanism, pick a rate-limiting step and turn it into a rate law written only in measurable partial pressures; then how to get the parameters from data and design a reactor with them.</p>
+  <div class="chips"><span class="chip book">HSF 10.2 to 10.4.4</span><span class="chip book">JMS 9-3 to 9-5 (same ideas)</span><span class="chip class">Class notes pp. 37–78</span><span class="chip tut">Tutorial 2 Q1 · Tutorial 3</span></div>
+</div>
+
+<!-- ============================================================ 1 -->
+<section class="s" id="overview">
+<h2><span class="num">1</span>Where we are heading</h2>
+<p>Rate laws in heterogeneous catalysis seldom follow power laws. Fogler teaches them "in reverse": first postulate mechanisms and derive the rate laws they imply, so that when you see data you recognise the form. In industry the order is the one in the figure.</p>
+<figure>
+<svg class="dg" viewBox="0 0 800 170" role="img" aria-labelledby="t106">
+  <title id="t106">Collecting information for catalytic reactor design (Fogler Fig. 10-6)</title>
+  <defs><marker id="m6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ac"/></marker>
+  <marker id="m6d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker></defs>
+  <rect x="10" y="50" width="130" height="60" rx="10" class="f-s2 s-rule"/><text x="75" y="76" text-anchor="middle" class="sm">Obtain data from</text><text x="75" y="94" text-anchor="middle" class="sm">lab reactors</text>
+  <rect x="175" y="50" width="130" height="60" rx="10" class="f-acs s-ac"/><text x="240" y="76" text-anchor="middle" class="sm">Synthesise rate</text><text x="240" y="94" text-anchor="middle" class="sm">law from data</text>
+  <rect x="340" y="50" width="130" height="60" rx="10" class="f-acs s-ac"/><text x="405" y="76" text-anchor="middle" class="sm">Mechanism and</text><text x="405" y="94" text-anchor="middle" class="sm">rate-limiting step</text>
+  <rect x="505" y="50" width="130" height="60" rx="10" class="f-acs s-ac"/><text x="570" y="76" text-anchor="middle" class="sm">Estimate rate-law</text><text x="570" y="94" text-anchor="middle" class="sm">parameters</text>
+  <rect x="670" y="50" width="120" height="60" rx="10" class="f-bks s-bk"/><text x="730" y="76" text-anchor="middle" class="sm">Reactor design</text><text x="730" y="94" text-anchor="middle" class="sm">PBR, CSTR</text>
+  <line x1="142" y1="80" x2="171" y2="80" class="ac" marker-end="url(#m6)"/>
+  <line x1="307" y1="80" x2="336" y2="80" class="ac" marker-end="url(#m6)"/>
+  <line x1="472" y1="80" x2="501" y2="80" class="ac" marker-end="url(#m6)"/>
+  <line x1="637" y1="80" x2="666" y2="80" class="ac" marker-end="url(#m6)"/>
+  <path d="M405,112 C405,150 75,150 75,114" class="ln dash" marker-end="url(#m6d)"/>
+  <path d="M570,48 C570,12 75,12 75,46" class="ln dash" marker-end="url(#m6d)"/>
+  <text x="240" y="160" text-anchor="middle" class="t3 sm">feedback: new data to discriminate mechanisms</text>
+  <text x="320" y="24" text-anchor="middle" class="t3 sm">feedback: data where parameters are poorly defined</text>
+</svg>
+<figcaption><b>Figure 1.</b> This chapter assumes steps 1, 2, 6 and 7 (the transport steps) are fast, and concentrates on steps 3, 4 and 5.</figcaption>
+</figure>
+<div class="box class"><b>Class notes, the same algorithm (p. 37)</b>
+<figure class="tight" style="margin:.6rem 0 0">
+<svg class="dg" viewBox="0 0 760 160" role="img" aria-labelledby="tCN">
+  <title id="tCN">Class-notes loop: perform experiments, assume a rate law, deduce parameters, go back if the fit fails, then design the reactor</title>
+  <defs><marker id="mCN" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-cl"/></marker></defs>
+  <rect x="10" y="30" width="150" height="56" rx="10" class="f-surf s-cl"/>
+  <text x="85" y="54" text-anchor="middle" class="bold sm">1 · Perform</text><text x="85" y="72" text-anchor="middle" class="sm">experiments</text>
+  <rect x="200" y="30" width="170" height="56" rx="10" class="f-surf s-cl"/>
+  <text x="285" y="54" text-anchor="middle" class="bold sm">2 · Assume a rate law</text><text x="285" y="72" text-anchor="middle" class="sm">(rate-limiting step)</text>
+  <rect x="410" y="30" width="150" height="56" rx="10" class="f-surf s-cl"/>
+  <text x="485" y="54" text-anchor="middle" class="bold sm">3 · Deduce</text><text x="485" y="72" text-anchor="middle" class="sm">parameters</text>
+  <rect x="600" y="30" width="150" height="56" rx="10" class="f-cls s-cl"/>
+  <text x="675" y="54" text-anchor="middle" class="bold sm">4 · Reactor</text><text x="675" y="72" text-anchor="middle" class="sm">design</text>
+  <line x1="162" y1="58" x2="196" y2="58" class="cl" marker-end="url(#mCN)"/>
+  <line x1="372" y1="58" x2="406" y2="58" class="cl" marker-end="url(#mCN)"/>
+  <line x1="562" y1="58" x2="596" y2="58" class="cl" marker-end="url(#mCN)"/>
+  <text x="580" y="48" text-anchor="middle" class="tc sm">fits</text>
+  <path d="M485,88 C485,136 85,136 85,90" class="cl dash" marker-end="url(#mCN)"/>
+  <text x="285" y="152" text-anchor="middle" class="tc sm">fit not correct: go back to step 1</text>
+</svg>
+</figure></div>
+</section>
+
+<!-- ============================================================ 2 -->
+<section class="s" id="transport">
+<h2><span class="num">2</span>Steps 1 and 2 in brief (HSF 10.2.1, 10.2.2)</h2>
+<div class="grid2">
+<div class="card"><h4>External diffusion (step 1)</h4>
+$$\text{Rate} = k_C\,(C_{Ab} - C_{As}),\qquad k_C = \frac{D_{AB}}{\delta}$$
+<p>At low velocity the boundary layer \(\delta\) is thick and transport is slow. As \(U\) rises or \(D_p\) falls, \(k_C\) rises until a plateau where \(C_{Ab}\approx C_{As}\) and another step controls.</p></div>
+<div class="card"><h4>Internal diffusion (step 2)</h4>
+$$\text{Rate} = k_r\,C_{As},\qquad k_r \propto \frac{1}{D_p}\ \text{(large pellets)}$$
+<p>In big pellets reactant is used up near the outside and the centre is wasted. Internal diffusion is <b>not</b> affected by the external flow. Small pellets: the surface steps control. Full treatment: <a href="m3-pore-diffusion.html">Module 3</a>.</p></div>
+</div>
+<figure>
+<svg class="dg" viewBox="0 0 760 220" role="img" aria-labelledby="t108">
+  <title id="t108">Schematic effect of velocity and particle size on overall rate</title>
+  <g transform="translate(20,10)">
+    <line x1="40" y1="170" x2="340" y2="170" class="ln"/><line x1="40" y1="170" x2="40" y2="20" class="ln"/>
+    <path d="M42,160 C110,140 150,60 220,48 L335,46" class="ac"/>
+    <line x1="195" y1="30" x2="195" y2="170" class="ln2 dash"/>
+    <m x="190" y="192" w="220" c="t2 sm">\text{increasing } U/D_p</m>
+    <text x="14" y="100" class="t2 sm" transform="rotate(-90 14 100)">overall rate</text>
+    <text x="110" y="120" text-anchor="middle" class="tw sm">external diffusion</text><text x="110" y="136" text-anchor="middle" class="tw sm">is the slowest step</text>
+    <text x="268" y="76" text-anchor="middle" class="ta sm">mass transfer no</text><text x="268" y="92" text-anchor="middle" class="ta sm">longer limiting</text>
+    <text x="190" y="14" text-anchor="middle" class="bold sm">(a) Fogler Fig. 10-8</text>
+  </g>
+  <g transform="translate(400,10)">
+    <line x1="40" y1="170" x2="340" y2="170" class="ln"/><line x1="40" y1="170" x2="40" y2="20" class="ln"/>
+    <path d="M44,46 L120,48 C160,52 190,90 230,120 C270,145 300,155 335,160" class="ac"/>
+    <line x1="150" y1="30" x2="150" y2="170" class="ln2 dash"/>
+    <m x="190" y="192" w="220" c="t2 sm">\text{particle diameter } D_p</m>
+    <g transform="rotate(-90 14 100)"><m x="14" y="100" w="60" c="t2 sm">k_r</m></g>
+    <text x="95" y="80" text-anchor="middle" class="ta sm">surface reaction</text><text x="95" y="96" text-anchor="middle" class="ta sm">is the slow step</text>
+    <text x="260" y="96" text-anchor="middle" class="tw sm">internal diffusion slowest,</text><m x="260" y="110" w="120" c="tw sm">k_r \propto 1/D_p</m>
+    <text x="190" y="14" text-anchor="middle" class="bold sm">(b) Fogler Fig. 10-9(b)</text>
+  </g>
+</svg>
+<figcaption><b>Figure 2.</b> Schematic shapes only. Test for external limitation: change the flow rate at constant space time. Test for internal limitation: change the particle size.</figcaption>
+</figure>
+</section>
+
+<!-- ============================================================ 3 -->
+<section class="s" id="iso">
+<h2><span class="num">3</span>Adsorption isotherms from a site balance (HSF 10.2.3)</h2>
+<h3>Notation</h3>
+<div class="tw"><table>
+<thead><tr><th>Symbol</th><th>Meaning</th><th>Units</th></tr></thead>
+<tbody>
+<tr><td>\(S\)</td><td>a vacant active site</td><td>—</td></tr>
+<tr><td>\(A\cdot S\)</td><td>one unit of A chemisorbed on a site</td><td>—</td></tr>
+<tr><td>\(C_t\)</td><td>total concentration of active sites (constant unless the catalyst decays); order \(10^{22}\) sites/g-cat</td><td>mol/g-cat</td></tr>
+<tr><td>\(C_v\)</td><td>concentration of vacant sites</td><td>mol/g-cat</td></tr>
+<tr><td>\(C_{i\cdot S}\)</td><td>concentration of sites occupied by species \(i\)</td><td>mol/g-cat</td></tr>
+<tr><td>\(P_i\)</td><td>partial pressure of \(i\) in the gas (by convention, instead of \(C_i\); \(P_i = C_iRT\))</td><td>atm or kPa</td></tr>
+</tbody></table></div>
+<div class="eq"><span class="tag">10-1, site balance</span>$$C_t = C_v + C_{A\cdot S} + C_{B\cdot S}$$</div>
+
+<h3>Molecular (non-dissociative) adsorption: \(\mathrm{CO + S \rightleftharpoons CO\cdot S}\)</h3>
+<p>Treat adsorption as an elementary step. Rate of attachment \(\propto\) collisions with vacant sites \(\propto P_{CO}C_v\); rate of detachment \(\propto C_{CO\cdot S}\):</p>
+<div class="eq"><span class="tag">10-3, 10-4</span>$$r_{AD} = k_A P_{CO}C_v - k_{-A}C_{CO\cdot S} = k_A\left(P_{CO}C_v - \frac{C_{CO\cdot S}}{K_A}\right),\qquad K_A = \frac{k_A}{k_{-A}}$$</div>
+<p>Units: \(r_{AD}\) \(\mathrm{mol/(\text{g-cat}\cdot s)}\), \(k_A\) \(\mathrm{1/(atm\cdot s)}\), \(K_A\) 1/atm. At equilibrium \(r_{AD}=0\):</p>
+<div class="eq"><span class="tag">10-6, 10-5, 10-7</span>$$C_{CO\cdot S} = K_A P_{CO}C_v,\qquad C_t = C_v + C_{CO\cdot S}\qquad\Rightarrow\qquad \boxed{C_{CO\cdot S} = \frac{K_A P_{CO}\,C_t}{1 + K_A P_{CO}}}$$</div>
+<div class="eq"><span class="tag">10-8, linear test</span>$$\frac{P_{CO}}{C_{CO\cdot S}} = \frac{1}{K_A C_t} + \frac{P_{CO}}{C_t}\qquad\text{plot } P_{CO}/C_{CO\cdot S} \text{ vs } P_{CO}:\ \text{slope } 1/C_t$$</div>
+<p><b>Temperature:</b> \(k_A\) for molecular adsorption is almost independent of \(T\); \(k_{-A}\) rises exponentially, so \(K_A\) <em>falls</em> exponentially with increasing temperature.</p>
+
+<h3>Dissociative adsorption: \(\mathrm{CO + 2S \rightleftharpoons C\cdot S + O\cdot S}\)</h3>
+<p>A molecule that dissociates needs two <b>adjacent</b> vacant sites. The probability of a vacant pair is \(\propto C_v^2\); desorption needs two adjacent occupied sites:</p>
+<div class="eq"><span class="tag">10-9</span>$$r_{AD} = k_A P_{CO}C_v^2 - k_{-A}C_{C\cdot S}C_{O\cdot S} = k_A\left(P_{CO}C_v^2 - \frac{C_{C\cdot S}\,C_{O\cdot S}}{K_A}\right)$$</div>
+<p>At equilibrium with \(C_{C\cdot S} = C_{O\cdot S}\):</p>
+<div class="eq"><span class="tag">10-10, 10-11</span>$$C_{O\cdot S} = (K_A P_{CO})^{1/2}C_v,\qquad C_t = C_v + C_{O\cdot S} + C_{C\cdot S} = C_v\left[1 + 2(K_A P_{CO})^{1/2}\right]\ \Rightarrow\ \boxed{C_{O\cdot S} = \frac{(K_A P_{CO})^{1/2}\,C_t}{1 + 2(K_A P_{CO})^{1/2}}}$$</div>
+<div class="eq"><span class="tag">10-12, linear test</span>$$\frac{P_{CO}^{1/2}}{C_{O\cdot S}} = \frac{1}{C_t K_A^{1/2}} + \frac{2\,P_{CO}^{1/2}}{C_t}\qquad\text{plot } P_{CO}^{1/2}/C_{O\cdot S} \text{ vs } P_{CO}^{1/2}:\ \text{slope } 2/C_t$$</div>
+<div class="box key"><b>Fingerprint</b><p>A square root of a partial pressure in a rate law means dissociative adsorption. Both \(k_A\) and \(k_{-A}\) increase exponentially with \(T\) here, but \(K_A\) still decreases.</p></div>
+
+<div class="viz">
+  <p class="vh">Live: molecular or dissociative? Test with the linear plots</p>
+  <p class="vs">The data in Practice Problem 5 (CO uptake \(C\), mmol/g, vs \(P\), atm). Both straight-line fits have a high \(R^2\); the residual pattern decides.</p>
+  <div class="controls"><div class="seg" id="lin-mode"><button class="on" data-v="mol">Molecular test: \(P/C\) vs \(P\)</button><button data-v="dis">Dissociative test: \(\sqrt{P}/C\) vs \(\sqrt{P}\)</button></div></div>
+  <div class="grid2" style="margin:0">
+    <div id="c-lin" class="plot short"></div>
+    <div id="c-linres" class="plot short"></div>
+  </div>
+  <div class="readout"><span>\(R^2\) = <output id="lin-r2"></output></span><span>slope = <output id="lin-s"></output></span><span>intercept = <output id="lin-i"></output></span><span id="lin-res"></span></div>
+</div>
+
+<h3>Two adsorbates on the same sites</h3>
+<div class="eq"><span class="tag">10-13</span>$$C_{A\cdot S} = \frac{K_A P_A\,C_t}{1 + K_A P_A + K_B P_B}$$</div>
+<p><b>Key assumption:</b> a uniform surface (every site equally attractive). Non-uniform surfaces lead to Freundlich-type isotherms.</p>
+<div class="box class"><b>Tutorial 2 Q1: dissociative \(\mathrm{N_2}\) and \(\mathrm{H_2}\) on Fe</b>
+<p>\(C_{N\cdot S} = C_v\sqrt{K_{N_2}P_{N_2}}\), \(C_{H\cdot S} = C_v\sqrt{K_{H_2}P_{H_2}}\). Counting each dissociated molecule as blocking a pair of sites: \(C_t = C_v + 2C_{N\cdot S} + 2C_{H\cdot S}\), giving \(C_{N\cdot S} = \dfrac{C_t\sqrt{K_{N_2}P_{N_2}}}{1 + 2\sqrt{K_{N_2}P_{N_2}} + 2\sqrt{K_{H_2}P_{H_2}}}\). Full solution on the <a href="tutorials.html#t2q1">Tutorials page</a>.</p></div>
+</section>
+
+<!-- ============================================================ 4 -->
+<section class="s" id="sr">
+<h2><span class="num">4</span>Surface reaction (HSF 10.2.4)</h2>
+<p>Once adsorbed, A can react in three kinds of ways. Each step is written as an <b>elementary</b> reaction, with surface concentrations for adsorbed species and partial pressures for gas-phase species.</p>
+<figure>
+<svg class="dg" viewBox="0 0 820 400" role="img" aria-labelledby="tSR">
+  <title id="tSR">Surface reaction mechanisms: single site, dual site variants and Eley-Rideal</title>
+  <defs><marker id="mS" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker></defs>
+  <!-- helper: surface -->
+  <g id="row1">
+    <text x="10" y="22" class="bold">Single site</text><m x="110" y="18" w="300" a="start" c="t3 sm">A\cdot S \rightleftharpoons B\cdot S\quad\text{(n-pentene to i-pentene)}</m>
+    <rect x="20" y="70" width="140" height="10" class="f-s3"/><path d="M20,80 l10,10 M40,80 l10,10 M60,80 l10,10 M80,80 l10,10 M100,80 l10,10 M120,80 l10,10 M140,80 l10,10" class="ln2"/>
+    <circle cx="90" cy="56" r="14" class="f-bks s-bk"/><text x="90" y="61" text-anchor="middle" class="tb bold">A</text>
+    <line x1="180" y1="60" x2="230" y2="60" class="ln" marker-end="url(#mS)"/>
+    <rect x="250" y="70" width="140" height="10" class="f-s3"/><path d="M250,80 l10,10 M270,80 l10,10 M290,80 l10,10 M310,80 l10,10 M330,80 l10,10 M350,80 l10,10 M370,80 l10,10" class="ln2"/>
+    <circle cx="320" cy="56" r="14" class="f-wrs s-wr"/><text x="320" y="61" text-anchor="middle" class="tw bold">B</text>
+  </g>
+  <g transform="translate(420,0)">
+    <text x="10" y="22" class="bold">Dual site, type 1</text><m x="140" y="18" w="240" a="start" c="t3 sm">A\cdot S + S \rightleftharpoons B\cdot S + S</m>
+    <rect x="20" y="70" width="140" height="10" class="f-s3"/><path d="M20,80 l10,10 M40,80 l10,10 M60,80 l10,10 M80,80 l10,10 M100,80 l10,10 M120,80 l10,10 M140,80 l10,10" class="ln2"/>
+    <circle cx="70" cy="56" r="14" class="f-bks s-bk"/><text x="70" y="61" text-anchor="middle" class="tb bold">A</text>
+    <rect x="100" y="60" width="28" height="10" rx="2" class="f-surf s-ink"/><text x="114" y="50" text-anchor="middle" class="t3 sm">vacant</text>
+    <line x1="180" y1="60" x2="230" y2="60" class="ln" marker-end="url(#mS)"/>
+    <rect x="250" y="70" width="140" height="10" class="f-s3"/><path d="M250,80 l10,10 M270,80 l10,10 M290,80 l10,10 M310,80 l10,10 M330,80 l10,10 M350,80 l10,10 M370,80 l10,10" class="ln2"/>
+    <rect x="290" y="60" width="28" height="10" rx="2" class="f-surf s-ink"/>
+    <circle cx="344" cy="56" r="14" class="f-wrs s-wr"/><text x="344" y="61" text-anchor="middle" class="tw bold">B</text>
+    <m x="200" y="106" w="360" c="t3 sm">\text{e.g. }\mathrm{C_4H_9OH\cdot S + S \to C_4H_8\cdot S + H_2O\cdot S}</m>
+  </g>
+  <g transform="translate(0,130)">
+    <text x="10" y="22" class="bold">Dual site, type 2</text><m x="140" y="18" w="320" a="start" c="t3 sm">A\cdot S + B\cdot S \rightleftharpoons C\cdot S + D\cdot S\quad(\mathrm{CO\cdot S + O\cdot S}\ \text{on Pt})</m>
+    <rect x="20" y="70" width="140" height="10" class="f-s3"/><path d="M20,80 l10,10 M40,80 l10,10 M60,80 l10,10 M80,80 l10,10 M100,80 l10,10 M120,80 l10,10 M140,80 l10,10" class="ln2"/>
+    <circle cx="70" cy="56" r="14" class="f-bks s-bk"/><text x="70" y="61" text-anchor="middle" class="tb bold">A</text>
+    <circle cx="110" cy="56" r="14" class="f-cls s-cl"/><text x="110" y="61" text-anchor="middle" class="tc bold">B</text>
+    <line x1="180" y1="60" x2="230" y2="60" class="ln" marker-end="url(#mS)"/>
+    <rect x="250" y="70" width="140" height="10" class="f-s3"/><path d="M250,80 l10,10 M270,80 l10,10 M290,80 l10,10 M310,80 l10,10 M330,80 l10,10 M350,80 l10,10 M370,80 l10,10" class="ln2"/>
+    <circle cx="300" cy="56" r="14" class="f-wrs s-wr"/><text x="300" y="61" text-anchor="middle" class="tw bold">C</text>
+    <circle cx="340" cy="56" r="14" class="f-acs s-ac"/><text x="340" y="61" text-anchor="middle" class="ta bold">D</text>
+  </g>
+  <g transform="translate(420,130)">
+    <text x="10" y="22" class="bold">Dual site, type 3</text><m x="140" y="18" w="240" a="start" c="t3 sm">A\cdot S + B\cdot S' \rightleftharpoons C\cdot S' + D\cdot S</m>
+    <rect x="20" y="70" width="70" height="10" class="f-s3"/><rect x="90" y="70" width="70" height="10" class="f-bks"/>
+    <text x="55" y="104" text-anchor="middle" class="t3 sm">S (Pt)</text><m x="125" y="104" w="70" c="t3 sm">S'\ \text{(Fe)}</m>
+    <circle cx="60" cy="56" r="14" class="f-bks s-bk"/><text x="60" y="61" text-anchor="middle" class="tb bold">A</text>
+    <circle cx="120" cy="56" r="14" class="f-cls s-cl"/><text x="120" y="61" text-anchor="middle" class="tc bold">B</text>
+    <line x1="180" y1="60" x2="230" y2="60" class="ln" marker-end="url(#mS)"/>
+    <rect x="250" y="70" width="70" height="10" class="f-s3"/><rect x="320" y="70" width="70" height="10" class="f-bks"/>
+    <circle cx="290" cy="56" r="14" class="f-acs s-ac"/><text x="290" y="61" text-anchor="middle" class="ta bold">D</text>
+    <circle cx="350" cy="56" r="14" class="f-wrs s-wr"/><text x="350" y="61" text-anchor="middle" class="tw bold">C</text>
+  </g>
+  <g transform="translate(200,260)">
+    <text x="10" y="22" class="bold">Eley–Rideal</text><m x="110" y="18" w="320" a="start" c="t3 sm">A\cdot S + B(g) \rightleftharpoons C\cdot S\quad\text{(propylene + benzene)}</m>
+    <rect x="20" y="100" width="140" height="10" class="f-s3"/><path d="M20,110 l10,10 M40,110 l10,10 M60,110 l10,10 M80,110 l10,10 M100,110 l10,10 M120,110 l10,10 M140,110 l10,10" class="ln2"/>
+    <circle cx="80" cy="86" r="14" class="f-bks s-bk"/><text x="80" y="91" text-anchor="middle" class="tb bold">A</text>
+    <circle cx="120" cy="40" r="14" class="f-cls s-cl"/><text x="120" y="45" text-anchor="middle" class="tc bold">B</text>
+    <line x1="112" y1="54" x2="92" y2="72" class="cl" marker-end="url(#mS)"/>
+    <text x="150" y="44" class="t3 sm">from gas</text>
+    <line x1="180" y1="90" x2="230" y2="90" class="ln" marker-end="url(#mS)"/>
+    <rect x="250" y="100" width="140" height="10" class="f-s3"/><path d="M250,110 l10,10 M270,110 l10,10 M290,110 l10,10 M310,110 l10,10 M330,110 l10,10 M350,110 l10,10 M370,110 l10,10" class="ln2"/>
+    <circle cx="320" cy="84" r="16" class="f-wrs s-wr"/><text x="320" y="89" text-anchor="middle" class="tw bold">C</text>
+  </g>
+</svg>
+<figcaption><b>Figure 3.</b> Single- and dual-site mechanisms (both reactants adsorbed) are called <b>Langmuir–Hinshelwood</b> kinetics. <b>Eley–Rideal</b>: an adsorbed molecule reacts with a molecule straight from the gas.</figcaption>
+</figure>
+<div class="tw"><table>
+<thead><tr><th>Mechanism</th><th>Elementary rate law</th><th>\(K_S\) units</th></tr></thead>
+<tbody>
+<tr><td>Single site \(A\cdot S \rightleftharpoons B\cdot S\)</td><td>\(r_S = k_S\left(C_{A\cdot S} - \dfrac{C_{B\cdot S}}{K_S}\right)\) <span class="small">(10-15)</span></td><td>dimensionless; \(k_S\) in 1/s</td></tr>
+<tr><td>Dual site \(A\cdot S + S \rightleftharpoons B\cdot S + S\)</td><td>\(r_S = k_S\left(C_{A\cdot S}C_v - \dfrac{C_{B\cdot S}C_v}{K_S}\right)\) <span class="small">(10-16)</span></td><td>dimensionless; \(k_S\) in \(\mathrm{\text{g-cat}/(mol\cdot s)}\)</td></tr>
+<tr><td>Dual site \(A\cdot S + B\cdot S \rightleftharpoons C\cdot S + D\cdot S\)</td><td>\(r_S = k_S\left(C_{A\cdot S}C_{B\cdot S} - \dfrac{C_{C\cdot S}C_{D\cdot S}}{K_S}\right)\) <span class="small">(10-17)</span></td><td>dimensionless</td></tr>
+<tr><td>Dual site, two site types \(A\cdot S + B\cdot S' \rightleftharpoons C\cdot S' + D\cdot S\)</td><td>\(r_S = k_S\left(C_{A\cdot S}C_{B\cdot S'} - \dfrac{C_{C\cdot S'}C_{D\cdot S}}{K_S}\right)\) <span class="small">(10-18)</span></td><td>dimensionless</td></tr>
+<tr><td>Eley–Rideal \(A\cdot S + B(g) \rightleftharpoons C\cdot S\)</td><td>\(r_S = k_S\left(C_{A\cdot S}P_B - \dfrac{C_{C\cdot S}}{K_S}\right)\) <span class="small">(10-19)</span></td><td>1/atm; \(k_S\) in \(\mathrm{1/(atm\cdot s)}\)</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- ============================================================ 5 -->
+<section class="s" id="des">
+<h2><span class="num">5</span>Desorption (HSF 10.2.5)</h2>
+<p>Desorption of C, \(C\cdot S \rightleftharpoons C + S\), is simply adsorption of C read right to left:</p>
+<div class="eq"><span class="tag">10-20, 10-21</span>$$r_{DC} = k_D\left(C_{C\cdot S} - \frac{P_C C_v}{K_{DC}}\right),\qquad K_{DC} = \frac{1}{K_C}\ \ \Rightarrow\ \ r_{DC} = k_D\left(C_{C\cdot S} - K_C P_C C_v\right),\qquad r_{DC} = -r_{ADC}$$</div>
+<p>\(K_{DC}\) has units of atm; \(k_D\) of 1/s. The adsorption equilibrium constant of a species is the reciprocal of its desorption equilibrium constant.</p>
+</section>
+
+<!-- ============================================================ 6 -->
+<section class="s" id="rls">
+<h2><span class="num">6</span>The rate-limiting step (HSF 10.2.6)</h2>
+<p>At steady state the three steps in series run at the same rate (there is no accumulation on the surface):</p>
+<div class="eq"><span class="tag">10-30</span>$$-r'_A = r_{AD} = r_S = r_D$$</div>
+<p>Usually one step is much slower. Think of an electric circuit: current \(I\) = rate, voltage \(E\) = driving force, resistances in series.</p>
+<figure>
+<svg class="dg" viewBox="0 0 640 175" role="img" aria-labelledby="tEl">
+  <title id="tEl">Electrical analogue: adsorption, surface reaction and desorption resistances in series</title>
+  <path d="M60,110 L60,40 L140,40" class="ln"/>
+  <path d="M140,40 l8,-10 l12,20 l12,-20 l12,20 l12,-20 l12,20 l8,-10" class="ac"/>
+  <path d="M216,40 L260,40" class="ln"/>
+  <path d="M260,40 l8,-10 l12,20 l12,-20 l12,20 l12,-20 l12,20 l8,-10" class="wr" style="stroke-width:3"/>
+  <path d="M336,40 L380,40" class="ln"/>
+  <path d="M380,40 l8,-10 l12,20 l12,-20 l12,20 l12,-20 l12,20 l8,-10" class="ac"/>
+  <path d="M456,40 L560,40 L560,110" class="ln"/>
+  <path d="M60,110 L270,110" class="ln"/><line x1="270" y1="94" x2="270" y2="126" class="ln" style="stroke-width:3"/><line x1="284" y1="102" x2="284" y2="118" class="ln"/><path d="M284,110 L560,110" class="ln"/>
+  <m x="178" y="70" w="120" c="ta">R_{AD} = 0.1\ \Omega</m>
+  <m x="298" y="70" w="120" c="tw">\mathbf{R_S = 100\ \Omega}</m>
+  <m x="418" y="70" w="120" c="ta">R_D = 0.1\ \Omega</m>
+  <m x="277" y="146" w="30">E</m>
+  <m x="450" y="148" w="220">I = \dfrac{E}{R_{AD}+R_S+R_D}</m>
+</svg>
+<figcaption><b>Figure 4</b> (Fogler Fig. 10-12, class notes p. 58). We only observe the total resistance. Lowering the largest resistance is the only way to raise the current (the rate) noticeably.</figcaption>
+</figure>
+<div class="box key"><b>The Langmuir–Hinshelwood (Hougen–Watson) algorithm</b>
+<ol class="steps">
+<li>Postulate a mechanism: molecular or dissociative adsorption, single or dual site, Eley–Rideal. Write each step as reversible and elementary.</li>
+<li>Assume one step is rate-limiting. Its rate is the overall rate.</li>
+<li>For every other step, \(r/k \approx 0\) (its rate constant is huge), so it is at quasi-equilibrium. Use these to express every \(C_{i\cdot S}\) in terms of partial pressures and \(C_v\).</li>
+<li>Write the site balance and solve for \(C_v\).</li>
+<li>Substitute into the rate of the limiting step. Lump constants into \(k\). Replace ratios of constants by \(K_P\).</li>
+<li>Compare with data (initial-rate curves, runs with products added). If it disagrees, pick another limiting step; if all fail, another mechanism.</li>
+</ol></div>
+<div class="box book"><b>Why \(r/k\approx 0\) for the fast steps</b>
+<p>All three rates are equal. If \(k_S\) and \(k_D\) are very large, then \(r_S/k_S\) and \(r_D/k_D\) are tiny while \(r_{AD}/k_A\) is not. Setting \(r_S/k_S = 0\) gives the equilibrium relation of the surface step. (Strictly, one should compare \(k_AP_C\) with \(k_S\) and \(k_D\) so that units match; the result is the same.)</p></div>
+<div class="grid2">
+<div class="card"><h4>Industrial adsorption-limited example</h4>
+<p>Ammonia synthesis on iron: \(\mathrm{H_2 + 2S \rightleftharpoons 2H\cdot S}\) (rapid); \(\mathrm{N_2 + 2S \rightleftharpoons 2N\cdot S}\) (<b>rate-limiting</b>: dissociative adsorption of \(\mathrm{N_2}\)); successive hydrogenations \(\mathrm{N\cdot S \to NH\cdot S \to H_2N\cdot S \to NH_3\cdot S}\) and desorption of \(\mathrm{NH_3}\) (rapid).</p></div>
+<div class="card"><h4>Industrial surface-reaction-limited example</h4>
+<p>\(\mathrm{CO + NO \rightarrow CO_2 + \tfrac12 N_2}\) over copper: adsorption of CO and NO rapid; \(\mathrm{NO\cdot S + CO\cdot S \rightleftharpoons CO_2 + N\cdot S + S}\) <b>rate-limiting</b>; \(\mathrm{N\cdot S + N\cdot S \rightleftharpoons N_2\cdot S + S}\) and \(\mathrm{N_2}\) desorption rapid. \(\mathrm{CO_2}\) and \(\mathrm{N_2}\) are weakly adsorbed.</p></div>
+</div>
+<div class="box class"><b>General form (class notes p. 59; Levenspiel eq. 18.1)</b>
+$$\text{rate} = \frac{(\text{kinetic term})\times(\text{driving force})}{(\text{resistance term})^n},\qquad\text{e.g.}\quad -r_A = \frac{k\,(p_A - p_B/K)}{1 + K_Ap_A + K_Bp_B}$$
+<p>The resistance term (denominator) lists the adsorbed species; the power \(n\) is the number of sites in the limiting step.</p></div>
+</section>
+
+<!-- ============================================================ 7 -->
+<section class="s" id="cumene">
+<h2><span class="num">7</span>Synthesising a rate law: cumene decomposition (HSF 10.3)</h2>
+<p>\(\mathrm{C_6H_5CH(CH_3)_2 \rightleftharpoons C_6H_6 + C_3H_6}\) on Pt, written \(C \rightleftharpoons B + P\) (cumene, benzene, propylene). Mechanism (Table 10-3):</p>
+<div class="eq"><span class="tag">10-22 to 10-24</span>$$\begin{aligned}
+&\text{Adsorption:} && C + S \rightleftharpoons C\cdot S && r_{AD} = k_A\left(P_CC_v - \frac{C_{C\cdot S}}{K_C}\right)\\
+&\text{Surface reaction:} && C\cdot S \rightleftharpoons B\cdot S + P(g) && r_S = k_S\left(C_{C\cdot S} - \frac{P_P\,C_{B\cdot S}}{K_S}\right)\\
+&\text{Desorption:} && B\cdot S \rightleftharpoons B + S && r_D = k_D\left(C_{B\cdot S} - K_BP_BC_v\right)
+\end{aligned}$$</div>
+<p>Propylene is not adsorbed (\(C_{P\cdot S}=0\)). Forward: single site; reverse: Eley–Rideal (gas propylene meets adsorbed benzene). Units: \(k_A\) \(\mathrm{kPa^{-1}s^{-1}}\), \(K_C\) \(\mathrm{kPa^{-1}}\), \(k_S\) \(\mathrm{s^{-1}}\), \(K_S\) kPa, \(k_D\) \(\mathrm{s^{-1}}\).</p>
+
+<h3 id="cum-ads">Case I · Is adsorption of cumene rate-limiting? (\(k_A \ll k_S, k_D\))</h3>
+<ol class="steps">
+<li>Rate: \(-r'_C = r_{AD} = k_A\left(P_CC_v - C_{C\cdot S}/K_C\right)\). Need \(C_{C\cdot S}\) and \(C_v\).</li>
+<li>Surface reaction at equilibrium, \(r_S/k_S\approx 0\): \(C_{C\cdot S} = \dfrac{P_P\,C_{B\cdot S}}{K_S}\).</li>
+<li>Desorption at equilibrium, \(r_D/k_D\approx 0\): \(C_{B\cdot S} = K_BP_BC_v\). So \(C_{C\cdot S} = \dfrac{K_BP_BP_P}{K_S}C_v\).</li>
+<li>Substitute: $$r_{AD} = k_A\left(P_C - \frac{K_BP_BP_P}{K_SK_C}\right)C_v = k_A\left(P_C - \frac{P_BP_P}{K_P}\right)C_v,\qquad K_P = \frac{K_SK_C}{K_B}$$</li>
+<li>Site balance: \(C_t = C_v + C_{C\cdot S} + C_{B\cdot S} = C_v\left(1 + \dfrac{K_BP_BP_P}{K_S} + K_BP_B\right)\).</li>
+<li>Result: $$\boxed{-r'_C = \frac{C_tk_A\,(P_C - P_PP_B/K_P)}{1 + K_BP_PP_B/K_S + K_BP_B}}\quad(10\text{-}42)\qquad\text{initial: } -r'_{C0} = C_tk_AP_{C0} = kP_{C0}\ \ (10\text{-}43)$$</li>
+</ol>
+<p>Initial rate (no products) would be <b>linear</b> in \(P_{C0}\) at all pressures.</p>
+<div class="box book"><b>Why \(K_P\) appears (10-38, 10-39)</b>
+<p>At equilibrium \(r_{AD}=0\) gives \(P_{Ce} = P_{Be}P_{Pe}/(K_SK_C/K_B)\). Thermodynamics says \(K_P = P_{Be}P_{Pe}/P_{Ce}\) for \(C\rightleftharpoons B+P\). So \(K_P = K_CK_S/K_B\), and it can be found from \(\Delta G^\circ = -RT\ln K\). Every limiting case contains the same driving force \(P_C - P_BP_P/K_P\), which vanishes at equilibrium, as it must.</p></div>
+
+<h3 id="cum-sr">Case II · Is the surface reaction rate-limiting? (\(k_S \ll k_A, k_D\))</h3>
+<ol class="steps">
+<li>Rate: \(-r'_C = r_S = k_S\left(C_{C\cdot S} - P_PC_{B\cdot S}/K_S\right)\).</li>
+<li>Adsorption at equilibrium: \(C_{C\cdot S} = K_CP_CC_v\). Desorption at equilibrium: \(C_{B\cdot S} = K_BP_BC_v\).</li>
+<li>Substitute: $$r_S = k_S\left(K_CP_C - \frac{K_BP_BP_P}{K_S}\right)C_v = k_SK_C\left(P_C - \frac{P_BP_P}{K_P}\right)C_v\quad(10\text{-}26a)$$</li>
+<li>Site balance: \(C_t = C_v\,(1 + K_BP_B + K_CP_C)\).</li>
+<li>Result: $$\boxed{-r'_C = \frac{k\,(P_C - P_PP_B/K_P)}{1 + K_BP_B + K_CP_C}},\quad k = k_SC_tK_C\quad(10\text{-}44)\qquad -r'_{C0} = \frac{kP_{C0}}{1 + K_CP_{C0}}\quad(10\text{-}45)$$</li>
+</ol>
+<p>Low \(P_{C0}\) (\(1\gg K_CP_{C0}\)): \(-r'_{C0}\approx kP_{C0}\), linear. High \(P_{C0}\) (\(K_CP_{C0}\gg 1\)): \(-r'_{C0}\approx k/K_C\), independent of pressure — the surface is saturated.</p>
+
+<h3 id="cum-des">Case III · Is desorption of benzene rate-limiting? (\(k_D \ll k_A, k_S\))</h3>
+<ol class="steps">
+<li>Rate: \(-r'_C = r_D = k_D\left(C_{B\cdot S} - K_BP_BC_v\right)\).</li>
+<li>Surface reaction at equilibrium: \(C_{B\cdot S} = \dfrac{K_SC_{C\cdot S}}{P_P}\). Adsorption at equilibrium: \(C_{C\cdot S} = K_CP_CC_v\). So \(C_{B\cdot S} = \dfrac{K_CK_SP_C}{P_P}C_v\) (10-47).</li>
+<li>Substitute: $$r_D = k_DK_CK_S\left(\frac{P_C}{P_P} - \frac{P_B}{K_P}\right)C_v\quad(10\text{-}48)$$</li>
+<li>Site balance: \(C_t = C_v\left(1 + K_CK_SP_C/P_P + K_CP_C\right)\) (10-49).</li>
+<li>Multiply numerator and denominator by \(P_P\): $$\boxed{-r'_C = \frac{k_DC_tK_SK_C\,(P_C - P_BP_P/K_P)}{P_P + P_CK_CK_S + K_CP_PP_C}}\quad(10\text{-}50)\qquad -r'_{C0} = k_DC_t$$</li>
+</ol>
+<p>Initial rate would be <b>independent</b> of \(P_{C0}\): the surface is always full of benzene waiting to leave.</p>
+
+<h3 id="cum-sum">Which one fits? (HSF 10.3.4)</h3>
+<div class="viz">
+  <p class="vh">Live: initial rate vs initial cumene pressure for each limiting step</p>
+  <p class=\"vs\">Adsorption limiting: \(-r'_{C0} = kP_{C0}\). Surface reaction limiting: \(-r'_{C0} = kP_{C0}/(1+K_CP_{C0})\). Desorption limiting: \(-r'_{C0} = k_DC_t\). Shapes, not magnitudes, identify the step. The experimental curve for cumene (Fogler Fig. 10-18) rises and levels off, so the surface reaction is rate-limiting.</p>
+  <div class="controls">
+    <div class="ctl"><label for="ir-K">\(K_C\) \(\mathrm{(atm^{-1})}\)</label><input type="range" id="ir-K" min="-1" max="1" step="0.05" value="0"><output id="ir-Ko"></output></div>
+  </div>
+  <div id="c-init" class="plot"></div>
+</div>
+<div class="box warn"><b>Adsorbing inerts (10-51 to 10-53)</b>
+<p>An inert I that adsorbs, \(I + S\rightleftharpoons I\cdot S\), with \(C_{I\cdot S} = K_IP_IC_v\), just adds a term to the site balance: \(-r'_C = \dfrac{k(P_C - P_BP_P/K_P)}{1 + K_CP_C + K_BP_B + K_IP_I}\). The rate falls as \(P_I\) rises, even though I does not react.</p></div>
+<div class="box class"><b>Class notes check</b><p>The notes (pp. 60–72) derive exactly these three cases, write the final form as \(-r'_C = \dfrac{k(P_C - P_BP_P/K_P)}{1 + K_BP_B + K_CP_C}\), and label the numerator as the kinetic term times the driving force, and the denominator as the resistance term.</p></div>
+</section>
+
+<!-- ============================================================ 8 -->
+<section class="s" id="reform">
+<h2><span class="num">8</span>Reforming catalysts and Table 10-4 (HSF 10.3.5)</h2>
+<p>Octane is raised by turning straight chains into compact molecules (n-pentane octane number 62, i-pentane 90). On bifunctional Pt/\(\mathrm{Al_2O_3}\) (0.75 wt % Pt, Pt clusters about 10 Å on alumina pores 100–10 000 Å):</p>
+<div class="eq">$$\text{n-pentane}\ \underset{\mathrm{Pt}}{\overset{-\mathrm{H_2}}{\rightleftharpoons}}\ \text{n-pentene}\ \underset{\mathrm{Al_2O_3}}{\rightleftharpoons}\ \text{i-pentene}\ \underset{\mathrm{Pt}}{\overset{+\mathrm{H_2}}{\rightleftharpoons}}\ \text{i-pentane}$$</div>
+<p>Focus on the isomerisation \(N \rightleftharpoons I\) on alumina. Table 10-4 applies the algorithm.</p>
+<div class="grid2">
+<div class="card"><h4>Try 1: dual-site mechanism</h4>
+<p>\(N + S\rightleftharpoons N\cdot S\); \(N\cdot S + S \rightleftharpoons I\cdot S + S\); \(I\cdot S \rightleftharpoons I + S\).</p>
+$$-r'_N = r_S = k_S\left(C_vC_{N\cdot S} - \frac{C_{I\cdot S}C_v}{K_S}\right)$$
+$$C_{N\cdot S} = K_NP_NC_v,\quad C_{I\cdot S} = K_IP_IC_v,\quad C_v = \frac{C_t}{1 + K_NP_N + K_IP_I}$$
+$$-r'_N = \frac{k\,(P_N - P_I/K_P)}{(1 + K_NP_N + K_IP_I)^2},\quad k = k_SC_t^2K_N,\ K_P = \frac{K_NK_S}{K_I}$$</div>
+<div class="card"><h4>Try 2: single-site mechanism (the one that fits)</h4>
+<p>\(N + S\rightleftharpoons N\cdot S\); \(N\cdot S \rightleftharpoons I\cdot S\); \(I\cdot S \rightleftharpoons I + S\).</p>
+$$-r'_N = r_S = k_S\left(C_{N\cdot S} - \frac{C_{I\cdot S}}{K_S}\right)$$
+$$= k_SK_N\left(P_N - \frac{P_I}{K_P}\right)C_v$$
+$$-r'_N = \frac{k\,(P_N - P_I/K_P)}{1 + K_NP_N + K_IP_I},\quad k = k_SC_tK_N$$</div>
+</div>
+<p>These are Tutorial 3 Q2 (i) and (ii). Step 2 of the algorithm says start with the surface reaction: <b>more than 75 % of heterogeneous reactions that are not diffusion-limited are surface-reaction-limited</b>. If two models fit, discriminate statistically (residuals). A fit never proves a mechanism; spectroscopy is needed for that, but a misfit does disprove one.</p>
+<figure>
+<svg class="dg" viewBox="0 0 760 300" role="img" aria-labelledby="tAlg">
+  <title id="tAlg">Flowchart of the Table 10-4 algorithm</title>
+  <defs><marker id="mF" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker></defs>
+  <rect x="20" y="20" width="160" height="50" rx="10" class="f-acs s-ac"/><text x="100" y="42" text-anchor="middle" class="sm">1 · Select a</text><text x="100" y="58" text-anchor="middle" class="sm">mechanism</text>
+  <rect x="210" y="20" width="160" height="50" rx="10" class="f-acs s-ac"/><text x="290" y="42" text-anchor="middle" class="sm">2 · Assume a rate-</text><text x="290" y="58" text-anchor="middle" class="sm">limiting step (SR first)</text>
+  <rect x="400" y="20" width="160" height="50" rx="10" class="f-acs s-ac"/><m x="480" y="38" w="160" c="sm">3\ \cdot\ C_{i\cdot S}\ \text{from the}</m><m x="480" y="57" w="160" c="sm">\text{other steps, } r/k \approx 0</m>
+  <rect x="590" y="20" width="150" height="50" rx="10" class="f-acs s-ac"/><text x="665" y="42" text-anchor="middle" class="sm">4 · Site balance</text><m x="665" y="57" w="140" c="sm">\text{gives } C_v</m>
+  <rect x="590" y="110" width="150" height="50" rx="10" class="f-acs s-ac"/><text x="665" y="132" text-anchor="middle" class="sm">5 · Derive the</text><text x="665" y="148" text-anchor="middle" class="sm">rate law</text>
+  <path d="M480,110 L560,135 L480,160 L400,135 Z" class="f-wrs s-wr"/><text x="480" y="132" text-anchor="middle" class="sm">6 · Agrees</text><text x="480" y="147" text-anchor="middle" class="sm">with data?</text>
+  <rect x="210" y="110" width="140" height="50" rx="10" class="f-bks s-bk"/><text x="280" y="132" text-anchor="middle" class="sm">Good chance the</text><text x="280" y="148" text-anchor="middle" class="sm">mechanism is right</text>
+  <rect x="400" y="220" width="160" height="50" rx="10" class="f-s2 s-rule"/><text x="480" y="242" text-anchor="middle" class="sm">Other steps left?</text><text x="480" y="258" text-anchor="middle" class="sm">try the next one</text>
+  <rect x="20" y="220" width="200" height="50" rx="10" class="f-s2 s-rule"/><text x="120" y="242" text-anchor="middle" class="sm">All steps fail: new mechanism</text><text x="120" y="258" text-anchor="middle" class="sm">(e.g. single site)</text>
+  <line x1="182" y1="45" x2="206" y2="45" class="ln" marker-end="url(#mF)"/>
+  <line x1="372" y1="45" x2="396" y2="45" class="ln" marker-end="url(#mF)"/>
+  <line x1="562" y1="45" x2="586" y2="45" class="ln" marker-end="url(#mF)"/>
+  <line x1="665" y1="72" x2="665" y2="106" class="ln" marker-end="url(#mF)"/>
+  <line x1="588" y1="135" x2="564" y2="135" class="ln" marker-end="url(#mF)"/>
+  <line x1="400" y1="135" x2="354" y2="135" class="ln" marker-end="url(#mF)"/><text x="377" y="126" text-anchor="middle" class="ta sm">yes</text>
+  <line x1="480" y1="162" x2="480" y2="216" class="ln" marker-end="url(#mF)"/><text x="492" y="192" class="tw sm">no</text>
+  <path d="M400,238 C378,225 376,120 330,76" class="ln dash" marker-end="url(#mF)"/>
+  <text x="370" y="206" text-anchor="end" class="t2 sm">yes: retry</text>
+  <path d="M400,258 L224,258" class="ln" marker-end="url(#mF)"/>
+  <text x="312" y="252" text-anchor="middle" class="t2 sm">none left</text>
+  <path d="M120,218 L100,74" class="ln dash" marker-end="url(#mF)"/>
+</svg>
+<figcaption><b>Figure 5.</b> Fogler Table 10-4 as a flowchart. Dashed arrows loop back.</figcaption>
+</figure>
+</section>
+
+<!-- ============================================================ 9 -->
+<section class="s" id="table105">
+<h2><span class="num">9</span>Table 10-5 and reading a rate law backwards</h2>
+<div class="tw"><table>
+<thead><tr><th>Irreversible, surface-reaction-limited</th><th>Rate law</th></tr></thead>
+<tbody>
+<tr><td>Single site \(A\cdot S \rightarrow B\cdot S\)</td><td>\(-r'_A = \dfrac{kP_A}{1 + K_AP_A + K_BP_B}\)</td></tr>
+<tr><td>Dual site \(A\cdot S + S \rightarrow B\cdot S + S\)</td><td>\(-r'_A = \dfrac{kP_A}{(1 + K_AP_A + K_BP_B)^2}\)</td></tr>
+<tr><td>Dual site \(A\cdot S + B\cdot S \rightarrow C\cdot S + S\)</td><td>\(-r'_A = \dfrac{kP_AP_B}{(1 + K_AP_A + K_BP_B + K_CP_C)^2}\)</td></tr>
+<tr><td>Eley–Rideal \(A\cdot S + B(g) \rightarrow C\cdot S\)</td><td>\(-r'_A = \dfrac{kP_AP_B}{1 + K_AP_A + K_CP_C}\)</td></tr>
+</tbody></table></div>
+<div class="tw"><table>
+<thead><tr><th>You see…</th><th>It suggests…</th></tr></thead>
+<tbody>
+<tr><td>Denominator squared</td><td>Dual-site limiting step (two sites involved)</td></tr>
+<tr><td>Denominator to the first power</td><td>Single-site or Eley–Rideal limiting step</td></tr>
+<tr><td>\(\sqrt{K_iP_i}\) terms</td><td>Dissociative adsorption of \(i\)</td></tr>
+<tr><td>A species absent from the denominator</td><td>Not adsorbed, or weakly adsorbed (\(K_iP_i \ll 1\)); e.g. methane in the toluene data</td></tr>
+<tr><td>A gas in the numerator but not in the denominator</td><td>That species reacts from the gas phase (Eley–Rideal), e.g. \(\mathrm{H_2}\) in toluene</td></tr>
+<tr><td>A product in the denominator</td><td>The product adsorbs and inhibits (benzene in toluene)</td></tr>
+<tr><td>Initial rate linear in \(P_{A0}\) for all \(P_{A0}\)</td><td>Adsorption limiting</td></tr>
+<tr><td>Initial rate linear then flat</td><td>Surface reaction limiting (single site)</td></tr>
+<tr><td>Initial rate rises, passes a maximum, falls</td><td>Dual-site surface reaction limiting</td></tr>
+<tr><td>Initial rate independent of \(P_{A0}\)</td><td>Desorption limiting</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- ============================================================ 10 -->
+<section class="s" id="pssh">
+<h2><span class="num">10</span>PSSH and temperature dependence (HSF 10.3.6, 10.3.7)</h2>
+<div class="grid2">
+<div class="card"><h4>Pseudo-steady-state hypothesis</h4>
+<p>Instead of setting \(r/k\approx 0\) for the fast steps, treat each adsorbed species as a reactive intermediate whose net rate of formation is zero:</p>
+$$r^*_{i\cdot S} = 0$$
+<p>Used mainly when <b>more than one step</b> is rate-limiting. (Class notes p. 74: PSSH gives \(C_{T\cdot S}\approx C_{B\cdot S}\) roughly constant, \(r_{T\cdot S}\approx r_{B\cdot S}\approx 0\).)</p></div>
+<div class="card"><h4>High temperature</h4>
+<p>\(k\) follows Arrhenius and rises with \(T\). Adsorption is exothermic, so every \(K_i\) falls with \(T\): coverage drops and the denominator tends to 1.</p>
+$$-r'_A = \frac{kP_A}{1 + K_AP_A + K_BP_B}\ \xrightarrow{\ \text{high }T\ }\ -r'_A \approx kP_A$$
+<p>or \(-r'_A \approx k(P_A - P_B/K_P)\) if reversible. This is why Levenspiel (Module 3) is happy with first-order kinetics.</p></div>
+</div>
+</section>
+
+<!-- ============================================================ 11 -->
+<section class="s" id="toluene">
+<h2><span class="num">11</span>Heterogeneous data analysis: toluene hydrodemethylation (HSF 10.4)</h2>
+<p>\(\mathrm{C_6H_5CH_3 + H_2 \xrightarrow{\text{catalyst}} C_6H_6 + CH_4}\), written \(T + H_2 \rightarrow B + M\), over clinoptilolite (crystalline silica–alumina). Differential reactor, conversion below 1 %, so the measured rates are initial rates. This is Tutorial 3 Q6 and Fogler Table 10-6.</p>
+<div class="tw"><table>
+<thead><tr><th class="n">Run</th><th>Set</th><th class="n">\(-r'_T\times10^{10}\) \(\mathrm{(mol\ T/\text{g-cat}\cdot s)}\)</th><th class="n">\(P_T\)</th><th class="n">\(P_{H_2}\)</th><th class="n">\(P_M\)</th><th class="n">\(P_B\)</th><th>What changes</th></tr></thead>
+<tbody>
+<tr><td class="n">1</td><td>A</td><td class="n">71.0</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">0</td><td rowspan="2">methane only</td></tr>
+<tr><td class="n">2</td><td>A</td><td class="n">71.3</td><td class="n">1</td><td class="n">1</td><td class="n">4</td><td class="n">0</td></tr>
+<tr><td class="n">3</td><td>B</td><td class="n">41.6</td><td class="n">1</td><td class="n">1</td><td class="n">0</td><td class="n">1</td><td rowspan="4">benzene (run 5 and 16 also have methane)</td></tr>
+<tr><td class="n">4</td><td>B</td><td class="n">19.7</td><td class="n">1</td><td class="n">1</td><td class="n">0</td><td class="n">4</td></tr>
+<tr><td class="n">5</td><td>B</td><td class="n">42.0</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td></tr>
+<tr><td class="n">6</td><td>B</td><td class="n">17.1</td><td class="n">1</td><td class="n">1</td><td class="n">0</td><td class="n">5</td></tr>
+<tr><td class="n">7</td><td>C</td><td class="n">71.8</td><td class="n">1</td><td class="n">1</td><td class="n">0</td><td class="n">0</td><td rowspan="3">hydrogen</td></tr>
+<tr><td class="n">8</td><td>C</td><td class="n">142.0</td><td class="n">1</td><td class="n">2</td><td class="n">0</td><td class="n">0</td></tr>
+<tr><td class="n">9</td><td>C</td><td class="n">284.0</td><td class="n">1</td><td class="n">4</td><td class="n">0</td><td class="n">0</td></tr>
+<tr><td class="n">10</td><td>D</td><td class="n">47.0</td><td class="n">0.5</td><td class="n">1</td><td class="n">0</td><td class="n">0</td><td rowspan="6">toluene</td></tr>
+<tr><td class="n">11</td><td>D</td><td class="n">71.3</td><td class="n">1</td><td class="n">1</td><td class="n">0</td><td class="n">0</td></tr>
+<tr><td class="n">12</td><td>D</td><td class="n">117.0</td><td class="n">5</td><td class="n">1</td><td class="n">0</td><td class="n">0</td></tr>
+<tr><td class="n">13</td><td>D</td><td class="n">127.0</td><td class="n">10</td><td class="n">1</td><td class="n">0</td><td class="n">0</td></tr>
+<tr><td class="n">14</td><td>D</td><td class="n">131.0</td><td class="n">15</td><td class="n">1</td><td class="n">0</td><td class="n">0</td></tr>
+<tr><td class="n">15</td><td>D</td><td class="n">133.0</td><td class="n">20</td><td class="n">1</td><td class="n">0</td><td class="n">0</td></tr>
+<tr><td class="n">16</td><td>—</td><td class="n">41.8</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td>check run</td></tr>
+</tbody></table></div>
+
+<h3>10.4.1 Deducing the rate law from the data</h3>
+<ol class="steps">
+<li><b>Reversibility.</b> Runs 3 (\(P_M=0\)) and 5 (\(P_M=1\)) give 41.6 and 42.0: the reverse reaction does not matter. Treat as irreversible.</li>
+<li><b>Methane.</b> Runs 1 and 2: quadrupling \(P_M\) leaves the rate unchanged, \(71.0 \to 71.3\). Methane is not adsorbed (or \(K_MP_M\ll 1\)); it goes straight to the gas, like propylene for cumene.</li>
+<li><b>Benzene.</b> Runs 3, 4, 6 (and 7 with \(P_B=0\)): rate falls \(71.8 \to 41.6 \to 19.7 \to 17.1\) as \(P_B\) goes \(0 \to 1 \to 4 \to 5\) atm. Benzene is in the denominator: it adsorbs. \(-r'_T\sim 1/(1 + K_BP_B + \dots)\). "If it is in the denominator, it is probably on the surface."</li>
+<li><b>Toluene.</b> Runs 10–15: rate rises with \(P_T\) at low pressure (\(47 \to 71.3\)) and levels off at high pressure (\(131 \to 133\)). \(-r'_T \sim P_T/(1 + K_TP_T + \dots)\).</li>
+<li><b>Hydrogen.</b> Runs 7–9: \(71.8 \to 142 \to 284\) when \(P_{H_2}\) goes \(1 \to 2 \to 4\) atm. First order, so \(\mathrm{H_2}\) is not adsorbed (or \(K_{H_2}P_{H_2}\ll1\)). If it were adsorbed it would behave like toluene.</li>
+</ol>
+<div class="eq"><span class="tag">10-71</span>$$-r'_T = \frac{k\,P_{H_2}P_T}{1 + K_BP_B + K_TP_T}$$</div>
+
+<h3>10.4.2 A mechanism consistent with the observations</h3>
+<p>Eley–Rideal: toluene adsorbs, reacts with gas-phase hydrogen to give adsorbed benzene and gas methane; benzene desorbs. Assume the surface reaction is limiting (as it is for 75–80 % of mechanisms).</p>
+<div class="eq"><span class="tag">10-72 to 10-74</span>$$\begin{aligned}
+&T(g) + S \rightleftharpoons T\cdot S && r_{AD} = k_A\left(C_vP_T - \frac{C_{T\cdot S}}{K_T}\right)\\
+&H_2(g) + T\cdot S \rightleftharpoons B\cdot S + M(g) && r_S = k_S\left(P_{H_2}C_{T\cdot S} - \frac{C_{B\cdot S}P_M}{K_S}\right)\\
+&B\cdot S \rightleftharpoons B(g) + S && r_D = k_D\left(C_{B\cdot S} - K_BP_BC_v\right)
+\end{aligned}$$</div>
+<p>\(r_{AD}/k_A\approx 0\): \(C_{T\cdot S} = K_TP_TC_v\). \(r_D/k_D\approx0\): \(C_{B\cdot S} = K_BP_BC_v\). Site balance \(C_t = C_v + C_{T\cdot S} + C_{B\cdot S}\) gives \(C_v = C_t/(1 + K_TP_T + K_BP_B)\). Then</p>
+<div class="eq"><span class="tag">10-79, 10-80</span>$$-r'_T = \frac{C_tk_SK_T\,(P_{H_2}P_T - P_BP_M/K_P)}{1 + K_TP_T + K_BP_B}\ \xrightarrow{\ K_P\ \text{very large}\ }\ \boxed{-r'_T = \frac{k\,P_{H_2}P_T}{1 + K_BP_B + K_TP_T}}$$</div>
+<p>Papp et al. tested over 25 models; this one was the best.</p>
+
+<h3>10.4.3 Evaluating the parameters</h3>
+<p><b>Linearised form</b> (10-81), useful for first guesses: divide both sides by \(P_{H_2}P_T\) and invert.</p>
+<div class="eq">$$\frac{P_{H_2}P_T}{-r'_T} = \frac{1}{k} + \frac{K_B}{k}P_B + \frac{K_T}{k}P_T\qquad\Longleftrightarrow\qquad Y_j = a_0 + a_1X_{1j} + a_2X_{2j}$$</div>
+<p><b>Nonlinear regression</b> (Example 10-1) minimises \(\sum(r_{obs}-r_{calc})^2\) directly and is preferred, because linearising distorts the error weights.</p>
+
+<div class="viz">
+  <p class="vh">Live: fit the toluene rate law yourself</p>
+  <p class="vs">Move the sliders to reduce the sum of squared errors, or press "Best fit" (Levenberg–Marquardt on all 16 runs). Rates in units of \(10^{-10}\) \(\mathrm{mol/(\text{g-cat}\cdot s)}\).</p>
+  <div class="controls">
+    <div class="ctl"><label for="tl-k">\(k\)</label><input type="range" id="tl-k" min="60" max="240" step="0.5" value="110"><output id="tl-ko"></output></div>
+    <div class="ctl"><label for="tl-KB">\(K_B\) \(\mathrm{(atm^{-1})}\)</label><input type="range" id="tl-KB" min="0.2" max="3" step="0.01" value="0.8"><output id="tl-KBo"></output></div>
+    <div class="ctl"><label for="tl-KT">\(K_T\) \(\mathrm{(atm^{-1})}\)</label><input type="range" id="tl-KT" min="0.2" max="3" step="0.01" value="0.6"><output id="tl-KTo"></output></div>
+    <button class="btn" id="tl-fit">Best fit</button>
+  </div>
+  <div class="controls"><div class="seg" id="tl-view"><button class="on" data-v="PT">Vary \(P_T\) (set D)</button><button data-v="PB">Vary \(P_B\) (set B)</button><button data-v="PH">Vary \(P_{H_2}\) (set C)</button></div></div>
+  <div class="grid2" style="margin:0">
+    <div id="c-tolp" class="plot short"></div>
+    <div id="c-told" class="plot short"></div>
+  </div>
+  <div class="readout"><span>SSE = <output id="tl-sse"></output></span><span>\(R^2\) = <output id="tl-r2"></output></span><span class="small">Fogler Table E10-1.1: \(k = 1.45\times10^{-8}\) \(\mathrm{mol/(atm^{2}\cdot \text{g-cat}\cdot s)}\), \(K_B = 1.39\), \(K_T = 1.038\) \(\mathrm{atm^{-1}}\)</span></div>
+</div>
+<p><b>(b) Convert units</b> (E10-1.2, E10-1.3):</p>
+<div class="eq">$$-r'_T = \frac{1.45\times10^{-8}P_TP_{H_2}}{1 + 1.39P_B + 1.038P_T}\ \frac{\text{mol T}}{\text{g-cat}\cdot\text{s}}\times\frac{1000\ \text{g}}{\text{kg}}\times\frac{60\ \text{s}}{\text{min}} = \frac{8.7\times10^{-4}P_TP_{H_2}}{1 + 1.39P_B + 1.038P_T}\ \frac{\text{mol T}}{\text{kg-cat}\cdot\text{min}}$$</div>
+<p><b>(c) Sites occupied at 40 % conversion.</b> With equimolar-ish stoichiometry \(P_T = P_{T0}(1-X)\) and \(P_B = P_{T0}X\):</p>
+<div class="eq">$$\frac{C_{T\cdot S}}{C_{B\cdot S}} = \frac{K_TP_T}{K_BP_B} = \frac{K_T(1-X)}{K_BX} = \frac{1.038(0.6)}{1.39(0.4)} = 1.12$$</div>
+<p>About 12 % more sites hold toluene than benzene.</p>
+</section>
+
+<!-- ============================================================ 12 -->
+<section class="s" id="design">
+<h2><span class="num">12</span>Catalytic reactor design (HSF 10.4.4, Example 10-2)</h2>
+<p>Feed 50 mol/min toluene, 30 % toluene, 45 % \(\mathrm{H_2}\), 25 % inerts, 40 atm and 640 °C. Pressure-drop parameter \(\alpha = 9.8\times10^{-5}\ \mathrm{kg^{-1}}\). (a) PBR profiles; (b) fluidised CSTR (bulk density 400 \(\mathrm{kg/m^{3}}\)) for 65 % conversion.</p>
+<div class="box book"><b>Source</b><p>Fogler pp. 443–446, Example 10-2 (the corrected extract now includes pp. 444–446). The numbers below are the book's; the live chart reproduces them.</p></div>
+<ol class="steps">
+<li><b>Mole balance</b> (PBR, toluene): $$\frac{dX}{dW} = \frac{-r'_T}{F_{T0}}$$</li>
+<li><b>Rate law</b>: \(-r'_T = \dfrac{kP_{H_2}P_T}{1 + K_BP_B + K_TP_T}\), \(k = 0.00087\) \(\mathrm{mol/(atm^{2}\cdot \text{kg-cat}\cdot min)}\), \(K_B = 1.39\), \(K_T = 1.038\) \(\mathrm{atm^{-1}}\).</li>
+<li><b>Stoichiometry</b>: \(\varepsilon = y_{T0}\delta = 0.3(0) = 0\) (moles do not change). With \(p = P/P_0\), \(P_{T0} = 0.3\times40 = 12\) atm and \(\Theta_{H_2} = 0.45/0.30 = 1.5\):
+$$P_T = P_{T0}(1-X)\,p,\qquad P_{H_2} = P_{T0}(\Theta_{H_2} - X)\,p = P_{T0}(1.5 - X)\,p,\qquad P_B = P_{T0}X\,p$$</li>
+<li><b>Pressure drop</b>: $$\frac{dp}{dW} = -\frac{\alpha}{2p}(1+\varepsilon X) = -\frac{\alpha}{2p}\ \Rightarrow\ p = \sqrt{1 - \alpha W}$$</li>
+<li><b>Largest bed that keeps the exit above 1 atm</b> (book p. 444). Put \(P_0 = 40\) atm and \(P = 1\) atm into \(p = (1-\alpha W)^{1/2}\):
+$$\frac{1}{40} = \left(1 - 9.8\times10^{-5}\,W\right)^{1/2}\qquad\Rightarrow\qquad W = 10\,197\ \text{kg}$$
+Fogler therefore sets the bed at 10 000 kg.</li>
+<li><b>Combine and integrate numerically</b> from \(W=0\), \(X=0\), \(p=1\).</li>
+</ol>
+<div class="viz">
+  <p class="vh">Live: packed-bed reactor with pressure drop</p>
+  <p class="vs">RK4 integration of the equations above. Set \(\alpha=0\) to see the reactor without pressure drop.</p>
+  <div class="controls">
+    <div class="ctl"><label for="pb-a">\(\alpha\) (\(10^{-5}\) \(\mathrm{kg^{-1}}\))</label><input type="range" id="pb-a" min="0" max="12" step="0.1" value="9.8"><output id="pb-ao"></output></div>
+    <div class="ctl"><label for="pb-W">catalyst \(W\) (kg)</label><input type="range" id="pb-W" min="1000" max="10000" step="100" value="10000"><output id="pb-Wo"></output></div>
+  </div>
+  <div class="grid2" style="margin:0">
+    <div id="c-pbr1" class="plot short"></div>
+    <div id="c-pbr2" class="plot short"></div>
+  </div>
+  <div class="readout"><span>\(X\) at exit = <output id="pb-X"></output></span><span>\(p\) at exit = <output id="pb-p"></output></span><span>\(W\) for \(X = 0.65\): <output id="pb-W65"></output></span></div>
+</div>
+<div class="tw"><table>
+<thead><tr><th>Exit of the 10 000 kg bed (Fogler Table E10-2.1)</th><th class="n">Value</th></tr></thead>
+<tbody>
+<tr><td>Conversion \(X\)</td><td class="n">0.682</td></tr>
+<tr><td>Pressure ratio \(p = P/P_0\)</td><td class="n">0.141 (\(P = 5.66\) atm)</td></tr>
+<tr><td>\(P_T\), \(P_{H_2}\), \(P_B\)</td><td class="n">0.539, 1.388, 1.158 atm</td></tr>
+<tr><td>Rate at the exit, \(-r'_T\)</td><td class="n">\(2.05\times10^{-4}\ \mathrm{mol/(kg\cdot min)}\)</td></tr>
+<tr><td>Conversion with no pressure drop (\(\alpha = 0\))</td><td class="n">0.79</td></tr>
+</tbody></table></div>
+<div class="box key"><b>What Fogler wants you to notice</b>
+<ul>
+<li><b>Pressure drop costs conversion:</b> 68.2 % instead of 79 %. For this feed, eliminating or minimising pressure drop would raise benzene production by up to 61 million pounds a year. Neglecting \(\Delta P\) "could have been very embarrassing".</li>
+<li><b>\(P_B\) passes through a maximum</b> (Fig. E10-2.2). \(P_B = y_BP\). Near the middle to the end of the bed benzene is barely forming, so \(y_B\) stops rising, but the total pressure keeps falling, so \(P_B\) falls too.</li>
+<li>Conversion rises quickly and then slows: the partial pressures fall with both conversion and pressure, and the benzene produced occupies sites.</li>
+</ul></div>
+<figure>
+<svg class="dg" viewBox="0 0 760 290" role="img" aria-labelledby="tPBRc">
+  <title id="tPBRc">Packed-bed reactor with pressure drop compared with a fluidised-bed CSTR for toluene hydrodemethylation</title>
+  <defs>
+    <marker id="mPB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker>
+    <pattern id="pbBed" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="6.5" style="fill:var(--surface-3);stroke:var(--ink-3);stroke-width:.8"/></pattern>
+  </defs>
+  <text x="190" y="22" text-anchor="middle" class="bold">(a) Packed bed with pressure drop</text>
+  <rect x="60" y="40" width="260" height="140" rx="8" style="fill:url(#pbBed)" class="s-ink"/>
+  <line x1="10" y1="110" x2="56" y2="110" class="ln" marker-end="url(#mPB)"/>
+  <line x1="324" y1="110" x2="370" y2="110" class="ln" marker-end="url(#mPB)"/>
+  <text x="10" y="100" class="t3 sm">feed</text>
+  <m x="190" y="216" w="360" h="44" c="sm">\dfrac{dX}{dW} = \dfrac{-r'_T}{F_{T0}},\qquad X_{\text{exit}} = 0.682</m>
+  <m x="190" y="258" w="370" c="t2 sm">p = (1-\alpha W)^{1/2}\ \text{falls to } 0.141\ \text{at } W = 10\,000\ \text{kg}</m>
+  <text x="570" y="22" text-anchor="middle" class="bold">(b) Fluidised bed as a CSTR</text>
+  <rect x="440" y="40" width="260" height="140" rx="8" class="f-s2 s-ink"/>
+  <g style="fill:var(--surface);stroke:var(--rule-strong);stroke-width:1">
+    <ellipse cx="530" cy="138" rx="17" ry="11"/><ellipse cx="624" cy="108" rx="17" ry="11"/><ellipse cx="484" cy="80" rx="15" ry="10"/><ellipse cx="664" cy="60" rx="14" ry="9"/>
+  </g>
+  <g style="fill:var(--surface-3);stroke:var(--ink-3);stroke-width:.8">
+    <circle cx="470" cy="60" r="6"/><circle cx="512" cy="56" r="6"/><circle cx="560" cy="74" r="6"/><circle cx="606" cy="62" r="6"/><circle cx="688" cy="84" r="6"/>
+    <circle cx="492" cy="108" r="6"/><circle cx="542" cy="104" r="6"/><circle cx="590" cy="94" r="6"/><circle cx="652" cy="126" r="6"/><circle cx="682" cy="106" r="6"/>
+    <circle cx="462" cy="140" r="6"/><circle cx="500" cy="148" r="6"/><circle cx="572" cy="132" r="6"/><circle cx="614" cy="152" r="6"/><circle cx="668" cy="150" r="6"/>
+    <circle cx="486" cy="170" r="6"/><circle cx="548" cy="168" r="6"/><circle cx="596" cy="172" r="6"/><circle cx="642" cy="170" r="6"/><circle cx="684" cy="166" r="6"/>
+    <circle cx="456" cy="92" r="6"/><circle cx="530" cy="84" r="6"/><circle cx="628" cy="84" r="6"/><circle cx="584" cy="156" r="6"/><circle cx="518" cy="120" r="6"/>
+  </g>
+  <line x1="392" y1="166" x2="436" y2="166" class="ln" marker-end="url(#mPB)"/>
+  <text x="392" y="156" class="t3 sm">feed</text>
+  <line x1="704" y1="56" x2="750" y2="56" class="ln" marker-end="url(#mPB)"/>
+  <m x="570" y="216" w="340" h="44" c="sm">W = \dfrac{F_{T0}X}{-r'_T} = 1.41\times10^4\ \text{kg}</m>
+  <m x="570" y="258" w="340" c="t2 sm">\text{well mixed: the whole bed is at } X = 0.65,\ p \approx 1</m>
+</svg>
+<figcaption><b>Figure 6.</b> Same feed and rate law. The packed bed is an integral plug-flow reactor whose pressure falls along the bed. The fluidised bed is well mixed, so every particle sees the exit composition, and its pressure drop is negligible.</figcaption>
+</figure>
+<h3>(b) Fluidised CSTR for \(X = 0.65\)</h3>
+<p>A fluidised bed behaves like a CSTR, and there is negligible pressure drop (\(p = 1\)):</p>
+<div class="eq">$$F_{T0} - F_T + r'_TW = 0\ \Rightarrow\ W = \frac{F_{T0}-F_T}{-r'_T} = \frac{F_{T0}X}{-r'_T},\qquad P_T = 12(0.35) = 4.2,\quad P_{H_2} = 12(0.85) = 10.2,\quad P_B = 12(0.65) = 7.8\ \text{atm}$$</div>
+<div class="eq">$$-r'_T = \frac{0.00087(4.2)(10.2)}{1 + 1.39(7.8) + 1.038(4.2)} = \frac{0.03727}{16.20} = 2.30\times10^{-3}\ \frac{\text{mol}}{\text{kg-cat}\cdot\text{min}}\qquad W = \frac{50(0.65)}{2.30\times10^{-3}} = 1.41\times10^{4}\ \text{kg}$$</div>
+<p>Book result: \(W = 1.41\times10^4\) kg of catalyst, and the reactor volume is</p>
+<div class="eq">$$V = \frac{W}{\rho_b} = \frac{1.41\times10^4\ \text{kg}}{400\ \mathrm{kg/m^3}} = 35.25\ \mathrm{m^3}$$</div>
+<div class="box warn"><b>Fogler's closing analysis</b><p>Both the packed bed and the fluidised CSTR need a lot of catalyst for this small feed. To reduce the catalyst weight, raise the temperature, provided side reactions and catalyst decay do not become a problem.</p></div>
+</section>
+
+<!-- ============================================================ 13 -->
+<section class="s" id="test">
+<h2><span class="num">13</span>Self-test</h2>
+<details class="qa"><summary><span>Derive the rate law for \(A \rightleftharpoons B\) (single site) if <b>adsorption of A</b> is rate-limiting and B is adsorbed.</span></summary><div class="ans">
+<p>\(r_{AD} = k_A(P_AC_v - C_{A\cdot S}/K_A)\). Surface reaction equilibrium: \(C_{A\cdot S} = C_{B\cdot S}/K_S\). Desorption equilibrium: \(C_{B\cdot S} = K_BP_BC_v\). So \(C_{A\cdot S} = K_BP_BC_v/K_S\) and</p>
+$$r_{AD} = k_AC_v\left(P_A - \frac{K_BP_B}{K_SK_A}\right) = k_AC_v\left(P_A - \frac{P_B}{K_P}\right),\quad K_P = \frac{K_SK_A}{K_B}$$
+$$C_t = C_v\left(1 + \frac{K_BP_B}{K_S} + K_BP_B\right)\ \Rightarrow\ -r'_A = \frac{k_AC_t(P_A - P_B/K_P)}{1 + (K_B/K_S + K_B)P_B}$$
+<p>Note A is absent from the denominator: when adsorption of A is limiting, \(\mathrm{A\cdot S}\) is not in equilibrium with gas A.</p></div></details>
+<details class="qa"><summary><span>A rate law is \(-r'_A = \dfrac{kP_A}{(1 + \sqrt{K_AP_A} + K_BP_B)^2}\). What does each feature say?</span></summary><div class="ans"><p>\(\sqrt{K_AP_A}\): A adsorbs dissociatively. Squared denominator: the limiting step involves two sites (e.g. the two A fragments reacting on adjacent sites). \(K_BP_B\): product B adsorbs molecularly and inhibits.</p></div></details>
+<details class="qa"><summary><span>Why does the initial rate become independent of cumene pressure at high pressure if the surface reaction limits?</span></summary><div class="ans"><p>At high \(P_{C0}\), \(K_CP_{C0}\gg1\) and almost every site is covered by cumene (\(C_{C\cdot S}\to C_t\)). The rate \(k_SC_{C\cdot S}\) cannot grow any more: \(-r'_{C0}\to k/K_C = k_SC_t\).</p></div></details>
+<details class="qa"><summary><span>In the toluene data, how do you know hydrogen is not adsorbed but toluene is?</span></summary><div class="ans"><p>Rate doubles each time \(P_{H_2}\) doubles (runs 7–9): first order at all pressures, so no saturation, so negligible coverage. Toluene shows saturation (runs 12–15 nearly flat), the signature of adsorption in the denominator.</p></div></details>
+<details class="qa"><summary><span>What is PSSH and when would you use it instead of the rate-limiting-step method?</span></summary><div class="ans"><p>The net rate of formation of each adsorbed intermediate is set to zero, \(r^*_{i\cdot S}=0\). Use it when no single step is much slower than the others (two or more comparable steps).</p></div></details>
+<details class="qa"><summary><span>At high temperature, why do catalytic rate laws often reduce to power laws?</span></summary><div class="ans"><p>Adsorption is exothermic, so adsorption constants fall with \(T\). Coverages become small, \(\sum K_iP_i\ll1\), the denominator tends to 1, and \(-r'_A\approx kP_A\).</p></div></details>
+<details class="qa"><summary><span>Show that for any limiting step in cumene decomposition the rate vanishes at equilibrium.</span></summary><div class="ans"><p>Each form contains \(P_C - P_BP_P/K_P\) with \(K_P = K_CK_S/K_B = (P_BP_P/P_C)_{eq}\), which is zero at equilibrium. It comes from combining the quasi-equilibrium relations of the fast steps with the driving force of the slow step.</p></div></details>
+<details class="qa"><summary><span>Fogler P10-5: \(-r'_E = \dfrac{kP_EP_H}{1 + K_EP_E}\) for ethylene hydrogenation. Suggest a mechanism.</span></summary><div class="ans"><p>\(E + S \rightleftharpoons E\cdot S\) (equilibrium); \(E\cdot S + H_2(g) \rightarrow A\cdot S\) (Eley–Rideal, limiting); \(A\cdot S \rightleftharpoons A + S\) with ethane weakly adsorbed. Then \(-r'_E = k_SC_{E\cdot S}P_H\), \(C_{E\cdot S} = K_EP_EC_t/(1+K_EP_E)\), which gives the rate law with \(k = k_SK_EC_t\). Hydrogen reacting from the gas explains why it is in the numerator but not the denominator.</p></div></details>
+<details class="qa"><summary><span>In Fogler Example 10-2, why does the benzene partial pressure pass through a maximum along the packed bed, and what does the pressure drop cost?</span></summary><div class="ans"><p>\(P_B = y_BP\). Early in the bed benzene forms quickly, so \(y_B\) rises faster than \(P\) falls. Towards the end almost no benzene forms, \(y_B\) levels off, and the falling total pressure pulls \(P_B\) down. Pressure drop lowers the conversion of the 10 000 kg bed from 0.79 to 0.682, and the bed cannot exceed 10 197 kg or the exit pressure would fall below 1 atm.</p></div></details>
+</section>
+
+<div class="pager">
+  <a href="m1-heterogeneous-catalysis.html"><small>Back</small>Module 1 · Catalysts</a>
+  <a href="m3-pore-diffusion.html" style="text-align:right"><small>Next</small>Module 3 · Pore diffusion</a>
+</div>
+<footer class="pg">Sources: H. S. Fogler, <i>Elements of Chemical Reaction Engineering</i> 5e, §10.1–10.4.4, Tables 10-2 to 10-6, Examples 10-1, 10-2; class notes 12–31 Aug 2026; Levenspiel eq. 18.1.</footer>
+</main>
+</div>
+
+<script>
+/* ---------- linear tests for molecular vs dissociative ---------- */
+(function () {
+  const P = [0.1, 0.25, 0.5, 1, 2, 4, 8];
+  const C = [0.1854, 0.2485, 0.3, 0.3515, 0.4, 0.4433, 0.48];
+  let mode = 'mol';
+  const get = () => {
+    const x = mode === 'mol' ? P.slice() : P.map(Math.sqrt);
+    const y = mode === 'mol' ? P.map((p, i) => p / C[i]) : P.map((p, i) => Math.sqrt(p) / C[i]);
+    const f = SP.linfit(x, y);
+    const res = x.map((v, i) => y[i] - (f.icpt + f.slope * v));
+    return { x, y, f, res };
+  };
+  const d1 = SP.plot('c-lin', () => {
+    const { x, y, f } = get();
+    const xl = [0, Math.max(...x) * 1.05];
+    return {
+      data: [
+        { x, y, mode: 'markers', name: 'data', marker: { size: 9, color: SP.series(1) }, hovertemplate: 'x=%{x:.3f}<br>y=%{y:.3f}<extra></extra>' },
+        { x: xl, y: xl.map((v) => f.icpt + f.slope * v), mode: 'lines', name: 'least-squares line', line: { color: SP.series(2), width: 2 }, hoverinfo: 'skip' },
+      ],
+      layout: {
+        margin: { t: 30 },
+        xaxis: { tex: mode === 'mol' ? 'P\\ (\\mathrm{atm})' : '\\sqrt{P}\\ (\\mathrm{atm^{1/2}})' },
+        yaxis: { tex: mode === 'mol' ? 'P/C' : '\\sqrt{P}/C' },
+      },
+    };
+  });
+  const d2 = SP.plot('c-linres', () => {
+    const { x, res } = get();
+    return {
+      data: [{ x, y: res, mode: 'lines+markers', name: 'residual', line: { color: SP.series(3), width: 2 }, marker: { size: 8 }, hovertemplate: 'x=%{x:.3f}<br>residual=%{y:.4f}<extra></extra>' }],
+      layout: {
+        showlegend: false, margin: { t: 30 },
+        xaxis: { tex: mode === 'mol' ? 'P\\ (\\mathrm{atm})' : '\\sqrt{P}\\ (\\mathrm{atm^{1/2}})' },
+        yaxis: { tex: '\\text{residual}', zeroline: true },
+        shapes: [{ type: 'line', xref: 'paper', x0: 0, x1: 1, y0: 0, y1: 0, line: { color: SP.css('--ink-3'), width: 1, dash: 'dot' } }],
+      },
+    };
+  });
+  const upd = () => {
+    d1(); d2();
+    const { f, res } = get();
+    SP.out('lin-r2', f.r2.toFixed(5));
+    SP.out('lin-s', SP.fmt(f.slope, 4));
+    SP.out('lin-i', SP.fmt(f.icpt, 4));
+    const big = Math.max(...res.map(Math.abs));
+    document.getElementById('lin-res').innerHTML = big > 0.02
+      ? '<span class="verdict bad">Residuals curve systematically: this model is wrong</span>'
+      : '<span class="verdict good">Residuals close to zero everywhere: this model fits. ' + SP.tex('C_t = 2/\\text{slope} = ' + SP.fmtTex(2 / f.slope, 3) + '\\ \\mathrm{mmol/g},\\quad K = \\left(\\dfrac{\\text{slope}}{2\\,\\text{intercept}}\\right)^2 = ' + SP.fmtTex(Math.pow(f.slope / (2 * f.icpt), 2), 3) + '\\ \\mathrm{atm^{-1}}') + '</span>';
+  };
+  SP.seg('lin-mode', (v) => { mode = v; upd(); });
+  upd();
+})();
+
+/* ---------- initial-rate shapes ---------- */
+(function () {
+  const P = SP.linspace(0, 10, 200);
+  const draw = SP.plot('c-init', () => {
+    const K = Math.pow(10, SP.val('ir-K'));
+    return {
+      data: [
+        { x: P, y: P.map((p) => p), name: 'adsorption limiting', mode: 'lines', line: { color: SP.series(1), width: 2.5 }, hovertemplate: 'P=%{x:.2f}<br>rate=%{y:.2f}<extra>adsorption</extra>' },
+        { x: P, y: P.map((p) => p / (1 + K * p)), name: 'surface reaction limiting', mode: 'lines', line: { color: SP.series(2), width: 3 }, hovertemplate: 'P=%{x:.2f}<br>rate=%{y:.2f}<extra>surface reaction</extra>' },
+        { x: P, y: P.map(() => 0.8 / K), name: 'desorption limiting', mode: 'lines', line: { color: SP.series(3), width: 2.5, dash: 'dash' }, hovertemplate: 'P=%{x:.2f}<br>rate=%{y:.2f}<extra>desorption</extra>' },
+      ],
+      layout: {
+        xaxis: { tex: '\\text{initial cumene pressure } P_{C0}\\ (\\mathrm{atm})' },
+        yaxis: { tex: "\\text{initial rate } -r'_{C0}\\ \\text{(arbitrary units)}", range: [0, 6] },
+        legend: { y: 1.02 },
+      },
+    };
+  });
+  SP.bind(['ir-K'], () => { draw(); SP.out('ir-Ko', SP.fmt(Math.pow(10, SP.val('ir-K')), 3)); });
+})();
+
+/* ---------- toluene regression ---------- */
+(function () {
+  const r = [71, 71.3, 41.6, 19.7, 42, 17.1, 71.8, 142, 284, 47, 71.3, 117, 127, 131, 133, 41.8];
+  const pT = [1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 5, 10, 15, 20, 1];
+  const pH = [1, 1, 1, 1, 1, 1, 1, 2, 4, 1, 1, 1, 1, 1, 1, 1];
+  const pB = [0, 0, 1, 4, 1, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
+  const model = (k, KB, KT, T, H, B) => k * T * H / (1 + KB * B + KT * T);
+  let view = 'PT';
+  const params = () => [SP.val('tl-k'), SP.val('tl-KB'), SP.val('tl-KT')];
+  const sse = (p) => r.reduce((s, v, i) => s + Math.pow(v - model(p[0], p[1], p[2], pT[i], pH[i], pB[i]), 2), 0);
+  const dPar = SP.plot('c-tolp', () => {
+    const p = params();
+    const pred = r.map((_, i) => model(p[0], p[1], p[2], pT[i], pH[i], pB[i]));
+    return {
+      data: [
+        { x: [0, 300], y: [0, 300], mode: 'lines', name: 'perfect fit', line: { color: SP.css('--ink-3'), dash: 'dot', width: 1 }, hoverinfo: 'skip' },
+        { x: r, y: pred, mode: 'markers', name: 'runs', text: r.map((_, i) => 'run ' + (i + 1)), marker: { size: 9, color: SP.series(1), line: { color: SP.css('--surface'), width: 1.5 } }, hovertemplate: '%{text}<br>observed %{x}<br>predicted %{y:.1f}<extra></extra>' },
+      ],
+      layout: { showlegend: false, margin: { t: 16 }, xaxis: { tex: '\\text{observed rate}', range: [0, 300] }, yaxis: { tex: '\\text{predicted rate}', range: [0, 300] } },
+    };
+  });
+  const dDep = SP.plot('c-told', () => {
+    const p = params();
+    let xs, xd, yd, xl, yl, lab;
+    if (view === 'PT') { const idx = [9, 10, 11, 12, 13, 14]; xd = idx.map((i) => pT[i]); yd = idx.map((i) => r[i]); xs = SP.linspace(0, 22, 120); yl = xs.map((x) => model(p[0], p[1], p[2], x, 1, 0)); lab = 'P_T\\ (\\mathrm{atm}),\\quad P_{H_2} = 1,\\ P_B = 0'; }
+    else if (view === 'PB') { const idx = [6, 2, 3, 5]; xd = idx.map((i) => pB[i]); yd = idx.map((i) => r[i]); xs = SP.linspace(0, 6, 120); yl = xs.map((x) => model(p[0], p[1], p[2], 1, 1, x)); lab = 'P_B\\ (\\mathrm{atm}),\\quad P_T = P_{H_2} = 1'; }
+    else { const idx = [6, 7, 8]; xd = idx.map((i) => pH[i]); yd = idx.map((i) => r[i]); xs = SP.linspace(0, 5, 120); yl = xs.map((x) => model(p[0], p[1], p[2], 1, x, 0)); lab = 'P_{H_2}\\ (\\mathrm{atm}),\\quad P_T = 1,\\ P_B = 0'; }
+    return {
+      data: [
+        { x: xs, y: yl, mode: 'lines', name: 'model', line: { color: SP.series(2), width: 2.5 }, hovertemplate: '%{x:.2f} atm<br>model %{y:.1f}<extra></extra>' },
+        { x: xd, y: yd, mode: 'markers', name: 'data', marker: { size: 10, color: SP.series(1) }, hovertemplate: '%{x} atm<br>observed %{y}<extra></extra>' },
+      ],
+      layout: { margin: { t: 30 }, xaxis: { tex: lab }, yaxis: { tex: "-r'_T\\times10^{10}", rangemode: 'tozero' } },
+    };
+  });
+  const upd = () => {
+    dPar(); dDep();
+    const p = params();
+    SP.out('tl-ko', p[0].toFixed(1)); SP.out('tl-KBo', p[1].toFixed(3)); SP.out('tl-KTo', p[2].toFixed(3));
+    const s = sse(p); const mean = r.reduce((a, b) => a + b, 0) / r.length; const sst = r.reduce((a, b) => a + (b - mean) * (b - mean), 0);
+    SP.out('tl-sse', SP.fmt(s, 4)); SP.out('tl-r2', (1 - s / sst).toFixed(5));
+  };
+  SP.seg('tl-view', (v) => { view = v; upd(); });
+  SP.bind(['tl-k', 'tl-KB', 'tl-KT'], upd);
+  document.getElementById('tl-fit').addEventListener('click', () => {
+    let p = params(), lam = 1e-2, cur = sse(p);
+    for (let it = 0; it < 200; it++) {
+      const J = [], e = [];
+      for (let i = 0; i < r.length; i++) {
+        const D = 1 + p[1] * pB[i] + p[2] * pT[i], N = pT[i] * pH[i];
+        J.push([N / D, -p[0] * N * pB[i] / (D * D), -p[0] * N * pT[i] / (D * D)]);
+        e.push(r[i] - p[0] * N / D);
+      }
+      const A = [[0, 0, 0], [0, 0, 0], [0, 0, 0]], g = [0, 0, 0];
+      for (let i = 0; i < r.length; i++) for (let a = 0; a < 3; a++) { g[a] += J[i][a] * e[i]; for (let b = 0; b < 3; b++) A[a][b] += J[i][a] * J[i][b]; }
+      for (let a = 0; a < 3; a++) A[a][a] *= (1 + lam);
+      const M = A.map((row, i) => row.concat([g[i]]));
+      for (let c = 0; c < 3; c++) { let piv = c; for (let rr = c + 1; rr < 3; rr++) if (Math.abs(M[rr][c]) > Math.abs(M[piv][c])) piv = rr; [M[c], M[piv]] = [M[piv], M[c]]; for (let rr = 0; rr < 3; rr++) if (rr !== c) { const f = M[rr][c] / M[c][c]; for (let cc = c; cc < 4; cc++) M[rr][cc] -= f * M[c][cc]; } }
+      const dp = [M[0][3] / M[0][0], M[1][3] / M[1][1], M[2][3] / M[2][2]];
+      const np = p.map((v, i) => Math.max(1e-6, v + dp[i]));
+      const ns = sse(np);
+      if (ns < cur) { p = np; cur = ns; lam /= 3; } else { lam *= 4; }
+      if (lam > 1e8) break;
+    }
+    document.getElementById('tl-k').value = p[0];
+    document.getElementById('tl-KB').value = p[1];
+    document.getElementById('tl-KT').value = p[2];
+    upd();
+    SP.out('tl-ko', p[0].toFixed(2)); SP.out('tl-KBo', p[1].toFixed(4)); SP.out('tl-KTo', p[2].toFixed(4));
+    const mean = r.reduce((a, b) => a + b, 0) / r.length; const sst = r.reduce((a, b) => a + (b - mean) * (b - mean), 0);
+    SP.out('tl-sse', SP.fmt(cur, 4)); SP.out('tl-r2', (1 - cur / sst).toFixed(5));
+  });
+})();
+
+/* ---------- PBR with pressure drop ---------- */
+(function () {
+  const k = 0.00087, KB = 1.39, KT = 1.038, PT0 = 12, F = 50;
+  let sol = null;
+  const solve = () => {
+    const a = SP.val('pb-a') * 1e-5, Wmax = SP.val('pb-W'), h = 5;
+    const f = (X, p) => {
+      const PT = PT0 * (1 - X) * p, PH = PT0 * (1.5 - X) * p, PB = PT0 * X * p;
+      return [k * PT * PH / (1 + KB * PB + KT * PT) / F, a === 0 ? 0 : -a / (2 * p)];
+    };
+    const W = [0], X = [0], p = [1];
+    let w = 0, x = 0, y = 1, W65 = null;
+    while (w < Wmax - 1e-9) {
+      const k1 = f(x, y), k2 = f(x + h / 2 * k1[0], y + h / 2 * k1[1]), k3 = f(x + h / 2 * k2[0], y + h / 2 * k2[1]), k4 = f(x + h * k3[0], y + h * k3[1]);
+      const nx = x + h / 6 * (k1[0] + 2 * k2[0] + 2 * k3[0] + k4[0]);
+      const ny = y + h / 6 * (k1[1] + 2 * k2[1] + 2 * k3[1] + k4[1]);
+      if (!(ny > 0.005)) break;
+      if (W65 === null && x < 0.65 && nx >= 0.65) W65 = w + h * (0.65 - x) / (nx - x);
+      w += h; x = nx; y = ny;
+      if (Math.round(w) % 50 === 0) { W.push(w); X.push(x); p.push(y); }
+    }
+    sol = { W, X, p, W65 };
+  };
+  const d1 = SP.plot('c-pbr1', () => {
+    solve();
+    return {
+      data: [
+        { x: sol.W, y: sol.X, mode: 'lines', name: 'conversion X', line: { color: SP.series(1), width: 2.5 }, hovertemplate: 'W=%{x:.0f} kg<br>X=%{y:.3f}<extra></extra>' },
+        { x: sol.W, y: sol.p, mode: 'lines', name: 'pressure ratio p', line: { color: SP.series(2), width: 2.5, dash: 'dash' }, hovertemplate: 'W=%{x:.0f} kg<br>p=%{y:.3f}<extra></extra>' },
+      ],
+      layout: { margin: { t: 30 }, xaxis: { tex: '\\text{catalyst weight } W\\ (\\mathrm{kg})' }, yaxis: { tex: 'X\\ \\text{or}\\ p', range: [0, 1.02] } },
+    };
+  });
+  const d2 = SP.plot('c-pbr2', () => {
+    const PT = sol.W.map((_, i) => PT0 * (1 - sol.X[i]) * sol.p[i]);
+    const PH = sol.W.map((_, i) => PT0 * (1.5 - sol.X[i]) * sol.p[i]);
+    const PB = sol.W.map((_, i) => PT0 * sol.X[i] * sol.p[i]);
+    return {
+      data: [
+        { x: sol.W, y: PH, mode: 'lines', name: 'P<sub>H₂</sub>', line: { color: SP.series(1), width: 2.5 }, hovertemplate: 'W=%{x:.0f}<br>%{y:.2f} atm<extra>H₂</extra>' },
+        { x: sol.W, y: PT, mode: 'lines', name: 'P<sub>T</sub>', line: { color: SP.series(2), width: 2.5 }, hovertemplate: 'W=%{x:.0f}<br>%{y:.2f} atm<extra>toluene</extra>' },
+        { x: sol.W, y: PB, mode: 'lines', name: 'P<sub>B</sub>', line: { color: SP.series(3), width: 2.5 }, hovertemplate: 'W=%{x:.0f}<br>%{y:.2f} atm<extra>benzene</extra>' },
+      ],
+      layout: { margin: { t: 30 }, xaxis: { tex: '\\text{catalyst weight } W\\ (\\mathrm{kg})' }, yaxis: { tex: '\\text{partial pressure (atm)}', rangemode: 'tozero' } },
+    };
+  });
+  SP.bind(['pb-a', 'pb-W'], () => {
+    d1(); d2();
+    SP.out('pb-ao', SP.val('pb-a').toFixed(1)); SP.out('pb-Wo', SP.val('pb-W').toFixed(0));
+    const n = sol.X.length - 1;
+    SP.out('pb-X', sol.X[n].toFixed(3)); SP.out('pb-p', sol.p[n].toFixed(3));
+    SP.out('pb-W65', sol.W65 ? Math.round(sol.W65).toLocaleString('en-IN') + ' kg' : 'not reached in this bed');
+  });
+})();
+</script>
+</body>
+</html>

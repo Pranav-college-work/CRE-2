@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Module 1 — Heterogeneous Catalysis</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/study.css">
+<script src="assets/plotly-basic.min.js"></script>
+<script src="assets/katex/katex.min.js"></script>
+<script src="assets/study.js"></script>
+</head>
+<body>
+<header class="topbar"><div class="in">
+  <a class="brand" href="index.html">CRE II · Mid-Sem</a>
+  <nav>
+    <a href="index.html">Start here</a>
+    <a href="m1-heterogeneous-catalysis.html" aria-current="page">M1 Catalysts</a>
+    <a href="m2-rate-laws.html">M2 Rate laws</a>
+    <a href="m3-pore-diffusion.html">M3 Pore diffusion</a>
+    <a href="tutorials.html">Tutorials 1–3</a>
+    <a href="formula-sheet-and-practice.html">Formulas &amp; practice</a>
+  </nav>
+  <button class="btn" id="revealBtn">Show all answers</button>
+  <button class="btn" id="themeBtn">Theme: system</button>
+</div></header>
+
+<div class="shell">
+<aside class="toc">
+  <b>Module 1</b>
+  <a href="#hetero">1 · Heterogeneous reactions</a>
+  <a href="#global">2 · Global rate &amp; 7 steps</a>
+  <a href="#bases" class="sub">Rate bases</a>
+  <a href="#series" class="sub">Resistances in series</a>
+  <a href="#catalyst">3 · What a catalyst is</a>
+  <a href="#compose">4 · Composition &amp; classes</a>
+  <a href="#shapes">5 · Shapes &amp; pressure drop</a>
+  <a href="#prep">6 · Preparation</a>
+  <a href="#poison">7 · Promoters, inhibitors, poisons</a>
+  <a href="#ads">8 · Physisorption vs chemisorption</a>
+  <a href="#langmuir">9 · Langmuir &amp; other isotherms</a>
+  <a href="#bet">10 · BET surface area</a>
+  <a href="#density">11 · Void volume &amp; densities</a>
+  <a href="#pores">12 · Pore-volume distribution</a>
+  <a href="#test">13 · Self-test</a>
+</aside>
+
+<main>
+<div class="mast">
+  <div class="kicker">Module 1 · J. M. Smith, Chemical Engineering Kinetics, Ch. 7–8</div>
+  <h1>Heterogeneous catalysis and catalyst characterisation</h1>
+  <p>Why the rate in a catalytic reactor is not the chemistry alone, what a solid catalyst is made of, and how its surface area, pore volume and pore sizes are measured.</p>
+  <div class="chips"><span class="chip book">JMS 7-1, 7-2</span><span class="chip book">JMS 8-1 to 8-11</span><span class="chip class">Class notes pp. 7–36</span><span class="chip tut">Tutorial 1</span></div>
+</div>
+
+<!-- ================================================================ 1 -->
+<section class="s" id="hetero">
+<h2><span class="num">1</span>Heterogeneous reactions</h2>
+<p>A reaction is <b>heterogeneous</b> when more than one phase is present, so reactants must cross a phase boundary before they react. Most industrial reactions are heterogeneous because they need a catalyst, and the catalyst is usually a solid while the reactants are fluids.</p>
+<p>The phase boundary brings in <b>physical processes</b> (mass and heat transfer between the bulk fluid and the solid). In a homogeneous reactor these do not exist; in a heterogeneous reactor they can control the rate. That is the single idea behind Chapter 7.</p>
+
+<h3>Classification</h3>
+<div class="tw"><table>
+<thead><tr><th>Type</th><th>Catalytic?</th><th>Examples (JMS 7-2, class notes)</th><th>Key feature</th></tr></thead>
+<tbody>
+<tr><td>Gas–solid</td><td>Catalytic</td><td>Cracking, reforming, dehydrogenation (butadiene from butane), isomerisation, desulphurisation, hydrocracking</td><td>Most important industrially; steady state</td></tr>
+<tr><td>Gas–solid</td><td>Non-catalytic</td><td>\(\mathrm{UO_2(s) + 4HF(g) \rightarrow UF_4(s) + 2H_2O(g)}\); roasting \(\mathrm{ZnS + \tfrac32 O_2 \rightarrow ZnO + SO_2}\); \(\mathrm{CaCO_3 \rightarrow CaO}\) in a lime kiln; burning coke off spent catalyst; combustion, gasification</td><td>A solid reactant is consumed, so the rate changes with time: <b>inherently transient</b>. A product layer may form around the core.</td></tr>
+<tr><td>Liquid–solid</td><td>Catalytic</td><td>Alkylation with \(\mathrm{AlCl_3(s)}\)</td><td>Catalyst may form a sludge with reactants</td></tr>
+<tr><td>Gas–liquid–solid</td><td>Catalytic</td><td>Slurry hydrogenation of liquids; ethylene polymerisation; trickle-bed hydrodesulphurisation</td><td>Several physical steps in series; diffusion of dissolved \(\mathrm{H_2}\) to the particle is often slow</td></tr>
+<tr><td>Liquid–liquid</td><td>Catalytic</td><td>Alkylation of hydrocarbons with aqueous \(\mathrm{H_2SO_4}\)</td><td>Hard to define the catalyst phase</td></tr>
+<tr><td>Solid–solid</td><td>Non-catalytic</td><td>Ceramics manufacture</td><td>Interface kinetics almost unknown; every measurement includes diffusion</td></tr>
+</tbody></table></div>
+<div class="box class"><b>From the class notes</b>
+<p>Catalytic heterogeneous reactions listed in class: hydrocracking and catalytic cracking and reforming (gas–solid), hydrogenation and dehydrogenation, desulphonation (gas–liquid–solid), alkylation (liquid–solid). Non-catalytic: combustion, gasification. Catalytic <em>homogeneous</em> example: esterification \(\mathrm{CH_3COOH + C_2H_5OH \xrightarrow{H_2SO_4} CH_3COOC_2H_5 + H_2O}\).</p></div>
+</section>
+
+<!-- ================================================================ 2 -->
+<section class="s" id="global">
+<h2><span class="num">2</span>Global rate of reaction and the seven steps</h2>
+<p>Design equations (\(V/F_{A0} = \int dX/(-r_A)\) and so on) need a rate written in terms of <b>bulk-fluid</b> concentration and temperature, because those are the only quantities you can measure or specify. A rate that includes the effect of every physical and chemical step, written with bulk conditions, is called the <b>global</b> (or <b>overall</b>, <b>observed</b>) rate. The rate of the chemical steps alone, written with conditions <em>at the surface</em>, is the <b>intrinsic</b> rate.</p>
+
+<figure>
+<svg class="dg" viewBox="0 0 820 350" role="img" aria-labelledby="t7">
+  <title id="t7">Seven steps of a heterogeneous catalytic reaction on a porous pellet</title>
+  <defs>
+    <marker id="a7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ac"/></marker>
+    <marker id="b7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-wr"/></marker>
+  </defs>
+  <rect x="0" y="0" width="820" height="350" class="f-surf"/>
+  <!-- film -->
+  <circle cx="390" cy="170" r="150" class="ln2 dash"/>
+  <text x="390" y="14" text-anchor="middle" class="t3 sm">edge of external film (boundary layer)</text>
+  <!-- pellet -->
+  <circle cx="390" cy="170" r="122" class="f-s3 s-ink"/>
+  <text x="390" y="342" text-anchor="middle" class="t2 sm">solid circle: porous catalyst pellet</text>
+  <!-- pore -->
+  <path d="M268,170 C305,150 330,190 365,172 S425,150 455,168 S500,190 505,178" style="stroke:var(--surface);stroke-width:22;fill:none;stroke-linecap:round"/>
+  <!-- active sites -->
+  <g class="f-cl">
+    <circle cx="322" cy="167" r="4"/><circle cx="352" cy="181" r="4"/><circle cx="398" cy="159" r="4"/><circle cx="440" cy="158" r="4"/><circle cx="478" cy="182" r="4"/>
+  </g>
+  <text x="470" y="215" class="tc sm">active sites</text>
+  <!-- bulk labels -->
+  <text x="60" y="110" class="lg bold">A</text><text x="40" y="88" class="t3 sm">bulk gas</text>
+  <text x="60" y="250" class="lg bold tw">B</text><text x="40" y="276" class="t3 sm">bulk gas</text>
+  <!-- arrows -->
+  <path d="M95,118 C170,125 220,140 262,160" class="ac" marker-end="url(#a7)"/>
+  <circle cx="175" cy="122" r="11" class="f-ac"/><text x="175" y="126" text-anchor="middle" class="sm bold" style="fill:var(--surface)">1</text>
+  <path d="M280,160 C300,148 320,155 336,160" class="ac" marker-end="url(#a7)"/>
+  <circle cx="300" cy="136" r="11" class="f-ac"/><text x="300" y="140" text-anchor="middle" class="sm bold" style="fill:var(--surface)">2</text>
+  <path d="M398,120 L398,150" class="ac" marker-end="url(#a7)"/>
+  <circle cx="398" cy="106" r="11" class="f-ac"/><text x="398" y="110" text-anchor="middle" class="sm bold" style="fill:var(--surface)">3</text>
+  <path d="M405,160 C420,148 428,150 434,154" class="cl" marker-end="url(#b7)" style="stroke:var(--class)"/>
+  <circle cx="420" cy="132" r="11" class="f-cl"/><text x="420" y="136" text-anchor="middle" class="sm bold" style="fill:var(--surface)">4</text>
+  <path d="M442,165 L452,212" class="wr" marker-end="url(#b7)"/>
+  <circle cx="446" cy="232" r="11" class="f-wr"/><text x="446" y="236" text-anchor="middle" class="sm bold" style="fill:var(--surface)">5</text>
+  <path d="M350,190 C320,200 300,190 282,182" class="wr" marker-end="url(#b7)"/>
+  <circle cx="318" cy="212" r="11" class="f-wr"/><text x="318" y="216" text-anchor="middle" class="sm bold" style="fill:var(--surface)">6</text>
+  <path d="M262,182 C220,205 170,232 98,244" class="wr" marker-end="url(#b7)"/>
+  <circle cx="175" cy="228" r="11" class="f-wr"/><text x="175" y="232" text-anchor="middle" class="sm bold" style="fill:var(--surface)">7</text>
+  <!-- legend -->
+  <g transform="translate(580,52)">
+    <text x="0" y="0" class="bold">The seven steps</text>
+    <text x="0" y="26" class="sm"><tspan class="ta bold">1</tspan>  external transport of A to surface</text>
+    <text x="0" y="48" class="sm"><tspan class="ta bold">2</tspan>  diffusion of A into the pores</text>
+    <text x="0" y="70" class="sm"><tspan class="ta bold">3</tspan>  adsorption of A on a site</text>
+    <text x="0" y="92" class="sm"><tspan class="tc bold">4</tspan>  surface reaction</text><m x="112" y="88" w="100" a="start" c="sm">A\cdot S \to B\cdot S</m>
+    <text x="0" y="114" class="sm"><tspan class="tw bold">5</tspan>  desorption of B</text>
+    <text x="0" y="136" class="sm"><tspan class="tw bold">6</tspan>  diffusion of B out of pores</text>
+    <text x="0" y="158" class="sm"><tspan class="tw bold">7</tspan>  external transport of B to bulk</text>
+    <line x1="0" y1="176" x2="225" y2="176" class="ln2"/>
+    <text x="0" y="198" class="sm t2">1, 7 external physical</text>
+    <text x="0" y="218" class="sm t2">2, 6 internal physical (M3)</text>
+    <text x="0" y="238" class="sm t2">3, 4, 5 chemical = intrinsic rate (M2)</text>
+  </g>
+</svg>
+<figcaption><b>Figure 1.</b> At steady state the rates of all seven steps are equal. For a non-porous catalyst, steps 2 and 6 do not exist. The slowest step controls the overall rate. Class notes: catalyst particle 50 \(\mu\mathrm{m}\) to 3000 \(\mu\mathrm{m}\); pores of Å size, and the pore mouth must be larger than the diffusing molecule.</figcaption>
+</figure>
+
+<h3 id="bases">Three bases for the rate</h3>
+<p>With a solid present, the same moles-per-second can be divided by reactor volume, catalyst mass or catalyst surface area.</p>
+<div class="grid3">
+<div class="card">$$-r_V = -\frac{1}{V}\frac{dN_A}{dt}\quad\left[\frac{\text{mol}}{\text{m}^3\,\text{s}}\right]$$</div>
+<div class="card">$$-r_W = -\frac{1}{W}\frac{dN_A}{dt}\quad\left[\frac{\text{mol}}{\text{kg cat}\,\text{s}}\right]$$</div>
+<div class="card">$$-r_S = -\frac{1}{S}\frac{dN_A}{dt}\quad\left[\frac{\text{mol}}{\text{m}^2\,\text{s}}\right]$$</div>
+</div>
+<div class="eq">$$(-r_V)\,V = (-r_W)\,W = (-r_S)\,S \qquad\qquad r_V = \rho_B\, r_W$$</div>
+<p>Rates are usually measured per mass of catalyst; multiplying by the bulk density \(\rho_B\) of the packed bed turns them into rates per unit reactor volume for the mole balance.</p>
+
+<h3 id="series">JMS §7-1: the global rate as resistances in series</h3>
+<p>Take the irreversible reaction \(\mathrm{A(g)\rightarrow B(g)}\) on <b>non-porous</b>, isothermal catalyst particles, with steps 3–5 lumped into one first-order surface rate. Only two steps involve A, and at steady state their rates are equal (per unit mass of catalyst):</p>
+<div class="eq"><span class="tag">7-1, 7-2</span>$$\underbrace{r_p = k_m a_m\,(C_b - C_s)}_{\text{transport to the surface}} \qquad\qquad \underbrace{r_p = k\, a_m\, C_s}_{\text{reaction at the surface}}$$</div>
+<p>Here \(k_m\) is the mass-transfer coefficient (per unit external area), \(a_m\) the external area per unit mass, \(k\) the rate constant per unit surface. \(C_s\) cannot be measured, so eliminate it:</p>
+<div class="eq"><span class="tag">7-3, 7-4</span>$$k_m(C_b - C_s) = kC_s \;\Rightarrow\; C_s = \frac{k_m}{k_m + k}\,C_b \qquad\Rightarrow\qquad r_p = \frac{k\,k_m\,a_m}{k_m + k}\,C_b = \frac{a_m\, C_b}{\dfrac{1}{k} + \dfrac{1}{k_m}}$$</div>
+<div class="box key"><b>Read it like Ohm's law</b>
+<p>Driving force \(C_b\) divided by two resistances in series, \(1/k\) (chemical) and \(1/k_m\) (physical).</p>
+<ul>
+<li><b>Reaction control</b>, \(k \ll k_m\): \(C_s \approx C_b\) and \(r_p \approx k a_m C_b\), the intrinsic rate.</li>
+<li><b>Diffusion (mass-transfer) control</b>, \(k_m \ll k\): \(C_s \approx 0\) and \(r_p \approx k_m a_m C_b\). The chemistry has dropped out.</li>
+<li><b>Intermediate</b>: both terms matter.</li>
+</ul></div>
+
+<figure>
+<svg class="dg" viewBox="0 0 640 260" role="img" aria-labelledby="t71">
+  <title id="t71">Concentration profiles between bulk gas and catalyst surface</title>
+  <defs><marker id="a71" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker></defs>
+  <line x1="80" y1="220" x2="600" y2="220" class="ln"/>
+  <line x1="500" y1="30" x2="500" y2="220" style="stroke:var(--ink);stroke-width:3"/>
+  <rect x="500" y="30" width="100" height="190" class="f-s3"/>
+  <text x="550" y="130" text-anchor="middle" class="t2 sm">catalyst</text>
+  <text x="550" y="146" text-anchor="middle" class="t2 sm">surface</text>
+  <text x="90" y="245" class="t3 sm">bulk gas</text>
+  <text x="300" y="245" text-anchor="end" class="t3 sm">distance</text><line x1="306" y1="241" x2="350" y2="241" class="ln2" marker-end="url(#a71)"/>
+  <m x="40" y="60" w="40" a="start">C_b</m>
+  <line x1="80" y1="60" x2="330" y2="60" class="ln"/>
+  <!-- reaction control -->
+  <path d="M330,60 C400,60 450,62 500,66" class="bk"/>
+  <m x="340" y="46" w="200" a="start" c="tb sm">\text{reaction control: } C_s \approx C_b</m>
+  <!-- intermediate -->
+  <path d="M330,60 C400,70 450,110 500,130" class="ac"/>
+  <text x="350" y="118" class="ta sm">intermediate, Eq. 7-4</text>
+  <!-- diffusion control -->
+  <path d="M330,60 C380,90 440,190 500,218" class="wr"/>
+  <m x="300" y="196" w="200" a="start" c="tw sm">\text{diffusion control: } C_s \approx 0</m>
+  <line x1="330" y1="30" x2="330" y2="220" class="ln2 dash"/>
+  <text x="415" y="24" text-anchor="middle" class="t3 sm">film</text>
+</svg>
+<figcaption><b>Figure 2</b> (after JMS Fig. 7-1). The steeper the drop across the film, the larger the share of the resistance that is physical.</figcaption>
+</figure>
+
+<div class="viz">
+  <p class="vh">Live: why mass transfer hurts more at high temperature</p>
+  <p class="vs">\(k\) follows Arrhenius; \(k_m\) barely changes with temperature. The global constant \(k_g = 1/(1/k + 1/k_m)\) bends from slope \(-E/R\) to almost flat.</p>
+  <div class="controls">
+    <div class="ctl"><label for="arr-E">Activation energy \(E\)</label><input type="range" id="arr-E" min="40" max="200" step="5" value="100"><output id="arr-Eo"></output></div>
+    <div class="ctl"><label for="arr-km">\(k_m / k\) at 600 K</label><input type="range" id="arr-km" min="-2" max="2" step="0.05" value="0"><output id="arr-kmo"></output></div>
+  </div>
+  <div id="c-arr" class="plot"></div>
+  <div class="readout">
+    <span>Apparent \(E\) at 450 K: <output id="arr-lo"></output> kJ/mol</span>
+    <span>Apparent \(E\) at 850 K: <output id="arr-hi"></output> kJ/mol</span>
+    <span>\(C_s/C_b\) at 600 K: <output id="arr-cs"></output></span>
+  </div>
+</div>
+
+<div class="box book"><b>How big are these effects? (JMS §7-1 data)</b>
+<ul>
+<li>\(\mathrm{SO_2}\) oxidation on Pt (465 °C): \(p_{SO_2}\) drops from 0.06 atm in the bulk to 0.040 atm at the surface. Ignoring mass transfer overestimates the rate by 350 %; the surface is also 15 °C hotter than the gas (+31 % rate). Diffusion and heat effects act in opposite directions for this exothermic reaction.</li>
+<li>\(\mathrm{H_2}\) oxidation on Pt/alumina pellet: bulk 89.9 °C, surface 101 °C, centre 147.7 °C. Using bulk conditions underestimates the rate by 12.5 %; internal heating outweighs internal concentration drop.</li>
+<li>\(\mathrm{UO_2}\) + HF (non-catalytic): surface 95 °C hotter than the bulk; the combined effect raises the rate by 38 %, while the concentration drop alone lowers it by 19 %.</li>
+</ul></div>
+
+<details class="qa"><summary><span><span class="qtag">JMS P7-2</span> Why does mass-transfer resistance reduce the global rate more at high temperature?</span></summary>
+<div class="ans"><p>\(k\) grows exponentially with \(T\) but \(k_m\) grows only weakly (roughly as \(T^{0.5\text{–}1}\)). As \(T\) rises, \(1/k\to 0\), so the fixed \(1/k_m\) becomes the dominant resistance. The process drifts into diffusion control and the apparent activation energy falls (see the chart).</p></div></details>
+<details class="qa"><summary><span><span class="qtag">JMS P7-3</span> For an endothermic reaction, do mass- and heat-transfer resistances work together or against each other?</span></summary>
+<div class="ans"><p><b>Together.</b> The concentration at the surface is lower than in the bulk (lower rate), and because heat must flow in, the surface is <em>colder</em> than the bulk (lower rate again). For an exothermic reaction the surface is hotter, which partly offsets the concentration drop.</p></div></details>
+<details class="qa"><summary><span><span class="qtag">JMS P7-4</span> Isothermal flow reactor with mass-transfer resistance: does more turbulence raise or lower the global rate? And if exothermic and non-isothermal?</span></summary>
+<div class="ans"><p>(a) More turbulence raises \(k_m\), lowers \(1/k_m\), so the global rate <b>increases</b>. (b) More turbulence also raises the heat-transfer coefficient, so the surface temperature falls towards the bulk value. The concentration effect raises the rate; the temperature effect lowers it. The net effect depends on which resistance dominates.</p></div></details>
+</section>
+
+<!-- ================================================================ 3 -->
+<section class="s" id="catalyst">
+<h2><span class="num">3</span>What a catalyst is and what it does (JMS 8-1, 8-2)</h2>
+<p>A <b>catalyst</b> is a substance that changes the rate of a reaction but emerges chemically unchanged. The term goes back to Berzelius (1836). It works by providing a different reaction path (mechanism) with a lower activation energy.</p>
+<figure>
+<svg class="dg" viewBox="0 0 640 280" role="img" aria-labelledby="tE">
+  <title id="tE">Energy diagram with and without a catalyst</title>
+  <defs><marker id="aE" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker></defs>
+  <line x1="60" y1="250" x2="610" y2="250" class="ln" marker-end="url(#aE)"/>
+  <line x1="60" y1="250" x2="60" y2="20" class="ln" marker-end="url(#aE)"/>
+  <text x="330" y="274" text-anchor="middle" class="t2 sm">reaction coordinate</text>
+  <text x="20" y="140" class="t2 sm" transform="rotate(-90 20 140)">potential energy</text>
+  <path d="M70,170 L150,170 C230,170 250,40 320,40 C390,40 410,210 490,210 L600,210" class="wr"/>
+  <path d="M70,170 L150,170 C220,170 240,112 320,112 C400,112 420,210 490,210 L600,210" class="ac"/>
+  <text x="320" y="32" text-anchor="middle" class="tw sm">without catalyst: high barrier, low rate</text>
+  <text x="320" y="104" text-anchor="middle" class="ta sm">with catalyst: lower barrier, higher rate</text>
+  <text x="100" y="162" class="sm">reactants</text>
+  <text x="520" y="202" class="sm">products</text>
+  <line x1="580" y1="170" x2="580" y2="210" class="ln" marker-start="url(#aE)" marker-end="url(#aE)"/>
+  <line x1="150" y1="170" x2="590" y2="170" class="ln2 dash"/>
+  <m x="586" y="191" w="44" a="start" c="sm">\Delta H</m>
+  <line x1="205" y1="170" x2="205" y2="42" class="wr" style="stroke-width:1" marker-start="url(#aE)" marker-end="url(#aE)"/>
+  <m x="168" y="91" w="30" a="start" c="tw">E</m>
+  <line x1="265" y1="170" x2="265" y2="114" class="ac" style="stroke-width:1" marker-start="url(#aE)" marker-end="url(#aE)"/>
+  <m x="272" y="144" w="60" a="start" c="ta">E_{\text{cat}}</m>
+</svg>
+<figcaption><b>Figure 3</b> (after Levenspiel Fig. 18.1, class notes). The end states are fixed by thermodynamics, so \(\Delta H\), \(\Delta G\) and the equilibrium constant are the same with or without the catalyst.</figcaption>
+</figure>
+<h3>General characteristics (JMS 8-1) with evidence</h3>
+<div class="tw"><table>
+<thead><tr><th>Characteristic</th><th>Evidence / example</th></tr></thead>
+<tbody>
+<tr><td>A small amount of catalyst converts a large amount of reactant</td><td>\(\mathrm{Cu^{2+}}\) at \(10^{-9}\) mol/L appreciably increase the rate of oxidation of sodium sulphide by oxygen (Glasstone)</td></tr>
+<tr><td>A catalyst does not change the equilibrium; it speeds forward and reverse reactions equally</td><td>\(\mathrm{SO_2}\) oxidation over Pt, \(\mathrm{Fe_2O_3}\) and \(\mathrm{V_2O_5}\) all reach the same equilibrium composition</td></tr>
+<tr><td>Rate is proportional to active surface area</td><td>\(\mathrm{H_2 + O_2}\) on Pt: rate proportional to Pt area</td></tr>
+<tr><td><b>Selectivity</b>: a catalyst can steer towards one product among several</td><td>Ethanol gives ethylene + water over alumina, but acetaldehyde + hydrogen over copper</td></tr>
+</tbody></table></div>
+<div class="box class"><b>Class notes: properties of a catalyst</b>
+<ol>
+<li>It alters the rate but not the thermodynamics; only the activation energy changes, \(\Delta H\) is the same.</li>
+<li>It is not consumed, but it does deactivate.</li>
+<li>It provides a high surface area, \(10^2\)–\(10^3\ \mathrm{m^2/g}\).</li>
+<li>Supported (active agent such as Pd, Pt, Rh on a support such as \(\mathrm{SiO_2}\), \(\mathrm{Al_2O_3}\), which gives mechanical strength, favourable sites and thermal stability; e.g. \(\mathrm{V_2O_5/SiO_2}\) for \(\mathrm{SO_2\rightarrow SO_3}\)) or unsupported (Fe for \(\mathrm{NH_3}\)).</li>
+</ol></div>
+<h3>Turnover frequency and dispersion (class notes; HSF 10.1.3)</h3>
+<div class="grid2">
+<div class="card">$$\text{TOF} = \frac{\text{molecules reacting}}{\text{active site}\cdot\text{s}}\qquad\left(10^{-4}\text{ to }10^{4}\ \mathrm{s^{-1}}\right)$$</div>
+<div class="card">$$D = \frac{\text{surface metal atoms}}{\text{total metal atoms}}\ [\%]$$</div>
+</div>
+<p><b>Active site</b> (Taylor): a point on the surface that can form strong chemical bonds with an adsorbed atom or molecule — unsaturated atoms at edges, dislocations, cracks and grain boundaries.</p>
+</section>
+
+<!-- ================================================================ 4 -->
+<section class="s" id="compose">
+<h2><span class="num">4</span>Catalyst composition and classification</h2>
+<div class="tw"><table>
+<thead><tr><th>Component</th><th>Examples</th><th>Role</th></tr></thead>
+<tbody>
+<tr><td><b>Catalytic agent</b> (active substance)</td><td>Metals Fe, Cu, Pt, Pd, Rh, Ni, Ag; oxides NiO, ZnO, \(\mathrm{V_2O_5}\); acids \(\mathrm{SiO_2}\)–\(\mathrm{Al_2O_3}\)</td><td>Where the chemistry happens</td></tr>
+<tr><td><b>Support / carrier</b></td><td>\(\mathrm{SiO_2}\), \(\mathrm{Al_2O_3}\), SiC</td><td>Large area from a small amount of expensive agent; mechanical and thermal stability; can change the electronic state of the agent (Pt on silica vs alumina)</td></tr>
+<tr><td><b>Promoter</b></td><td>\(\mathrm{Al_2O_3}\), CaO, \(\mathrm{K_2O}\) in Fe for \(\mathrm{NH_3}\)</td><td>Added in small amounts <em>during preparation</em>; little activity alone; improves activity, selectivity or life (\(\mathrm{Al_2O_3}\) stops sintering)</td></tr>
+<tr><td><b>Inhibitor</b></td><td>Halogen compounds on Ag/\(\mathrm{Al_2O_3}\) for ethylene oxide</td><td>Added during preparation to <em>lower</em> activity for an unwanted reaction (complete oxidation to \(\mathrm{CO_2}\)), raising selectivity</td></tr>
+</tbody></table></div>
+
+<h3>Electronic classification (JMS 8-8, Dowden)</h3>
+<div class="grid3">
+<div class="card"><h4>Conductors — metals</h4><p>Ag, Pt, V, Fe, Ni. Chemisorb by electron transfer; chemisorb \(\mathrm{O_2}\) and \(\mathrm{H_2}\), so good for oxidation–reduction and hydrogenation–dehydrogenation (Pt for \(\mathrm{SO_2}\) oxidation, Ni for hydrogenation). \(\mathrm{O_2}\) and CO are poisons in hydrogenation.</p></div>
+<div class="card"><h4>Semiconductors — oxides</h4><p>NiO, \(\mathrm{Cu_2O}\), ZnO. Electrons move when enough energy is supplied (heating). Same reaction types as metals but at higher temperature; less easily poisoned. \(\mathrm{MoO_3}\), \(\mathrm{Cr_2O_3}\) polymerise olefins.</p></div>
+<div class="card"><h4>Insulators — solid acids</h4><p>Silica gel, alumina, silica–alumina. Activity from carbonium ions at acid sites. Used for cracking, alkylation, isomerisation, polymerisation.</p></div>
+</div>
+<p><b>Dual-function catalysts</b> have two active substances close together: Ni on silica–alumina isomerises n-hexane far better than silica–alumina alone (Ni dehydrogenates to hexene, the acid isomerises, Ni re-hydrogenates). The Ziegler–Natta catalyst \(\mathrm{Al(C_2H_5)_3 + TiCl_4}\) makes isotactic polymers; Fe is specific for Fischer–Tropsch.</p>
+
+<h3>By reaction type (HSF Table 10-1) and by structure</h3>
+<div class="grid2">
+<div class="tw"><table>
+<thead><tr><th>Reaction</th><th>Catalysts</th></tr></thead>
+<tbody>
+<tr><td>Halogenation–dehalogenation</td><td>\(\mathrm{CuCl_2}\), AgCl, Pd</td></tr>
+<tr><td>Hydration–dehydration</td><td>\(\mathrm{Al_2O_3}\), MgO</td></tr>
+<tr><td>Alkylation–dealkylation</td><td>\(\mathrm{AlCl_3}\), Pd, zeolites</td></tr>
+<tr><td>Hydrogenation–dehydrogenation</td><td>Co, Pt, \(\mathrm{Cr_2O_3}\), Ni</td></tr>
+<tr><td>Oxidation</td><td>Cu, Ag, Ni, \(\mathrm{V_2O_5}\)</td></tr>
+<tr><td>Isomerisation</td><td>\(\mathrm{AlCl_3}\), Pt/\(\mathrm{Al_2O_3}\), zeolites</td></tr>
+</tbody></table></div>
+<div class="card"><h4>Structural types (HSF 10.1.2)</h4>
+<ul>
+<li><b>Porous</b>: area from internal pores (silica–alumina: \(0.6\ \mathrm{cm^3/g}\), pore radius 4 nm, \(300\ \mathrm{m^2/g}\)).</li>
+<li><b>Molecular sieves</b> (zeolites): pores admit only small molecules. Para-xylene can leave the pore mouth; ortho and meta cannot, so selectivity to para is very high.</li>
+<li><b>Monolithic</b>: honeycombs (car exhaust).</li>
+<li><b>Supported</b>: Pt/\(\mathrm{Al_2O_3}\) reforming, \(\mathrm{V_2O_5}\)/silica for \(\mathrm{H_2SO_4}\).</li>
+<li><b>Unsupported</b>: Pt gauze (\(\mathrm{NH_3}\) oxidation), promoted Fe (\(\mathrm{NH_3}\) synthesis).</li>
+</ul></div>
+</div>
+</section>
+
+<!-- ================================================================ 5 -->
+<section class="s" id="shapes">
+<h2><span class="num">5</span>Catalyst shapes and the pressure-drop trade-off (class notes)</h2>
+<div class="tw"><table>
+<thead><tr><th>Shape</th><th>Advantages</th><th>Disadvantages</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td>Spherical</td><td>Low manufacturing cost</td><td>Relatively high pressure drop, large diffusion length</td><td>Hydrodesulphurisation (HDS), methanation</td></tr>
+<tr><td>Irregular granules</td><td>Low manufacturing cost</td><td>High pressure drop, low surface area</td><td>Ammonia, formaldehyde</td></tr>
+<tr><td>Pellet (tablet)</td><td>Regular shape, good strength</td><td>Low surface area</td><td>CO shift, hydrogenation</td></tr>
+<tr><td>Extruded cylinder, rings, lobes, wagon wheel</td><td>Low pressure drop, higher area per volume</td><td>Poorer strength (tensile and compressive)</td><td>HDS</td></tr>
+<tr><td>Monolith (honeycomb)</td><td>Very low pressure drop, small diffusion length</td><td>Poor radial heat transfer</td><td>Exhaust-gas cleaning</td></tr>
+</tbody></table></div>
+<p>Smaller particles give more external area per volume and shorter diffusion paths, but raise pressure drop. The Ergun equation shows why:</p>
+<div class="eq">$$\frac{\Delta P}{L} = \frac{150\,\mu\,v\,(1-\varepsilon)^2}{d_p^2\,\varepsilon^3} + \frac{1.75\,\rho\,v^2\,(1-\varepsilon)}{d_p\,\varepsilon^3}$$</div>
+<p>Both terms grow as \(d_p\) falls. Higher \(\Delta P\) needs a bigger compressor or pump and costs more, so there is a minimum practical particle size (class notes). Shaped catalysts raise area per volume without shrinking \(d_p\). In a <b>fixed bed</b> the solids stay in place; in a <b>fluidised bed</b> they move.</p>
+</section>
+
+<!-- ================================================================ 6 -->
+<section class="s" id="prep">
+<h2><span class="num">6</span>Catalyst preparation (JMS 8-9, class notes)</h2>
+<p>Chemical composition alone does not fix activity: surface area, pore size, particle size and structure all depend on how the catalyst was made. Follow tested recipes exactly.</p>
+<figure>
+<svg class="dg" viewBox="0 0 780 470" role="img" aria-labelledby="tP">
+  <title id="tP">Two catalyst preparation routes</title>
+  <defs><marker id="aP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker></defs>
+  <text x="190" y="22" text-anchor="middle" class="bold">Bulk (unsupported): precipitation / gel</text>
+  <text x="590" y="22" text-anchor="middle" class="bold">Supported: impregnation</text>
+  <g>
+    <rect x="80" y="40" width="220" height="40" rx="8" class="f-acs s-ac"/><text x="190" y="65" text-anchor="middle">Precipitation or gel formation</text>
+    <rect x="80" y="100" width="220" height="40" rx="8" class="f-s2 s-rule"/><text x="190" y="125" text-anchor="middle">Decantation / filtration</text>
+    <rect x="80" y="160" width="220" height="40" rx="8" class="f-wrs s-wr"/><text x="190" y="185" text-anchor="middle">Washing (remove poisons)</text>
+    <rect x="80" y="220" width="220" height="40" rx="8" class="f-s2 s-rule"/><text x="190" y="245" text-anchor="middle">Drying</text>
+    <rect x="80" y="280" width="220" height="40" rx="8" class="f-s2 s-rule"/><text x="190" y="305" text-anchor="middle">Crushing / forming</text>
+    <rect x="80" y="340" width="220" height="40" rx="8" class="f-s2 s-rule"/><text x="190" y="365" text-anchor="middle">Calcination (heat without oxygen)</text>
+    <rect x="80" y="400" width="220" height="40" rx="8" class="f-acs s-ac"/><text x="190" y="425" text-anchor="middle">Activation</text>
+    <line x1="190" y1="80" x2="190" y2="97" class="ln" marker-end="url(#aP)"/>
+    <line x1="190" y1="140" x2="190" y2="157" class="ln" marker-end="url(#aP)"/>
+    <line x1="190" y1="200" x2="190" y2="217" class="ln" marker-end="url(#aP)"/>
+    <line x1="190" y1="260" x2="190" y2="277" class="ln" marker-end="url(#aP)"/>
+    <line x1="190" y1="320" x2="190" y2="337" class="ln" marker-end="url(#aP)"/>
+    <line x1="190" y1="380" x2="190" y2="397" class="ln" marker-end="url(#aP)"/>
+  </g>
+  <g>
+    <rect x="480" y="40" width="220" height="40" rx="8" class="f-bks s-bk"/><text x="590" y="65" text-anchor="middle">Evacuate the carrier</text>
+    <rect x="480" y="100" width="220" height="40" rx="8" class="f-s2 s-rule"/><text x="590" y="125" text-anchor="middle">Contact with salt solution</text>
+    <rect x="480" y="160" width="220" height="40" rx="8" class="f-s2 s-rule"/><text x="590" y="185" text-anchor="middle">Remove excess solution</text>
+    <rect x="480" y="220" width="220" height="40" rx="8" class="f-s2 s-rule"/><text x="590" y="245" text-anchor="middle">Drying</text>
+    <rect x="480" y="280" width="220" height="40" rx="8" class="f-s2 s-rule"/><text x="590" y="305" text-anchor="middle">Calcination (salt becomes oxide)</text>
+    <rect x="480" y="340" width="220" height="40" rx="8" class="f-bks s-bk"/><text x="590" y="365" text-anchor="middle">Activation in situ (hydrogen)</text>
+    <line x1="590" y1="80" x2="590" y2="97" class="ln" marker-end="url(#aP)"/>
+    <line x1="590" y1="140" x2="590" y2="157" class="ln" marker-end="url(#aP)"/>
+    <line x1="590" y1="200" x2="590" y2="217" class="ln" marker-end="url(#aP)"/>
+    <line x1="590" y1="260" x2="590" y2="277" class="ln" marker-end="url(#aP)"/>
+    <line x1="590" y1="320" x2="590" y2="337" class="ln" marker-end="url(#aP)"/>
+  </g>
+  <m x="590" y="406" w="380" c="t2 sm">\mathrm{Ni/Al_2O_3}\text{: soak in }\mathrm{Ni(NO_3)_2}\text{, drain, heat to NiO,}</m>
+  <text x="590" y="428" text-anchor="middle" class="t2 sm">reduce with hydrogen inside the reactor (avoids air poisoning)</text>
+</svg>
+<figcaption><b>Figure 4.</b> The class-notes generic sequence also places an impregnation step between calcination and activation when a support is used. Washing is critical: leftover ions act as poisons. If the soaking solution contains chlorides or sulphates, precipitate the active constituent and wash instead.</figcaption>
+</figure>
+<div class="grid2">
+<div class="card"><h4>Precipitation</h4><p>Add a precipitating agent to aqueous solutions of the components. MgO: precipitate \(\mathrm{MgCO_3}\) from nitrate solution with \(\mathrm{Na_2CO_3}\), wash, dry, calcine. Class example: \(\mathrm{Al(NO_3)_3 + NH_4OH \rightarrow Al(OH)_3\downarrow + NH_4NO_3}\), then calcine to \(\mathrm{Al_2O_3}\).</p></div>
+<div class="card"><h4>Gel formation (sol–gel)</h4><p>A special case of precipitation for colloidal precipitates (silica, alumina). Class notes: (1) a liquid suspension (sol) forms by hydrolysis of a precursor salt; (2) condensation leads to gel formation.</p></div>
+<div class="card"><h4>Simple mixing</h4><p>Mix components with water, mill, dry, calcine; grind and sieve. Mixed MgO–CaO: carbonates wet-milled, extruded, dried, reduced.</p></div>
+<div class="card"><h4>Wet vs dry impregnation</h4><p><b>Wet</b>: excess solution; transport by diffusion. <b>Dry (incipient wetness)</b>: exactly the pore volume of solution; transport by diffusion plus capillary flow.</p></div>
+</div>
+<div class="box book"><b>Dispersion matters more than loading (JMS 8-9)</b>
+<p>Ortho-to-para hydrogen conversion over NiO/\(\mathrm{Al_2O_3}\): 5.0 wt % NiO was <em>less</em> active than 0.5 wt %, because the concentrated solution deposited larger Ni particles. The same 5.0 wt % built from ten separate 0.5 wt % depositions was <b>11 times</b> more active. This is why active area is measured by chemisorption of \(\mathrm{H_2}\) or CO, not inferred from weight per cent.</p></div>
+</section>
+
+<!-- ================================================================ 7 -->
+<section class="s" id="poison">
+<h2><span class="num">7</span>Promoters, inhibitors and poisons (JMS 8-10, 8-11)</h2>
+<div class="box warn"><b>Exam distinction</b>
+<p><b>Promoter</b> and <b>inhibitor</b> are added deliberately during <em>manufacture</em>. A <b>poison</b> is not added: it comes in with the feed or is produced by the reaction during <em>operation</em>. An <b>accelerator</b> is added to the <em>feed</em> to improve performance (steam in butene dehydrogenation over Fe reduces coke). Accelerators are the counterpart of poisons.</p></div>
+<div class="tw"><table>
+<thead><tr><th>Poison type</th><th>Mechanism</th><th>Example</th><th>Reversible?</th></tr></thead>
+<tbody>
+<tr><td><b>Deposited</b></td><td>Deposit covers sites and may block pore mouths</td><td>Carbon (coke) on cracking catalysts</td><td>Partly; regenerate by burning with air/steam (a gas–solid non-catalytic reaction)</td></tr>
+<tr><td><b>Chemisorbed</b></td><td>Poison chemisorbs on active sites; activity decline stops when adsorption equilibrium is reached</td><td>Sulphur compounds on Ni, Cu, Pt</td><td>Yes if weakly held; permanent if strongly held</td></tr>
+<tr><td><b>Selectivity</b></td><td>Adsorbed material catalyses unwanted reactions</td><td>Ni, Cu, Fe from petroleum deposit on cracking catalyst, dehydrogenate: more \(\mathrm{H_2}\) and coke, less gasoline</td><td>—</td></tr>
+<tr><td><b>Stability</b></td><td>Changes the structure of catalyst or carrier; sintering, local melting at high \(T\)</td><td>Water vapour in \(\mathrm{SO_2}\)–air over Pt/\(\mathrm{Al_2O_3}\)</td><td>Usually no</td></tr>
+<tr><td><b>Diffusion</b></td><td>Blocks pore mouths so reactants cannot reach the inner surface</td><td>Coke; entrained solids; fluids that react to leave a solid residue</td><td>Depends</td></tr>
+</tbody></table></div>
+<h4>Selected entries from JMS Table 8-6</h4>
+<div class="tw"><table>
+<thead><tr><th>Catalyst</th><th>Reaction</th><th>Poisons, by poisoning type</th></tr></thead>
+<tbody>
+<tr><td>Silica, alumina</td><td>Cracking</td><td><b>Chemisorption:</b> organic bases. <b>Deposition:</b> carbon, hydrocarbons. <b>Stability:</b> water. <b>Selectivity:</b> heavy metals</td></tr>
+<tr><td>Ni, Pt, Cu</td><td>Hydrogenation, dehydrogenation</td><td><b>Chemisorption:</b> compounds of S, Se, Te, P, As, Zn, halides, Hg, Pb, \(\mathrm{NH_3}\), \(\mathrm{C_2H_2}\), \(\mathrm{H_2S}\)</td></tr>
+<tr><td>Silver</td><td>\(\mathrm{C_2H_4 + O \rightarrow C_2H_4O}\)</td><td><b>Selectivity:</b> \(\mathrm{CH_4}\), \(\mathrm{C_2H_6}\)</td></tr>
+<tr><td>Vanadium oxide</td><td>Oxidation</td><td><b>Chemisorption:</b> As</td></tr>
+<tr><td>Iron</td><td>Ammonia synthesis</td><td><b>Chemisorption:</b> \(\mathrm{O_2}\), \(\mathrm{H_2O}\), CO, S, \(\mathrm{C_2H_2}\)</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- ================================================================ 8 -->
+<section class="s" id="ads">
+<h2><span class="num">8</span>Physical adsorption vs chemisorption (JMS 8-3, HSF 10.1.3)</h2>
+<p><b>Adsorbate</b>: the molecule that attaches. <b>Adsorbent</b>: the surface it attaches to. Surface imperfections raise the surface energy and give the sites (class notes). Adsorption is exothermic, \(\Delta H_{ads} < 0\): the molecule loses freedom, so \(\Delta S < 0\), and \(\Delta G = \Delta H - T\Delta S < 0\) needs \(\Delta H < 0\).</p>
+<div class="tw"><table>
+<thead><tr><th>Property</th><th>Physical adsorption (physisorption)</th><th>Chemisorption</th></tr></thead>
+<tbody>
+<tr><td>Forces</td><td>van der Waals (dipole–dipole, dipole–induced dipole, dispersion)</td><td>Valence (chemical) bonds, like those in molecules</td></tr>
+<tr><td>Surface</td><td>Any surface</td><td>Only chemically active surfaces (active sites)</td></tr>
+<tr><td>Heat of adsorption</td><td>Low: class notes 0.5–5 kcal/g-mol; Fogler 1–15 kcal/mol; about the heat of condensation</td><td>High: class notes 5–100 kcal/g-mol; Fogler 40–400 kJ/mol; about the heat of reaction</td></tr>
+<tr><td>Temperature</td><td>Significant only at low \(T\), near the boiling point; falls quickly as \(T\) rises; negligible above the critical temperature</td><td>At high \(T\), where catalysis happens</td></tr>
+<tr><td>Activation energy</td><td>Almost none, fast</td><td>May need activation energy</td></tr>
+<tr><td>Reversibility</td><td>Reversible</td><td>Often irreversible</td></tr>
+<tr><td>Layers</td><td>Multilayer possible</td><td>Monolayer only</td></tr>
+<tr><td>Effect on molecule</td><td>Little change</td><td>Electronic structure perturbed, bonds stretched: very reactive</td></tr>
+<tr><td>Used to measure</td><td>Total surface area and pore volume (BET, \(\mathrm{N_2}\) at −196 °C)</td><td>Active area / number of active sites (\(\mathrm{H_2}\), CO)</td></tr>
+</tbody></table></div>
+<figure>
+<svg class="dg" viewBox="0 0 640 300" role="img" aria-labelledby="tLJ">
+  <title id="tLJ">Potential energy against distance from surface for physisorption and chemisorption</title>
+  <defs><marker id="aL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker></defs>
+  <line x1="70" y1="20" x2="70" y2="280" class="ln"/>
+  <line x1="70" y1="120" x2="610" y2="120" class="ln" marker-end="url(#aL)"/>
+  <text x="600" y="140" text-anchor="end" class="t2 sm">distance from surface</text>
+  <text x="30" y="160" class="t2 sm" transform="rotate(-90 30 160)">potential energy</text>
+  <path d="M112,20 C125,160 150,265 180,265 C225,265 300,150 600,122" class="ac"/>
+  <path d="M160,20 C175,110 195,170 225,170 C265,170 330,128 600,121" class="bk"/>
+  <line x1="180" y1="120" x2="180" y2="263" class="ac" style="stroke-width:1" marker-end="url(#aL)"/>
+  <m x="188" y="206" w="220" a="start" c="ta sm">\Delta H_{\text{chem}}\text{: deep well}</m>
+  <line x1="225" y1="120" x2="225" y2="168" class="bk" style="stroke-width:1" marker-end="url(#aL)"/>
+  <m x="233" y="156" w="220" a="start" c="tb sm">\Delta H_{\text{phys}}\text{: shallow well}</m>
+  <text x="120" y="40" class="t3 sm">repulsion</text>
+  <text x="430" y="105" class="t3 sm">attraction</text>
+</svg>
+<figcaption><b>Figure 5</b> (class notes p. 20). Chemisorption is a deep well close to the surface, at bond distance; physisorption is a shallow well further out.</figcaption>
+</figure>
+</section>
+
+<!-- ================================================================ 9 -->
+<section class="s" id="langmuir">
+<h2><span class="num">9</span>Adsorption isotherms and the Langmuir treatment (JMS 8-4)</h2>
+<p>An <b>adsorption isotherm</b> is the amount adsorbed at equilibrium (\(r_{ads} = r_{des}\)) at constant temperature, plotted against pressure (or concentration).</p>
+<h3>Langmuir's assumptions</h3>
+<ol>
+<li>The surface is uniform: every site is equally active.</li>
+<li>Adsorbed molecules do not interact with each other.</li>
+<li>The heat of adsorption is constant, independent of coverage \(\theta\).</li>
+<li>Adsorption is limited to a monolayer.</li>
+<li>All adsorption occurs by the same mechanism.</li>
+</ol>
+<h3>Derivation</h3>
+<p>The rate of adsorption is proportional to the collision rate (\(\propto p\)) and to the fraction of sites still vacant; the rate of desorption is proportional to the fraction covered:</p>
+<div class="eq"><span class="tag">8-1, 8-2</span>$$r_a = k_a\,p\,(1-\theta) \qquad\qquad r_d = k_d\,\theta$$</div>
+<div class="eq"><span class="tag">8-3</span>$$k_a p(1-\theta) = k_d\theta \;\Rightarrow\; \theta = \frac{k_a p}{k_d + k_a p} \;\Rightarrow\; \boxed{\theta = \frac{v}{v_m} = \frac{Kp}{1+Kp}},\qquad K = \frac{k_a}{k_d}$$</div>
+<p>\(v\) = volume adsorbed, \(v_m\) = volume of a complete monolayer. Limits: \(Kp \ll 1\) gives \(\theta \approx Kp\) (linear, Henry's law); \(Kp \gg 1\) gives \(\theta\to 1\).</p>
+<div class="grid2">
+<div class="card"><h4>Linear form used by JMS (Eq. 8-8)</h4>$$\frac{p}{v} = \frac{1}{Kv_m} + \frac{p}{v_m}$$<p>Plot \(p/v\) vs \(p\): slope \(1/v_m\), intercept \(1/(Kv_m)\).</p></div>
+<div class="card"><h4>Linear form used in class</h4>$$\frac{1}{v} = \frac{1}{Kv_m}\cdot\frac{1}{p} + \frac{1}{v_m}$$<p>Plot \(1/v\) vs \(1/p\): slope \(1/(Kv_m)\), intercept \(1/v_m\).</p></div>
+</div>
+<p>For several gases adsorbing competitively on the same sites (JMS 8-4): \(\theta_A = \dfrac{K_A p_A}{1 + K_A p_A + K_B p_B}\). Chemisorption usually fits Langmuir better than physisorption, because chemisorption stops at a monolayer.</p>
+
+<div class="viz">
+  <p class="vh">Live: Langmuir isotherm, molecular vs dissociative</p>
+  <p class="vs">Dissociative adsorption (\(\mathrm{CO + 2S \rightleftharpoons C\cdot S + O\cdot S}\), derived on the M2 page) rises as \(\sqrt{p}\) at low pressure. Molecular: \(\theta = \dfrac{Kp}{1+Kp}\). Dissociative: \(\theta = \dfrac{\sqrt{Kp}}{1+\sqrt{Kp}}\).</p>
+  <div class="controls">
+    <div class="ctl"><label for="lg-K">\(K\) \(\mathrm{(atm^{-1})}\)</label><input type="range" id="lg-K" min="-2" max="2" step="0.05" value="0"><output id="lg-Ko"></output></div>
+  </div>
+  <div id="c-lang" class="plot"></div>
+  <div class="readout"><span>At \(p = 1\) atm: molecular \(\theta\) = <output id="lg-m"></output></span><span>dissociative \(\theta\) = <output id="lg-d"></output></span><span>pressure for \(\theta = 0.5\) (molecular) = <output id="lg-h"></output> atm</span></div>
+</div>
+
+<h3>Isotherms that relax assumption 3 (class notes, JMS 8-4)</h3>
+<p>Real surfaces are not uniform: the strongest sites fill first, so \(\Delta H_{ads}\) falls as \(\theta\) rises.</p>
+<div class="tw"><table>
+<thead><tr><th>Isotherm</th><th>Heat vs coverage</th><th>Equation</th></tr></thead>
+<tbody>
+<tr><td>Langmuir</td><td>Constant</td><td>\(\theta = \dfrac{Kp}{1+Kp}\)</td></tr>
+<tr><td>Temkin</td><td>Falls linearly</td><td>\(\theta = k_1\ln(k_2 p)\)</td></tr>
+<tr><td>Freundlich</td><td>Falls logarithmically, \(\Delta H = -\Delta H_0 \ln\theta\)</td><td>\(\theta = c\,p^{1/n},\ n>1\)</td></tr>
+<tr><td>Tóth (Tutorial 2)</td><td>Heterogeneity parameter \(n\le 1\)</td><td>\(\theta = \dfrac{Kp}{\left[1+(Kp)^n\right]^{1/n}}\)</td></tr>
+<tr><td>Multi-site Langmuir (Tutorial 2)</td><td>One molecule occupies \(a\) sites</td><td>\(\theta = Kp\,(1-\theta)^a\)</td></tr>
+</tbody></table></div>
+<h3>Temperature dependence: van't Hoff (class notes pp. 51–52)</h3>
+<div class="eq">$$\frac{d\ln K}{dT} = \frac{\Delta H_{ads}}{RT^2}\quad\Rightarrow\quad \ln K = -\frac{\Delta H_{ads}}{R}\cdot\frac{1}{T} + \frac{\Delta S_{ads}}{R}$$</div>
+<p>Plot \(\ln K\) vs \(1/T\): slope \(= -\Delta H_{ads}/R\), intercept \(= \Delta S/R\). Because \(\Delta H_{ads}<0\), \(K\) falls as \(T\) rises: at higher temperature the isotherm is lower (class notes p. 53: \(T_4>T_3>T_2>T_1\) gives \(K_4<K_3<K_2<K_1\)).</p>
+
+<h3>IUPAC isotherm types</h3>
+<figure>
+<svg class="dg" viewBox="0 0 800 220" role="img" aria-labelledby="tIU">
+  <title id="tIU">Five IUPAC adsorption isotherm types</title>
+  <g transform="translate(10,20)">
+    <rect width="150" height="140" class="f-s2" rx="6"/><line x1="18" y1="120" x2="140" y2="120" class="ln"/><line x1="18" y1="120" x2="18" y2="12" class="ln"/>
+    <path d="M18,120 C24,40 50,34 140,32" class="ac"/>
+    <text x="75" y="160" text-anchor="middle" class="bold">Type I</text><text x="75" y="178" text-anchor="middle" class="t2 sm">monolayer (Langmuir),</text><text x="75" y="194" text-anchor="middle" class="t2 sm">microporous solids</text>
+  </g>
+  <g transform="translate(170,20)">
+    <rect width="150" height="140" class="f-s2" rx="6"/><line x1="18" y1="120" x2="140" y2="120" class="ln"/><line x1="18" y1="120" x2="18" y2="12" class="ln"/>
+    <path d="M18,120 C24,70 40,62 70,62 C105,62 118,50 138,14" class="ac"/>
+    <text x="75" y="160" text-anchor="middle" class="bold">Type II</text><text x="75" y="178" text-anchor="middle" class="t2 sm">multilayer, knee =</text><text x="75" y="194" text-anchor="middle" class="t2 sm">monolayer complete (BET)</text>
+  </g>
+  <g transform="translate(330,20)">
+    <rect width="150" height="140" class="f-s2" rx="6"/><line x1="18" y1="120" x2="140" y2="120" class="ln"/><line x1="18" y1="120" x2="18" y2="12" class="ln"/>
+    <path d="M18,120 C80,118 115,90 138,16" class="ac"/>
+    <text x="75" y="160" text-anchor="middle" class="bold">Type III</text><text x="75" y="178" text-anchor="middle" class="t2 sm">weak adsorbate–</text><text x="75" y="194" text-anchor="middle" class="t2 sm">adsorbent interaction</text>
+  </g>
+  <g transform="translate(490,20)">
+    <rect width="150" height="140" class="f-s2" rx="6"/><line x1="18" y1="120" x2="140" y2="120" class="ln"/><line x1="18" y1="120" x2="18" y2="12" class="ln"/>
+    <path d="M18,120 C24,75 40,68 65,68 C92,68 102,40 115,30 C122,26 130,25 140,25" class="ac"/>
+    <path d="M140,25 C125,26 118,34 108,50 C98,62 88,66 65,68" class="ac dash" style="stroke-width:1.5"/>
+    <text x="75" y="160" text-anchor="middle" class="bold">Type IV</text><text x="75" y="178" text-anchor="middle" class="t2 sm">II + capillary condensation</text><text x="75" y="194" text-anchor="middle" class="t2 sm">(mesopores, hysteresis)</text>
+  </g>
+  <g transform="translate(650,20)">
+    <rect width="150" height="140" class="f-s2" rx="6"/><line x1="18" y1="120" x2="140" y2="120" class="ln"/><line x1="18" y1="120" x2="18" y2="12" class="ln"/>
+    <path d="M18,120 C60,117 80,100 95,62 C105,38 118,30 140,28" class="ac"/>
+    <text x="75" y="160" text-anchor="middle" class="bold">Type V</text><text x="75" y="178" text-anchor="middle" class="t2 sm">III + capillary</text><text x="75" y="194" text-anchor="middle" class="t2 sm">condensation</text>
+  </g>
+</svg>
+<figcaption><b>Figure 6.</b> Axes in every panel: amount adsorbed (up) against \(p/p_0\) (right), where \(p_0\) is the vapour pressure of the adsorbate. The dashed branch in Type IV is desorption (hysteresis).</figcaption>
+</figure>
+<p><b>Pore classes (IUPAC, class notes):</b> micropores \(d_p<2\) nm; mesopores \(2<d_p<50\) nm; macropores \(d_p>50\) nm. J. M. Smith, for bidisperse pellets, calls pores below about 200 Å <em>radius</em> the micropore region (inside the particles, where the area is) and 200–10 000 Å the macropore region (between particles, where transport happens).</p>
+</section>
+
+<!-- ================================================================ 10 -->
+<section class="s" id="bet">
+<h2><span class="num">10</span>Surface area by the BET method (JMS 8-5)</h2>
+<p>Langmuir stops at one layer. Nitrogen near its boiling point builds <b>multilayers</b>, and the Type II knee marks the monolayer. Brunauer, Emmett and Teller extended Langmuir by assuming the first layer has heat of adsorption \(E_1\) and every later layer has the heat of liquefaction \(E_L\). The result:</p>
+<div class="eq"><span class="tag">8-9</span>$$\frac{p}{v\,(p_0 - p)} = \frac{1}{v_m c} + \frac{c-1}{v_m c}\cdot\frac{p}{p_0},\qquad c = \exp\!\left(\frac{E_1 - E_L}{RT}\right)$$</div>
+<p>Plot \(y = p/[v(p_0-p)]\) against \(x = p/p_0\), normally in the range \(0.05 < p/p_0 < 0.3\). With intercept \(I\) and slope \(s\):</p>
+<div class="eq"><span class="tag">8-10 to 8-12</span>$$I = \frac{1}{v_m c},\quad s = \frac{c-1}{v_m c}\quad\Rightarrow\quad I + s = \frac{c}{v_m c}\;\Rightarrow\; \boxed{v_m = \frac{1}{I+s}},\qquad c = \frac{s}{I}+1$$</div>
+<p>Turn the monolayer volume into an area. \(v_m\) is in \(\mathrm{cm^{3}}\) at STP per gram; \(N_0\) is Avogadro's number; \(\alpha\) is the area covered by one adsorbed molecule:</p>
+<div class="eq"><span class="tag">8-13, 8-14</span>$$S_g = \frac{v_m N_0}{V}\,\alpha,\quad V = 22\,400\ \mathrm{cm^3/mol}\qquad\qquad \alpha = 1.09\left[\frac{M}{N_0\,\rho}\right]^{2/3}$$</div>
+<p>\(M\) is the molecular weight and \(\rho\) the density of the adsorbate as liquid at the adsorption temperature. For \(\mathrm{N_2}\) at −195.8 °C (\(\rho = 0.808\ \mathrm{g/cm^3}\)), \(\alpha = 16.2\ \text{Å}^2\) and</p>
+<div class="eq"><span class="tag">8-15</span>$$S_g = 4.35\times10^{4}\ v_m\ \ \mathrm{cm^2/g}\qquad(\text{i.e. } 4.35\,v_m\ \mathrm{m^2/g},\ v_m \text{ in cm}^3\text{(STP)/g})$$</div>
+<div class="box class"><b>How it is measured (class notes, lecture slide)</b>
+<p>Degas the sample to clean the surface. Flow \(\mathrm{N_2}\) (adsorbate) with He (inert carrier) over the sample at liquid-nitrogen temperature and record the uptake at each \(p/p_0\). \(\mathrm{N_2}\) is used because it is cheap and physisorbs on any surface. Catalysts typically have \(10^2\)–\(10^3\) \(\mathrm{m^{2}/g}\) (class notes); a silica–alumina cracking catalyst has about 300 \(\mathrm{m^{2}/g}\) (Fogler).</p></div>
+
+<div class="viz">
+  <p class="vh">Live: BET calculator on the Tutorial 1 Q4 plot</p>
+  <p class="vs">Points read from the silica-gel BET plot. The y-axis unit is \(10^{-3}\) \(\mathrm{g/cm^{3}}\) because \(v\) is in \(\mathrm{cm^{3}/g}\).</p>
+  <div class="controls">
+    <div class="seg" id="bet-mode"><button class="on" data-v="line">Printed straight line</button><button data-v="fit">Least squares through the circles</button></div>
+    <div class="ctl"><label for="bet-gas">Adsorbate (at its boiling point)</label><select id="bet-gas"><option value="16.2">Nitrogen</option><option value="14.2">Oxygen</option></select></div>
+  </div>
+  <div id="c-bet" class="plot"></div>
+  <div class="readout"><span>molecular area \(\alpha\) = <output id="bet-al"></output></span><span>intercept \(I\) = <output id="bet-i"></output></span><span>slope \(s\) = <output id="bet-s"></output></span><span>\(v_m\) = <output id="bet-vm"></output> \(\mathrm{cm^{3}/g}\)</span><span>\(c\) = <output id="bet-c"></output></span><span class="verdict good">\(S_g\) = <output id="bet-sg"></output> \(\mathrm{m^{2}/g}\)</span></div>
+</div>
+<div class="box warn"><b>Trap</b>
+<p>The printed y-axis starts at 1.0, not 0. Read the intercept by extending the line to \(p/p_0=0\), never by reading where the line meets the drawn axis.</p></div>
+</section>
+
+<!-- ================================================================ 11 -->
+<section class="s" id="density">
+<h2><span class="num">11</span>Void volume, densities and porosity (JMS 8-6)</h2>
+<p><b>Helium–mercury method.</b> Put a weighed sample in a container of known volume.</p>
+<ul>
+<li><b>Helium</b> fills the pores and the space around the particles, but cannot enter the solid, so the helium displaced gives the volume of <b>solid</b>.</li>
+<li><b>Mercury</b> at atmospheric pressure does not wet the solid and will not fill the pores of most catalysts (at 1.77 psia it enters only voids larger than about 50 \(\mu\mathrm{m}\); see Example 8-6), so the mercury displaced gives the volume of the <b>particles including pores</b>.</li>
+</ul>
+<div class="eq">$$V_g = \frac{V_{Hg} - V_{He}}{m}\ \ [\mathrm{cm^3/g}]\qquad \rho_s = \frac{m}{V_{He}}\qquad \rho_p = \frac{m}{V_{Hg}}$$</div>
+<p>The porosity of the particle is pore volume over total particle volume:</p>
+<div class="eq"><span class="tag">8-16, 8-17</span>$$\varepsilon_p = \frac{m V_g}{m V_g + m/\rho_s} = \frac{V_g\,\rho_s}{V_g\,\rho_s + 1}\qquad\text{and}\qquad \rho_p = \frac{m}{mV_g + m/\rho_s} = \frac{\rho_s}{V_g\rho_s + 1}\ \Rightarrow\ \varepsilon_p = V_g\,\rho_p$$</div>
+<p>Also \(\varepsilon_p = 1 - \rho_p/\rho_s\). Typically \(\varepsilon_p \approx 0.5\). With a bed voidage near 0.4, a packed bed is roughly 30 % pore, 30 % solid, 40 % inter-particle space.</p>
+<figure>
+<svg class="dg" viewBox="0 0 760 250" role="img" aria-labelledby="tD">
+  <title id="tD">Volume breakdown of a bidisperse catalyst pellet and the density that goes with each denominator</title>
+  <rect x="40" y="40" width="200" height="60" class="f-ink" style="fill:var(--ink-2)"/><text x="140" y="75" text-anchor="middle" class="bold" style="fill:var(--surface)">solid</text>
+  <rect x="240" y="40" width="160" height="60" class="f-bks s-bk"/><text x="320" y="68" text-anchor="middle" class="tb bold">micropores</text><text x="320" y="86" text-anchor="middle" class="tb sm">inside particles</text>
+  <rect x="400" y="40" width="140" height="60" class="f-wrs s-wr"/><text x="470" y="68" text-anchor="middle" class="tw bold">macropores</text><text x="470" y="86" text-anchor="middle" class="tw sm">between particles</text>
+  <rect x="540" y="40" width="180" height="60" class="f-s2 s-rule"/><text x="630" y="68" text-anchor="middle" class="bold">bed voids</text><text x="630" y="86" text-anchor="middle" class="sm t2">between pellets</text>
+  <g class="ln">
+    <path d="M40,120 L40,130 L240,130 L240,120"/>
+    <path d="M40,160 L40,170 L400,170 L400,160"/>
+    <path d="M40,200 L40,210 L540,210 L540,200"/>
+    <path d="M40,236 L40,246 L720,246 L720,236" />
+  </g>
+  <m x="250" y="130" w="400" a="start" c="sm">\rho_s = m/V_{\text{solid}}\quad\text{true (solid) density, from helium}</m>
+  <m x="410" y="170" w="340" a="start" c="sm">\rho_p = \text{particle density (mercury on particles)}</m>
+  <m x="550" y="202" w="200" a="start" c="sm">\rho_P = \text{pellet density}</m>
+  <m x="556" y="228" w="196" a="start" c="sm">\rho_B = \text{bulk (bed) density}</m>
+</svg>
+<figcaption><b>Figure 7.</b> Every density is the same mass divided by a larger and larger volume, so \(\rho_s > \rho_p > \rho_P > \rho_B\). Micropore volume per gram is measured on the particles; macropore volume from the pellet.</figcaption>
+</figure>
+<div class="tw"><table>
+<thead><tr><th>Density (class notes, slide 9)</th><th>Denominator</th></tr></thead>
+<tbody>
+<tr><td>True density \(\rho_s\)</td><td>Actual solid volume, all voids excluded</td></tr>
+<tr><td>Skeletal density</td><td>Excludes inter-particle voids and open pores, but includes closed pores</td></tr>
+<tr><td>Pellet (particle) density \(\rho_p\)</td><td>Pellet volume including its pores</td></tr>
+<tr><td>Tap density</td><td>Densely packed (tapped) bed volume</td></tr>
+<tr><td>Bulk density \(\rho_B\)</td><td>Loosely packed bed volume</td></tr>
+</tbody></table></div>
+<h3>Bidisperse pellets (Tutorial 1 Q6 = JMS Example 8-5)</h3>
+<p>Pellets made by compressing porous particles have <b>micropores</b> (inside the particles) and <b>macropores</b> (between particles). With pellet density \(\rho_P\), macropore volume \((V_g)_M\) and micropore volume \((V_g)_\mu\) per gram:</p>
+<div class="eq">$$\varepsilon_M = (V_g)_M\,\rho_P,\qquad \varepsilon_\mu = (V_g)_\mu\,\rho_P,\qquad \varepsilon_s = 1-\varepsilon_M-\varepsilon_\mu,\qquad \rho_s = \frac{\rho_P}{\varepsilon_s},\qquad \varepsilon_p(\text{particle}) = (V_g)_\mu\,\rho_p$$</div>
+<p>The worked numbers are on the <a href="tutorials.html#t1q6">Tutorials page</a>.</p>
+</section>
+
+<!-- ================================================================ 12 -->
+<section class="s" id="pores">
+<h2><span class="num">12</span>Pore-volume distribution (JMS 8-7)</h2>
+<p>How effective the inner surface is depends not only on how much void there is but on the <b>size</b> of the openings. Real void spaces are irregular (see the porous silver micrographs, JMS Fig. 8-5), so every model represents them as cylindrical pores of radius \(a\). Two methods measure the distribution.</p>
+<h3>Mercury penetration (porosimetry)</h3>
+<div class="grid2">
+<figure style="margin:0">
+<svg class="dg" viewBox="0 0 320 260" role="img" aria-labelledby="tHg">
+  <title id="tHg">Mercury being forced into a pore of radius a against surface tension</title>
+  <defs><marker id="aH" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-ac"/></marker></defs>
+  <rect x="100" y="20" width="16" height="220" class="f-s3 s-ink"/>
+  <rect x="204" y="20" width="16" height="220" class="f-s3 s-ink"/>
+  <path d="M116,20 L204,20 L204,120 C204,90 180,72 160,72 C140,72 116,90 116,120 Z" class="f-ink3" style="fill:var(--ink-3);opacity:.55"/>
+  <text x="160" y="46" text-anchor="middle" class="bold" style="fill:var(--surface)">Hg</text>
+  <line x1="160" y1="-6" x2="160" y2="16" class="ac" marker-end="url(#aH)"/>
+  <m x="168" y="8" w="30" a="start" c="ta">p</m>
+  <line x1="116" y1="200" x2="204" y2="200" class="ln" marker-start="url(#aH)" marker-end="url(#aH)"/>
+  <m x="160" y="218" w="40">2a</m>
+  <path d="M204,120 L204,150" class="wr"/>
+  <path d="M204,140 A20,20 0 0 0 190,106" class="wr" style="stroke-width:1.2"/>
+  <m x="234" y="126" w="86" a="start" c="tw">\theta \approx 140^\circ</m>
+  <text x="240" y="150" class="t3 sm">contact angle</text>
+  <text x="10" y="150" class="t2 sm">pore wall</text>
+</svg>
+<figcaption>Mercury is non-wetting (\(\theta>90°\), \(\cos\theta<0\)), so surface tension pushes it out. It enters when applied pressure balances surface tension.</figcaption>
+</figure>
+<div>
+<p>Force balance (Ritter and Drake): applied force on the pore cross-section = surface-tension force around the perimeter.</p>
+<div class="eq"><span class="tag">8-18</span>$$\pi a^2 p = -2\pi a\,\sigma\cos\theta\;\Rightarrow\; a = \frac{-2\sigma\cos\theta}{p}$$</div>
+<p>With \(\theta = 140°\) and \(\sigma\) for mercury:</p>
+<div class="eq"><span class="tag">8-19</span>$$a\ (\text{Å}) = \frac{8.75\times10^{5}}{p\ (\text{psi})}$$</div>
+<p>About 100 psi fills pores of \(a = 10\,000\) Å; 10 000 psi is needed for \(a = 100\) Å. Easy equipment reaches 100–200 Å; smaller needs high-pressure apparatus.</p>
+</div>
+</div>
+<div class="box warn"><b>Bottleneck pores</b>
+<p>A large void reached only through a narrow neck fills at the high pressure of the neck and is wrongly counted as small pores. Both methods need every pore to connect to at least one larger pore.</p></div>
+
+<div class="viz">
+  <p class="vh">Live: JMS Example 8-6, sintered \(\mathrm{UO_{2}}\) pellet (0.624 g)</p>
+  <p class="vs">Mercury porosimeter data converted to pore radius with Eq. 8-19. Left: cumulative penetration (volume of pores <em>larger</em> than \(a\)). Right: distribution \(\Delta V/\Delta\log_{10} a\) from raw finite differences (JMS Fig. 8-7 smooths the small bump near 2500 Å, which comes from two closely spaced pressure readings). Hover for values.</p>
+  <div class="grid2" style="margin:0">
+    <div id="c-hg1" class="plot short"></div>
+    <div id="c-hg2" class="plot short"></div>
+  </div>
+  <div class="readout"><span>Total volume at 1.77 psia = 0.190 \(\mathrm{cm^{3}}\); mercury penetrated by 3500 psi = 0.125 \(\mathrm{cm^{3}}\)</span><span>\(\varepsilon_p = 0.125/0.190 = 0.66\) (air pycnometer: 0.70, so a few pores are below 250 Å)</span><span>Most probable radius, about <output id="hg-peak"></output> Å (JMS: about 1200 Å)</span></div>
+</div>
+
+<h3>Nitrogen desorption (capillary condensation)</h3>
+<p>Continue the \(\mathrm{N_2}\) adsorption experiment towards \(p/p_0 \to 1\): multilayers bridge the pores and the pores fill by <b>capillary condensation</b>, smallest pores first. Then lower the pressure step by step. Pores empty when the vapour pressure over their curved meniscus exceeds the imposed pressure. The Kelvin equation, corrected for the adsorbed layer of thickness \(\delta\):</p>
+<div class="eq"><span class="tag">8-20, 8-21</span>$$a - \delta = \frac{-2\sigma V_l\cos\theta}{R_g T\,\ln(p/p_0)},\qquad \delta = A\left(\ln\frac{p_0}{p}\right)^{-1/n}\ \ \text{(Halsey)}$$</div>
+<p>\(V_l\) = molar volume of liquid nitrogen, \(\theta = 0°\) because nitrogen wets its own adsorbed film. For \(\mathrm{N_2}\) at −195.8 °C, with \(a\) and \(\delta\) in Å:</p>
+<div class="eq"><span class="tag">8-22, 8-23</span>$$a - \delta = 9.52\left(\log_{10}\frac{p_0}{p}\right)^{-1}\qquad\qquad \delta = 7.34\left(\ln\frac{p_0}{p}\right)^{-1/3}$$</div>
+<div class="tw"><table>
+<thead><tr><th>Method</th><th>Useful pore radius</th><th>Physics</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td>Mercury penetration</td><td>From about 100–200 Å up to about \(10^5\) Å</td><td>Non-wetting liquid forced in, \(\theta = 140°\)</td><td>Macropores</td></tr>
+<tr><td>Nitrogen desorption</td><td>10 Å to about 200 Å (vapour pressure barely changes above 200 Å)</td><td>Capillary condensation, Kelvin, \(\theta = 0°\)</td><td>Micropores; alone is enough for monodisperse silica gel</td></tr>
+</tbody></table></div>
+<p>A bidisperse alumina pellet needs both. JMS Table 8-5: boehmite pellets at low and high pelleting pressure had macropore volumes 1.08 and 0.265 \(\mathrm{cm^{3}/g}\), but micropore volumes 0.56 and 0.49 \(\mathrm{cm^{3}/g}\) and areas 389 and 381 \(\mathrm{m^{2}/g}\). <b>Pelleting pressure squeezes out macropores but hardly touches micropores or area</b>; the micropore peak stays near 20 Å.</p>
+
+<h3>Wheeler's mean pore radius</h3>
+<p>Replace the real particle by \(n\) straight, non-intersecting cylindrical pores, all of radius \(\bar a\) and length \(L\), with the same total surface and pore volume as the real particle of mass \(m_p\):</p>
+<div class="eq"><span class="tag">8-24 to 8-26</span>$$m_p S_g = (2\pi\bar a L)\,n,\qquad m_p V_g = (\pi\bar a^2 L)\,n\qquad\Rightarrow\qquad \boxed{\bar a = \frac{2V_g}{S_g}}$$</div>
+<div class="grid2">
+<div class="card"><h4>Works: monodisperse</h4><p>Vycor, \(V_g = 0.208\ \mathrm{cm^3/g}\), \(S_g = 90\ \mathrm{m^2/g}\): \(\bar a = 2(0.208)/(90\times10^4) = 46\times10^{-8}\) cm = 46 Å. The volume-average from the full distribution is 45 Å.</p></div>
+<div class="card"><h4>Fails: bidisperse</h4><p>Low-pressure alumina pellet, total \(V_g = 1.64\), \(S_g = 389\): \(\bar a = 84\) Å, where there are almost no pores. Using the micropore volume alone (0.56) gives 29 Å, a sensible micropore average.</p></div>
+</div>
+</section>
+
+<!-- ================================================================ 13 -->
+<section class="s" id="test">
+<h2><span class="num">13</span>Self-test</h2>
+<details class="qa"><summary><span>Distinguish intrinsic rate and global rate. Which one goes into a reactor design equation, and why?</span></summary><div class="ans"><p>Intrinsic rate: the rate of the chemical steps (adsorption, surface reaction, desorption) written with conditions at the catalyst surface. Global rate: includes all physical and chemical steps and is written with bulk-fluid conditions. The design equation uses the global rate, because only bulk concentrations and temperatures are measured or specified, and with a global rate the heterogeneous design equations look exactly like homogeneous ones.</p></div></details>
+<details class="qa"><summary><span>A catalyst gives 30 % conversion at equilibrium without a catalyst. What is the equilibrium conversion with it?</span></summary><div class="ans"><p>Still 30 %. The catalyst lowers the activation energy of forward and reverse steps equally, so \(K = k_f/k_r\) is unchanged; only the time to reach equilibrium changes.</p></div></details>
+<details class="qa"><summary><span>Why does physisorption measure total surface area while chemisorption measures active area?</span></summary><div class="ans"><p>Physisorption uses non-specific van der Waals forces, so it covers every surface (and forms multilayers whose monolayer point BET can find). Chemisorption forms chemical bonds only with active sites, so its uptake counts active sites.</p></div></details>
+<details class="qa"><summary><span>BET plot: intercept \(0.2\times10^{-3}\), slope \(16.5\times10^{-3}\) \(\mathrm{g/cm^{3}}\). Find \(v_m\), \(c\), \(S_g\) for nitrogen.</span></summary><div class="ans">$$v_m = \frac{1}{(0.2+16.5)\times10^{-3}} = 59.9\ \mathrm{cm^3/g},\qquad c = \frac{16.5}{0.2}+1 = 83.5,\qquad S_g = 4.35\times59.9 = 261\ \mathrm{m^2/g}$$</div></details>
+<details class="qa"><summary><span>50 g sample; helium displaces 18.0 \(\mathrm{cm^{3}}\), mercury 40.0 \(\mathrm{cm^{3}}\). Find \(V_g\), \(\rho_s\), \(\rho_p\), \(\varepsilon_p\).</span></summary><div class="ans">$$V_g = \frac{40.0-18.0}{50} = 0.44\ \mathrm{cm^3/g},\quad \rho_s = \frac{50}{18.0} = 2.78,\quad \rho_p = \frac{50}{40.0} = 1.25\ \mathrm{g/cm^3},\quad \varepsilon_p = V_g\rho_p = 0.55$$<p>Check: \(V_g\rho_s/(V_g\rho_s+1) = 1.222/2.222 = 0.55\).</p></div></details>
+<details class="qa"><summary><span>What pore radius does mercury enter at 2000 psi? Why can't nitrogen desorption be used for this pore?</span></summary><div class="ans"><p>\(a = 8.75\times10^5/2000 = 437.5\) Å. Nitrogen desorption loses sensitivity above about 200 Å because the vapour pressure over such a gently curved meniscus is almost the flat-surface value.</p></div></details>
+<details class="qa"><summary><span>Why is \(\bar a = 2V_g/S_g\) meaningless for an alumina pellet?</span></summary><div class="ans"><p>The pellet is bidisperse: a narrow micropore peak (about 20 Å) and a broad macropore peak (about \(10^{3}\)–\(10^{4}\) Å). A single average falls between the peaks, where there are almost no pores. Apply the formula to each pore range separately, or integrate the distribution.</p></div></details>
+<details class="qa"><summary><span>Give one example each of a promoter, an inhibitor, a poison and an accelerator.</span></summary><div class="ans"><p>Promoter: \(\mathrm{Al_2O_3}\) in Fe ammonia catalyst (prevents sintering). Inhibitor: halogen compound in Ag/\(\mathrm{Al_2O_3}\) for ethylene oxide (suppresses complete oxidation). Poison: sulphur compounds on Ni hydrogenation catalysts, or coke on cracking catalysts. Accelerator: steam in the butene feed to Fe dehydrogenation catalyst.</p></div></details>
+<details class="qa"><summary><span>Why does the reaction rate per kg rise when particles are made smaller, and what stops you making them very small?</span></summary><div class="ans"><p>Smaller particles have more external area per mass and shorter diffusion paths, so less film and pore resistance. But the Ergun pressure drop grows as \(1/d_p^2\) (laminar) and \(1/d_p\) (turbulent), raising compression cost; very small particles are also weak and can be carried out of a fixed bed.</p></div></details>
+<details class="qa"><summary><span>Which IUPAC isotherm would you expect for (a) activated carbon with micropores only, (b) a mesoporous silica?</span></summary><div class="ans"><p>(a) Type I: the micropores fill at low \(p/p_0\) and there is no room for multilayers, so uptake plateaus. (b) Type IV: multilayer build-up then capillary condensation in the mesopores, with a hysteresis loop between adsorption and desorption branches.</p></div></details>
+</section>
+
+<div class="pager">
+  <a href="index.html"><small>Back</small>Start here</a>
+  <a href="m2-rate-laws.html" style="text-align:right"><small>Next</small>Module 2 · Rate laws</a>
+</div>
+<footer class="pg">Sources: J. M. Smith, <i>Chemical Engineering Kinetics</i>, Ch. 7 and 8 (§8-1 to §8-11, Examples 8-4 to 8-6, Tables 8-5, 8-6); H. S. Fogler, <i>Elements of CRE</i> 5e, §10.1; class notes 3–25 Aug 2026.</footer>
+</main>
+</div>
+
+<script>
+/* ---------- global rate Arrhenius ---------- */
+(function () {
+  const R = 8.314;
+  const T = SP.linspace(400, 900, 150);
+  const x = T.map((t) => 1000 / t);
+  let cache = {};
+  const compute = () => {
+    const E = SP.val('arr-E') * 1000;
+    const km600 = Math.pow(10, SP.val('arr-km'));
+    const k = T.map((t) => Math.exp(-E / R * (1 / t - 1 / 600)));
+    const km = T.map((t) => km600 * Math.pow(t / 600, 0.75));
+    const kg = T.map((t, i) => 1 / (1 / k[i] + 1 / km[i]));
+    cache = { E, km600, k, km, kg };
+  };
+  const draw = SP.plot('c-arr', () => {
+    compute();
+    const { k, km, kg } = cache;
+    return {
+      data: [
+        { x, y: k.map(Math.log), name: 'intrinsic k (reaction control)', mode: 'lines', line: { color: SP.series(1), width: 2, dash: 'dash' }, hovertemplate: '1000/T=%{x:.3f}<br>ln k=%{y:.2f}<extra></extra>' },
+        { x, y: km.map(Math.log), name: 'k<sub>m</sub> (diffusion control)', mode: 'lines', line: { color: SP.series(2), width: 2, dash: 'dot' }, hovertemplate: '1000/T=%{x:.3f}<br>ln k<sub>m</sub>=%{y:.2f}<extra></extra>' },
+        { x, y: kg.map(Math.log), name: 'global k<sub>g</sub>', mode: 'lines', line: { color: SP.series(3), width: 3 }, hovertemplate: '1000/T=%{x:.3f}<br>ln k<sub>g</sub>=%{y:.2f}<extra></extra>' },
+      ],
+      layout: {
+        xaxis: { tex: '1000/T\\ \\ (\\mathrm{K^{-1}})' },
+        yaxis: { tex: '\\ln k\\ \\ \\text{(relative)}', range: [-9, 6] },
+      },
+    };
+  });
+  const lnkgAt = (t) => { const E = cache.E, k = Math.exp(-E / R * (1 / t - 1 / 600)), km = cache.km600 * Math.pow(t / 600, 0.75); return Math.log(1 / (1 / k + 1 / km)); };
+  const Eapp = (t) => { const h = 1; return -R * (lnkgAt(t + h) - lnkgAt(t - h)) / (1 / (t + h) - 1 / (t - h)) / 1000; };
+  SP.bind(['arr-E', 'arr-km'], () => {
+    draw();
+    SP.out('arr-Eo', SP.val('arr-E') + ' kJ/mol');
+    SP.out('arr-kmo', SP.fmt(Math.pow(10, SP.val('arr-km')), 2));
+    SP.out('arr-lo', SP.fmt(Eapp(450), 3));
+    SP.out('arr-hi', SP.fmt(Eapp(850), 3));
+    const km = Math.pow(10, SP.val('arr-km'));
+    SP.out('arr-cs', SP.fmt(km / (km + 1), 3));
+  });
+})();
+
+/* ---------- Langmuir ---------- */
+(function () {
+  const p = SP.linspace(0, 10, 200);
+  const draw = SP.plot('c-lang', () => {
+    const K = Math.pow(10, SP.val('lg-K'));
+    return {
+      data: [
+        { x: p, y: p.map((v) => K * v / (1 + K * v)), name: 'molecular adsorption', mode: 'lines', line: { color: SP.series(1), width: 2.5 }, hovertemplate: 'p=%{x:.2f} atm<br>θ=%{y:.3f}<extra>molecular</extra>' },
+        { x: p, y: p.map((v) => Math.sqrt(K * v) / (1 + Math.sqrt(K * v))), name: 'dissociative adsorption', mode: 'lines', line: { color: SP.series(2), width: 2.5 }, hovertemplate: 'p=%{x:.2f} atm<br>θ=%{y:.3f}<extra>dissociative</extra>' },
+      ],
+      layout: {
+        xaxis: { tex: '\\text{pressure } p\\ (\\mathrm{atm})' },
+        yaxis: { tex: '\\text{fractional coverage } \\theta', range: [0, 1.05] },
+        shapes: [{ type: 'line', xref: 'paper', x0: 0, x1: 1, y0: 1, y1: 1, line: { color: SP.css('--ink-3'), dash: 'dot', width: 1 } }],
+      },
+    };
+  });
+  SP.bind(['lg-K'], () => {
+    draw();
+    const K = Math.pow(10, SP.val('lg-K'));
+    SP.out('lg-Ko', SP.fmt(K, 3));
+    SP.out('lg-m', SP.fmt(K / (1 + K), 3));
+    SP.out('lg-d', SP.fmt(Math.sqrt(K) / (1 + Math.sqrt(K)), 3));
+    SP.out('lg-h', SP.fmt(1 / K, 3));
+  });
+})();
+
+/* ---------- BET ---------- */
+(function () {
+  const x = [0.05, 0.10, 0.15, 0.20, 0.25, 0.30];
+  const y = [2.0, 3.05, 4.15, 5.1, 6.1, 7.05];
+  let mode = 'line';
+  const getMode = SP.seg('bet-mode', (v) => { mode = v; update(); });
+  const params = () => {
+    if (mode === 'line') return { I: 1.2, s: 19.5 };
+    const f = SP.linfit(x, y); return { I: f.icpt, s: f.slope };
+  };
+  const draw = SP.plot('c-bet', () => {
+    const { I, s } = params();
+    const xl = [0, 0.4];
+    return {
+      data: [
+        { x, y, mode: 'markers', name: 'read from plot', marker: { size: 10, color: SP.css('--surface'), line: { color: SP.series(1), width: 2 } }, hovertemplate: 'p/p₀=%{x}<br>y=%{y}×10⁻³<extra></extra>' },
+        { x: xl, y: xl.map((v) => I + s * v), mode: 'lines', name: mode === 'line' ? 'printed line' : 'least-squares line', line: { color: SP.series(2), width: 2 }, hovertemplate: 'p/p₀=%{x:.2f}<br>y=%{y:.2f}×10⁻³<extra></extra>' },
+      ],
+      layout: {
+        xaxis: { tex: 'p/p_0', range: [0, 0.4] },
+        yaxis: { tex: 'p/[v(p_0-p)]\\ \\ (10^{-3}\\ \\mathrm{g/cm^3})', range: [0, 8.5] },
+      },
+    };
+  });
+  function update() {
+    draw();
+    const { I, s } = params();
+    const vm = 1 / ((I + s) * 1e-3);
+    const alpha = parseFloat(document.getElementById('bet-gas').value) * 1e-16;
+    const Sg = vm * 6.022e23 * alpha / 22400 / 1e4;
+    SP.outTex('bet-i', SP.fmtTex(I, 3) + '\\times10^{-3}');
+    SP.outTex('bet-s', SP.fmtTex(s, 3) + '\\times10^{-3}');
+    SP.outTex('bet-al', (alpha * 1e16).toFixed(1) + '\\ \\text{Å}^2');
+    SP.out('bet-vm', SP.fmt(vm, 3));
+    SP.out('bet-c', SP.fmt(s / I + 1, 3));
+    SP.out('bet-sg', SP.fmt(Sg, 3));
+  }
+  SP.bind(['bet-gas'], update);
+})();
+
+/* ---------- Hg porosimetry, Example 8-6 ---------- */
+(function () {
+  const P = [116, 310, 344, 364, 410, 456, 484, 540, 620, 710, 800, 830, 900, 1050, 1300, 1540, 1900, 2320, 3500];
+  const V = [0.003, 0.010, 0.016, 0.022, 0.032, 0.042, 0.048, 0.061, 0.080, 0.102, 0.122, 0.128, 0.141, 0.160, 0.179, 0.189, 0.196, 0.198, 0.199];
+  const a = P.map((p) => 8.75e5 / p);
+  const am = [], dist = [];
+  for (let i = 0; i < P.length - 1; i++) {
+    am.push(Math.sqrt(a[i] * a[i + 1]));
+    dist.push((V[i + 1] - V[i]) / (Math.log10(a[i]) - Math.log10(a[i + 1])));
+  }
+  let pk = 0; dist.forEach((d, i) => { if (d > dist[pk]) pk = i; });
+  SP.out('hg-peak', Math.round(am[pk]));
+  SP.plot('c-hg1', () => ({
+    data: [{ x: a, y: V, mode: 'lines+markers', name: 'penetration', line: { color: SP.series(1), width: 2 }, marker: { size: 8 }, customdata: P, hovertemplate: 'p=%{customdata} psi<br>a=%{x:.0f} Å<br>V=%{y:.3f} cm³/g<extra></extra>' }],
+    layout: { showlegend: false, margin: { t: 16 }, xaxis: { type: 'log', tex: '\\text{pore radius } a\\ (\\text{Å})' }, yaxis: { tex: '\\text{mercury penetrated}\\ (\\mathrm{cm^3/g})' } },
+  }));
+  SP.plot('c-hg2', () => ({
+    data: [{ x: am, y: dist, mode: 'lines+markers', name: 'distribution', line: { color: SP.series(3), width: 2 }, marker: { size: 8 }, hovertemplate: 'a≈%{x:.0f} Å<br>ΔV/Δlog a=%{y:.3f}<extra></extra>' }],
+    layout: { showlegend: false, margin: { t: 16 }, xaxis: { type: 'log', tex: '\\text{pore radius } a\\ (\\text{Å})' }, yaxis: { tex: '\\Delta V/\\Delta\\log_{10} a\\ \\ (\\mathrm{cm^3/g})' } },
+  }));
+})();
+</script>
+</body>
+</html>

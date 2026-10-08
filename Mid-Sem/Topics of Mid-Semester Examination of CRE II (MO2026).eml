@@ -1,0 +1,221 @@
+Delivered-To: btech10657.24@bitmesra.ac.in
+Received: by 2002:a05:7108:670e:b0:580:5982:c86f with SMTP id cs14csp507721gdb;
+        Wed, 9 Sep 2026 05:53:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AKwUvBybZso3c6VE1HlifQ0bBJq34DUtdRscIgt+vIlOzTlAEVds3zWmPWmDcigXftBoYtnu9oIk5traxvwCYAsM@bitmesra.ac.in
+X-Received: by 2002:a05:6402:4258:10b0:6a9:864c:9d9b with SMTP id 4fb4d7f45d1cf-6a9864c9fe1mr2044545a12.0.1788958401767;
+        Wed, 09 Sep 2026 05:53:21 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1788958401; cv=pass;
+        d=google.com; s=arc-20260327;
+        b=byIsTsq9S+nz75hXgTzdJCjGgIAQgQcIMfhPbGCr6GOm0QnMszHTjChQH6N2QrBH6n
+         8sCJRGFpQnUZhryTDHkQMMjR1atBLcf+m8OSkkeCazt/hPtnOSDY8AxPpp2H+jiwppkU
+         AudRv9sMiizA8F16TD809xSsoO5v51eBPgwsA13XvoWhGZ4LZ9FFu8WQK21DDgGI8Upw
+         aDg78NMT9v5W1h/yoZ+oeXIc4+kNhXAJTARx84hGcbdjU1+GijO+C5pP4lbUE5lANIkv
+         0/g+pRWGzawvA6wRhAT01F25mNmpLLJFEQYga15SN0G3ri02UHTg4rkwaP8onH3uybBE
+         TGYw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=JxPjpGjKYb3iASHxqFG9YUf985IHByfgygapiHrCFM8=;
+        fh=iNC44lFHCw3SvVuxAwDg58kjPWlzpwRl2v7xK0rzFT4=;
+        b=pSk8idVZtLtOy4bF2aRUEBkRz+gw/J12k/i4JKzg1hvXIZ5HhMThCsLgyxdbEtqgc6
+         4iJW7/SreeD/jP2JcqKxn9L5i4UVEPWp/9d7NiHX1fFNcAFsK7K8HwzlvpoFXU0+RdEp
+         VopwRw4g2u7YExgO7V4qqe6ByLtozRv4hoWrvZEDC096nAzFmif84O5YoV3A44oJh9S9
+         NJdqtDpCqKxKXIj2X7CBSRx6UmWQtPsLR3UuQpUPMOx9yV8LidqnjE8JPo5cfuFQrXRS
+         8YQu7K3YiH6i7M2ePpHAE2nqMFsmjP3u+akc4XPRFrEdLIn4qw3XtnqG2csiDgwFjdoN
+         zldg==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@bitmesra.ac.in header.s=google header.b=K13d8dMP;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of sroy@bitmesra.ac.in designates 2a00:1450:4864:20::635 as permitted sender) smtp.mailfrom=sroy@bitmesra.ac.in;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=bitmesra.ac.in;
+       dara=fail header.i=@bitmesra.ac.in
+Return-Path: <sroy@bitmesra.ac.in>
+Received: from mail-ej1-x635.google.com (mail-ej1-x635.google.com. [2a00:1450:4864:20::635])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-6a98e1c1357si2558923a12.45.2026.09.09.05.53.21
+        for <btech10657.24@bitmesra.ac.in>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 09 Sep 2026 05:53:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sroy@bitmesra.ac.in designates 2a00:1450:4864:20::635 as permitted sender) client-ip=2a00:1450:4864:20::635;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@bitmesra.ac.in header.s=google header.b=K13d8dMP;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of sroy@bitmesra.ac.in designates 2a00:1450:4864:20::635 as permitted sender) smtp.mailfrom=sroy@bitmesra.ac.in;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=bitmesra.ac.in;
+       dara=fail header.i=@bitmesra.ac.in
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-c1c52d920b8so769781566b.2
+        for <btech10657.24@bitmesra.ac.in>; Wed, 09 Sep 2026 05:53:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1788958401; cv=none;
+        d=google.com; s=arc-20260327;
+        b=GGRVmsKkvZIoc/n9TLd3OVipzzTuwycWr5nsL6E0erjGe0jWd8+8LUvWIigtwgXz8D
+         8PGue7e2L+bC+mOBrU1aVxWdACWFkXOBQ3F1wi+v3rDhr/IAHyjgKKu6GtMGYZNz57MG
+         5f8XQJ5ND/9/aOeJG81EbZf5+Tika2eKf8JszEm5JZfIgHYVVOAEXJitX912ea4hoW2s
+         RtdnZvBwvXx1LmZNg2M9UfrUhs7KWC/LFTPlVg8XnPNm8amGYiXxT5/7luoQeODXhm0N
+         D93PUH0r+/DvzuyUDKRCQMBXfyni5zxzTklDmYMhYxlMj3AGA1o+SMbxlQ897b93stS5
+         G/xg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=JxPjpGjKYb3iASHxqFG9YUf985IHByfgygapiHrCFM8=;
+        fh=iNC44lFHCw3SvVuxAwDg58kjPWlzpwRl2v7xK0rzFT4=;
+        b=TztWXEqMrtnzfXr2sLsNFFSVZUkeVHTJEuXe+msi2jKHEzbfczfYxW4J5YL8I4+AG5
+         hC3sYcCBRnWGyyFhEvNp8na53KeZy4raywk3gXLLyvPOWac4XmKi4QoW0CwPllrL96dL
+         iKC3xVey6Ivfh8Dqx7o8kTt9VorBEva8xoRT3GrYY/pmS45yXi9vODFjDUKIsEwARL7K
+         /xg0LP03isSCcnReB9B+ftYkEeIV0z0y4mkTwcne5Ee4eiseFlyMwAHir6ALBeLNgs7e
+         CBKGb1xmuDQkq3yNoXsskgGRoqyh58g/p02kd+6at0l/DQuf0624DEauv4KJYEIOid/X
+         vKXg==;
+        darn=bitmesra.ac.in
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bitmesra.ac.in; s=google; t=1788958401; x=1789563201; darn=bitmesra.ac.in;
+        h=content-type:to:subject:message-id:date:from:mime-version:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=JxPjpGjKYb3iASHxqFG9YUf985IHByfgygapiHrCFM8=;
+        b=K13d8dMPnqCDBZzxGP4PlwaMluAXttaYgZ98uGuuXbyIs6G7yBxz/75D99+r2l+U0T
+         KUMJ3FMQuMyc9xud6Ee2dE691fKG6yCevqlTlVMfshprJfkrsdelJm+If8WZTFPOIGbd
+         wTwblKEqnwC1GaeYlKIuncUHkX9zhYkIXPZRE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788958401; x=1789563201;
+        h=content-type:to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=JxPjpGjKYb3iASHxqFG9YUf985IHByfgygapiHrCFM8=;
+        b=HFZWXFwuWzdhIggyPio1zm7T+9pCvPyVBFja96Ra2OdzvMRbm8JhVxAoF9WkeRxYr2
+         ZAivbhOwVkeLFsySBhuUtW+AJM1b8QDa144wXGJZ06yofWgeRB11gxb9cNav3GREIH/u
+         1QqbRff9j0KP5iKo7Ln7mzQEleAKsu4ohhXS3lTVzn0CmPCgWyrRN21PrS4NGoSm8VnC
+         niI4LP3sIHtE5lXg0v3aDW1h7/LL+JzkdpQ2f+ELHBWZUbd5XI0qpOZ6nalkbBLZBkwx
+         5YvQTKhXE8i6aTZPT59jYd4Sx2k3peGDeFxsdGQFzKX7ly29FmJtCuLYbfzpi15Scuw+
+         L1Mg==
+X-Forwarded-Encrypted: i=1; AKwUvBwoM7dvbi0niPncwHvKQ0HM3pDo+25MiEy2JLgh9p+dWKeShy/kaM5F7GZo6KjYYy15F9f03o4uwHR1s8ey@bitmesra.ac.in
+X-Gm-Message-State: AFuF++kXhb968toffvgGm/2tUIizXQ/FlWxM+UsCrB5Mt92fXLpo1bBO
+	G66UlPuYAbyUVUsUFgAqlVwA62ObnFeO0j3dlXUiLiUHXYq2Rj+rtG24x3A41xmZSftbih1El9J
+	gWYeyMAw86H2OmSctw7s94p/6DzqnYcodSk9n8u+YgK0=
+X-Gm-Gg: AYBFou3A1+ey0bsK7SAh8IAyWOJAJ9IAK3hsZm2/gGIgVkQMQ4vvbaV39xp7spDaIat
+	+vc6nQhplp/tzgAiNDCMI2I+aHpD36HVkgLjqNvn7bX83oKvCJYwgf4Z4xctYQwTwu0KIdHVjXe
+	vjnfYgdSusK/81jAzvCL5htkd4qR2CDIPfNMuAWjaAaYXzcNSLjvZPwRDOpmOUn0HkWJ78Svyid
+	HdyWuw6cVDK93x7ETUMoTe+04MgdfC6YMPqtvAVGpJmTHmGI/3dMWqmLEsQoTuGbab/rn9F0JH+
+	DyHBnZpdhDEzSOgXrwaETxurcuMDl8OxdK1LGnp0jXcJo0YLjQq6E0IRzj4s5JZvblP+movtz2r
+	TSLReyZS5bYvU4w==
+X-Received: by 2002:a17:907:6088:b0:c20:f913:9337 with SMTP id
+ a640c23a62f3a-c260ca3279fmr1394493966b.20.1788958400833; Wed, 09 Sep 2026
+ 05:53:20 -0700 (PDT)
+MIME-Version: 1.0
+From: Sangram Roy <sroy@bitmesra.ac.in>
+Date: Wed, 9 Sep 2026 18:23:09 +0530
+X-Gm-Features: AcwNN1VtMPOBbLpK1Sc1hHcTahA7djV8k_q5N0aSXZF7e2km8WkNCJ2lyzl_z9Q
+Message-ID: <CADWCS4wgFZRnmn+qs_OYSdLJqtgYXaJ95OCEw3g=V4+JjZiCJQ@mail.gmail.com>
+Subject: Topics of Mid-Semester Examination of CRE II (MO2026)
+To: Aaditya Raj Jha <btech10585.24@bitmesra.ac.in>, 
+	Aayush Shrivastava <btech10404.24@bitmesra.ac.in>, 
+	Abhinav Kumar Singh <btech10495.24@bitmesra.ac.in>, 
+	Abhishek Chatterjee <btech10427.24@bitmesra.ac.in>, 
+	Aditya Kumar Mahto <btech10049.24@bitmesra.ac.in>, Aditya Pal <btech10092.24@bitmesra.ac.in>, 
+	Aditya Raj <btech10547.24@bitmesra.ac.in>, Alekh Chauhan <btech10313.24@bitmesra.ac.in>, 
+	Ana Dey Mukhi <btech10337.24@bitmesra.ac.in>, 
+	Anish Kumar Singh <be10763.24@bitmesra.ac.in>, Anmol Agarwal <btech10744.24@bitmesra.ac.in>, 
+	Anuj Samota <btech10749.24@bitmesra.ac.in>, 
+	Anurag Kumar Verma <btech10173.24@bitmesra.ac.in>, 
+	Anusha Choudhary <btech10718.24@bitmesra.ac.in>, Arpit Raj <btech10373.24@bitmesra.ac.in>, 
+	Ashish Paswan <btech10635.24@bitmesra.ac.in>, Ashley Jain <btech10748.24@bitmesra.ac.in>, 
+	Atharva Shrivastava <btech11031.24@bitmesra.ac.in>, Ayush Kumar <btech10099.24@bitmesra.ac.in>, 
+	Ayush Kumar <btech10752.24@bitmesra.ac.in>, 
+	Bhawishy Bhyan <btech10751.24@bitmesra.ac.in>, Dharshan B <btech10729.24@bitmesra.ac.in>, 
+	Dhruv Papriwal <btech10736.24@bitmesra.ac.in>, 
+	Digambar Singh <btech10611.24@bitmesra.ac.in>, Harsh Kumar <btech10487.24@bitmesra.ac.in>, 
+	Harsh Kumar Mahato <btech10770.24@bitmesra.ac.in>, 
+	Harshita Shrivastava <btech10703.24@bitmesra.ac.in>, Ishant Kumar <btech10456.24@bitmesra.ac.in>, 
+	Kamal Kishor <btech10740.24@bitmesra.ac.in>, Krrish Kumar <btech10127.24@bitmesra.ac.in>, 
+	Palak Sharma <btech10332.24@bitmesra.ac.in>, Piyush Kumar <btech10617.24@bitmesra.ac.in>, 
+	Pranab Kumar <btech10710.24@bitmesra.ac.in>, Pranav Raj <btech10657.24@bitmesra.ac.in>, 
+	Prashun Parasar <btech10371.24@bitmesra.ac.in>, 
+	Prithvi Singh Chauhan <btech10714.24@bitmesra.ac.in>, 
+	Puramwar Piyush Narayan <btech10728.24@bitmesra.ac.in>, Raushan Kumar <btech10737.24@bitmesra.ac.in>, 
+	Ritesh Raj <btech10479.24@bitmesra.ac.in>, Ritvij Raj <btech10666.24@bitmesra.ac.in>, 
+	Saikat Sengupta <btech10395.24@bitmesra.ac.in>, Sammy Kumar <btech10171.24@bitmesra.ac.in>, 
+	Sankalp Singh <btech10208.24@bitmesra.ac.in>, Sathi Kundu <btech10429.24@bitmesra.ac.in>, 
+	Satyam Raj <btech10589.24@bitmesra.ac.in>, 
+	Shambhavi Gupta <btech10781.24@bitmesra.ac.in>, 
+	Shashank Kumar <btech10683.24@bitmesra.ac.in>, 
+	Shashank Pasari <btech10286.24@bitmesra.ac.in>, 
+	Shwet Modanwal <btech10727.24@bitmesra.ac.in>, Soundarya <btech10971.24@bitmesra.ac.in>, 
+	Srijita Mandal <btech10493.24@bitmesra.ac.in>, Suraj Kumar <btech10071.24@bitmesra.ac.in>, 
+	Sushanta Munda <btech10198.24@bitmesra.ac.in>, 
+	Tamanna Kumari <btech10397.24@bitmesra.ac.in>, 
+	Vatshal Shourya <btech10077.24@bitmesra.ac.in>, Vedant Sinha <btech11079.24@bitmesra.ac.in>, 
+	Vinit Aseri <btech10663.24@bitmesra.ac.in>, Yash Vardhan <btech10519.24@bitmesra.ac.in>, 
+	Yashvardhan Raj <btech10490.24@bitmesra.ac.in>
+Content-Type: multipart/alternative; boundary="000000000000fff9fe065b0c552a"
+
+--000000000000fff9fe065b0c552a
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Dear All,
+
+
+
+The mid semester examination of CRE II will be on topics discussed until
+the lecture of 11.09.2026. The following materials are part of the syllabus
+
+
+
+   - Chapters 7 and 8 of J.M. Smith for Module 1
+   - Chapter 10 (until section 10.4.4) of H.S. Fogler for Module 2
+   - Chapter 18 (until section 18.3) of O. Levenspiel for Module 3. You may
+   also refer to Chapter 15 (until section 15.3.1) of H.S. Fogler for
+   additional explanation.
+   - Tutorials 1, 2 and 3
+   - Class Notes until 11.09.2026
+
+
+
+For Module 3, although you may not focus on the *solution of the
+differential equation* for the determination of the concentration profile
+inside the porous catalyst, *the formulation of the problem*, the concepts
+of the effectiveness factor (=CE=B7) and Thiele modulus (=CE=A6) should be =
+known.
+
+
+
+All the best,
+
+Sangram
+
+--000000000000fff9fe065b0c552a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div><p class=3D"MsoNorm=
+al"><font face=3D"verdana, sans-serif">Dear All,<u></u><u></u></font></p><p=
+ class=3D"MsoNormal"><font face=3D"verdana, sans-serif"><u></u>=C2=A0<u></u=
+></font></p><p class=3D"MsoNormal"><font face=3D"verdana, sans-serif">The=
+=C2=A0<span>mid semester examination of CRE II</span>=C2=A0will be on=C2=A0=
+<span>topics</span>=C2=A0discussed until the lecture of 11.09.2026. The fol=
+lowing=C2=A0<span>materials</span>=C2=A0are part of the syllabus<u></u><u><=
+/u></font></p><p class=3D"MsoNormal"><font face=3D"verdana, sans-serif"><u>=
+</u>=C2=A0<u></u></font></p><ul type=3D"disc" style=3D"margin-bottom:0cm;ma=
+rgin-top:0cm"><li style=3D"margin:0cm;font-size:11pt"><font face=3D"verdana=
+, sans-serif">Chapters 7 and 8 of J.M. Smith for Module 1=C2=A0<u></u></fon=
+t></li><li style=3D"margin:0cm;font-size:11pt"><font face=3D"verdana, sans-=
+serif">Chapter 10 (until section 10.4.4) of H.S. Fogler for Module=C2=A0<sp=
+an>2</span><u></u></font></li><li style=3D"margin:0cm;font-size:11pt"><font=
+ face=3D"verdana, sans-serif">Chapter 18 (until section 18.3) of O. Levensp=
+iel for Module 3. You may also refer to Chapter 15 (until section 15.3.1) o=
+f H.S. Fogler for additional explanation.=C2=A0<u></u></font></li><li style=
+=3D"margin:0cm;font-size:11pt"><font face=3D"verdana, sans-serif">Tutorials=
+ 1,=C2=A0<span>2</span>=C2=A0and 3<u></u></font></li><li style=3D"margin:0c=
+m;font-size:11pt"><font face=3D"verdana, sans-serif">Class Notes until=C2=
+=A011.09.2026<u></u></font></li></ul><p class=3D"MsoNormal"><font face=3D"v=
+erdana, sans-serif"><u></u>=C2=A0<u></u></font></p><p class=3D"MsoNormal"><=
+font face=3D"verdana, sans-serif">For Module 3, although you may not focus =
+on the=C2=A0<u>solution of the differential equation</u>=C2=A0for the deter=
+mination of the concentration profile inside the porous catalyst,=C2=A0<u>t=
+he formulation of the problem</u>, the concepts of the effectiveness factor=
+ (=CE=B7) and Thiele modulus (=CE=A6) should be known.<u></u><u></u></font>=
+</p><p class=3D"MsoNormal"><font face=3D"verdana, sans-serif"><u></u>=C2=A0=
+<u></u></font></p><p class=3D"MsoNormal"><font face=3D"verdana, sans-serif"=
+>All the best,<u></u><u></u></font></p><p class=3D"MsoNormal"><font face=3D=
+"verdana, sans-serif">Sangram</font></p></div>
+</div>
+</div>
+</div>
+
+--000000000000fff9fe065b0c552a--

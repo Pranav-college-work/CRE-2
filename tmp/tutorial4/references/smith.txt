@@ -1,0 +1,4961 @@
+
+=== PDF PAGE 1 ===
+L.
+7
+HE_TEROGENEOUS REACTORS
+$
+The kinetics and reactor designs we have considered thus far are for homo-
+geneous reactions. The remainder of the book is devoted to heterogeneous
+reactions. Many systems are heterogeneous because a catalyst is necessary,
+and this substance is commonly (but not always) in a phase different from
+that of the reactants and products. Accordingly, our first objective will be a
+study (Chaps. 8 and 9) of heterogeneous catalysis and kinetics of hetero-
+geneous catalytic reactions.
+.
+The fact that phase boundaries are inherent in heterogeneous systems
+introduces the need to deal with physical processes (mass and energy
+transfer) between the bulk fluid.and the catalyst. Thus physical processes
+affect reactor design in
+<;I. more intrinsic way for heterogeneous reactions
+than for homogeneous ones. It is common practice to write mass and energy
+balances for heterogeneous and homogeneous systems in the same way ~
+e.g., as given in Ch~p. 3. When this is done, the rate equation used for
+heterogeneous systems will include the effects of physical processes.
+To illustrate, in Eq. (3-1) the rate is expressed per unit volume. If
+the volume element includes a heterogeneous mixture of reaction fluid
+. and solid catalyst particles, the proper rate to use in Eq. (3-1) will include
+273
+
+
+=== PDF PAGE 2 ===
+274
+CHAPTER 7
+HETEROGENEOUS REACTORS
+the effects of mass- and energy-transfer processes from fluid to solid surface
+and within the solid particle. Such rates are sometimes called globed, or
+overall, rates of reaction. The advantage of using the global rate is that the
+design equations for heterogeneous systems are identical to those for
+homogeneous systems, as presented in Chaps. 3 to 5. However, expressions
+for the global reaction rate must be formulated in terms of properties of the
+bulk fluid. This is accomplished by writing expressions for the rate of each
+step in the overall process. The sequence of steps for converting reactants
+to products is as follows:
+1.
+Transport of reactants from the bulk fluid to the fluid-solid interface
+(external surface of catalyst particle)
+2.
+Intraparticle transport of reactants into the catalyst particle (if it is
+porous)
+3.
+Adsorption of reactants at interior sites of the catalyst particle
+4.
+Chemical reaction of adsorbed reactants to adsorbed products (surface
+reaction)
+.
+5.
+Desorption of adsorbed products
+6.
+Transport of products from the interior sites to the outer surface of the
+catalyst particle
+7.
+Transport of products from the fluid-solid interface into the bulk-
+fluid stream
+At steady state the rates ofthe individual steps will be identical. This equality
+can be used to develop a global rate equation in terms of the concentrations
+and temperatures of the bulk fluid. The derivation of such equations will qe
+considered in detail in Chaps. 10 to 12, but a very simple treatment is given
+next to illustrate the nature of the problem.
+7-1 GlohalRates ofReaction
+Consider an irreversible gas-phase reaction
+A(g) -+ B(g)
+which requires a solid catalyst C. Suppose that the temperature is constant
+and that the reaction is carried out by passing the gas over a bed of non-
+porous particles of C. Since the catalyst is nonporous, steps 2 and 6 are not
+involved. The problem is to formulate the rate of reaction per unit volume!
+1As defined, the volume element on which rv is based must include at least one catalyst
+particle; otherwise the interphase physical effects cannot be considered. Yet this rate is used
+in Eqs. (3-1) and (3-2) as a rate applicable to a differential volume, i.e., as a point rate. This
+is an approximation which arises from treating the discrete nature of a bed of catalyst particles
+
+
+=== PDF PAGE 3 ===
+SECTION 7-1
+GLOBAL RATES OF REACTION
+275
+of the bed-that is, the global ratefor a catalyst particle, rv-in terms of the
+temperature and concentration of A in the bulk-ga.s stream. Note that these
+are the quantities that are measurable or can be specified (as design require-
+ments), rather than the temperature and concentration at the gas-particle
+interface. ,fGlobal rates of catalytic reactions are usually expressed per
+unit mass of catalyst, i.e., as f p ' These are easily converted to rates per unit
+volume by multiplying them by the bulk density p of the bed of catalyst
+particles.
+The overall conversion of A to B in the bulk gas occurs according to
+steps 1, 3 to 5, and 7 in series. Let us further simplify the problem by sup-
+posing that steps 3 to 5 may be represented by a single first-order rate
+equation. Then the overall reaction process may be described in three steps:
+gas A is transported from the bulk gas to the solid surface, the reaction
+occurs at the interface, and finally, product B is transported from the
+catalyst surface to the bulk gas. Since the reaction is irreversible, the con-
+centration of B at the catalyst surface does not influence the rate. This
+means that rp can be formulated by considering only the first two steps
+involving A. Since the rates of these two steps will be the same at steady
+state, the disappearance of A can be expressed in two ways: either as the
+rate of transport of A to the catalyst surface,
+rp = kmam(Cb -
+Cs)
+or as the rate of reaction at the catalyst surface,
+rp = kamCs
+(7-1)
+(7-2)
+In Eq. (7-1) km is the usual mass-transfer coefficient based on a unit of
+transfer surface, i.e., a unit of external area of the catalyst particle. In order
+to express the rate per unit mass! of catalyst, we multiply km by the external
+area per unit mass, am' In Eq. (7-2) k is the reaction-rate constant per unit
+surface. Since a positive concentration difference between bulk gas and solid
+surface is necessary to transport A to the catalyst, the surface concentration
+Cs will be less than the bulk-gas concentration Cb• Hence Eq. (7-2) shows
+that the rate is less than it would be for Cs = Cb. Here the effect of the mass-
+transfer resistance is to reduce the rate. Figure 7-1 shows schematically
+how the concentration varies between bulk gas and catalyst surface.
+as a continuum. It is a necessary approximation because it is not yet possible to take into
+account variations in heat- and mass-transfer coefficients with position on the surface of a
+single catalyst particle. Thus average values of these coefficients over the particle surface are
+employed in formulating global rates. This is the value denoted by k m in Eq. (7-1).
+lInstead of rate per unit mass of catalyst, Eqs. (7-1) and (7-2) could be expressed as rates per
+unit external surface. in which case am would not be needed in Eq. (7-1). Alternately. a rate
+per particle could be used. We shall generally use the rate per unit mass.
+
+
+=== PDF PAGE 4 ===
+276
+CHAPTER 7
+HETEROGENEOUS REACTORS
+Catalyst surface
+Intermediate
+case [Eq. (7-4)]
+'""\.
+\
+\
+\
+Cs ---""\--
+\
+Diffusion control -----4)0>-\\
+C.::::: 0
+\
+\
+Reaction control ""
+Cb ::::: Cs
+__~
+1----=_=--_-=:::---- -------
+-
+..............
+............
+Distance-
+Fig. 7-1
+Mass transfer between fluid
+and catalyst surface
+The global rate can be expressed in terms of Cb by first solving for
+Cs from Eqs. (7-1) and (7-2); thus
+k m
+)
+Cs = k
+m + k Cb
+(7-3
+Then this result is substituted in either Eq. (7-1) or Eq. (7-2) to give
+(7-4)
+kkmam
+am
+rp = k m + k Cb =
+11k + llkm Cb
+This is the expression for the global rate in terms of the bulk-reactant
+concentration. The concentration profile in this case is shown by the solid
+line in Fig. 7-1. It is a very restricted illustration of a global rate, since heat-
+transfer resistances were not considered (constant temperature was assumed)
+and only external mass transfer is involved (the catalyst particle is non-
+porous). These restrictions are removed in the detailed treatment in Chaps.
+10 and II, but this simple example illustrates the meaning of global rates of
+reaction for heterogeneous systems.
+A hypothetical reaction has been used to develop the previous results. It
+is of interest to know the magnitude of the global rate for real situations.
+Fortunately, considerable experimental data are available. Measurements!
+for the oxidation of SOz with air on a platinum catalyst, deposited o.n 1/8 x
+l/8-in. cylindrical pellets,2 gave a global rate of0.0956 gmole/(hr)(g catalyst).
+The bulk temperature ofthe gas was 465°C and the gas velocity in the catalyst
+bed was 350 lb/(hr) (re). The bulk composition corresponded to a 10% con-
+lR. W. Olson, R. W. Schuler, and J. M. Smith, Chern. Eng. Progr., 42, 614 (1950).
+2The particles were of porous alumina, but the platinum was deposited on" the outer surface,
+so that, in effect, a nonporous catalyst was used.
+
+
+=== PDF PAGE 5 ===
+SECTIQN 7-1
+GLOBAL RATES OF REACTION
+277
+L
+version of a 6.5 mole % S02-93.5 % air mixture. At these conditions both
+mass- and heat-transfer resistances between the hl;tlk gas and the surface of
+the catalyst pellets were important. Calculations with Eq. (7-1) indicated that
+the partial pressure of S02 dropped to 0.040 atm at the solid surface from
+the vaJue of 0.06 atm in the bulk gas. This relatively large difference means
+that the diffusion resistance was large. Ifthe rate were evaluated without con-
+sideration ofthis resistance-that is, ifit were evaluated for Pso 2 = 0.06 atm
+9-tA65°C:
+ilW()]J.ld be_ Q.333g mpiesS0 2 _reacted/(hr)_(g _catalyst).-At
+Psoz = 0.04 atm it would be 0.0730. Hence the error in neglecting the mass-
+transfer resistance would be large; that is, the rate so compufed would be
+(0.333/0.0730) (l00), or 350% higher than the global rate.
+Actually, the temperature at the catalyst surface is about 15°C above
+the bulk-gas temperature (see Example 10-2) because of heat-transfer resis-
+tance. Hence the reaction at the catalyst surface occurred at 480°C. According
+to the activation energy for this reaction, a 15°C temperature rise would
+increase the rate about 31 %. Hence neglecting the heat-transfer resistance
+leads to a rate 31 % less than the global value. If both thermal and diffusion
+resistances were neglected, the rate would be (0.333/0.0956) (100), or 250%
+higher than the global rate. For this exothermic reaction the diffusion and
+thermal resistances have opposite effects on the rate. The example is extreme
+in that mass-transfer resistance was relatively large in comparison with reac-
+tion resistance. At lower temperatures and/or higher gas velocities past the
+catalyst pellet (higher km ) the mass-transfer effect would be less.
+Frequently heat-transfer resistances are much larger than mass-transfer
+'resistances, in contrast to the preceding example. As an illustration, consider
+the data of Maymo and Smith1 for the oxidation of hydrogen with oxygen
+.on a platinum-on-alumina catalyst. Rates and temperatures were measured
+for a single porous catalyst pellet (1.86 em diameter) suspended in a well-
+mixed gas containing primarily hydrogen with a small percentage of oxygen
+and water vapor. Because ofthe turbulence in the gas, the concentration dif-
+ference between bulk gas and pellet surface was negligible. However, there
+was a significant thermal resistance, so that the pellet-surface"temperature
+was greater than the bulk-gas temperature. The pellet was porous with uni-
+form distribution of platinum throughout. Hence there were internal resis-
+tances, both to mass and to heat transfer. In one particular run the measured
+rate of water production was 49.8 x 10- 6 mole/(g catalyst) (sec). This is the
+global value and includes the effects of both internal and external physical
+resistances. The bulk-gas, pellet-surface, and pellet-center temperatures were
+89.9, 101, and 147.7°C, respectively. The rate of the chemical step on the
+surface was also measured by experiments with fine particles of catalyst for
+which there were no temperature or concentration differences between bulk
+1J. A. Maymo and J. M. Smith, AIChE J., 12,845 (1966).
+
+
+=== PDF PAGE 6 ===
+278
+CHAPTER 7
+HETEROGENEOUS REACTORS
+gas and sl,lrface or interior of particle. This intrinsic rate was correlated by
+the equation
+r = 0.655 P020 .804 e- S,230/Rg T
+(7-5)
+where P is in atmospheres and T is in degrees Kelvin. We can evaluate the
+effect of the external resistance in the following way. First calculate the rate
+at the surface temperature (101 + 273°K) and P02 = 0.0527 atm, which is
+the oxygen partial pressure, either in the bulk gas or at the pellet surface.
+Substituting these quantities in Eq. (7-5) gives f = 54.3 X 10- 6 mole/(g
+catalyst)(sec). If the rate were evaluated at bulk-gas conditions (89.9°C
+and P0 2 = 0.0527 atm), the result from Eq. (7-5) would be 43.6 x 10- 6
+mole/(g catalyst) (sec). Hence neglecting the external-temperature difference
+would give a rate [(54.3 - 43.6)/54.3J (100), or 20%, less than the correct
+value.
+This example also shows the effects of mass- and enefgy-transfer resis-
+tances within the catalyst pellet. The temperature increases toward the center
+of the pellet and increases the rate, but the oxygen concentration goes down,
+tending to reduce the rate. The global value of 49.8 x 10- 6 is the resultant
+balance of both factors. Hence the net error in using the bulk conditions to
+evaluate the rate would be [(49.8 - 43.6)/49.8J (100),12.5%. In this case the
+rate increase due to external and internal thermal effects more than balances
+the adverse effect of internal mass-transfer resistance. The procedure for
+calculating the effects of internal gradients on the rate is presented in
+Chap. II.
+One additional illustration is of interest. This refers to the hydro-
+fluorination of D02 pellets with HF(g) according to the reaction
+DOis) + 4HF(g) ~ 4UF4 (s) + 2H20(g)
+This is a different kind of heterogeneous reaction-a gas-solid noncatalytic
+one. Let us examine the process at initial conditions (t ~ 0), so that there has
+beenno opportunity for a layer ofUF4(S) to be formed around the U0 2 pellet.
+The process is much like that for gas-solid catalytic reactions. Hydrogen
+fluoride gas is transferred from the bulk gas to the surface ofthe D02 pellets
+and reacts at the pellet-gas interface, and H 20 diffuses out into the bulk gas.
+If the pellet is nonporous, all the reaction occurs at the outer surface of the
+D02 pellet, and only an external transport process is possible. Costa1 studied
+this system by suspending spherical pellets 2 em in diameter in a stirred-tank
+reactor. In one run, at a bulk-gas temperature of377°C, the surface tempera-
+ture was 462°C and the observed rate was -fuo 2 = 6.9
+X 10- 6 mole
+U02!(sec) (cm2 reaction surface). At these conditions the concentrations of
+1E. C. Costa and J. M. Smith, Proc. Fourth European Symp. Chern. Reaction Eng., Brussels,
+September, 1968.
+
+
+=== PDF PAGE 7 ===
+SECTION 7-:2
+TYPES OF HETEROGENEOUS REACTIONS
+279
+HF gas were 1.12 x 10- 5 g mole/cm3 at the surface of the pellet and
+1.38 x 10 -5 g mole/cm 3 in the bulk gas. The intrinsic rate of reaction was
+found to be given by
+r = ,40 CHF e- 6 ,070/Rg T g mole/(cm2) (sec)
+(7-6)
+where T is in degrees Kelvin and CHF is in gram moles per cubic centimeter.
+If the rate is evaluated at bulk-gas conditions, Eq. (7-6) gives 5.0 x 10- 6
+_gmolej(sec)(cm2-).Then the G0mbined-effeGts ef-an-eJtternaltemperature-ancl--
+concentration difference serve to increase the rate from 5.0 x 10- 6 to
+6.9
+X 10- 6 g mole/(cm2)(sec), or 38%. In this case the temperature at the
+catalyst surface is 95°C higher than the bulk-gas temperature, and this has a
+dominating effect on the rate ofreaction. The effect ofexternal mass-transfer
+resistance is to reduce the rate by the ratio ofconcentrations ofHF, 1.12: 1.38,
+or 19%.
+7-2 Types ofHeterogeneous Reactions
+All the examples in Sec. 7-1 were of the gas-solid form. This is, perhaps, the
+most important type ofheterogeneous system because of its utilization in the
+chemical industry. Most salable chemicals are prepared by converting raw
+materials via chemical reactions. Such reactions usually require catalysts,
+and these are normally solids. Since the temperatures must be high for rapid
+rates, the reacting fluid commonly is in the gas phase. Examples of large-
+scale gas-solid catalytic reactions are the major hydrocarbon transforma-
+tions: cracking, reforming, dehydrogenation (for example, butadiene and
+butenes from butane), isomerization, desulfurization, etc. Kinetics and reac-
+tor design for such systems have naturally received major attention, and most
+of our emphasis on design is directed to this type (Chap. 13).
+.
+Gas-solid heterogeneous' reactions may be noncatalytic. An example is
+the hydrofiuorination ofuranium dioxide pellets referred to in Sec. 7-1. Since
+one reactant is in the solid phase and is consumed, the rate of reaction varies
+with time. Hence such processes are basically transient, in comparison with
+the steady-state operation of gas-solid catalytic reactors. The process for
+smelting ores such as zinc sulfide,
+t
+ZnS(s) + t02(g) -+ ZnO(s) + S02(g)
+is of this type. The conversion of CaC03 to CaO in the line kiln is another
+example. Yet another is the process for making HCI in a transport reactor!
+from salt particles; ~he reaction is
+2NaCl(s) + S03(g) +H20(g) -+ Na~S04(s) + 2HCI(g)
+1A transport reactor is iike a fluidized-bed reactor, except that the fluidized particles move
+through and out of the reactor with the gas phase.
+
+
+=== PDF PAGE 8 ===
+280
+CHAPTER 7
+HETEROGENEOUS REACTORS
+In many noncatalytic types a solid product builds up around the reacting
+core [for example, Na2SOL\.(s) is deposited around the NaCl particles in the
+last illustration]. This introduces the additional physical processes of heat
+and mass transfer through a product layer around the solid reactant. A some-
+what different form of noncatalytic gas-solid reaction is the regeneration of
+catalysts which have been deactivated by the deposition ofa substance on the
+interior surface. The most common is the burning of carbon (with air) which
+has been gradually deposited on catalyst particles used in hydrocarbon re~c­
+tions. Many of the physical and chemical steps involved here are .the same as
+those for gas-solid catalytic reactions. The chief difference is ttle transient
+nature of the noncatalytic reaction. This type of heterogeneous 'reaction will
+be considered in Chap. 14.
+Liquid-solid reactions, where the solid phase is a catalyst, is another
+type ofheterogeneous system that is common in the chemical and petroleum
+industries. Alkylation with AICl3(s) catalyst is an example. In these systems
+the catalyst frequently forms complexes with reactants and/or products and
+becomes a poorly defined solid-liquid mixture, best described as a sludge.
+Analytical treatment in these cases is difficult. An important modification of
+the liquid-solid catalytic type· arises when one reactant is gaseous. Hydroge-
+nation of liquids normally is of this type. A slurry is formed of solid catalyst
+particles and hydrogen is bubbled into the slurry. These reactions are usually
+carried out in stirred-tank reactors, where the high heat capacity of the tank
+contents simplifies temperature control of the exothermic hydrogenation'
+reaction. Such gas-liquid-solid systems involve several physical steps, and
+indeed, resistance to diffusion of dissolved hydrogen to the catalyst particle
+is frequently significant. The quantitative treatment of combined physical
+and chemical steps in such slurry reactors is considered in Chaps. 10 and 13.
+Polymerization systems are often of this type. For example, ethylene is
+normally polymerized by dissolving it in a solvent containing suspended
+catalyst particles. The trickle-bed reactor is a somewhat different form of
+gas-liquid-solid system. Here gas and liquid, usually in cocurrent flow, pass
+over a bed of catalyst particles in a fixed bed. This form is used when the
+volatility of the liquid is so low that complete gasification is not practical.
+Sulfur compounds are removed from heavy hydrocarbon liquids in such reac-
+tors. The gas phase here is primariiy hydrogen, which is necessary for the
+desulfurization reactions.
+Liquid-liquid reactions are sometimes encountered. Alkylation of'
+hydrocarbons with aqueous solution of sulfuric acid as a catalyst is an
+example. As in liquid-solid systems, definition of the liquid phase containing
+the catalyst may be difficult, reducing the effectiveness of a fundamental·
+analysis in terms of chemical and physical steps.
+
+
+=== PDF PAGE 9 ===
+PROBI,.EMS
+281
+Solid-solid noncatalytic reactions are important in ceramics manu-
+facture.! It appears that diffusion resistances may be important to some
+extent in all such systems. The diffusion process itself is hard to define in
+solid-solid systems, since at least two possibilities exist: volume diffusion in
+the solid' and surface diffusion along interfaces and crystal boundaries. 2
+Little is known about the kinetics of solid-solid reactions at the reacting
+interfaqe because most measurements include diffusion effects.
+Problems
+7-1.
+In a sketch similar to Fig. 7-1 show schematically the concentration profiles for a
+first-order reversible catalytic reaction. Consider three cases: (a) reaction control,
+(b) diffusion control, and (c) an intermediate case.
+7-2.
+Explain why mass-transfer resistance reduces the global rate more at higher tem-
+peratures than at lower temperatures. Assume no heat-transfer resistance.
+7-3.
+For endothermic reactions, do mass- and heat-transfer resistances have com-
+plementary or counterbalancing effects on the global rate?
+7-4.
+A gaseous reaction with a solid catalyst is carried out in a flow reactor. The system
+is isothermal, but it is believed that mass-transfer resistances are important.
+(a) ""ould increasing the turbulence in the gas region next to the catalyst surface
+increase or decrease the global rate? (b) If the system is not isothermal and the
+reaction is exothermic, would increasing the turbulence increase or decrease the
+global rate?
+1W. Kingery "Kinetics of High Temperature Processes," John Wiley & Sons, Inc.,. New
+York, 1959; G. Cohn, Chern. Rev., 42, 527 (1948).
+2R. J. Arrowsmith and J. M. Smith, Ind. Eng. Chern., Fund. Quart., 5, 327 (1966).
+
+
+=== PDF PAGE 10 ===
+8
+HETEROGENEOUSCATALY~S
+As kinetic infonnation began to accumulate during the last century, it
+appeared that the rates of a number of reactions were influenced by the
+presence of a material which itself was unchanged during the process.
+In 1836 Berzelius1 reviewed the evidence and concluded that a "catalytic"
+force was in operation. Among the cases he studied were the conversion of
+starch into sugar in the prc;sence of acids, the decomposition of hydrogen
+peroxide in alkaline solutions, and the combination ofhydrogen and oxygen
+on the surface of spongy platinum. In these three examples the acids, the
+alkaline ions, and the spongy platinum were the materials which increased
+the rate and yet were virtually unchanged by the reaction. Although the
+concept of a catalytic force proposed by Berzelius has now been discarded,
+the tenn "catalysis" is retained to describe all processes in which the rate
+ofa reaction is influenced by a substance that remains chemically unaffected.
+In this chapter we shall consider first the general characteristics of
+heterogeneous catalysis and\,a-ds61j5tiQii~Jp.h¥.8icar and che!pi0Jj and then
+physical properties of solid catalysts and ~ethods of preparation. Kinetics
+1J. J. Berzelius, Jahresber. Chern., 15, 237 (1836).
+282
+
+
+=== PDF PAGE 11 ===
+SECTION 8-1
+THE NATURE OF CATALYTIC REACTIONS
+283
+and mechanism of adsorption and fluid-solid catalytic reactions are taken
+up in Chap. 9.
+.
+GENERAL CHARACTERISTICS*
+8-1 The Nature ofCatalytic Reactiolls
+Although the catalyst remains unchanged at the end of the process, there
+is no requirement that the material not take part in the reaction. In fact,
+present theories of catalyst activity postulate that the material does actively
+participate in the reaction. From the concept of the energy of activation
+developed in Chap. 2, the mechanism of catalysis would have to be such
+that the free energy of activation is lowered by the presence of the catalytic
+material. A catalyst is effective in increasing the rate of a reaction because
+it makes possible an alternative mechanism, each step of which has a lower
+free energy of activation than that for the uncatalyzed process. Consider the
+reaction between hydrogen and oxygen in the presence of spongy platinum.
+According to the proposed concept, hydrogen combines with the spongy
+platinum to form an intermediate substance, which then reacts with oxygen
+to provide the final product and reproduce the catalyst. It is postulated
+that the steps involving the platinum surface occur at a faster rate than the
+homogeneous reaction between hydrogen and oxygen.
+The combination or complexing of reactant and catalyst is a widely
+accepted basis for explaining catalysis. For example, suppose the overall
+reaction
+A+B¢C
+is catalyzed via two active centers, or catalytic sites, Xl and X2 , which'form
+complexes with A and B. The reaction is truly catalytic if the sequence of
+steps is such that the centers Xl and X 2 are regenerated after they have
+caused the formation of C. In a general way the process may be written
+1.
+A + Xl ¢AXl
+2.
+B + X2 ¢BX2
+3.
+AXl + BX2 ¢
+C + Xl + X2
+Note that whereas Xl and Xl are combined and regenerated a number of
+times, it does not necessarily follow that their catalyzing ability and/or
+number remain constant forever. For example, poisons can intervene to
+slowly remove Xl and/or X 2 from the system, arresting the catalytic rate.
+What distinguishes this decline in catalytic activity from that of a non-
+*This material was written jointly with Professor J. J. Carberry.
+
+
+=== PDF PAGE 12 ===
+284
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+catalytic reaction in which Xl and X 2 are not regenerated is that the com-
+plexing-regenerating sequence occurs a great many times before Xl and
+X 2 become inactive. In the noncatalytic sequence no regeneration of X
+occurs. Hence, while catalysts can deteriorate, their active lifetime.is far
+greater than the time required for reaction.
+A relatively sma.ll amount of catalyst can cause conversion of a large
+amount of reactant. For example, Glasstone1 points out that cupric ions
+in the concentration of 10- 9 mole/liter appreciably increase the rate of
+the oxidation of sodium sulfide by oxygen. However, the idea that a small
+amount of the catalyst can cause a large amount of reaction does not mean"
+that the catalyst concentration is unimportant. In fact, when the reaction
+does not entail a chain mechanism, the rate of the reaction is usually pro-
+portional to the concentration of the catalyst. This is perhaps most readily
+understood by considering the case of surface catalytic reactions. In the
+reaction of hydrogen and oxygen with platinum catalyst the rate is found
+to be directly proportional to the platinum surface. Here a simple propor-
+tionality exists between platinum surface area and the number of centers X
+which catalyze the oxidation of hydrogen. While a simple relationship
+may not often exist in solid-catalyzed reactions, in homogeneous catalysis
+there is often a direct proportionality between rate and catalyst concen-
+tration. For example, the hydrolysis of esters in an acid solution will depend
+on" the concentration of hydrogen ion acting as a catalyst.
+The position of equilibrium in a reversible reaction is not changed by
+the presence ofthe catalyst. This conclusion has been verified experimentally
+in several instances. For example, the oxidation of sulfur dioxide by oxygen
+has been studied with three catalysts: platinum, ferric oxide, and vanadium
+pentoxide. In all three cases the equilibrium compositions were the same.
+An important characteristic of a catalyst is its effect on selectivity
+when several reactions are possible. A good illustration is the decomposition
+of ethanol. Thermal decomposition gives water, acetaldehyde, ethylene,
+and hydrogen. If, however, ethanol vapor is suitably contacted with alumina
+particles, ethylene and water are the only products. In contrast, dehydrogena-
+tion to acetaldehyde is virtually the sole reaction when ethanol is reacted
+over a copper catalyst.
+The general characteristics ofcatalysis may be summarized as follows:
+1.
+A catalyst accelerates reaction by providing alternate paths to products,
+the activation energy of each catalytic step being less than that for the
+homogeneous (noncatalytic) reaction.
+2.
+In the reaction cycle active centers of catalysis are combined with at
+IS. Glasstone, "Textbook of Physical Chemistry,"
+p. 1104, D. Van Nostrand Company,
+Inc., New York, 1940.
+;
+J
+
+
+=== PDF PAGE 13 ===
+SECTIo"N 8-2
+THE MECHANISM OF CATALYTIC REACTIONS
+285
+least one reactant and then freed with the appearance of product.
+The freed center then recombines with reactant to produce another
+cycle, and so on.
+3.
+Comparatively small quantities of catalytic centers are required to
+produce large amounts of product.
+4.
+Equilibrium conversion is not altered by catalysis. A catalyst which
+accelerates the forward reaction in an equilibrium system is a catalyst
+- -for flieYeve-fse-reaction. --- -------
+-----
+---- -- - -- ----
+5.
+The catalyst can radically alter selectivity.
+Examples have been observed of negative catalysis, where the rate is
+decreased by the catalyst. Perhaps the most reasonable theory is that
+developed for chain reactions. In these cases it is postulated that the catalyst
+breaks the reaction chains, or sequence of steps, in the mechanism. For
+example, nitric oxide reduces the rate of decomposition of acetaldehyde
+and ethyl ether. Apparently nitric oxide has the characteristic of combining
+with the free radicals involved in the reaction mechanism. The halogens,
+particularly iodine, also act as negative catalysts in certain gaseous reactions.
+In the combination of hydrogen and oxygen, where a chain mechanism is
+probably involved, iodine presumably destroys the radicals necessary for
+the propagation of the chains.
+8-2 The Mechanism ofCatalytic Reactions
+The concept that a catalyst provides an alternate mechanism for accom-
+plishing a reaction, and that this alternate path is a more rapid one, has
+been developed in many individual cases. The basis of this idea is that
+the catalyst and one or more of the reactants form an intermediate complex,
+a loosely bound compound which is unstable, and that this complex then
+takes part in subsequent reactions which result in the final products and
+the regenerated catalyst. Homogene0l:!:s catalysis can frequently be explained .
+in terms of this concept. For example, consider catalysis by acids and bases..
+In aqueous solutions acids and bases can increase the rate of hydrolysis of
+sugars, starches, and esters. The kinetics of the hydrolysis of ethyl acetate
+catalyzed by hydrochloric acid can be explained by the following mechanism:
+1.
+CH 3COOC2H s + H+ ¢ CH3COOC2Hs[H+]
+2.
+CH3COOC2Hs[H+] + H 20 ¢'C2HsOH + H+ + CH3COOH
+Forthis catalytic sequence to be rapid with respect to noncatalytic hydrolysis,
+.the free energy of activation of reaction steps 1 and 2 must each be less
+than the free energy of activation for the noncatalytic reaction,
+CH 3COOC2H s + H 20 ¢ CH 3COOH + C2HsOH
+
+
+=== PDF PAGE 14 ===
+286
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+Similarly, the heterogeneous catalytic hydrogenation of ethylene on a
+solid catalyst might be represented by the steps
+.
+1.
+!iF2
+[]
+2.
+Hz + XlCZH4 ¢
+CzH 4 Xl Hz
+!iF3
+3.
+CZH 4 [X1JHz ¢
+C ZH 6 + Xl
+where [Xl] is the solid catalyst and C ZH 4 [ X 1JHz represents the complex
+formed between the reactants and the catalyst. The homogeneous reaction,
+according to the absolute theory of reaction rates discussed in Chap. 2,
+would be written
+Activated
+.
+!iF*
+complex
+CZH4 + Hz ¢
+CzH4 • Hz -+ CZH6
+where the free-energy change for the formation of the activated complex
+11F* is the free energy of activation for the homogeneous reaction. The
+effectivene~s of the catalyst is explained on the basis that the free energy of -
+activation of each of the steps in the catalytic mechanism is less than 11F*.
+These illustrations, particularly that for ethylene hydrogenation,
+are grossly oversimplified. They must be considered
+ph~nomenological
+models, not mechanisms. The actual mechanism of ethylene hydrogenation
+is quite complex. In spite of the considerable effort focused on this reaction,
+a mechanism satisfactory to all Investigators has yet to be offered. The
+system does, however, provide an opportunity to compare homogeneous
+and heterogeneous rates. Using published data, Boudart1 found that the
+homogeneous and catalytic rates can be expressed as
+f hom = 10Z7 e-43.000/RgT
+f
+= 2 ~ 1027 e- 13 ,OOO/RgT
+cat
+At 600
+0 K the relative rates are
+(CuO-MgO catalyst)
+r cat = e(43,OOO-13,OOO)/600 Rg ~ 1011
+f hom
+In this case the catalyst has caused a radical reduction in overall activation
+energy, presumably by replaciJ;lg a difficult homogeneous step by a more
+easily executed surface reaction involving adsorbed ethylene. The results
+lead to the kinetics observed by Wynkoop and Wilhelm,2 a reaction first
+order in Hz and zero order in strongly adsorbed ethylene.
+1 M. Boudart, Ind. Chim. Be/g., 23, 383 (1958).
+2R. Wynkoop and R. H. Wilhelm, Chem. Eng. Progr., 46,300 (1950).
+
+
+=== PDF PAGE 15 ===
+SECTION 8-3
+SURFACE CHEMISTRY AND ADSORPTION
+287
+The three steps postulated for the catalytic hydrogenation of ethylene
+indicate that the rate may be influenced by both adsorption and desorption
+(steps I and 3) and the surface reaction (step 2). Two extreme cases can be
+imagined: that step 1 or step 3 is slow with respect to step 2 or that step 2
+is relativefy slow. In the first situation rates of adsorption or desorption are
+of interest, while in the second the surface concentration of the adsorbed
+species corresponding to equilibrium with respect to steps 1 and 3 is needed.
+-Inany-case-wesnoiild-lilce-to-Know Hie numher-oCsiies on the-catalyst
+surface, or at least the surface area of the catalyst. These questions require
+a study of adsorption. More is known about adsorption of gases, and this
+will be emphasized in the sections that follow.
+"7
+ADSORPTION ON SOUD SURFACES
+~
+8-3 Swiace Chemistry and Adsorptioll
+fl :! \;~
+JVlf1Even _~.~_~:~.~~£~E~fgUY.P9~ish~~tsur.f4~~~.,,9:[en.,9r
+sn.J.9pt4 iJ). a !Dicr~s~'<?'pic
+s~E~~:_ ..?~~_e~!".~.~irr~Kgl~[~ with val1~y.~_".~p~L P.~~~.~~._.,~~!~E~3;t.~~g.9Y.~.r.. t!l.~."?-E~~·
+Th~ E~gig"!!~_qfjIr.~ggl9:J.itYf!.re P~E.t.i<:?.!.1l~rJysus.G~ptible to residuc.!) Jo~~.~ .fl§.lds.
+At these' locations the surface atom$Q.Lthe solid may attract other.atoms
+ot"iholecules" in -th.e-surr~~;ding g~s or liquid phase. Similarly, th~ surfaces
+of pure'crystais 'h~~e nonunlfoIm force fi~lds because oftIle atomic structure
+in the crystal. Such surfaces also hav~ sites or active centers where adsorption
+is enhanced. Two types of adsorption may occur.
+Physical Adsorption1
+The first
+typ~ "Of adsorption is nonspecific and
+somewhat similar to the process of condensation. The forces attracting
+t~ ~id. m~lecules_"to the ~~lid sur~~~""~E.~.E~l~!.!:y.~ly...~~a.1<Jindth~)le~t
+evolved-durrng-tile adsorpnon proces~)§__QfJJ:w,,)?a.Jnedora:er of magmtuQe
+_a-sJ.Ii.fheatO[~o-ndeni~t.i~~~:O:5~~s> 5 kcal/g mole·lE.9:!"~ibriu_l!l..~_~_~Y.:'"~~?
+the solid surface and the gas molecules is usually rapidly attained and -
+easilY-reversible, ~~ause the energY.:.requ~t~~e~~s.are .s~~llrthe energy
+.9L~~tivation for physical adsorption is usually no more
+th~n IkcalJg
+mole. This_ is__a:direct .cons.eqJ)_~nce of the fact that the" f~rces involved
+~in physical adsorption are -weak: ~physicar-adSo"rption--cannor' 'expIain
+the catalytic activity of solids for reactions between relatively stable mole-
+cules, because there is no possibility of large reductions in activation
+energy. Reactions of atoms and free radicals at surfaces sometimes involve
+small activation energies, and in these cases physIc"a:! adso:qJtion may'pEiy a
+lFor a detailed treatment of physical adsorption see D. M. Young and A. D. Crowell,
+"Physical Adsorpti(~n of Gases," Butterworths & Co. (Publishers), London, 1962.
+
+
+=== PDF PAGE 16 ===
+288
+r'
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+role. Also, physical adsorption serves to concentrate the molecules of a
+substance at a surface. This can be of importance in cases involving reaction
+between a chemisorbed reactant and a coreactant which can be physically
+adsorbed. In such a system the catalytic reaction would occur betv¥.een
+chemisorbed and physically adsorbed reactants.
+Catalysis" cannot be
+attributed solely to physical
+adsorptio~_.""_ItlUs all solids will physically
+adsorb gases under suitable conditions, and yet all solids are not catalysts.
+The amount of physical adsorption decreases rapidly as the tempera-
+ture is raised and is generally very small above the critical temperatures of
+the adsorbed component. This is further evidence that physical adsorption
+is not responsible for catalysis.IFor example, the rate of oxidation of sulfur
+dioxide on a platinum catalyst becomes appreciable only above 300°C;
+yet this is considerably above the critical temperature of sulfur dioxide'
+(157°C) or of oxygen (-119°C). Physical adsorption is not highly dependent
+on the irregularities in the nature of the surface, but is usually directly
+proportional to the amount of surface. However, the extent of adsorption
+is not limited to a monomolecular layer on the solid surface, especially
+near the condensation temperature. As the layers of molecules build up
+on the solid surface, the process becomes progressively more like one of
+condensation.
+.-
+Physical-adsorption studies are valuable in determining the physical
+properties of solid catalysts. Thus the questions of surface area and pore-
+size distribution in porous catalysts can be answered from physical-adsorp-
+tion measurements. These aspects of physical adsorption are considered
+in Secs. 8-5 and 8-7.
+Chemisorption1·
+The second type of adsorptio"n is specific and involves
+forces much stronger than in physical adsorption\ According to Lan~gmuir's
+pioneer work,z the adsorbed molecules are held to the surface by valence
+forces .of the s~me type as those occurring between atoms in molecules.
+He observed that a stable oxide film was formed on the surface of tungsten
+wires in the presence of oxygen. This material was not the normal oxide
+W0 3 , because it exhibited different chemical properties. However, analysis
+of the walls of the vessel holding the wire indicated that W03 was given
+Joff from the surface upon desorption. This suggested a process of the type
+302 + 2W -7 2[W . 03]
+2[W· 03] -7 2W0 3
+1For a detailed treatment of chemisorption see D. o. Hayward and B. M. W. Trapneli,
+"Chemisorption," 2d ed., Butterworths & Co. (Publishers); London, 1964.
+21. Langmuir, J. Am. Chern. Soc., 38, 221 (1916).
+
+
+=== PDF PAGE 17 ===
+SEc:nON 8-3
+SURFACE CHEMISTRY AND ADSORPTION
+289
+where [W . 03J represents the adsorbed compound. Further evidence for
+the theory that such adsorption involves valence bonds is found in the
+large heats of adsorption. Observed values are of the same magnitude as
+the heat of chemical reactions, 5 to 100 kcaljg mole.
+Taylq.r1 suggested the name chemisorption for describing this second
+type of combination of gas molecules with solid surfaces. Because of the
+high heat of adsorption, the energy possessed by chemisorbed molecules
+-- - -- -can-be substantially-different -fromthatef-the-molecules alone.-Hence-the
+energy of activation for reactions involving chemisorbed molecules can be
+considerably less than that for reactions involving the molecules alone.
+It is on this basis that chemisorption offers an explanation for the catalytic
+effect of solid surfaces.
+~~Two kinds of chemisorption are encountered: activated and, less
+frequ]!iJly->-_nonactlvatea:"-ACtivated ··ch"€!?.~j'§Qtplion'means
+that Hje' rate
+_'
+A
+.
+.,__•••••••• _
+••• ,
+•...:~__-<.-r."._.•
+__
+' ••• '
+••
+•
+•
+.••• _.'
+~
+••
+_.
+;-.
+•
+varies with tempenitli'i-eaccorcling to a finite activation'ellergy in the Arrhen-
+iu's equ~tion;F!~~~v~?jn~·0'me:systems·.
+Gh€miso'~Pt~QD. <?~~~:~..~~.ri·.·i.~~idlY,
+s~gg~~m~~~.va~on ..~~~~~y. r:t.e.9.-T .z~rol!hIs
+IS
+terny.e~.-!~~~~~_c.t~~~t~4.
+~..fm.~Sf?rptlOJ1-,/-It
+IS often found that for a gIven gas and solId the IriItIal
+chemisorption is nonactivated, while later stages of the process are slow
+and temperature dependent (activated adsorption)./
+~!itLre~J2~~t...!,!....9,(jsorphon 'eqUlliOrzurFi;-fue1elationship between
+temperaturef!l and quantity adsor:12c;.cL(both physically and chemically) is
+sliown'ln--Fl~:'8'~~fiemI~rptioh
+is assumed to be ac~~~ted.l-~ this case.:.
+;~:s the critical temperature ofthe"cc;ITfpone'nt-is-exceeoed, physical adsorp-
+U~3i~i~~~~y-~~ip~li'Ebp~a~~f~l~~fg~~~:;fl~~fi
+."...../f.,
+periods rthe adsorption curve actually rises with increasing temperatures
+from the minimum value, as shown by the solid line in Fig. 8-1. When the
+temperature is incr~ased 'still further, the .decreasing equilibrium value for
+activated adsorption retards the process, and the quantity adsorbed passes
+through a maximum. At these high temperatures even the rate of the
+relatively slow activated process may be sufficient to give results closely
+approaching equilibrium. Hence the solid curve representing the amount
+adsorbed approaches the dashed equilibrium value for the activated adsorp-
+tion process.
+It has J2~eJl.-oexp1ainecLthaL.the-.effectiye.Il~s.§_..Q.t..§olid catalysts for
+reactjqns of stable molecules is._d~pendenJ...!Il'on chemisorption. Gi-arITtfrg-
+lH. S. Taylor, J. Am. Chern. Soc., 53, 578 (1931).
+--_._-'-.
+2As an illustration, chemisorption of hydrogen on nickel at low temperatures is nonactivated;
+see G. Padberg and J. M. Smith, J. Catalysis, 12, III (1968).
+
+
+=== PDF PAGE 18 ===
+290
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+~ Range of potential----;.~I
+I
+catalyst activity
+I
+I
+I·
+I
+I
+I
+\. .v--- Equilibrium
+I
+,activated
+I
+I
+\
+adsorption
+I
+I
+\,
+I
+I
+'\
+I
+I
+'\.
+I
+I
+',I
+I
+',I
+'~~ I
+,
+.~ Equilibrium
+''\(''
+physical adsorption
+,
+"-' ............
+I
+Temperature-
+Fig.
+8-1
+Effect of temperature
+0/1 physical and
+activated adsorption.
+"
+I:
+this, the temperature...range.. over.. which'_"LgiY~n ..G.4.t~J.y..§~_effective must
+.99.iw~i<;Lewith the r::mge where chemisorption .OfQIlf;1...Qf.ffiore ofthe r:eactants
+E_.9;.PPLe.ciable..This is indicated on Fig. 8-r by the dash~d-verfiCaTlilies.
+.-' There is a relationsh~IL2et~e~!!.:!!I~_~t~.!!,t.Q[~~l1~Wis..QI21!9~of a gas on a
+sorra-annIie effe~jiv~:a.l.§§s_of
+th~~QJ.id as...JLQ.atalyst.;, Fo£. example, many
+~lli.c anctme.:llil::.Q.Xide.-S..u..rfac.es.Jld.s.OLQ oxygen easily, 9.-nd these materials
+-are also found to be good catalysts for oxidation reactions. When reactions
+proceed catalytically at low temperatures, Fig. 8-1 does not apply. In these
+cases catalysis is due to nonactivated chemisorption. Thus ethylene is
+hydrogenated on nickel at - 78°C, at which temperature there would surely
+exist physical adsorption of the ethylene.
+~ An iqlPQJ~t9:ntJe~ture of chemisorption is that its magnitude will nQ.t
+<.:.-
+.
+. . ---. '----_..-. -_._----_.-
+exceed that corresponding to. a
+r~lQ_norp.ole.~ul~~..1ayer. This limitation is
+due to the fact that the valence forces holding the mQI~gl~s·oii"1lie-siifface
+diminislrrapidly-with-distance. These forces become too s~an to form the
+adsorp.tioll_c.offipQund_.when the distanc~ from the surface is much greater
+than--the-'usual-bond distanees.
+~\ The differences between chemisorption and physical adsorption are
+c'summarized in Table 8-1.
+'
+I
+The key concept for quantitative treatment of both physical and
+;' chemical adsorption is that formulated by Langmuir. 1 While his concern
+I
+_
+""'4.: Langmuir, J. Am. Chern. Soc., 40, 1361 (19.18).
+
+
+=== PDF PAGE 19 ===
+SECTION 8-4
+THE LANGMUIR TREATMENT OF ADSORPTION
+291
+Table 8-1
+Physical vs chemical adsorption
+Parameter
+Physical adsorption
+Chemisorption
+Some solids
+' --
+Some chemically
+reactive gases
+Generally high
+_______temperature
+_
+High, order of heat
+of reaction
+Nonactivated, low E;
+activated, high E
+Monolayer
+Often irreversible
+For determination of
+active-center area and
+elucidation of surface-
+reaction kinetics
+Very rapid, low E
+Multilayer possible
+Highly reversible
+For determination of
+surface area and
+pore size
+,f
+Adsorbent..
+All solids
+Adsorbate'
+All gases below
+, i
+critical temperature
+"
+Temperature range
+Low temperature
+{- lli;t-of~ds-o~-~i-o~---- - LoV( (~ ~Heond)
+I
+Rate (activation energy)
+l
+Coverage
+,
+ReversibilIty
+!
+Importance
+was with chemisorption, Brunauer, Emmett, and Teller gainfully employed
+the concepts to derive a valuable relationship between the volume of a
+gas physically adsorbed and total surface area of the adsorbent (see Sec.
+8-5). Also, the Langmuir treatment can be extended to develop useful
+relations for chemisorption rates and rate of catalytic reactions, even for
+surfaces which do not obey the basic postulates of the Langmuir theory.
+This second application is given in Chap. 9.
+C:-}!8-4 The Langmuir Treatment ofAdsorption " -~:-,,>;,~
+The derivations may be carried out by using as a measure of the amount
+adsorbed either the fraction of the surface covered or the concentration
+of the gas adsorbed on the surfac9 Both procedures will be illustrated,
+although the second is the more useful Jor kinetic developments;;(Chap. 9).
+The important assumptions are as follows: 1
+..-'
+All the surface of the catalyst has the same activity for adsorption;
+i.e., it is energetically
+uni~9rm. The concept of nonuniform surface
+with active centers can qe"employed if it is assumed that all the active
+centers have the same activity for adsorption and that the rest of the
+surface has none, or that an average activity can be used.
+There is no interaction between adsorbed rriolecules. This means that
+the amount adsorbed has no effect on the rate of adsorption per site.
+1It is also tacitly supposed that each site can accommodate only one adsorbed particle.
+
+
+=== PDF PAGE 20 ===
+292
+CHAPTER 8
+HETEROGENEOUS ('ATAL YSI.~:
+3.
+All the adsorption occurs by the same mechanism, and each adsorbed
+complex has the same structure.
+4.
+The extent of adsorption is less than one complete monomolecular
+layer on the surface.
+In the system of solid surface and gas, the molecules of gas will be
+continually striking the surface and a fraction of these will adhere. However,
+because- -oT -{heii--kinetic, rotational, and vibrational energy, the more
+energetic molecules will be continually leaving the surface. An equilibrium
+will be established such that the rate at which molecules strike the surface,
+and remain for an appreciable length of time, will be exactly"balanced by
+the rate at which molecules leave the surface,
+t/The rate of adsorption fa will be equal to the rat'e'- of collision f e of
+molecules with the surface multiplied by a factor F representing the fraction
+of the colliding molecules that adhere. At a fixed temperature the number of
+collisiqns will be proportional to the pressure p of the gas, and the fraction
+F will be constant. Hence the rate of adsorption per unit of bare surface
+will be reF. This is equal to kp, where k is a constant involving the fraction
+F and the proportionality between f e and p.
+•
+Since the adsorption is limited to complete coverage by a mono-
+molecular layer, the surface may be divided into two parts: the fraction 8
+covered by the adsorbed molecules and the fraction I - e, which is bare.
+Since only those molecules striking the uncovered part of the surface can be
+adsorbed, the rate ofadsorption per unit oftotal surface will be proportional
+to I -
+8; that is,
+fa = kp(l --: 8)
+(8-1)
+The rate of desorptism will be proportional to the fraction ofcovered surface
+(8-2)
+The amount adsorbed at equilibrium is obtained by equating fa and fa
+and solving for 8. The result, called the Langmuir 'isotherm, is
+e=
+k' ~kp (:3= :m
+~-3)
+where K = kJk' is the adsorption equilibrium constant, expressed in units
+of (pressure)-l. The fraction 8 is proportional to volume of gas adsorbed,
+v, since -the adsorption is less than a monomolecular layer. Hence Eq.
+(8-3) may be regarded as a relationship between the pressure of the gas_
+and the volume adsorbed. This is indicated by writing e = vJvm , where
+'vm is the volume adsorbed when all the active sites are covered, i.e., when
+there is a complete monomolecular layer.
+
+
+=== PDF PAGE 21 ===
+·SECTION 8-4
+THE LANGMUIR TREATMENT OF ADSORPTION
+293
+The concentration fonn of Eq. (8-3) can be obtained by introducing
+the concept of an adsorbed concentration C, expressed in moles per gram of
+catalyst. If Cm represents the concentration corresponding to a complete
+monomolecular layer on the catalyst, then the rate ofadsorption, molesj(sec)
+(g catalyst) is, by analogy with Eq. (8-1),
+fa = kcCg(Cm-
+E)
+(8-4)
+_ - -where-kc is-the rate -constant-foI" the-catal:yst-and-Cg-is -th€G0nG€ntFatiello[ -
+adsorbable component in the gas. Similarly, Eq. (8-2) becomes
+(8-5)
+(8-6)
+At equilibrium the rates given by Eqs. (8-4) and (8-5) are equal, so that
+C =
+KcCmCg
+1 + KcCg
+where now the equilibrium constant Kc is equal to
+kcjk~ and is expressed
+in cubic centimeters per gram mole. Since Cjem = e, Eq. (8-6) may also
+.be written
+e =
+KcCg
+(8-7)
+1 + KcCg
+which is a form analogous to Eq. (8-3), since Cg is proportional to p.
+Equation (8-6) predicts that adsorption data should have the general
+form shown in Fig. 8-2. Note that at low values of Cg (or low surface cover-
+ages e) the expression becomes a straight line with a slope equal to KcCm •
+The data points in Fig. 8-2 are for th~ physical adsorption of n-butane on
+silica gel (Sg. = 832 m2jg) at 50°C.! The solid line r~presents Eq. (8-6),
+where
+Cm = 0.85 X 10- 3 g molejg silica gel
+and the equilibrium constant of adsorption is
+Kc = 4.1
+X 105 cm 3jg mole
+For this instance of physical adsorption Eq. (8-6) fits the data rather well.
+The measurements were made on mixtures of n-butane in helium (at 1
+atm total pressure) to vary Cg • The percentage of n-butane in the gas
+corresponding to the concentration Cg is shown as a second abscissa in the
+figure. Also, eis shown as a second ordinate. This was calculated from e=
+CjCm' Itis interesting to note that the isotherm is linear up to aboute = 0.10,
+or 10% surface coverage.
+1 Data from R. L. Cerro, "Adsorption Studies by Chromatography," master's thesis, Univer-
+sity of California, Davis, Calif., September, 1968.
+
+
+=== PDF PAGE 22 ===
+PHYSICAL PROPERTIES OF CATALYSTS
+294
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+l.0
+2.0
+3.0
+.4.0
+5.0
+0.5
+O!l
+o
+Experimental
+---
+<I)
+-
+[Eq. (8-6)]
+"0
+0.50
+S
+0.4
+<:n
+O!l
+"t5
+8
+~
+<I)
+0.40
+;>
+0
+x
+Q
+0.3
+....
+lc..J
+<I)
+;>.
+d
+cd
+.3
+0.30
+0c
+~
+0
+.....
+8
+C
+0.2
+0
+<I)
+Qc
+0.20
+c
+0
+.3
+Q
+"0
+t)
+<I)
+cd
+.0
+.....
+.....
+0.1
+~
+0
+0.10
+'"
+"0
+~
+0.4
+0.8
+1.2
+1.6
+2.0
+Gas concentration, Cg x
+106~ g mole/crn3
+Fig. 8-2
+Adsorption-equilihrium data fiJI" n-hutclI7(! on silica gel (swjc(ce
+area 832 m 2/g) at 50°C
+Chemisorption data often do. not fit Eq. (8-6). However, the basic
+concepts on which the Langmuir isotherm is based, the ideas of a dynamic
+equilibrillm between rates of adsorption and desorption and a finite. adsorp-
+tion time, are sound and of great value in developing the kinetics 9f fluid-
+solid catalytic reactions. Equations (8-4) to (8-6) form the basis for the rate
+equations presented in Chap. 9.
+r
+.
+The surface area of a solid has a pronounced effect on the amount of gas
+adsorbed and on its activity as a catalyst. For example, if a sample of fresh
+Raney nickel, which is highly porous and has a large surface, is held in the
+hand, the heat due to adsorption of oxygen can be felt immediately. No
+heat is apparent in the same mass of ·nonporous nickel. This relationship
+between surface area and extent of adsorption has led to the development
+of highly porous materials with areas as high as 1,500·m2jg. Sometimes
+the catalytic material itself can be prepared in a form with large surface
+area. When this is not possible, materials which can be so prepared may
+
+
+=== PDF PAGE 23 ===
+• SECTION 8-4
+THE LANGMUIR TREATMENT OF ADSORPTION
+295
+be used as a carrier or support on which the catalytic substance is dispersed.
+Silica gel and alumina are widely used as supports.
+The dependence of rates of adsorption and catalytic reactions on
+surface makes it imperative to have a reliable method of measuring surface
+area. 0therwise it would not be possible to compare different catalysts
+(whose areas are different) to ascertain the intrinsic activity per unit surface..
+For surface areas in the range of hundreds of square meters per gram·
+-- - a-porous material-with €quivalent-Gylind-rical-pore-rad-ii-(see Sec:-8--5)-in-the
+range of 10 to 100 A is needed. The following example shows that such
+areas are not possible with nonporous particles of the size which can be
+economically manufactured.
+Example 8-1
+Spray drying and other procedures for manufacturing small particles
+can produce particles as small as 2 to 5 microns. Calculate the external surface area of
+nonporous spherical particles of 2 microns diameter. What size particles would be
+necessary if the external surface is to be 100 m 2jg? The density of the particles is 2.0
+gjcm 3 .
+Solution
+The external surface area per unit volume of a spherical particle of diameter
+dp is
+.
+nd 2
+6
+--p-=-
+nd/j6
+dp
+If the particle density is pp, the surface area, per gram of particles, would be
+6
+S=-
+9
+ppdp
+For dp = 2 microns (2 x 10- 4 cm) and Pp = 2.0 gjcm 3
+6
+4
+2
+Sg = 2(2 x 10- 4) = 1.5 x 10 cm jg
+or
+Sg = 1.5 m 2jg
+This is about the largest surface area to be expected for nonporous particles.
+If a surface of 100 m2jg were required, the spherical particles would have a diameter of
+6
+6
+d = -- =
+= 0.02 x 1O-4 cm
+p
+PpSg
+2.0(100 X 104)
+or
+dp = 0.02 micron
+Particles as small as this cannot, at present, be produced on a commercial scale. It
+may be noted that the smaller particles found in a fluidized-bed reactor are retained on
+400 mesh size, which has a sieve opening of 37 microns.
+
+
+=== PDF PAGE 24 ===
+296
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+When the major catalytic surface is in the interior of a solid particle,
+the resistance to transport of mass and energy from the external surface
+to the interior can have a significant effect on the global rate of reaction.
+Quantitative treatment of this problem is the objective in Chap. 11. It is
+sufficient here to note that this treatment rests on a geometric model for the
+extent and distribution of void spaces within the complex porous structure
+of the particle. It would be best to know the size and shape of each void
+space in the particle. In the absence of this information the parameters in
+the model should be evaluated from reliable and readily obtainable geo-
+metric properties. In addition to the surface area, three other properties fall
+into this classification: void volume, the density of the solid material in the
+particle, and the distribution of void volume according to void size (pore~
+volume distribution). The m~thods of measurement of these four properties
+are considered in Secs.8-5 to 8-7.
+8-5 Determination ofSUlface Area
+The standard method Jor measuring catalyst areas is based on the physical
+adsorption of a gas on the solid surface. Usually the amount of nitrogen
+adsorbed at equilibrium at the normal boiling point (-195.8°C) is measured
+over a range of nitrogen pressures below 1 atm. Under these conditions
+several layers of molecules may be adsorbed on top of each other on the
+surface. The amount adsorbed when one molecular layer is attained must
+be identified in order to determine the area. The historical steps in the
+development of the Brunauer-Emmett-Teller method 1 are clearly explained
+by Emmett. 2 There may be some uncertainty as to whether the values
+given by this method correspond exactly to the surface area.
+Howev~r,
+this is relatively unimportant, since the procedure is standardized and the
+results are reproducible. It should be noted that the surface area so measured
+may not be the area effective for catalysis. For example, only certain part~
+of the surface, the active centers, may be active for chemisorption, while
+nitrogen may be physically adsorbed on much more of the surface. Also,
+when the catalyst is dispersed on a large-area support, only part of the
+support area may be covered by catalytically active atoms. For example, a
+nickel-on-kieselguhr catalyst was found to have a surface of 205 m 2Jg as
+measured by nitrogen adsorption. 3 To determine the area covered by nicke.!
+atoms, hydrogen was chemisorbed on the catalyst at 25°C. From the amount
+of hydrogen chemisorbed, the surface area of nickel atoms was calculated
+to be about 40 m 2jg. It would be most useful to know surface areas· for
+IS. Brunauer, P. H. Emmett, and E. Teller, J. Am. Chem. Soc., 60,309 (1938).
+2p. H. Emmett (ed.), "Catalysis," vol. I, chap. 2, Reinhold Publishing Corporation, New
+York, 1954.
+3G. Padberg and J. M. Smith, J. Catalysis, 12, I II (1968)..
+
+
+=== PDF PAGE 25 ===
+SECTION 8-5
+DETERMINATION OF SURFACE AREA
+297
+chemisorption of the reactant at reaction conditions. However, this would
+require measurement of relatively small amounts of chemisorption at
+different, and often troublesome, conditions (high temperature and/or
+pressm;e), for each reaction system. In contrast, nitrogen can be adsorbed
+easily ~nd rapidly in a routine fashion with standard equipment.
+In the classical method of determining surface area an all-glass
+apparatus is used to measure the volume of gas adsorbed on a sample
+-or the sofid-materiaCrthe apparatus operates-at-a-low-pressure which
+can be varied from near zero up to about 1 atm. The operating temperature
+is in the range ofthe normal boiling point. The data obtained are gas volumes
+at a series of pressures in the adsorption chamber. The observed volumes are
+normally corrected to cubic centimeters at ooe and I atm (standard tem-
+perature and pressure) and plotted against the pressure in millimeters,
+or as the ratio of the pressure to the vapor pressure at the operating tem-
+perature. Typical results from Brunauer and Emmett's work2 are shown in
+Fig. 8-3 for the adsorption of several gases on a O.606-g sample of silica gel.
+To simplify the classical experimental procedure a flow method has been
+developed in which a mixture of helium and the gas to be adsorbed is
+passed continuously over the sample of solid.3 The operating total pressure
+is constant, and the partial pressure of adsorbable g~s is varied by changing
+the composition of the mixture. The procedure4 is to pass a mixture of
+known composition over the sample until equilibrium is reached, that is,
+until the solid has adsorbed an amount of adsorbable component corre-
+sponding to equilibrium at its partial pressure in the mixture. Then the gas
+is desorbed by heating the sample while a stream of pure helium flows over
+it. The amount desorbed is measured with a thermal-conductivity cell or
+other detector. This gives one point on an isotherm, such as shown in Fig. 8-3.
+Then the process is repeated at successively different compositions of the
+mixture until the whole isotherm is obtained.
+The curves in Fig. 8-3 are similar to the extent that at low pressures
+they rise more or less steeply and then flatten out for a linear section at
+intermediate pressures. After careful analysis of much data it was concluded
+that the lower part of the linear region corresponded to complete mono-
+molecular adsorption. If this point could be located with precision, the
+1For a complete description of apparatus and techniques see L. G. Joyner, "Scientific and
+Industrial Glass Blowing and Laboratory T~chniques," Instruments Publishing Company,
+Pittsburgh, 1949; see also S. Brunauer, "The Adsorption of Gases and Vapors," vol. 1,
+Princeton University Press, Princeton, N.J:, 1943.
+2S. Brunauer and P. H. Emmett, J. Am. Chern. Soc., 59, 2682 (1937).
+3'F. M. Nelson and F. 'T. Eggertsen, Anal. Chem., 30, 1387 (1958).
+4 A description of the operating procedure and the data obtained are given by S. Masamune and
+J. M. Smith [AIChE J., 10, 246 (l964)J for the adsorption of nitrogen on Vycor (porous
+
+
+=== PDF PAGE 26 ===
+298
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+volume of one monomolecular layer of gas, Vrn , could then be read from
+the curve and the surface area evaluated. The Brunauer-Emmett-Teller
+method locates this point from an equation obtained by extending the
+Langmuir isotherm to apply to multilayer adsorption. The development
+is briefly summarized as follows: Equation (8-3) can be rearranged to
+the form
+pIp
+-=--+-
+v
+KVm
+vm
+(8-8)
+Bruflauer, Emmett, and Teller adapted this equation for multilayer adsorp-
+tion and arrived at the result
+(8-9)
+p
+= _1_ + (c -
+l)p
+v(Po - p)
+VmC
+cVmPo
+where Po is the saturation or vapor pressure and C is a constant for the
+particular temperature and gas-solid system.
+According to Eq. (8-9), a plot of [J 'r(PO -
+fJ) vs plpo should give a
+straight line. The data of Fig. 8-3 are replotted in this fashion in Fig. 8-4.
+Fig.8-3
+Adsorption isotherms for various gases on a
+O.606-g sample ofsilica gel [by permission from P. H.
+Emmett (ed.), "Catalysis," \'01. I, Reinhold Publishing
+Corporation, New York. 1954J
+800
+600
+400
+200
+9'
+0
+8'
+120
+8
+0\0
+C
+Uu
+-d'
+<I>
+80
+.0 .
+1-<
+0
+(J)
+"'0
+ell
+<I>e
+::l
+-0
+40
+;>
+1601----+-----+--11---1-+----1
+Pressure, mm
+
+
+=== PDF PAGE 27 ===
+'SECTiON 8-5
+DETERMINATION OF SURFACE AREA
+299
+Of additional significance is the fa.'ct that such straight lines can be safely
+extrapolated to plpo = O. The intercept I obtained from this extrapolation,
+along with the slope s of the straight line, gives two equations from which
+Urn can ~e obtained,
+atplpo = 0
+(8-10)
+(8-11)
+Solving these equations for the volume of adsorbed gas corresponding to a
+monomolecular layer gives
+(8-12)
+1
+U =---
+m
+1+ s
+The volume Urn can be readily converted to the number of molecules
+adsorbed. However, to determine the absolute surface area it is necessary
+to select a value for the area covered by one adsorbed molecule. If this is ex,
+the total surface area is given by
+Fig. 8-4
+Plot of Brunauer-Emmett-Teller equarion [Eq. (8-9)]/0" clara
+(~r
+Fig. 8-3 [by permission from P. H. Emmett (eel.), "Caralysis," 1'01. J.
+Reinhold Publishing Corporation, New York, 1954J
+0.4 -
+Curves 1-6
+0.8 -
+Curve 7
+0.3
+0.6
+0.2
+0.4
+p/Po
+0.1
+0.2
+5.0
+Curve 1
+CO2 at - 78°C
+-
+4.0
+2
+A at - 183°C
+I
+3
+N 2 at - 183°C
+'2
+4
+O 2 at -
+183 °C
+~
+5
+CO at - 183°C
+6
+N2 at - 195.8°C
+,.,
+3.0
+7nC4H 1o at - O°C
+0......
+X
+(Data based upon 0.606g.
+;;:
+sample of silica gel.)
+I
+I:l..
+I
+2.0
+I
+0
+The ordinate for curve 7
+I:l..
+;s'
+should be multiplied by 10.
+!(;
+t,
+i ~
+1.0
+i ~
+
+
+=== PDF PAGE 28 ===
+300
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+(8-13)
+where No is Avogadro's number, 6.02 x 1023 molecules/mole, and V is
+the volume per mole of gas at conditions of Vm' Since Vm is recorded at
+standard temperature and pressure, V = 22,400 cm 3/g mole. The term in
+brackets represents the number of molecules adsorbed. If Vm is based on a
+1.0 9 sample, then Sg is the total surface per gram of solid adsorbent.
+The value of
+r:J. has been the subject of considerable investigation.
+Emmett and Brunauer1 proposed that r:J. is the projected area of a molecule
+on the surface when the molecules are arranged in close two-dimensional
+packing. This value is slightly larger than that obtained by assuming that the
+adsorbed molecules are spherical and their projected area on the surface is
+circular. The proposed equation is
+[ M Jf
+r:J. = 1.09 -.-
+Nop
+(8-14)
+where M is molecular weight and p is the density of the adsorbed molecules.
+The term in brackets represents the volume of one adsorbed molecule.
+The density is normally taken as that of the pure liquid at the temperature of
+the adsorption experiment. For example, for N z at -195.8°C, p = 0.808
+g/cm3 .
+In theory, the adsorption measurements can be made with a number
+of different gases. However, it has been found that even when values
+of r:J. are calculated from Eq. (8-14) for each gas the results are somewhat
+different (see Example 8-3). Therefore it has become standard procedure to
+employ N z at its normal boiling point (-195.8°C). The reason for the
+variation in areas obtained with different gases is not well understood.
+Nevertheless, if the measurements are carried out with one gas at one
+temperature, the results for different catalysts may be compared with
+confidence.
+With the value of p for N 1 at -195.8°C, the area per molecule frpm
+Eq: (8-14) is 16.2 x 10- 16 cm1 , or 16.2 Al. Ifthis result is used in Eq. (8-13),
+along with the known values of No and V, the surface area per gram is
+cmz/g solid adsorbent
+(8-15)
+Remember in using Eq. (8-15) that it is based on adsorption measurements
+with N z at -195.8°C.
+Table 8-2 shows surface areas determined by the Brunauer-Emmett-
+lp. H. Emmett and S. Brunauer, J. Am. Chern. Soc., 59, 1553 (1937).
+
+
+=== PDF PAGE 29 ===
+r-
+!
+-SECTION 8-5
+DETERMINATION OF SURFACE AREA
+Table 8-2
+SUiface area, pore volume, and mean pore radii fOI' typical solid catalysts
+301
+i-j--
+j
+!I
+I
+i
+i.;
+I
+Surface ar;ea,
+Pore volume,
+Catalyst
+m 2jg
+cm3jg
+Mean pore radius, A
+Activ~ted carbons
+500-1,500
+0.6-0.8
+10-20
+Silica'gels
+200-600
+0.4
+15-100
+SiO-Alz0 3 cracking
+-
+.._--- cala:lysts-
+--- -' -- -
+.•_.- ._-- --- -- ---200=500-
+--_ ... _-~
+--- - -0:2=0:7-
+-
+1--
+-33-·.::rSO-
+Activated clays
+150-225
+0.4-0.52
+100
+Activated alumina
+175
+0.39
+45
+Celite (Kieselguhr)
+4.2
+l.l
+11,000
+Synthetic ammonia
+catalysts, Fe
+_. -
+0.12
+200-1,000
+Pumice
+0.38
+Fused copper
+0.23
+SOURCE: In part from A. Wheeler, "Advances in Catalyais," vol. III, pp. 250-326, Academic
+Press, Inc., New York, 1950.
+Teller method for a number of common catalysts and carriers. Calculations
+of surface areas from adsorption data are illustrated in Examples 8-2 and
+8-3.
+Example 8-2
+From the Brunauer-Emmett-Teller plot in Fig. 8-4 estimate the surface
+area per gram of the silica gel. Use the data for adsorption of nitrogen at -195.8°C.
+Solution
+From curve 6 of Fig. 8-4, the intercept on the ordinate is
+J = 0.1
+X 10- 3 cm- 3
+The slope of the curve is
+s = (5.3 -
+0.1) x 10-
+3
+= 13 X 10- 3 cm-3
+0.4 -
+0
+These values of sand J may be substituted in Eq. (8-12) to obtain Urn'
+103
+1
+v
+=
+-- = 126 cm 3jg catalyst
+m
+0.1 + 13 0.606
+The factor 0.606 is introduced because the data in Fig. 84 are for a silica gel
+sample of 0.606 g, and Urn is the monomolecular volume per gram. For nitrogen at
+- 195.8°C, the application of Eq. (8-15) yields
+S9 = 4.35(126) = 550 m2jg
+Example 8-3
+For comparison, estimate the surface area of the silica gel by using the
+adsorption data for oxygen at -183°C. The density ofthe liquefied oxygen at -183°C,
+from the International Critical Tables, is 1.14 gjcm.
+
+
+=== PDF PAGE 30 ===
+302
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+Solution
+First the area of an adsorbed molecule of 02 must be calculated from Eq.
+(8-14) :
+[
+32
+J-t
+-16
+2
+Cf. = 1.09
+23
+= 14.2 x 10
+cm
+(6.02 x 10
+) 1.14
+With this value of Cf. the area equation [Eq. (8-13)J becomes
+vm (6.02 x 1023)
+S
+142 x 10- 16 = 3.8 X 104v",
+9 =
+22,400
+.
+From curve 4 of Fig. (8-4),
+1= 0.40 X 10-3 cm- 3
+(5.4 -
+0.4) x 10- 3
+I
+10-3 cm- 3
+s =
+=
+3.2 x
+0.38 -
+0
+Then the monomolecular volume per gram of silica gel is, from Eq. (8-12),
+103
+I
+v'" = ---- -- = 122cm3/gcatalyst
+0.4 + 13.2
+0.606
+Finally, substituting this value of Vm in the area expression gives
+The difference in area determined from the N 2 and 02 data is somewhat larger
+than expected for these gases. The adsorption curve for N 2 at - 183°C gives a value
+in closer agreement with 550 m2/g (see Prob. 8-1).
+8-6 Void Volume and Solid Density
+The void volume, or pore volume, of a catalyst particle can be estimated
+by boiling a weighed sample immersed in a liquid such as water. After
+the air in the pores has been displaced, the sample is superficially dried and
+weighed. The increase in weight divided by the density of the liquid gives
+the pore volume.
+A more accurate procedure is the helium-mercury method. The volume
+of helium displaced by a sample of catalyst is measured; then the helium
+is removed, and the volume ofmercury displaced is measured. Since mercury
+will not fill the pores ofmost catalysts at atmospheric pressure, the difference
+in volumes gives the pore volume of the catalyst sample. The volume of
+helium displaced is a measure of the volume occupied by the solid material.
+From thIS and the weight of the sample, the density of the solid phase,
+Ps, can be obtained. Then the void fraction, or porosity, of the particle,
+f p , may ~e calculated from the equation
+
+
+=== PDF PAGE 31 ===
+: SECTION 8-6
+VOID VOLUME AND SOLID DENSITY
+void (pore) volume of particle
+t = ------------
+p
+total volume of particle
+VgPs
+v;,Ps + 1
+303
+(8-16)
+(8-17) _
+where mp is the mass of the particle and Vg is the void volume per gram of .
+particles. If the sample of particles is w~tgh~d2!l:Le_!!La~s_diviQ~d_by-the-_
+-- --- -- - -mercury- voTume gives-the-cfenSlty-ofthe porous particles. Note that the
+porosity is also obtainable from the density by the expression
+void volume
+Vg
+V
+t p = total volume = 1/Pp = Pp
+9
+From the helium-mercury measurements the pore volume, the solid
+. density, and the porosity of the catalyst particle can be determined. Values
+of t p are of the order of 0.5, indicating that the particle is about half void
+space and half soI~d material. Since overall void fractions in packed beds
+are about 0.4, a rule of thumb for a fixed-bed c-atalytic reactor is that about
+30% of the volume is pore space, 30% is solid catalyst and carrier, and 40-%
+is void space between catalyst particles. Individual catalysts may show
+results considerably different from these average values, as indicated in
+Examples 8-4 and 8-5.
+Example 8-4
+In an experiment to determine the pore volume and catalyst-particle
+porosity the following data were obtained on a sample of activated silica (granular,
+4 to 12 mesh size):
+Mass of catalyst sample placed in chamber = 101.5 g
+Volume of helium displaced by sample = 45.1 cm 3
+Volume of mercury displaced by sample = 82.7 cm 3
+Calcul~te the required properties.
+Solution
+The volume of mercury displaced, minus the helium-displacement volume,
+is the pore volume. Hence
+82.7 - 45.1
+V =
+- = 0.371 cm 3/g
+g
+101.5
+The helium volume is also a measure of the density of the solid material in the catalyst;
+that is,
+101.5
+3
+Ps = -- = 2.25 g/cm
+45.1
+Substituting the values of Vg and Ps in Eq. (8-16) gives the porosity of the silica gel
+particles,
+i
+IIL._
+
+
+=== PDF PAGE 32 ===
+304
+€ =
+0.371(2.25)
+= 0.455
+p
+0.371(2.25) + 1
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+To avoid excessive pressure drops and improve mechanical strength,
+porous particles often must be pelletted to sizes of l6 to 1 in. Usually the
+pellets are cylindrical, although spherical and granular assemblies are
+sometimes used. Agglomeration of porous particles gives a pellet containing
+two void regions: small void spaces within the individual particles and larger
+spaces between particles. Hence such materials are said to contain bidisperse
+pore systems. Although the shape and nature of these two void regions may
+vary from thin cracks to a continuous region surrounding a group of
+particles, it has been customary to designate both regions as pores. The void
+spaces within the particles are commonly termed micropores, and the void
+regions between particles are called macropores. Particle refers only to ~
+the small individual unit from which the pellet is produced. We shall use
+this nomenclature in discussing solid catalysts.
+Not all catalyst supports can be agglomerized. Perhaps the most
+widely used pellets are those of alumina. Porous alumina particles (20
+to 200 microns diameter) containin:g micropores of 10 to 200 A diameter
+are readily prepared by spray drying. These somewhat soft particles are
+easily made into pellets. The macroporosity and macropore diameter
+depend on the pelleting pressure and can be varied over a wide range:
+Table 8-3 shows macro and micro properties of five alumina pellets, each·
+prepared at a different pelleting pressure. The pellet density listed in the
+second column is approximately proportional to the pressure used. Com-
+parison of the least and greatest pellet density shows that the macropore
+volume has decreased from 0.670 to 0.120 with increased pelletting pressure,
+while the micropore volume has decreased only from 0.4.34 to 0.365.
+Table 8-3
+Physicalproperties ofalumina pellets
+Density, g(cm 3
+Pore volume, cm 3(g
+Void fraction
+Particle
+Pellet
+Micro
+Macro
+Total
+Macro
+Micro
+1.292
+1.121
+0.365
+0.120
+0.543
+0.134
+0.409
+1.264
+1.010
+Q.383
+0.198
+0.587
+0.200
+0.387
+1.238
+0.896
+0.400
+0.308
+0.634
+0.275
+0.359
+1.212
+0.785
+0.416
+0.451
+0.680
+0.353
+0.327
+1.188
+0.672
+0.434
+0.670
+0.725
+0.450
+0.275
+NOTES: All properties are based on A120 3 • Micro refers to pore radii less than 100 A,
+and macro refers to radii greater than 100 A.
+SOURCE: R. A. Mischke and J. M. Smith, Ind. Eng. Chem., Fund. Quart., 1,288 (1962).
+
+
+=== PDF PAGE 33 ===
+SECTION 8-6
+VOID VOLUME AND SOLID DENSITY
+305
+The external surface area of even very fine particles has been shown
+(Example S-l) to be small with respect to the internal surface of the pores.
+Hence, in a catalyst pellet the surface resides predominantly in the small
+pores within the particles. The external surface of the particles, and of
+courie the external area of the pellets, is negligible.
+Macro- and micropore volumes and porosities for bidisperse catalyst
+pellets are calculated by the same methodsas used fO~B:!Q!l~disj>~rs~~oi~
+-- --- -- - -- ---systems.-ExampJe-s-=SiliUstratestheprocedure~-
+Example 8-5
+A hydrogenation catalyst is prepared by soaking alumina particles
+(100 to 150 mesh size) in aqueous NiN0 3 solution. After drying and reduction, the
+particles contain about 7 wt % NiO. This catalyst is then made into large cylindrical
+pellets for rate studies. The gross measurements for one pellet are
+Mass = 3.15 g
+Diameter = 1.00 in.
+Thickness = i in.
+Volume = 3.22 cm 3
+The Al 20 3 particles contain micropores, and the pelletting process introduces macro-
+pores surrounding the particles. From the experimental methods already described,
+the macropore volume of the pellet is 0.645 cm 3 and the micropore volume is 0.40 cm 3jg
+of particles. From this information calculate:
+(a)
+The density of the pellet
+(b)
+The macropore volume in cubic centimeters per gram
+(c)
+The macropore void fraction in the pellet
+(d)
+The micropore void fraction in the pellet
+(e)
+The solid fraction
+(f)
+The-density of the particles
+(g)
+The density of the solid phase
+(h)
+The void fraction of the particles
+Solution
+(a)
+The density of the pellet is
+~.15
+3
+PP = -- = 0.978 gjcm
+3.22
+(b)
+The macropore volume per gram is
+0.645
+3
+(V9)M = -- = 0.205 ern jg
+3.15
+(c)
+The macropore void fraction EM is obtained by applying Eq. (8-17) to the pellet.
+Thus
+Q
+macropore volume
+(V9)M
+0.205
+EM =
+= -- = --- = 0.200
+total volume
+ljpp
+1/0.978
+
+
+=== PDF PAGE 34 ===
+306
+"\
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+(d)
+Since
+(Vg)JL = 0.40 cm3/g
+the micropore void fraction EJL in the pellet is
+(Vg)JL
+0.40
+EJL = -- = --- = 0.391
+Ilpp
+1/0.978
+(e)
+The solids fraction Es is given by
+I = EM + f.JL + Es
+Es = I - 0.200 - 0.391 = 0.409
+(f) The density Pp of the particles can be calculated by correcting the total volume
+of the pellet for the macropore volume. Thus
+3.15
+Pp =
+= 1.22 g/cm 3
+3.22 - 0.645
+or, in terms of I g of pellet,
+I
+PP
+P =
+=
+p
+Ilpp - (Vg)M
+I -
+(V9)MPP
+0.978
+Pp =
+.
+= 1.22 g/cm 3
+I - 0.205(0.978)
+(g)
+The density of the solid phase is
+mass of pellet
+Ps=-------
+(volume of pellet) f.s
+PP
+0.978
+3
+= -
+= -- = 2.39 g/cm
+f.s
+0.409
+(h)
+The void fraction of the particles is given by
+(Vg)Jl
+(V)
+f. p =
+l/pp = Pp
+9 JL
+= 1.2i(O.40) = 0.49
+For this pellet a fraction equal to EM + f.JL = 0.591 is void and 0.409 is solid.
+Of the individual particles, a fraction 0.49 is void. Note that all these results were
+calculated from the mass and volume of the pellet and the measurements of macro-
+and micropore volumes.
+8-7 Pore-volume Distribution
+We shall see in Chap_ 11 that the effectiveness of the internal surface for
+catalytic reactions can depend not only on the extent of the void spaces
+
+
+=== PDF PAGE 35 ===
+SECTION 8-7
+PORE-VOLUME DISTRIBUTION
+307
+(Vg), but also on the size of the openings. Therefore it is desirable to know
+the distribution ofvoid volume in a catalyst according to size ofthe opening.
+This is a difficult problem because the void spaces in a given particle are
+non ltniforrn in size, shape, and length, and normally are interconnected.
+Further, these characteristics can change radically from one type of catalyst
+particle to another.
+Figure 8-5 shows electron-microscope (scanning
+type) phbtogr~E~s ~fJ2_~~uS silve~J~art~~~1~g-==_19.7 m~Lg)~Ih~mal~iiL
+_.-~---_~_-- -- ------~-·--~-;as prepared by reducing a precipitate of silver fumarate by heating at
+350°C in a stream of nitrogen. The larger darker regions probably represent
+void space between individual particles, and the smaller dark spaces are
+intraparticle voids. The light portions are solid silver. The complex and
+random geometry shows that it is not very realistic to describe the void
+spaces as-pores. It is anticipated that other highly porous materials such as
+"
+alumina and silica would have similar continuous and complex void phases.
+For a mq.terial such as Vycor, with its relatively low porosity (0.3) and
+continuous solid phase, the concept of void spaces as pores is more reason-
+able.
+In view of evidence such as that in Fig. 8-5, it is unlikely that detailed
+quantitative descriptions of the void structure of solid catalysts will become
+available. Therefore, to account quantitatively for the variations in rate of
+reaction with location within a porous catalyst particle, a simplified model
+of the pore structure is necessary. The model must be such that diffusion
+rates of reactants through the void spaces into the interior surface can be
+evaluated. More is said about these models in Chap. 11. It is sufficient
+here to note that in all the widely used models the void spaces are simulated
+as cylindrical pores. Hence the size of the void space is interpreted as a
+radius a of a cylindrical pore, and the distribution ofvoid volume is defined
+in terms of this variable. However, as the example of the silver. catalyst
+indicates, this does not mean that the void spaces are well-defined cylindrical
+pores.
+There are two established methods for measuring the distribution
+of pore volumes. The mercury-penetration method depends on the fact
+that mercury has a significant surface tension and does not wet most
+catalytic surfaces. This means that the pressure required to force mercury
+into the pores depends on the pore radius. The pressure varies inversely
+with a; 100 psi (approximately) is required to fill pores for which a = 10,000
+A, and 10,000 psi is needed for a = 100 A. Simple techniques and equipment
+are satisfactory for evaluating the pore;-volume distribution down to 100
+to 200 A, but special high-pressure apparatus is necessary to go below
+a = 100 A, where much of the surface resides. In the second method, the
+nitrogen-adsorption experiment (described in Sec. 8-5 for surface area
+measurement) is continued until the nitrogen pressure approaches the
+
+
+=== PDF PAGE 36 ===
+(a)
+(b)
+Fig. 8-5
+Electron micrographs of porous silver particles (approximate
+surface area = /9.7 m 2 jg): (a) magnification =3,000 (f em = 33,300 A),
+(b) magn(fieation = /0,000 (I em =
+/0,000 A)
+
+
+=== PDF PAGE 37 ===
+·
+SECTION 8-7
+PORE-VOLUME DISTRIBUTION
+309
+saturation value (1 atm at the normal boiling point). At plpo --+ 1.0, where
+Po is the saturation preSBure, all the void volume is filled wIth adsorbed and
+condensed nitrogen. Then a desorption isotherm is established by lowering
+the pressure in increments and measuring the amount ofnitrogen evaporated
+and desorbed for each increment. Since the vapor pressure of a liquid
+evaporating from a capillary depends on the radius of the capillary, these
+data can be plotted as volume desorbed vs pore radius. Thu~!h!~_J2roced1!r~_--_----
+------- --- --- --alSogivestneCIistribution-o[pore-volumes'-Slnce-th-e vapor pressure is not
+affected significantly by radii of curvature greater than about 200 A, this
+method is not suitable for pores larger than 200 A.
+A
+comb~nation of the two methods is normally necessary to cover
+the entire range of pore radii (10 to 10,000 A) which may exist in a bidisperse
+catalyst or support, such as alumina pellets. For a monodisperse pore
+"'-
+distribution, such as that in silica gel, the nitrogen-desorption experiment is
+sufficient, since there are few pores of radius greater than 200 A. In a bidis-
+perse pore system the predominant part of the catalytic reaction occurs in
+pores less than about 200 A (the micropore region), since that is where the
+bulk of the surface resides. However, the transport of reactants to these
+small pores occurs primarily in pores of 200 to 10,000 A (the macropore
+region). Hence the complete distribution of pore volume is necessary to
+establish the effectiveness of the interior surface, that is, the global rate of
+reaction. Calculation procedures and typical results are discussed briefly
+in the following paragraphs.
+Mercllry-penetration Method
+By equating the force due to surface tension
+(which tends to keep mercury out of a pore) to the applied force, Ritter and
+Drake! obtained
+na1p = - 2naeJ cos e
+or
+p
+where eis the contact angle between the mercury and pore wall (Fig. 8-6).
+While eprobably varies somewhat with the nature of the solid surface, 140
+0
+appears to be a good average value. Then the working equation for evaluating
+the radius corresponding to a given pressure is
+i
+!L.._
+-2eJ cos e
+a=----
+a (A) = 8.75 x 10
+5
+p (psi)
+I H. L. Ritter and L. C. Drake, Ind. Eng. Chern., Anal. Ed., 17, 787 (1945).
+(8-18)
+(8-19)
+
+
+=== PDF PAGE 38 ===
+310
+~--2a---9f
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+Fig.8-6
+Mercury penetration in a pore
+oJradius a
+Calculation of the pore-size distribution by this method IS illustrated III
+Example 8-6.
+Example 8-6
+The mercury-penetration data given in Table 8-4 were obtained on a
+O.624-g sample of a uranium dioxide pellet formed by sintering particles at lOOO°C
+for 2 hr. Since the particles were nonporous, the void space was entirely between the
+Table 8-4
+Mel'cury porosimeter data for uranium dioxide pellet
+(mass afsample 0.624 g)
+Pressure, psi
+Mercury penetration, em 3
+Penetration, cm3/g
+116
+0.002
+0.003
+0.196
+310
+0.006
+0.010
+0.189
+344
+0.010
+0.016
+0.183
+364
+0.014
+0.022
+0.177
+410
+0.020
+0.032
+0.167
+456
+0.026
+0.042
+0.157
+484
+0.030
+0.048
+0.151
+540
+0.038
+0.061
+0.138
+620
+0.050
+0.080
+0.119
+710
+0.064
+0.102
+0.097
+800
+0.076
+0.122
+0.077
+830
+0.080
+0.128
+0.071
+900
+0.088
+0.141
+0.058
+1,050
+0.110
+0.160
+0.039
+1,300
+0.112
+0.179
+0.020
+1,540
+0.118
+0.189
+0.010
+1,900
+0.122
+0.196
+0.003
+2,320
+0.124
+0.198
+0.001
+3,500
+0.125
+0.199
+0
+
+
+=== PDF PAGE 39 ===
+SECTION 8-7
+PORE-VOLUME DISTRIBUTION
+311
+particles (macropores). At the
+begi~ning of the experiment (when the pressure was
+1.77 psia) the amount of mercury displaced by the sample was found'to be 0.190 cm 3.
+Calculate the porosity and pore-volume distribution of the pellet.
+Solution" According to Eg. (8-19), at p = 1.77 psia only pores larger than about
+500,000 'A (50 microns) would be filled with mercury. No pores larger than this are
+likely. Hence 0.1 90 cm 3 is the total volume of the sample. At the highest pressure,
+3,500 psia, only pores less than a = 250 A would remain unfilled. Since the pores .
+-- -_._. wereenhrelyoT them-acrolype,-few-poressmaHer230 Aareexpectea~IfstiCIipores are-- - ---
+neglected, the porosity can be calculated from the porosimeter measurements alone.
+Thus
+0.125
+tp = -- = 0.66
+0.190
+A check on this result is available from air-pycnometer! data, which gave a solid
+"
+volume of 0.0565 cm3. Thus the total porosity is
+0.190 -
+0.0565
+(tp)[ =
+= 0.70
+0.190
+The difference between values suggests that there were a few pores smaller than 250 A
+in the sample, although the comparison also includes experimental errors in the two
+methods.
+To calculate the pore-volume distribution the penetration data are first corrected
+to a basis of 1 g of sample, as given in the third column of Table 8-4. If we neglect the
+pores smaller than 250 A, the penetration data can be reversed, starting with V = 0
+at 3,500 psia (250 A). The last column shows these figures. Then, from Eq. (8-19) and
+the pressure, the radius corresponding to each penetration value can be established.
+This gives the penetration curve shown in Fig. 8-7. The penetration volume at any pore
+radius a is the volume of pores larger than a. The derivative of this curve, 11 Vjl1a, is
+the volume of pores between a and a + l1a divided by l1a; that is, it is the distribution
+function for the pore volume according to pore radius. It is customary to plot the pore
+radius on a logarithmic coordinate as shown. Hence the distribution function is taken
+as the derivative of the curve so plotted, that is, dVjd(log a). The distribution function
+is also shown plotted against a in Fig. 8-7.
+For this pellet the distribution is seen to be reasonably symmetrical with most
+of the volume in pores from 300 to 8,000 A and with a most probable pore radius of
+1,200 A. Note that the flatness of the penetration curve at low pore radii justifies
+neglecting the pores smaller than 250 A.
+Wheeler2 has summarized the assumptions and accuracy of the
+mercury-penetration method. It is important to note that erroneous results
+would be obtained if the porous particle contains large void spaces that are
+1A device which uses air at two pressures to measure void volumes of porous materials. It
+provides the same data as the helium measurement described in Sec. 8-6.
+2A. Wheeler, in P. H. Emmett (ed.). "Catalysis," vol. II. p. 123, Reinhold Publishing Cor-
+poration, New York, 1955.
+
+
+=== PDF PAGE 40 ===
+CHAPTER 8
+HETEROGENEOUS CATALYStS
+312
+00
+0.24
+---'8
+()
+0.21
+C.9 _0.18
+~
+~
+Q)
+t::
+0.15
+Q)
+~
+Q)
+8
+0.12
+~
+-0
+;>
+Q)
+0.09
+~
+0
+0.
+Q)
+0.06
+.~
+"cd
+"5
+0.03
+8
+~
+CJ
+./"""..
+1/ ,
+V-I.--
+J
+1\
+oP
+/
+\t
+loP
+V
+V\
+.
+J
+J
+/ --~I ,,-r-
+V
+V
+\
+Distribution curve
+I
+V V
+\
+J
+r\.
+V
+~enetration curve
+'"
+~ L.o-l,..a
+I
+I
+I
+I
+"'~
+0.40
+0.35
+0.30
+00
+---
+0.25 E
+(J
+0.20
+-~
+00
+.g
+0.15
+~
+---
+;::,..
+"l;:i
+0.10
+0.05
+3
+4
+5
+6
+8
+103
+1.5
+2
+Pore radius a, A
+Fig.8-7
+Pore-volume distribution in a U0 2 pellet
+3
+4
+5
+6
+8
+104
+connected only to smaller void spaces. Such "bottleneck" pores would fill
+with mercury at the higher pressure corresponding to the connecting smaller
+pores. For accurate results each porous region must be connected to at
+least one larger pore.
+Nitrogen-desorption Method
+As the low-temperature nitrogen-adsorption
+experiment (Sec. 8-5) is continued to higher pressures multilayer adsorption
+occurs, and ultimately the adsorbed films are thick enough to bridge the
+pore.! Then further uptake of nitrogen will result in capillary condensation.
+Since the vapor pressure decreases as the capillary size decreases, such con-
+densation will occur first in the smaller pores. Condensation will be
+complete, as p/Po --7 1.0, when the entire void region is filled with condensed
+nitrogen. Now, if the pressure is reduced by a small increment, a small
+amount of nitrogen will evaporate from the meniscus formed at the ends of
+. the largest pores. Pores which are emptied of condensate in this way will be
+those in which the vapor pressure of nitrogen is greater than the chosen
+pressure. The Kelvin equation gives the relationship between vapor pressure
+and radius of the concave surface of the meniscus of the liquid. Since some
+of the nitrogen is adsorbed on the surface, and therefore not present because
+of capillary condensation, the Kelvin relationship must be-corrected for the
+thickness!> of the adsorbed layers. With this correction, the pore radius is
+IL. H. Cohan, 1. Am. Chem. Soc., 60, 433 (1938); A. G. Foster, J. Phys. Colloid Chem.,
+55, 638 (1951).
+
+
+=== PDF PAGE 41 ===
+SECTION 8-7
+PORE-VOLUME DISTRIBUTION
+313
+(8-20)
+(8-21)
+related to the saturation-pressure ratio (vapor pressure in the pore p divided
+by the normal vapor pressure Po)by
+a _
+(; =
+- 20"V; cos e
+;f
+RgT In (Plpo)
+where ~ = molal volume of the condensed liquid
+(J = surface tension
+---- -----e-~contacfanglelJetween-surfaceaiiacondensafe- - ------ -- -
+Since nitrogen completely wets the surface covered with adsorbed nitrogen,
+e= 0° and cos e= 1. The thickness (; depends on plpo. The exact relation-
+ship has been the subject of considerable studY,l but Halsey's form
+(
+PO)-l/II
+(; = A In];
+where A and n depend on the nature ofthe catalyst surface, is generally used.
+For nitrogen at -195.8°C (normal boiling point) Eq. (8-20), for
+a -
+0 in Angstroms, becomes
+a - 0 = 9.52 (lOg~)-1
+(8-22)
+Wheeler proposes for Eq. (8-21)
+o(A) = 7.34 (Inp;r
+t
+(8-23)
+For a chosen value ofplpo, Eqs. (8-22) and (8-23) give the pore radius
+above which all pores will be empty of capillary condensate. Hence, if the
+amount of desorption is measured for various plpo, the pore volume corre-
+sponding to various radii can be evaluated. Differentiation of the curve for
+cumulative pore volume vs radius gives the distribution of volume as
+. described in Example 8-6. Descriptions of the method of computation are
+given by several investigators. 2 As in the mercury-penetration method,
+errors will result unless each po~e is connected to at least one larger pore.
+Figure 8-8 shows the result of applying the method to a sample of
+Vycor (porous glass).3 This material, which contained only micropores,
+had the properties
+LA. Wheeler, in P. H. Emmett (ed.), "Catalysis," vol. II, chap. 2, Reinhold Publishing Cor-
+poration, New York, 1955; G. D. Halsey, J. Chern. Phys., 16,931 (1948); C. G. Shull, J. Arn.
+Chern. Soc., 70, 1405 (1948); J. 0 .. Mingle and J. M. Smith, Chern. Eng. Sci., 16, 31 (1961).
+2E. P. Barrett, L. G. Joyner, and P. P. I:Ialenda, J. Am. Chern. Soc., 73, 373 (1951); C. J.
+Pierce, J. Phys. Chern., 57, 149 (1953); R. B. Anderson, J. Catalysis, 3, 50 (1964).
+3M. R. Rao and J. M. Smith, AIChE J., 10,293 (1964).
+
+
+=== PDF PAGE 42 ===
+314
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+r ~
+I '\
+/
+'~
+V
+,:>
+/
+1\
+l---"V
+~
+-
+0.5
+0.4
+0()
+---'8
+0.3
+u
+~
+0()
+0
+0.2
+~
+---
+;::,..
+""':::l
+0.1
+o
+6
+8
+10
+20
+30
+40
+50
+60
+80
+100
+Pore radius a, A
+Fig.8-8
+Pore-volume distribution in Vycor; Pp = 1.46 g/cm 3 , v;, = 0.208
+cm 3/g,8g = 90 m 2/g
+Fig.8-9
+Pore volume in alumina (boehmite) pellets
+I
+I I
+I
+I
+I
+I
+1. Low pelleting pressure
+2. High pelleting pressure
+i'l.--'
+V
+V/
+b.--'V
+2
+V
+i"'""
+I-
+,....
+- I--
+L-- ~
+~10-I..---':--
+-..-'l.::;:::l-I-
+I/~
+)
+2.0
+1.8
+0()
+1.p
+---a
+u
+1.4
+Q)-
+S
+::I
+1.2
+"0
+~
+Q)
+1.0
+....
+00.
+0.8
+Q)
+.~
+~
+0.6
+-;
+S
+0.4
+::Iu
+0.2
+o
+10
+2
+3 4
+6 8 102
+2
+3 4
+6
+8 103
+Pore radius a, A
+2
+3 4
+6
+8 104
+
+
+=== PDF PAGE 43 ===
+, SECTION 8-7
+PORE-VOLUME DISTRIBUTION
+Pp = 1.46 g/cm 3
+v;, = 0.208 cm 3/g
+f p
+:::;: 0.304
+S; = 90 m
+2jg
+315
+The surface area was determined from nitrogen-adsorption data in the low'
+- -----------p/po-range-; asaescrtbed-lri-Sec.-8:5,-wliiletlieclfsfftbufioIi-Yesulfs-iil-Flg~~~-
+8-8 were established from the desorption curve in the capillary-condensation
+(high p/Po) region.
+By combining mercury-penetration and nitrogen-desorption measure-
+ments, pore-volume information can be obtained over the complete range
+of 'radii in a pelleted catalyst containing both macro- and micropores.
+Figure 8-9 shows the cumulative pore volume for two alumina pellets,
+each prepared by compressing porous particles of boehmite (A120 3 • H 20).
+The properties1 of the two pellets are given in Table 8-5. The only difference
+in the two is the pelleting pressure. Increasing this pressure causes drastic
+reductions in the space between particles (macropore volume) but does not
+greatly change the void volume within the particles or the surface area.
+The derivative of the volume curves in Fig. 8-9 gives the pore-volume
+distribution, and these results are shown in Fig. 8-10. In this figure the
+bidisperse pore system, characteristic ofalumina pellets, is clearly indicated.
+The micropore range within the particles is narrow, with a most probable
+lThe properties and pore-volume distribution were determined by M. F. 1. Johnson, Sinclair
+Research Laboratories, Harvey, Ill., by the methods described in Sees. 8-5 to 8-7. They were
+orginally reported in J. 1. Robertson and J. M. Smith, AIChE J., 9, 344 (1963).
+Fig.8-10
+Pore-volume distribution in alumina pellets
+4.0
+eo
+3.0
+--'8u
+~
+2.0
+eo
+0
+~
+;::,..
+1.0
+"l:1
+0.5
+0
+I
+I
+I
+I
+I
+I
+I
+I
+1: Low pelleting pressure
+2. High pelleting pressure
+Micropores
+Macropores
+(intraparticle) -
+(interparticle)
+\
+\
+1
+,
+-?-"
+"-
+--
+~
+~
+_.......-
+2
+',,-
+............
+2
+3 4
+6 8 102
+2
+3 4
+Q 8 103
+2
+3 4
+6 8 104
+2
+3 4
+6 8 105
+Pore radius a, A
+
+
+=== PDF PAGE 44 ===
+316
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+Table 8-5
+Properties ofboehmite (A12 0 3 • H 2 0) pellets
+Pelleting
+Macropore volume,
+Micropore volume,
+Surface area,
+pressure
+cm 3jg
+cm 3jg
+m 2jg
+Low
+1.08
+0.56
+389
+High
+0.265
+0.49
+381
+NOTES: Volume and surface area refer to mass ofAl20 3 obtained by ignition ofboehmite.
+The pore-volume distribution is given in Fig. 8-10. Average particle size from which
+pellets were made was 85 microns.
+radius of 20 A. The macropores cover a much wider range of radii and show
+the effect of pelleting pressure. For the high-pressure pellet all volume with
+pores greater than 2,000 Ahas been squeezed out, while the most probable
+radius for the low-pressure pellet is 8,000 A. Pelleting pressure seems
+to have little effect on the micropores, which suggests that the particles
+themselves are not crushed significantly during the pelleting process.
+Some models (see Chap. 11) for quantitative treatment ofthe effective-
+ness of the internal catalyst surface require only the average pore radius
+ii, rather than the distribution of pore volumes. Wheeler! has developed a
+simple equation for a which requires only surface-area and pore-volume
+measurements. Suppose all the pores in a hypothetical particle are straight,
+cylindrical, not interconnected, and have the same radius r and length L.
+The average pore radius may be found by writing equations for the total
+surface and volume in the hypothetical particle and equating these quantities
+to the surface mpSg and volume mpVg in the actual particle; i.e.
+mpSg = (2rr.iiL)n
+mp ~ = (nii
+2L)n
+(8-24)
+(8-25)
+(8-26)
+where mp and n are the mass and number of pores per particle. Dividing
+the two equations gives the Wheeler average pore radius,
+_
+2Vg
+a=--
+Sg
+This expression agrees well with volume-average values obtained
+from the distribution curve for monodisperse pore systems. For example,
+from the data for the Vycor sample (Fig. 8-7) Eq. (8-26) gives
+a= 2(0.208) = 46 x 10- 8 em
+or 46 A
+90 x 104
+1A. Wheeler, in P. H. Emmett (ed.), "Catalysis," vol. II, chap. :2., Reinhold Publishing Cor-
+poration, New York, 1955.
+
+
+=== PDF PAGE 45 ===
+'SECTION 8-7
+PORE-VOLUME DISTRIBUTION
+317
+The volume-average value is calculated from the pore volume data used to
+obtain the distribution curve (Fig. 8-"8) and the expression
+.
+I
+V9
+_
+of
+0
+a dV
+a=----
+Vg
+By this method a = 45 A.
+~__ ~
+~
+-. -.--.-.---.----- --- --- --'~-Ac-curate values of the small areas eXIstIng in macropore systems
+make it difficult to use Eg. (8-26) to calculate a for interparticle pores.
+Hence the average radius for systems such as the D02 pellets discussed in
+Example 8-6 should be obtained by integrating under the cumulative-
+volume-vs-a curve shown in Fig. 8-7. Also a single value ofahas no meaning
+for a bidisperse pore system such as that in an alumina pellet. Thus using
+'-.,
+the total pore volume in Table 8-5 for the low-pressure pellet gives
+-
+2(1.64)
+-8
+a =
+89
+4 = 84 x 10
+em
+3
+x 10
+or 84 A
+As Fig. 8-10 shows, there is very little pore volume (very few pores) in this
+radius region. If Eq. (8-26) is applied to the micropore region, arbitrarily
+taken as pores smaller than a = 100 A,
+_
+2(0.56)
+-8
+aJI = 389 x 104 = 29 x 10
+em
+or 29 A
+Figure 8-10 shows that this is an approximate value for the average pore
+radius in the micropore region. Note that the micropore distribution is
+asymmetrical in such a way that the average radius is greater than the most
+probable value (20 A).
+Summary
+In conduding the treatment of physical properties of catalysts,
+let us review the purpose for studying properties and structure of porous
+solids. Heterogeneous reactions with solid catalysts occur on parts of the
+surface active for chemisorption. The number of these active sites and the
+rate of reaction is, in general, proportional to the extent of the surface.
+Hence it is necessary to know the surface area. This is evaluated by low-
+temperature-adsorption experiments in the pressure range where a mono-
+molecular layer of gas (usually nitrogen) is physically adsorbed on the
+catalyst surface. The effectiv:eness of the interior surface of a particle (and
+essentially all of the surface is in the interior) depends on the volume and
+size of the void spaces. The pore volume (and porosity) can be obtained
+by simple pycnometer-type measurements (see Examples 8-4 and 8-5).
+The average size (pore radius) can be estimated by Eg. (8-26) from the
+
+
+=== PDF PAGE 46 ===
+318
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+surface area and pore volume in some monodisperse systems... Determination
+of the complete distribution of pore volume according to pore
+ra~lius
+requires either mercury-penetration measurements or nitrogen-adsorption
+data at pressures where capillary condensation occurs, or both. Accutate
+values of the mean pore radius can be evaluated from such pore-volume-
+vs-radius data. Note also that a measurement of the complete nitrogen-
+adsorption-desorption isotherm is sufficient to· calculate surface area and
+pore volume, and distribution of pore sizes, in the range loA < a < 200 A.
+CLASSIFICATION AND PREPARATION OF CATALYSTS
+8-8 Classification ofCatalysts
+In discussing catalysis it is well to recall proposals concerning what factors
+are important in making solids active as catalysts. In chronological order,
+Sabatier1 suggested that a mechanism for the activity of nickel as a hydro-
+genation catalyst might involve formation of a chemical compound, nickel
+hydride. Since then, the chemical factor continues to be recognized as
+important. Later Taylor,2 Balandin, 3 and Beeck4 provided evidence for the
+significance of geometric properties. According to this concept the catalytic
+activity of a solid surface depends on the spacing of atoms so as to facilitate
+adsorption of reactant molecules. Over the years most of the evidence for
+the geometric theory has. proved suspect, except that for metallic films.
+The work of BoudartS and Beeck changed the emphasis from geometric
+considerations to electronic properties. In 1948 Dowden and coworkers 6
+proposed that catalysts might be classified, on the basis of electron mobility,
+as conductors, semiconductors, and insulators.
+The conductor catalysts are the metals (silver, platinum, vanadium,
+iron, etc.) and have the property of chemisorption by electron transfer.
+The semiconductor catalysts are· the oxides, such as NiO, Cu20, and ZnO.
+These materials have the capability of interchanging electrons from the
+filled valence bands in a compound when sufficient energy is provided,
+lp. Sabatier, "Catalysis in Organic Chemistry," trans. by E. E. Reid, in "Catalysis, Then
+and Now," Franklin Publishing Company, Englewood, N.J., 1965.
+2H. S. Taylor, Proc. Roy. Soc. (London), A108, 105 (1925).
+3A. A. Balandin, "Advances in Catalysis," vol. X, p. 96, Academic Press, Inc., New York,
+1958.
+40. Beeck, Disc. Faraday Soc., 8, 118 (1950).
+sM. Boudart, J. Am. Chern. Soc., 72, 1040 (1950).
+6D. A. Dowden, Research, 1, 239 (1948); D. A. Dowden and P. W. Reynolds, Disc. Faraday
+Soc., 8, 187 (1950).
+
+
+=== PDF PAGE 47 ===
+,
+SECTioN 8-8
+CLASSIFICATION OF CATALYSTS
+319
+for example, by heating. Upon this electron transfer the semiconductor
+becomes a conductor. 1 The insulator 'Catalysts include such widely used
+substances as silica gel, alumina, and their combinations. Even at high
+temperatures, electrons are not supposed to be able to move through
+these two solids freely enough to justify their being called conductors.
+These substances are also known to be strong acids. Their activity in the
+many hydrocarbon reactions which they catalyze is presumably due to the'
+- - - fOTm-atiun-oJ-c-arb-ahlmn lons-arrh-e-acld-si tesofffhe-sufface~-Wllilemuch--------- --
+has been written about carbonium-ion mechanisms, the basic concepts are
+well described in the original work of Whitmore2 and the later work of
+Greensfelder. 3
+It should be emphasized that the electronic theory is not without
+uncertainities and at present should be considered as a concept in transition.~
+However, it does provide a convenient, and probably helpful, method of
+........
+classifying solid catalysts.
+Metals chemisorb oxygen and hydrogen and
+th~refore are usually
+effective catalysts for oxidation-reduction and hydrogenation-dehydro-
+genation reactions. Thus platinum is a successful catalyst for the oxidation
+of S02' and Ni is used effectively for hydrogenation of hydrocarbons.
+The metal oxides, as semiconductors, catalyze the same kinds of reactions,
+but often higher temperatures are required. Because of the relative strength
+of the chemisorption bond with which such gases as Oz and CO are attached
+to metals, these gases are poisons when metals are employed as hydrogena-
+tion catalysts. The semiconductor oxides are less susceptible to such poison-
+ing. Oxides of the transition metals, such as Mo0 3 and CrZ0 3 , are good
+catalysts for polymerization of olefins.
+In connection with miscellaneous catalysts the work on polymerizing
+ethylene should be mentioned. It has been found 5 that aluminum alkyl-
+1Semiconductors are classified as p type if they tend to attract electrons from the chemisorbed
+species, or as n type if they donate electrons to this species. The p type are normally the
+compounds, such as NiO. The n type are substances which contain small amounts of im-
+purities, or the oxide is present in nonstoichiometric amounts (as, for example, when some
+of the zinc in ZnO has been reduced). Reviews of semiconductors as catalysts are given by
+P. H. Emmett ("New Approaches to the Study of Catalysis," 36th Annual Priestly Lectures,
+Pennsylvania State University, April 9-13, 1962) and by P. G. Ashmore ("Catalysis and
+Inhibition of Chemical Reactions," Butterworths & Co. (Publishers), London, 1963.
+2 F. C. Whitmore, J. Am. Chem. Soc., 54, 3274 (1932).
+3B. S. Greensfelder, "Chemistry of Petroleum Hydrocarbons," vol. II, chap. 27, Reinhold
+Publishing Corporation, New York, 1955.
+4An analysis of the electronic theory is given by Th. Volkenstein, in "Advances in Catalysis,"
+vol. XII, p. 189, Academic Press Inc., New York, 1960.
+5K. Ziegler, Angew. Chem., 64, 323 (1952); G. Natta and 1. Pasquon, in "Advances in Cataly-
+sis," vol. XI, p. 1, Academic Press Inc., New York, 1959:
+
+
+=== PDF PAGE 48 ===
+320
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+titanium chloride [for example, Al(C2Hs)3 + TiCl4 ] constitutes an excellent
+catalyst for producing isotactic polymers from olefins. Alumina and silica
+catalysts are widely used for· alkylation, isomerization, polymerization,
+and particularly for cracking of hydrocar:bons. In each case the mechanism·
+presumably involves carbonium ions formed at the acid sites on the catalyst.
+While the emphasis here has been on solid catalysts, liquid and gaseous
+acids, particularly H 2S04 and HF, are well-known alkylation and isomeriza-
+tion catalysts.
+Often catalysts are specific. An important example is the effectiveness
+of iron for producing hydrocarbons from hydrogen and carbon monoxide
+(the Fischer-Tropsch synthesis). Dual-function catalysts for isomerization
+and reforming reactions consist of two active substances in close proximity .
+to each ot~er. "For example, Ciapetta and Hunter! found that a silica-
+alumina catalyst upon which nickel was dispersed was much more "effective
+in isomerizing n-hexane than silica alumina alone. The explanation depends
+on the fact that olefins are more readily isomerized than
+pa~affin hydro-
+carbons. The nickel presumably acts as a hydrogenating agent, producing
+hexene~ after which the silica alumina isomerizes the hexene to isohexene.
+Finally, the nickel is effective in hydrogenating hexene back to hexanes·.
+This discussion ofcatalysts for reaction types is general and superficial.
+Much has and is being written on the subject, and helpful sources of sum-
+mary information are available. 2
+8-9 Catalyst Preparation
+Experimental methods and techniques for catalyst manufacture are particu-
+larly important because chemical composition is not enough by itself to
+determine activity. The physical properties of surface area, pore size,
+particle size, and particle structure also have an influence. These properties
+are determined to a large extent by the preparation procedure. To begin"
+with, a distinction should be drawn between preparations in which the
+entire material constitutes the catalyst and those in which the active in-
+gredient is dispersed on a support or carrier having a large surface area.
+The first kind of catalyst is usually made by precipitation, gel formation,
+or simple mixing of the components.
+Precipitation provides a method of obtaining the solid material in a
+porous form. It consists of adding a precipitating agent to aqueous solutions
+1F. G. Ciapetta and J. B. Hunter, Ind. Eng. Chem., 45, 155 (1953).
+2p. H. Emmett (ed.), "Catalysis," Reinhold Publishing Corporation, New York, 1954-;
+"Advances in Catalysis," Academic Press Inc., New York, 1949-; J. Catalysis, 1, 1962-;
+A. A. Balandin, "Scientific Selection of Catalysts," trans. by A. Aledjem, Davey Publishing
+Company, Hartford, Conn., 1968.
+
+
+=== PDF PAGE 49 ===
+SECTION 8-9
+C ATALYST PREPARAnON
+321
+of the desired components. Washing, drying, and sometimes calcination
+and activation are subsequent steps in the process. For example, a magnes-
+ium oxide catalyst can be prepared by precipitating the magnesium from
+nitrate.,solution by adding sodium carbonate. The precipitate of MgC0 3
+is washed, dried, and calcined to obtain the oxide. Such variables as con-
+centration of the aqueous solutions, temperature, and time of the drying
+and calcining steps may influence the surface area and~orestructure of
+--------- ----the final product. This illustrates the difficulty in reproducing catalysts and
+indicates the necessity of carefully following tested recipes. Of particular
+importance is the washing step to remove all traces of impurities, which
+may act as poisons.
+A speGial case of the precipitation method is the formation of a
+colloidal precipitate which gels. The steps in the process are essentially
+the same as for the usual precipitation procedure. Catalysts containing
+silica and alumina are especially suitable for preparation by gel formation,
+since their precipitates are of a colloidal nature. Detailed techniques for
+producing catalysts through gel formation or ordinary precipitation are
+given by Ciapetta and Plank.!
+In some instances a porous material can be obtained by mixing the
+components with water, milling to the desired grain size, drying, and
+calcining. Such materials must be ground and sieved to obtain the proper
+particle size. A mixed magnesium and calcium oxide catalyst can be pre-
+pared in this. fashion. The carbonates are milled wet in a ball machine,
+extruded, dried, and reduced by heating in an oven.
+Catalyst carriers provid~ a means of obtaining a large surface area
+with a small amount of active material. This is important when expensive
+agents such as platinum, nickel, and silver are used. Berkman et al. 2 have
+treated the subject of carriers in some detail.
+The steps in the preparation of a catalyst impregnated on a carrier
+may include (I) ev.acuating the carrier, (2) contacting the carrier with the
+. impregnating solution, (3) removing the excess solution, (4) drying, (5)
+calcination and activation. 'For example, a nickel hydrogenation catalyst
+.can be prepared on alumina by soaking the evacuated alumina particles
+wtth nickel nitrate solution, draining to remove the excess solution, and
+.heating in an oven to decompose the nitrate to nickel oxide. The final step,
+reduction of the oxide to metallic nickel, is best carried out with the particles
+in place in the reactor by passing hydrogen through the equipment. Activa-
+tion in situ prevents contamination with air and other gases which might
+IF. G. Ciapetta and C;:. J. Plank, in P. H. Emmett (ed.), "Catalysis," vol L chap. 7, Reinhold
+Publishing C~rporation. New York, 1954.
+2S. Berkman, J. C. Morrell, and G. Egloff, "Catalysis," Reinhold Publishing Corporation,
+New York, 1940.
+
+
+=== PDF PAGE 50 ===
+322
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+poison the reactive nickel. In this case no precipitation was required. This
+is a desirable method of preparation, since thorough impregnation of all
+the interior surface of the carrier particles is relatively simple. However,
+if the solution used to soak the carrier contains potential poisons such as
+chlorides or sulfates, it may be necessary to precipitate the required con-
+stituent and wash out the possible poison.
+The nature of the support can affect catalyst activity and selectivity.
+This effect presumably arises because the support can influence the surface
+structure of the atoms of dispersed catalytic agent. For example, changing
+from a silica to alumina carrier may change the electronic structure of
+deposited platinum atoms. This question is related to the optimum amount
+of catalyst that should be deposited on a carrier. When only a small fraction
+of a monomolecular layer is added, increases in amount of catalyst should
+increase the rate. However, it may not be helpful to add large amounts to
+. the carrier. For example, the conversion rate of the ortho to para hydrogen
+with a NiO catalyst deposited on alumina was found 1 to be less for 5.0
+wt % NiO than for 0.5 wt % NiO. The dispersion of the catalyst on the
+carrier may also be an important factor in such cases. The nickel particles
+were deposited from a much more concentrated NiN03 solution to make the
+catalyst containing 5.0 wt %NiO. This may have led to larger nickel particles.
+That is, many more nickel atoms were deposited on top of each other,
+so that the dispersion of nickel on the surface was less uniform than with
+the 0.5 wt % catalyst. It is interesting to note that a 5.0 wt % NiO catalyst
+prepared by 10 individual depositions of 0.5 wt % was much more active
+(by a factor of 11) than the 5.0 wt % added in a single treatment. This
+method gave a much larger active nickel surface, presumably because of
+better dispersion of the nickel atoms on the Al 20 3 surface. Since the total
+amount ofnickel was the same for the two preparations, one would conclude
+that the individual particles of nickel were smaller in the 10-application
+catalyst. These kinds of data indicate the importance of measuring surface
+areas for chemisorption of the reactants involved. A technique based on
+the chemisorption of H 2 and CO has been developed2 to study the effect of
+dispersion of a catalyst on its activity and the effect of interaction between
+catalyst and support on activity.
+8-10 Promoters and Inhibitors
+As normally used, the term "catalyst" designates the composite product
+used in a reactor. Components of the catalyst must include the catalytically
+IN. Wakao, J. M. Smith, and P. W. Selwood, J. Catalysis, 1, 62 (1962).
+2G. K. Boreskov and A. P. Karnaukov, Zh. Fiz. Khim., 26, 1814 (1952); L. Spenadel and
+M. Boudart, J. Phys. Chem., 64, 204 (1960).
+
+
+=== PDF PAGE 51 ===
+, SECTION 8-11
+PorSONS (CATALYST LIFE)
+323
+active substance itself and may also include a carrier, promoters, and
+inhibitors.
+.
+Innes! has defined a promoter as a substance added during the prep-
+aration. of a catalyst which improves activity or selectivity or stabilizes
+the cathlytic agent so as to prolong its life. The promoter is present in a
+small amount and by itself has little activity. There are various types,
+depending on how they act to improve the catalyst. Perhaps the most'
+- ---exrensivestudles of promotersnas oeen-inconneCtion-wrtilironcatalysts -- - - - - -
+for the ammonia synthesis reaction. 2 It was found that adding Alz0 3
+(other promoters are CaO, KzO) prevented reduction (by sintering) in
+surface area during catalyst use and gave an increased activity over a longer
+period of time. Some promoters are also believed to increase the number of
+active centers and so make the existing catalyst surface more active. The
+published information on promoters is largely in the patent literature.
+Innes has tabulated the data appearing from 1942 to 1952.
+An inhibitor is the opposite of a promoter. When added in small
+amounts during catalyst manufacture, it lessens activity, stability, or
+selectivity. Inhibitors are useful for reducing the activity of a catalyst for an
+undesirable side reaction. For example, silver supported on alumina is an
+excellent oxidation catalyst. In particular, it is used widely in the production
+of ethylene oxide from ethylene. However, at the same conditions complete
+oxidation to carbon dioxide and water also occurs, so that selectivity to
+CZH 40 is poor. It has been found that adding halogen compounds to the
+catalyst inhibits the complete oxidation and results in satisfactory selectivity.
+8-11
+Poiso~ Catalyst Life)
+In some systems the catalyst activity decreases so slowly that exchange for
+new material or regeneration is required only at long intervals. Examples
+are promoted catalysts for synthetic ammonia and catalysts containing
+metals such as platinum and silver. Catalysts for cracking and some other
+hydrocarbon
+reactions,
+however,
+require
+frequent
+regeneration.
+The
+decrease in activity is due to poisons, which will be defined here as sub-
+stances, either in the reactants stream or produced by the reaction, which
+lower the activity of the catalyst. The frequent regeneration of cracking
+catalysts is necessary because of the deposition of one of the products,
+carbon, on the surface.
+Poisons can be differentiated in terms ofthe way in which they operate.
+Many summaries listing specific poisons and classifying groups of poisons
+lW. B. Innes, in P. H. Emmett (ed.), "Catalysis," vol. 1, chap. 7, Reinhold Publishing Cor-
+poration, New York, 1954.
+2p. H. Emmett and S. Brunauer, J. Am. Chern. Soc., 62, 1732 (1940).
+
+
+=== PDF PAGE 52 ===
+324
+CHAPTER 8
+HETEROGENEOUS CATALYSIS.
+are available.! The following arrangement has been taken in part from
+Innes.
+DEPOSITED POISONS
+Carbon deposition on catalysts used in the petroleum
+industry falls into this category. The carbon covers the active sites of the
+catalyst and may also partially plug the pore entrances. This type of poison-
+ing is at least partially reversible, and regeneration can be accomplished by
+burning to CO and CO2 with air and/or steam. The regeneration process
+itself is a heterogeneous re~ction, a gas-solid noncatalytic one. In the design
+,of the reactor, attention must be given to the regeneration as well as to the
+reaction parts of the cycle. The quantitative description of the drop in
+activity with time during reaction and the increase in activity during regenera-
+tion has been investigated.2
+CHEMISORBED
+POISONS
+Compounds of sulfur and other materials are
+frequently chemisorbed on nickel, copper, and platinum catalysts. The
+decline in activity stops when equilibrium is reached between the poison
+in the reactant stream and that on the catalyst surface. If the strength of the
+adsorption compound is low, the activity will be regained when the poison
+is removed from the reactants. If the adsorbed material is tightly held,
+the poisoning is more permanent. The mechanism appears to be one of
+covering the active sites, which could otherwise adsorb reactant molecules.
+SELECTIVITY POISONS
+The selectivity of a solid surface for catalyzing one
+reaction with respect to another is not well understood. However, it is
+known that some materials in the reactant stream will adsorb on the surface
+and then catalyze other undesirable reactions, thus lowering the selectivity.
+The very small quantities of nickel, copper, iron, etc., in petroleum stocks
+may act as poisons in this way. When such stocks are cracked, the metals
+deposit on the catalyst and act as dehydrogenation catalysts. This results in
+increased yields of hydrogen and coke and lower yields of gasoline.
+STABILITY POISONS
+When water vapor is present in the sulfur dioxide.,.air
+mixture supplied to a platinum-alumina catalyst, a decrease in oxidation
+activity occurs. This type of poisoning is due to the effect of water on the
+struc,ture of the alumina carrier. Temperature has a pronounced effect on
+1R. H. Griffith, "The Mechanism' of Contact Catalysis," p. 93, Oxford University Press, New
+York, 1936; E. B. Maxted, J. Soc. Chern. Ind. (London), 67, 93 (1948); P. H. Emmett (ed.),
+"Catalysis," vol. I, chap. 6, Reinhold Publishing Corporation, New York, 1954.
+2Typical references are M. Sagara, S. Masamune, and J. M. Smith, AIChE J., 13, 1226 (1967);
+G. F. Froment and K. B. Bischoff, Chern. Eng. Sci., 16, 189 (1961); P. B. Weisz and R. D.
+Goodwin, J. Catalysis, 2, 397 (1963).
+
+
+=== PDF PAGE 53 ===
+PROBLEMS
+325
+stability poisoning. Sintering and localized melting may occur as the tem-
+perature is increased, and this, of course, changes the catalyst structure.
+DIFFUSION POISONS
+This kind of poisoning has already been mentioned in
+connec~ion with carbon deposition on cracking catalysts. Blocking the pore
+mouths prevents the reactants from diffusing into the inner surface. Entrained
+solids in the reactants, or fluids which can react with the catalyst to form a.
+__________sHlicLresidue..-can-causeihiS-t-:Ype-oLpoisoning
+Table 8-6 lists poisons for various catalysts and reactions. The materials
+that are added to reactant streams to improve the performance of a catalyst
+are called accelerators. They are the counterparts of poisons. For example,
+stearn added to the butene feed of a dehydrogenation reactor appeared to
+reduce the amount of coke formed and increase the yield of butadiene. The
+catalyst in this case was iron. 1
+Table 8-6
+Poisons for various catalysts
+Types of
+Catalyst
+Reaction
+poisoning
+Poisons
+Silica, alumina
+Cracking
+Chemisorption
+Organic bases
+Deposition
+Carbon, hydrocarbons
+Stability
+Water
+Selectivity
+Heavy metals
+Nickel, platinum.
+Hydrogenation
+Chemisorption
+Compounds of S, Se,
+copper
+Dehydrogenation
+Te, P, As, Zn, halides,
+I
+Hg, Pb, NH3, C2H2,
+H2S, Fe203, etc.
+Cobalt
+Hydrocracking
+Chemisorption
+NH 3 , S, Se, Te, P
+Silver
+CZH 4 +° ~ CZH 40
+Selectivity
+CH4 , CZH 6
+Vanadium oxide
+Oxidation
+Chemisorption
+As
+Iron
+Ammonia synthesis
+Chemisorption
+0z, H 20, CO, S, CzHz
+Hydrogenation
+Chemisorption
+Bi, Se, Te, P, H 2O
+Oxidation
+Chemisorption
+VS04 , Bi
+SOURCE: In part from W. B. Innes in P. H. Emmett (ed), "Catalysis," vol. I, chap. 7, p. 306,
+Reinhold Publishing Corporation, New York, 1954.
+Problems
+8-1.
+The following data were obtained at 70°C for the equilibrium adsorption of
+n-hexane on silica gel particles (89 = 832 m 2jg, €.p = 0.486, Pp = 1.13 gjcm 3 ,
+V9 = 0.43 em 3jg).
+'K. K. Keady, Ind. Eng. Chem., 42, 295 (1950).
+
+
+=== PDF PAGE 54 ===
+326
+Partial pressure of
+C6H 14 in gas, atm
+0.0020
+0.0040
+0.0080
+0.0113
+0.0156
+0.0206
+C6 H 14 adsorbed,
+g molesJ(g gel)
+10.5 x 10- 5
+16.0 X 10- 5
+27.2 X 10- 5
+34.6 x 10-5
+43.0
+X 10- 5
+47.3
+X 10- 5
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+(a) DOetermine how well the Langmuir isotherm fits these data. Establish the
+values of the constants Cm and Kc by least-mean-squares analysis of the linearized
+form of Eq. (8-6):
+Note that a straight line should be obtained if cit is plotted against Cg•
+(b) Estimate the fraction of the surface covered wrth an adsorbed mono-
+molecular layer at each partial pressure of n-hexane. The surface occupied by
+one molecule of hexane at 70°C is estimated to be 58.5 x 10- 16 cmz.
+(c) Calculate the value of Crn from the tetal surface area and the area occupied
+by one molecule of hexane. What conclusions can be drawn from the comparison
+ofthis value ofCm with that obtained in part (a)? (d) Up to what gas concentration
+is the isotherm linear?
+8-2.
+Repeat Prob. 8-1 for the following data for the equilibrium adsorption of C6H 6
+on the same silica gel at 110°C. The surface occupied by one benzene molecule is
+34.8 x 10- 16 cmz.
+Partial pressure of
+C6H 6 in gas, atm
+5.0 x 10- 4
+1.0 X 10- 3
+2.0
+X 10- 3
+5.0 X 10- 3
+1.0
+X 10- 2
+2.0
+X 10- 2
+C6H 6 adsorbed,
+g molesJ(g gel)
+2.6 x 10- 5
+4.5
+X 10- 5
+7.8
+X 10- 5
+17.0
+X 10- 5
+27.0
+X 10- 5
+40.0
+X 10- 5
+8-3.
+Curve 3 of Fig. 8-4 is a Brunauer-Emmett-Teller plot for the adsorption data
+of N z at -183°C on the sample of silica gel. The density of liquid N z at this
+temperature is 0.751 g/cm3 . Estimate the area of the silica gel from these data,
+in square meters per gram, and compare with the results of Example 8-2.
+8-4.
+The «point-B method" of estimating surface areas was frequently used prior
+to the development ofthe Brunauer-Emmett-Teller approach. It entailed choosing
+from an absorption diagram such as Fig. 8-3 the point at which the central linear
+section begins. This procedure worked well for some systems, but it was extremely
+difficult, if not impossible, to select a reliable point B on an isotherm such as
+that shown for n-butane in Fig. 8-3. In contrast, the Brunauer-Emmett-Teller
+method was found to be reasonably satisfactory for this type of isotherm.
+
+
+=== PDF PAGE 55 ===
+PROBLEMS
+327
+Demonstrate this by estimating the surface area of the silica gel sample from the
+n-butane curve in Fig. 8-4 (multiply the ordinate of the n-butane curve by 10).
+The density of liquid butane at O°C is 0.601 g/cm 3 •
+8-5.
+An 8.01-g sample of Glaucosil is studied with N2 adsorption at - 195.8°C.
+The Jollowing data are obtained:
+Pressure, m m Hg
+6
+25
+140
+230
+285
+320
+430
+505
+-- -
+----------Volume-adsorbed~ -
+-61-1LI---ll0-r97--LlS-L30---277--J]S--------------
+cm 3 (at O°C
+and I atm)
+The vapor pressure of N z at - 195.8°C is 1 atm. Estimate the surface area
+(square meters per gram) of the sample.
+8-6.
+Low-temperature (- 195.8°C) nitrogen-adsorption data were obtained for an
+Fe-Alz0 3 ammonia catalyst. The results for a 50.4-g sample were:
+Pressure, mm Hg
+8
+30
+50
+102
+130
+148
+233
+Volume adsorbed,
+!O3
+116
+130
+148
+159
+163
+188
+cm 3 (at O"'C
+and 1 atm)
+258
+330
+442
+480
+507
+550
+198
+221
+270
+294
+316
+365
+Estimate the surface area for this catalyst. .
+8-7.
+Ritter and Drake l give the true density of the solid material in an activated
+alumina particle as 3.675 g/cm 3. The density ofthe particle determined by mercury
+disp1aceme:qt is /1.547. The surface area by adsorption measurement is 175
+m2/g. From this information compute the pore volume per gram, the porosity
+of the particles, and the mean pore radius. The bulk density of a bed of the
+alumina particles in a 250-cm3 graduate is 0.81 g/cm 3 . What fraction of the total
+volume of the bed is void space between the particles and what fraction is void
+space within the particles?
+8-8.
+Two samples of silica-alumina cracking catalysts have particle densities of 1.126
+and 0.962 g/cm3 , respectively, as determined by mercury displacement. The true
+density of the solid material in each case is 2.37 g/cm 3 . The surface area of the
+first sample is 467 m2/g and that of the second is 372 m2/g. Which sample has the
+larger mean pore radius?
+8-9.
+Mercury porosimeter data are tabulated below for a 0.400-g sample of D02
+pellet. At the beginning of the measurements (p = 1.77 psia) the mercury dis-
+placed by the sample was 0.125 cm 3 . At this low pressure no pores were pene-
+trated. Data obtained with a pycnometer gave a true density of the solid phase
+of Ps = 7.57 g/cm 3 .
+Calculate the total porosity of the pellet and the porosity due to pores of
+I H. L. Ritter and L. C. Drake, Ind. Eng. Chem., Ana!. Ed., 17, 787 (1945).
+
+
+=== PDF PAGE 56 ===
+328
+CHAPTER 8
+HETEROGENEOUS CATALYSIS
+larger than 250 A radius. Also plot the pore-volume distribution for the pores
+larger than 250 A radius, using the coordinates of Fig. 8-7.
+
+
+=== PDF PAGE 57 ===
+9
+KINETICS OF FLUID=SOLID
+..
+'
+"
+CATALYTIC REACTIONS
+In Chap. 8 heteroge~eous
+c~talysis was explained by postulating a three-
+step process: (1) chemisorption of at least one reactant on the solid, (2)
+surface reaction of the chemisorbed substance, and (3) desorption of the
+product from the catalytic surface. Now our objective is to formulate rate
+and equilibrium equations for these steps. We shall consider the kinetics and
+equilibrium of adsorption and then examine rate equations for the overall
+reaction.
+CHEMISORPTION RATES AND EQUILIBRIUM
+9-1 Rates ofChemisorption
+The rate at which molecules of a gas strike a surface, in moleculesj(sec)
+(cm 2 surface), is pj(2nmkBT}t. If s is the fraction of the collisions which
+result in chemisorption, that is, the stickingprobability, the rate ofadsorption
+IS
+329
+
+
+=== PDF PAGE 58 ===
+330
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+(9-1)
+(9-4)
+sp
+fa =
+.1-
+(2nmkBT)z
+where p is the gas pressure and m is the mass of the molecule. As Hayward
+and Trapnell point out,l s < I for several reasons. Two are particularly
+important: only those molecules possessing the required activation energy
+can be chemisorbed, and molecules possessing the necessary energy may
+not be chemisorbed because the configuration of molecule and surface
+site may not allow the activated complex to be traversed. The fraction of the
+molecules possessing the required energy will be e- E/RgT, where E is the
+activation energy for chemisorption. The configuration probability for
+a molecule occupying a single site2 \vill be proportional to the fraction
+of the surface that is unoccupied, that is, 1 -
+8. Thus
+s = a(1 -
+8) e- E/RgT
+(9-2)
+where
+(J. is the proportionality constant, often called the condensation
+coefficient. Combining Eqs. (9-1) and (9-2) yields
+ae- E/RgT
+fa = (2nmk
+BT}t P(l -
+8)
+(9-3)
+This ideal expression for the rate of adsorption does not usually agree
+with experimental data. Observed rates decrease so rapidly with increasing
+coverage 8 that they can be explained only if the activation energy increases
+with 8. Also, the condensation coefficient may vary with 8. These variations
+may be caused by surface heterogeneity; that is, the activity of the sites varies,
+so that different sites possess different values of a and E. The most active
+sites would have the lowest activation energy and would be occupied first.
+Alternately, interaction forces between occupied and unoccupied sites could
+explain the deviations. In any event, it is necessary to rewrite Eq. (9-3) as
+a(8)e- E(B)/R g T
+fa =
+(2nmk
+B1)t pel -
+8)
+It is instructive to compare the Langmuir equation, Eq. (8-1), with
+Eq. (9-4). If the latter is correct, then k in Eq. (8-1) is a function of surface
+coverage. However, the reason a and E are functions of eis that the first
+two postulates of the Langmuir treatment (see Sec. 8-4) are not satisfied-
+experimentally; that is, in real sllrfaces all sites do not have the same activity,
+and interactions do exist.
+ID. 0. Hayward and B. M. W. Trapnell, "Chemisorption," 2d ed., Butterworths & Co.
+(Publishers), London, 1964.
+2If a molecule (for example, 02) dissociates upon adsorption ;:lnd occupies two adjacent sites,
+the configuration probability will be (I -
+8)2, at least for small values of 8.
+
+
+=== PDF PAGE 59 ===
+SECTION 9-1
+RATES OF CHEMISORPTION
+331
+For many cases of chemis.orption the variation in rate with surface
+coverage can be accounted for entirely in the exponential term of Eq. (9-4),
+because a(8) and 1 - 8 are so much weaker functions. This leads to the
+result (for constant temperature)
+(9-5)
+commonly known as the Elovich equation.! Equation (9-5) can be obtained 2
+froI'tlEq-:-(9:::-~tDyasslIming-tl1arais consfaIiTana-tnarE-is-al1nearTunctlon------
+of 8. It can also be derived by supposing that E is constant but that the
+number of sites is a function of the coverage and of the temperature. 3
+Transition-state theory (presented in Chap. 2 for homogeneous
+gas-phase reactions) has been applied to the prediction of the condensation
+coefficient. Lack of precise knowledge about the structure of the activated
+complex on the solid surface hinders these calculations and the evaluation
+of the results. Much experimental data exists for chemisorption, some for
+rate measurements,4 and a great deal more for equilibrium systems. Con-
+clusions from the equilibrium data are summarized in the next section,
+but before we leave the topic ofrates itis important to mention the desorption
+step. Since desorption is an endothermic process,5 it will normally have a
+significant adtivation energy. Thus desorption will be an activated process
+even when adsorption is not. If f1Ha is the heat of adsorption on the site,
+the activation energies are related by
+(9-6)
+Rates of chemisorption of hydrogen on a given nickel catalyst were found
+to be nonactivated,.6 but the desorption activation energy was 13.8 kcaljg
+mole, about the same magnitude as the heat of adsorption (-13.5 kcaljg
+mole).
+IS. Yu. Elovich and G. M. Zhabrova, Zh. Fiz. Khim., 13, 1761 (1939); S. Roginsky and Ya.
+Zeldovich, Acta Physicochim., 1, 554, 595 (1934).
+2D. O. Hayward and B. M. W. Trapnell, "Chemisorption," 2d ed., Butterworths & Co.
+(Publishers), London, 1964.
+3H. A. Taylor and N. J. Thon, J. Am. Chern. Soc_, 74, 4169 (1952); M. J. D. Low, Chern.
+Rev., 60, 267 (1960).
+4Por example, see Taylor and Thon, Low, and Hayward and Trapnell for summaries of
+chemisorption rate measurements. Chromatographic techniques have been used to measure
+rates of adsorption by analyzing the moments of the peak leaving the column of adsorbent
+particles. For example, see G. Padberg and J. M. Smith, J. Catalysis, 12, 111 (1968).
+5 A few chemisorption processes appear to be endothermic, so that desorption in these
+instances would be exothermic. See J. M. Thomas and W. J. Thomas, "Introduction to the
+Principles of Heterogeneous Catalysis," p. 30, Academic Press Inc., New York, 1967.
+6G. Padberg and J. M. Smith, J. Catalysis, 12,111 (1968).
+
+
+=== PDF PAGE 60 ===
+332
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+t
+p-
+p-
+p-
+t
+p
+p-
+Fig. 9-1
+Types ofadsorption isotherms
+9-2 Adsorption Isotherms
+The adsorption isotherm is the relation between Cg , the concentration of
+adsorbable component in the gas (or the partial pressure p), and C, the
+concentration on the solid surface (or 8) at equilibrium conditions and
+constant temperature. The Langmuir form, Eq. (8-6) or Eq. (8-3), follows
+curve I in Fig. 9-1. From Eq. (8-3), at low coverages (or low pressure)
+8 = Kp
+(9-7)
+which corresponds to a linear relationship. Moreover, at high pressures
+8 approaches unity, and rearranging Eq. (8-3) gives
+Kp(1 -
+8) = 8
+or, as 8 -? 1,
+1
+1 -8 -?-
+Kp
+(9-8)
+(9-9)
+
+
+=== PDF PAGE 61 ===
+SECTION- 9-2
+ADSORPTION ISOTHERMS
+333
+- -- ---
+Five types of commonly recognized isotherms! are shown by the curves
+in Fig.9-1. The linear form, Eq. (9~7), would fit several types at low pressures,
+but only curve I agrees with Eq. (8-3) over the whole range of pressure.
+In the previous section it was observed that the Langmuir postulates
+of sites of equal activity and no interaction between occupied and bare
+sites were responsible for nonagreement with experimental data. It might
+be surmised that these assumptions correspond to a constant heat of
+-adso-rptiol1.-In.deed,-it-is-p-Ossible':_tD_d.erive the Langmuir isotherm by----
+assuming that I1Ha is independent of 8. The heat of adsorption can be
+evaluated from adsorption-equilibrium data. First the Clausius-Clapeyron
+equation is applied to the two-phase system of gas and adsorbed component
+on the surface:
+T(V -
+~)
+where Vand Va a~e the volumes per mole of adsorbed component in the gas
+and on the surface!, respectively. Neglecting the latter and assuming the ideal-
+gas law for V gives
+[ dOn P)J - I1Ha
+(9-10)
+dT
+9 -
+RgT 2
+For the Clausius-Clapeyron equation to be valid the process must be uni-
+variant. This means that Eq. (9-10) can be applied only for constant con-
+centration of adsorbate on the surface, that is, constant 8. If adsorption-
+equilibrium data are ava;ilable at different temperatures, the slopes ofp-vs-T
+curves at constant 8 may be used with Eq. (9-10) to calculate !1Ha. Figure
+9-2, taken from Beeck, 3 shows such isosteric heats ofadsorption as a function
+of 8 for hydrogen on several metal films. These results are typical of almost
+all heats'of adsorption in showing a decrease in I1Ha with increasing surface
+coverage.
+Two other well-known isotherms may be classified in tenns of the
+I1Ha -
+8 dependency. The Temkin isotherm may be derived from the Lang-
+muir isotherm by assuming that the heat of adsorption drops linearly with
+increasing 8.4 The result is
+. ID. O. Hayward and B. M. W. Trapnell, "Chemisorption," 2d ed., Butterworths & Co.
+(Publishers), London, 1964.
+.
+2K. J. Laidler, J. Phys. Chern., 53, 712 (1949).
+3 O. Beeck, Disc. Faraday Soc., 8, 118 (1950).
+4 A. Frumkin and A. S1ygin, Acta Physico chim., 3, 791 (1935); S. Brunauer, K. S. Love, and
+R. G. Keenan, J. Am. Chern. Soc., 64, 751 (1942).
+
+
+=== PDF PAGE 62 ===
+334
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+50.....-----.-----.----.....-----,-----,
+1.0
+0.8
+0.6
+0.4
+0.2
+10 L..-__--'-
+-'-
+-'--__--'-
+---'
+o
+40
+(l)
+-0
+8
+bO
+::::::-
+30
+c<:l
+c.>
+~
+::t:"
+<l
+20
+e
+Fig. 9-2
+Heats ofadsorption vs surface coverage for
+hydrogen on metalfilms
+(9-11)
+where k 1 and k 2 are constants at a given temperature. Figure 9-2 shows that
+a linear decrease in /1Ha with efits some data for H 2 on metal films. Similar
+agreement has been obtained for N 2 chemisorbed on a promoted iron
+catalyst. 1
+The Freundlich isotherm can be derived 2 by assuming a logarithmic
+decrease in /lHa with 8; that is,
+/lHa = - /lHo In 8
+The isotherm itself'has the form
+(9-12)
+e= c(p)1/n
+(9-13)
+where n has a value greater than unity. Owing to its flexibility, many inves-
+tigators have found agreement between their measurements and the Freund-
+lich isotherm. 3
+In conclusion, note two points. First, the Freundlich isotherm can be
+reduced to either the Langmuir or the Temkin form by proper simplication.
+1P. H. Emmett and S. Brunauer, J. Am: Chern. Soc., 56, 35 (1934).
+.2G. Halsey and H. S. Taylor, J. Chern. Phys., 15, 624 (1947).
+3For example, H 2 on tungsten films; B. M. W. Trapnell, Proc. Roy. Soc. (London), A206,
+39 (1951).
+
+
+=== PDF PAGE 63 ===
+, SECTION 9-2
+ADSORPTION ISOTHERMS
+335
+It may be considered a general empirical form encompassing the other more
+specific types, Second, a single is'otherm of the Langmuir or Temkin type
+cannot be expected to fit data over the entire range of e. Similarly, seldom
+does the Freundlich isotherm, with a single set of values of c and 11, fit
+extensive data.
+RATES OF FLUID-SOLID CATALYTIC REACTIONS
+In view of the uncertainty about how the surface reaction of a chemisorbed
+reactant actually occurs, it is debatable how much detail should be postulated
+in formulating rates of reaction. In the simplest approach, we might follow
+the treatment of homogeneous' kinetics and use only first- and second-order
+expressions. At the other extreme: we might separate the adsorption and
+surface reaction steps, using rate equations such as Eq. (9-4) for adsorption,
+and postulate about surface complexes to formulate the rate of the surface
+reaction. We shall/adopt an intermediate approach here. The necessity for
+the occurrence of chemisorption as an explanation of catalytic activity pro-
+vides strong support for separating the adsorption-desorption and surface
+processes. However, the functions of e in Eq. (9-4) complicate the rate
+equation beyond present justification. The fundamental concepts on which
+the Langmuir rate and isotherm expressions are based appear sound, al-
+though, as we have seen, some of the assumptions are incorrect. The first-
+order relationship between gas concentration Cg , adsorbed concentration C,
+and total concentration on the surface Cm in the Langmuir approach
+[Eqs. (8-4) to (8-6)J permit great simplification in formulating rate equations.
+Therefore Eqs. (8-4) to (8-6) for adsorption and desorption, along with
+simple first- and second-order expressions for the surface reaction, will be
+used in the sections that follow. 1
+The assumptions inherent in this procedure sho'uld not be forgotten.
+They have been mentioned, but it is worthwhile to emphasize one, the con- .
+stancy of Cm' This corresponds to an assumption that the maximum value
+of eis unity, or that the total number of active sites is constant. Also, note
+that we are considering a general approach to the formulation of rate equa-
+tions for fluid-solid catalytic reactions. In several specific cases sufficient
+data have been obtained to permit a more detailed analysis ofthe mechanism
+and rates of the adsorption and surface-reaction steps. An example is the
+IThis approach to kinetics of fluid-solid catalytic reactions was proposed by C. N. Hinshel-
+wood ("Kinetics of Chemical Change," Oxford University Press, London, 1940) and developed
+in detail by O. A. Hougen and K. M. Watson ("Chemical Process Principles," part 3, "Kinetics
+and Catalysis," John Wiley & Sons, Inc., New York, 1947).
+
+
+=== PDF PAGE 64 ===
+336
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+(9-14)
+catalytic reaction Hz -r 2H on a hot tungsten filament, for which both J;ate
+of reaction and !1Ha-vs-e data are available.!
+9-3 Rates ofAdsorption and Desorption
+In this section equations are presented for the rates of adsorption, surface
+reaction, and desorption. In Sec. 9-4 these equations will be combined to give
+expressions for the rate in terms of fluid concentrations; that is! concentra-
+tions on the surface (denoted by E) wiil be eliminated.
+Adsorption
+The net rate of adsorption of a component A is given by the
+difference between E9s. (8-4) and (8-5), written asz
+fa = kaCA(Cm -
+C) - k;CA = ka[ CA(Cm -
+C) - LcAJ
+where Em - E represents the concentration of vacant sites, Ev. If only A
+were absorbed, then Em - E would equal Em - EA' However, other com-
+ponents of the reaction may be adsorbed, so that' it is necessary to write
+Em - E = Ev, where Evis expressed as the concentration ofvacant sites per
+unit mass of catalyst, or
+(
+_
+1 _)
+fa = ka
+CACv -
+K
+A
+CA
+In this equation CA is the concentration of A in the gas phase at the catalyst
+surface. If the resistance to adsorption is negligible with respect to other
+steps in the overall conversion process, the concentration ofA on the catalyst
+surface is in equilibrium with the concentration of A in the gas phase. The
+net rate ofadsorption, from Eq. (9-14), approaches zero, and the equilibrium
+concentration of A is given by the expression
+(9-15)
+where K A designates the adsorption equilibrium constant for A.
+Note that this result would reduce to the Langmuir isotherm, Eq. (8-6),
+if only A were adsorbed. Equations (9-14) and (9-15) are applicable when
+A occupies one site. Often in chemisorption a diatomic molecule, such as
+oxygen, will dissociate upon adsorption with each atom occupying one site.
+Formally, dissociative adsorption may be written
+Az + 2X -r 2A . X
+1M. Boudart, Ind. Chim. Beige, 23, 383 (1958).
+2The gas phase concentration Cg is now written as CA to den9te component A. Also, the rate
+constant kc is written as ka to denote adsorption.
+
+
+=== PDF PAGE 65 ===
+SECTION 9-3
+RATES OF ADSORPTION AND DESORPTION
+For this case the net rate of adsorption is
+fa = ka(CAZC/ - _1_C/)
+KAz
+At e~uilibrium the concentration of atomically adsorbed A is!
+(CA)eq = KA/CAz+CU
+337
+(9-14/)
+(9-1Y)
+Surface Reaction
+The mechanism assumed for the surface process will
+depend on the nature of the reaction. Suppose that the overall reaction is of
+the type
+A+B;:¢.C
+(9-16)
+(9-18)
+An immediate question concerning the surface process is whether the reaction
+is between an adsorbed molecule ofA and a gaseous molecule ofB at the sur-
+face or between adsorbed molecules of both A and B on adjacent active
+centers. In the former rase the process might be repr~sented by the expression
+A . X + B ;:¢. C' X
+(9-17)
+If the concentration of adsorbed product C on the surface is Cc, in
+moles per unit mass of catalyst (analogous to CA)' the net rate of this step
+would be
+r, = k,CAC. - k;Cc= k,(CAC. - ~, Cc)
+In this equation we suppose that the rate of the forward reaction is first order
+in A on the solid surface and first order in B in the gas phase. Similarly, the
+rate of the reverse process is first order in C on the surface_
+If the mechanism is a reaction between adsorbed A and adsorbed B,
+the process may be represented by the expression
+A·X+B-X-+C·X+X
+(9-19)
+Here only those A molecules will react which are adsorbed on sites imme-
+diately adjacent to adsorbed B molecules. Hence the rate of the forward
+reaction should be proportional to the concentration of the pairs ofadjacent
+sites occupied by A and B. The concentration of these pairs will be equal to
+CA multiplied by the fraction of the adjacent sites occupied -by B molecules.
+IIf Az is the only adsorbable gas, then Cv = Cm
+-
+CA , and Eg. (9-t5') becomes
+or
+in comparison with Eqs. (8-6) and (8-7) for molecularly adsorbed A z.
+
+
+=== PDF PAGE 66 ===
+338
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+(9-20)
+This fraction is proportional to the fraction of the total surface occupied by
+B molecules, i.e., to 8B . 1 If Cm is defined as the molal concentration of total
+sites, then 8B = CB/Cm • The rate of the forward reaction, according to the
+mechanism ofEq. (9-19), will be
+- CB
+r = ksCA C
+m
+The reverse rate is proportional to the pairs of centers formed by adsorbed
+product C molecules and adjacent vacant centers,
+Combining these two expressions gives the net surface rate by the mechanism
+ofEq. (9-19),
+1
+-
+-
+,- -
+k s (-
+-
+1 - -)
+rs = C
+m
+(ksCA CB -
+ksCcCv) = C
+m
+CA CB -
+K
+s
+CcCv
+If the surface step has a negligible resistance with respect to the others,
+the process would occur at equilibrium, and Eq. (9-18) or Eq. (9-20) could
+be used to relate the concentrations of the reactants and products on the
+catalyst surface. For example, if the chosen mechanism is Eq. (9-19), the
+concentration of product C is given by Eq. (9-20) with r s = 0; that is,
+(9-21)
+where Ks is the equilibrium constant for the surface reaction.
+Desorption
+The mechanism for the desorption of the product C may be
+represented by the expression
+C'X--+C+X
+The rate of desorption will be analogous to Eq. (9-14) for the adsorption
+of A,
+(9-22)
+lThis is strictly correct only if the fraction of the surface occupied by A molecules is small.
+It would be more accurate to postulate that the fraction of the adjacent centers occupied by
+Bis equal to 8B/(1 - 8A). For small values of 8A the two results are nearly the same.
+
+
+=== PDF PAGE 67 ===
+adsorption
+surface reaction
+desorption
+'SECTION 9-4
+RATE EQUATIONS IN TERMS OF CONCENTRATIONS IN THE FLUID PHASE
+339
+9-4 Rate Equations in Terms ofConcentrations ill the Fluid
+.Phase at the Catalyst S1ll1ace
+At steady state the rates of adsorption fa' surface reaction rs , and desorption
+rd are e,qual. To express the rate solely in terms of fluid concentrations,
+the adsorbed concentrations CA' CB' Cc, and Cv must be eliminated from
+Eqs. (9-15) to (9-22). In principle, this can be done for any reaction, but the
+reSJJltaJlLcat.e_eq_ua1ionin\Lolves-alLthe--rate-constants-ki-and-the-eq-ui-li-GFium
+constants Ki - Normally neither type of constant can be evaluated indepen-
+dently.l Both must be determined from measurements of the rate of con-
+version from fluid reactants to fluid products. However, there are far too
+many constants, even for simple reactions, to obtain meaningful values from
+such overall rate data. The problem can be eased, with some confidence from
+experimental data, by supposing that one step in the overall reaction controls
+the rate_ Then the other two steps occur at near-equilibrium conditions. This
+greatly simplifies the rate expression and reduces the number of rate and
+equilibrium constants t~t must be determined from experiment. To illus-
+trate the procedure equations for the rate will be developed, for various
+controlling steps, for the reaction system
+A+X==;A-X
+B+X==;B·X
+A-X+B·X==;C·X+X
+C·X==;C+X
+A+B¢C
+overall reaction
+(9-25)
+(9-23)
+(9-24)
+Sw1ace Reaction Controlling
+The concentrations CA , CB , and Cc will be
+those corresponding to equilibrium for the adsorption and desorption steps.
+Equation (9-15) gives the equilibrium value for CA' Similar results for CBand
+Cc are
+(CB)eq = KBCBCv
+(Cdeq = KcCcCv
+Substituting thes~ results in Eq. (9-20) for the surface rate gives
+ks
+(
+- 2
+Kc
+- 2)
+r = -=-
+KAKBCACBCv
+- K CcCv
+Cm
+s
+1It might be supposed that rate and equilibrium constants for adsorption or desorption could
+-be established from pure-component adsorption data on t.q.e components involved. However,
+such results rarely agree with the values of the constants determined from rate data for the
+reaction. Interaction effects between components, other inadequacies of the Langmuir theory,
+and the assumption of a single controlling step, explain the deviation.
+
+
+=== PDF PAGE 68 ===
+340
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+(9-27)
+(9-28)
+(9-29)
+(9-31)
+(9-32)
+The concentration ofvacant sites can be expressed in terms of the total
+concentration of sites Em,
+Em = Ev + EA + EB + Ec
+(9-26) .
+Since EA (or EB and Cd corresponds to the equilibrium value for adsorption,
+Eqs. (9-15), (9-23), and (9-24) can be combined with Eq. (9-26) to yield
+E
+=
+Em
+v
+1 + KACA + KBCB + KcCc
+Now Eqs. (9-25) and (9-27) can be combined to give a relatively simple
+expression for the rate in terms of fluid concentrations,
+= k' 'C-
+KAKBCACB - (Kc/Ks)Cc
+r
+s
+m
+2
+(1 + KACA + KBCB + KcCd
+This result can be further reduced by using the relationship between the
+several equilibrium constants KA, KB, Kc, and Ks' If the equilibrium constant
+for the overall reaction is denoted by K, then
+K- (C~~Bt
+This is the conventional K for a homogeneous reaction computed from
+thermodynamic data, as outlined in Chap. 2. It may be related to the ad-
+sorption and surface-reaction equilibrium constants by the equilibrium equa-
+tions for each of these processes, Eqs. (9-15), (9-23), and (9-24). Thus
+K =
+Cc/KcEv
+= KAKB(CvEc)
+(9-30)
+(CA/KACJ(CB/KBCJ
+Kc
+CACB
+eq
+According to'Eq. (9-21), the last group ofsurface concentrations is Ks' and so
+K = KAKBK
+Kc
+s
+Substituting this relationship in Eq. (9-28) gives the final expression for the
+rate in terms of fluid concentrations,
+= k C K K
+CACB - (ljK)Cc
+r
+smA B(l + KACA + KBCB+ KcCd 2
+It is well at this point to review the chiefpremises involved in Eq. (9-32):
+1.
+It is supposed that the surface reaction controls the rate ofthe three steps.
+2.
+The equation applies to the simple reaction A + B ---7 C. Furthermore,
+it is assumed that the mechanism of the surface reaction involves the
+
+
+=== PDF PAGE 69 ===
+• SECTION 9-4
+RATE EQUATIONS IN TERMS OF CONCENTRATIONS IN THE FLUID PHASE
+34 I
+cornbination of an adsorbed molecule of A and an adsorbed molecule
+of B.
+3.
+The concepts of adsorption and kinetics rest on the Langmuir-
+Hinshelwood theories referred to earlier.
+If the adsorption is weak for all components, the denominator of
+Eq. (9-32) approaches unity, and the rate expression reduces to the homo-.
+__________gen~~o_us~01:Ill_
+or
+(9-33)
+(9-34)
+The decomposition of formic acid on several catalytic surfaces follows
+such behavior. 1 Here -rt1ere is only one reactant, so that the rate becomes
+first order in concentration of formic acid.
+If the product of a reaction is strongly adsorbed and the reactant
+adsorption is weak, the term Kc Cc is much larger than all others in the
+denominator. If the reaction is also irreversible, Eq. (9-32) becomes
+-
+CACB
+r = ksCmKAKB (
+)2
+KcCc
+Suppose there was only one reactant; that is, the reaction was of the form
+A
+--T C. The denominator term would be raised to a power of unity instead
+of being squared, so that
+-
+CA
+r = ksCmKA KcCc
+This result shows the retarding effect that a strongly adsorbed product
+can have on the rate. The decomposition of ammonia on a platinum wire
+has been found to follow this form ofrate equation; i.e., hydrogen is strongly
+adsorbed and ammonia is only weakly adsorbed,2 so that
+r = k CNH3
+CHz
+Ie. N. Hinshelwood and B. Tapley, J. Chem. Soc., 123, 1014 (1923).
+lc. N. Hinshelwood and R. E. Burk, J. Chem. Soc., 127, 1105 (I925). Although there are
+two products in the decomposition, the nitrogen is only slightly adsorbed and does not appear
+in the rate equation.
+L_
+
+
+=== PDF PAGE 70 ===
+342
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+Again consider a reaction of the form A --+ C, but suppose that C
+is only weakly adsorbed, while A is very strongly adsorbed. Then the rate
+expression, in analogy with Eq. (9-34), would become zero order in A;
+that is
+(9-35)
+(9-36)
+(9-37)
+These special cases for the surface reaction controlling the rate all follow
+from the form of the Langmuir isotherm. Weak adsorption corresponds to
+small values of e, and Eq. (9-7) shows that e (or CA) is first order in PA
+(or CA), as predicted by Eq. (9-33). When the adsorption is very strong,
+the critical parameter is the concentration of vacant sites remaining for
+adsorption of reactant. Equation (9-9) shows that this is inversely pro-
+portional to the pressure of product (or Cd, in agreement with Eq·. (9-34).
+Adsorption or Desorption Controlling
+Still retaining the simple reaction
+A + B :=;: C, let us now suppose that the adsorption of A is the slow step.
+Then the adsorption of B, the surface reaction, and the desorption of C
+will occur at equilibrium. The rate can be formulated from the adsorption
+equation (9-14). The adsorbed concentration CA in this expression is ob--'
+tained from the equilibrium equations for the surface rate [Eq. (9-2l)J,
+adsorption of B [Eq. (9-23)], and desorption of C [Eq. (9-24)]. Thus
+-
+CvCc
+CvCKcCcCv)
+CvKcCc
+CA =----=
+=---
+KsCB
+.KsCKBCBCv)
+KsKBCB
+From the relationship of the several equilibrium constants, Eq.
+(9-31), the expression for CA may be simplified to
+-
+KACvCC
+CA =
+KC
+B
+Substituting this value of CAin the rate-controlling equation (9-14) gives
+-
+(
+1
+Cc )
+r=kC
+CA ---
+a
+v
+K
+CB
+The expression for Cv can be formulated from Eq. (9-26), the equilib-
+rium values of CB and Cc from Eqs. (9-23) and (9-24), and CA from Eq.
+(9-36). With this expression for Cv substituted in Eq. (9-37), the final rate
+equation for adsorption of A controlling the process is
+(9-38)
+
+
+=== PDF PAGE 71 ===
+,
+SECTION 9-5
+QUALITATIyE ANALYSIS OF RATE EQUATIONS
+343
+If, instead of adsorption, the rate of desorption of product C controls
+the whole reaction, the expression for r should be formulated from Eq.
+(9-22). The adsorption and surface steps will occur at equilibrium conditions.
+Substit~ting the equilibrium values of Cc and Cv in Eq.(9-22) leads to the
+result
+,~
+(9-39)
+9-5 Qualitative Analysis ofRate Equations
+The procedure for developing rate expressions in terms of fluid properties
+according to the Langmuir concepts has been illustrated for a single reaction.
+Yang and Hougen l have considered a number of kinds of reactions and
+mechanisms and examined the results when adsorption, desorption, or
+surface reaction controls the· rate. By dividing the final equation .into a
+kinetic coefficient [for yxample, kdCmK in Eq. (9-39)J, a driving force
+rCA CB
+-
+(1fK)CcJ,
+and
+an
+adsorption
+term
+(1 + KA CA +. KBCB +
+KcKCAeB)' they were able to prepare tables from which the rate equation
+for a specific situation could be quickly assembled. 2
+Equations such as (9-32), (9-38), and (9-39) will have value if they
+can be used to predict the rate over a wide range of conditions and hence be
+suitable for designing reactors. To be useful as working expressions the
+various constants (kinetics and equilibrium) must be given numerical
+values. 3 It has not proved possible to obtain reliable K values from separate
+adsorption measurements. Hence all the constants must be determined from
+experimental kinetic data. This means, for example, that kdCm, KA , KB,
+and Kc in Eq. (9-39) would be obtained from rate measurements. Since
+four-constant equations offer considerable flexibility,
+it is frequently
+possible to fit experimental data with equations based on several different
+mechanisms and assumptions regarding the step which is controlling.
+The advantage ofthis method of formulating rate reactions is the systematic
+way in which the pertinent parameters are introduced. It is a mechanized
+procedure which permits little flexibility and provides little insight into the
+actual mechanism of heterogeneous catalytic reactions. Progress in mecha-
+1K. H. Yang and O. A. Hougen, Chern. Eng. Progr., 46, 146 (1950).
+2See also J. M. Thomas and W. J. Thomas, in "Introduction to the Principles of Hetero-
+geneous Catalysis," pp. 458-459, Academic Press Inc.. New York, 1967, for rate equations
+assembled in tabular fonn for various controlling mechanisms for the two reactions A ~ B
+and A + B~ C.
+3Equations (9-32), (9-38), and (9-39) were developed for constant-temperature conditions.
+Hence the various specific rates k and equilibrium constants K are termed constants. They
+are, in theory, constant with respect to pressure and conversion but change with temperature.
+
+
+=== PDF PAGE 72 ===
+344
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+nism studies for specific reactions has been summarized by Thomas and
+Thomas. Interesting comparisons of concepts and correlations for homo'"
+geneous and heterogeneous catalytic reactions are presented by Boudart. 1
+The quantitative interpretation of kinetic data in terms of this type'
+of rate equation is illustrated in Sec. 9-6. However, before we proceed to the
+evaluation ofconstants in rate equations, let us consider some ofthe implica-
+tions of Eqs. (9-32), (9-38), and (9-39) from a qualitative standpoint.
+The adsorption terms in the denominator are all different. For surface
+rate controlling, adsorption equilibrium groups (Ki Ci) are included for
+each component, and the entire term is squared because reaction is between
+adsorbed A and adsorbed B. For adsorption of A controlling, no group
+for the adsorption of A is present, and the entire term is to the first power.
+For desorption controlling, no group for product C is in the adsorption
+term. These differences result in separate relationships between the pressure
+and the rate. Hence the treatment of data as a function of pressure provides
+a useful method for distinguishing between equations. Temperature is not
+so useful a variable as pressure because all the constants are strong functions
+of temperature, and many of the same ones are part of each equation. The
+primary value of temperature is to determine the energies of activation for
+the adsorption and surface processes. Measurements at different conversion
+levels can be used to evaluate various equations, but in general it is difficult
+to draw valid conclusions about mechanisms. Quantitative treatment of
+conversion-vs-rate data is illustrated in Example 9-2. The importance of
+total pressure as a variable to study mechanism is shown in the following
+example.
+Example 9-1
+A solid-catalyzed gaseous reaction has the form
+A+B-rC
+Sketch curves of the initial rate (rate at zero conversion) vs the total pressure for the
+following cases:
+(a)
+The mechanism is the reaction between adsorbed A and adsorbed B molecules
+on the catalyst. The controlling step is the surface reaction.
+(b)
+The mechanism is the same as (a), but adsorption of A is controlling.
+(c)
+The mechanism is the same as (b), but desorption of C is controlling. Assume
+that the overall equilibrium constant is large with respect to the adsorption
+equilibrium constants.
+(d) The mechanism is a reaction between adsorbed A and B in the gas phase. The
+controlling step is the surface reaction.
+In each instance suppose that the reactants are. present in an equimolal mixture.
+1 Michel Boudart, "Kinetics of Chemical Processes," chaps. 8 and 9, Prentice-Hall, Inc.,
+Englewood Cliffs, N.J., 1968.
+
+
+=== PDF PAGE 73 ===
+•
+SECTION 9-5
+QUALITATIVE ANALYSIS OF RATE EQUATIONS
+345
+Solution
+For a gaseous reaction the concentration C of any component i is pro-
+portional to its partial pressure; for an ideal-gas mixture Ci = pJRgT. Hence at con-
+stant temperature partial pressures may be substituted for Ci in the rate equations,
+causing a change only in the value of the constants. At zero conversion the pressure
+of pro~uct C is zero, and for an equimolal mixture
+PA =PB = !Pr
+For the first three cases Eqs. (9-32), (9-38), and (9-39) are the appropriate rate equations:
+--------
+(a)KrilliTial condilions-Eq-:--T9-=-32) sImplifies to
+f
+= k C K K
+tPr
+2/(RgT)2
+o
+smA
+B [1 + t(KA + KB)pJRgTJ2
+By combining constants we may write this expression as
+ap/
+f
+----~
+0-
+(1 + bpY
+where a and b are the resulting overall constants.
+(A)
+(C)
+(b) In a similar maI1.ller Eq. (9-38) for the adsorption of A controlling may be
+reduced to the form
+_
+tPr/RgT
+a'Pr
+fo = kaCm
+1
+= --,-
+(B)
+1 + zKBPrlRgT
+1 + b Pc
+(c) Equation (9-39), for the case where desorption of C is controlling, may be
+written
+-
+tp//(RgT)2
+f o = kdCmK
+1
+1
+2
+2
+1 + 2(KA + KB)pJRgT + 4KCKpr /(RgT)
+If the equilibrium constant K is large with respect to KA , KB, and Kc, only the last
+tern1 in the denominator is important, and the result is
+kdCm
+"
+f o =-- = a
+Kc
+Equation (A) for surface reaction controlling shows that the initial rate will
+be proportional to the square of the pressure at low pressures and will approach a
+constant value at high pressures. This type of relation is shown in Fig. 9-3a. The case
+for adsorption controlling is indicated in Fig. 9-3b, and that for desorption controlling
+is shown in Fig. 9-3c. If the equilibrium constant were not very large for case (c),
+the initial rate equation would be as shown in Fig. 9-3a.
+(d) For this case the rate equation can be obtained from Eq. (9-18). Combining
+this with Eqs. (9-15) and (9-24) for the equilibrium values for CA and Cc gives
+- (
+Kc
+'\
+r = ksCu KACACB -
+K
+s
+Cc)
+Since the_re is no adsorption of B in this instance, Eq. (9-27) for Cu becomes
+
+
+=== PDF PAGE 74 ===
+346
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+Pr-
+(a)
+Pr-
+(b)
+Pr-
+(c)
+o...
+Pr-
+(d)
+(D)
+Fig. 9-3
+Initial rate vs total pressure for reaction A + B
+---? C
+C =
+Cm
+v
+1 + KACA + KcCc
+The relationship of the equilibrium constants [Eq. (9-31)J is
+KAKs
+K=--
+Kc
+Substituting these two expressions into the rate equation yields
+-
+CACB -
+(l/K)Cc
+r = ksKACm
+.
+1 + KACA + KcCc
+Equation (D) is the appropriate expression for the surface rate controlling, with
+no adsorption of B. At initial conditions, and replacing concentrations with partial
+pressures, it becomes
+a"'p/
+1 + b"'Pr
+(E)
+A schematic diagram of Eq. (E) shows the rate proportional to Pr at high pressures
+(Fig. 9-3d).
+
+
+=== PDF PAGE 75 ===
+SECTION 9-6
+QUANTITATIVE INTERPRETATION OF KINETIC DATA
+347
+Suppose that experimental rate data for the reaction A + B -)- C were obtained
+over a wide range of total pressures, all at the same temperature. Comparison of a
+plot of the observed results with curves such as shown in Fig. 9-3 would be of value in
+establishing the most accurate rate equation. However, it is sometimes difficult to
+cover .f!. wide enough range of pressures to observe all the changes in shape of the
+curves.
+________-.J9-6_Quantitativ-e-lnter-Pl~etation-of_Kine-tiG-J).ata:------------~-
+To evaluate the rate and adsorption equilibrium constants in equations
+such as (9-32) rate data are needed as a function of concentrations in the
+fluid phase. Data are required at a series oftemperatures in order to establish
+the temperature dependency of these constants. The proper concentrations
+to employ are those directly adjacent to the site. In the treatment that follows
+we shall suppose that these local concentrations have been established from
+the measurable concentrations in the bulk stream by the methods to be given.
+in Chaps. IO and 11. Our objective here is to find the most appropriate
+rate equation at a catalyst site.
+Statistical methods are required to obtain the best fit of the equation
+to the kinetic data. Minimizing the deviations between the observed rate
+and that predicted from the equation is straightforward as long as the
+constants are linearly related in the rate equation.! When nonlinearities
+exist the analysis is more complicated. 2 There are many illustrations of the
+method for evaluating the constants in equations such as (9-32) from
+experimental rate measurements. 3 The sequence for this process is usually
+as follows:
+1.
+Assume various mechanisms and controlling steps for each mechanism.
+Develop a rate equation for each combination of mechanism and
+controlling step.
+2.
+Determine the numerical values of the constants which ,give the best
+fit of each equation to the observed rate data.
+3.
+Choose the equation which best fits the data and agrees with available
+independent information about the reaction.
+In the following simple example the evaluation of the constants is
+carried out for a single combination of mechanism and controlling step.
+10. A. Hougen and K. M. Watson, "Chemical Process Principles," vol. III, "Kinetics and
+Catalysis," John Wiley & Sons, Inc., New York, 1948.
+2G. E. P. Box and H. L. Lucas, Biometrika, 46, 77 (1959); J. R. Kittrell, W. G. Hunter, and
+C. C. Watson, AIChE J., II, 105 (1965), AIChE J:, 12, 5 (I966); L. Lapidus and T. 1. Peterson,
+AIChE J., 11,891 (1965).
+J J. R. Kittrell, Reiji Mezaki, and C. C. Watson, Brit. Chern. Eng., 11, 15 (1966), Ind. Eng.
+Chern., 57, 18 (1965); W. G. Hunter and Reiji Mezaki, AIChE J., 10, 315 (1964).
+L..
+
+
+=== PDF PAGE 76 ===
+348
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+Example 9-2
+Olson and Schulerl determined reaction rates for the oxidation of
+sulfur dioxide, using a packed bed of platinum-on-alumina catalystpellets. A differen-
+tial reactor was employed, and the partial pressures as measured from bulk-stream
+compositions were corrected to fluid-phase values at the catalyst surface by the methods
+described in Chap. 10 (see Example 10-1). The total pressure was about 790 mm Hg.
+From previous studies2 and the qualitative nature of the rate data a likely
+combination appeared to be a controlling surface reaction between adsorbed atomic
+oxygen and unadsorbed sulfur dioxide. In order to determine all the constants in the
+rate equation for this mechanism, it is necessary to vary each partial pressure indepen-
+dently in the experimental work. Thus measuring the rate of reaction at different total
+pressures but at constant composition is not sufficient to determine all the adsorption
+equilibrium constants. Similarly, if the data are obtained at constant composition of
+initial reactants but varying conversions, the partial pressures of the individual com-
+ponents do not vary independently. However, in these cases it is possible to verify the
+validity of the rate equation even though values of the separate adsoiption equilibrium
+constants cannot be ascertained. Olson and Schuler studied the effect of conversion
+alone and obtained the data in Table 9-1 at 480°C.
+Table 9-1
+Partial pressure (atm)
+r,
+at catalyst surface
+g moles/(hr)(g catalyst)
+S03
+S02
+O2
+0.02
+0.0428
+0.0255
+0.186
+0.04
+0.0331
+0.0352
+0.190
+0.06
+0.0272 .
+0.0409
+0.193
+0.08
+0.0236
+0.0443
+0.195
+0.10
+0.0214
+0.0464
+0.196
+0.12
+0.0201
+0.0476
+0.197
+Test the proposed mechanism by evaluating the constants in the rate equation and
+then comparing experimental rates ofreaction with values computed from the equation.
+Solution
+To develop an expression for the rate of reaction we must postulate the
+method of obtaining adsorbed atomic oxygen. If it is supposed that molecular oxygen
+i~ first adsorbed on a pair of vacant centers and that this product then dissociates into
+two adsorbed atoms, the process may be written
+0-0
+O2 + 2X -+ I I-+ 2 O' X
+X
+X
+Since the surface reaction is controlling, the adsorption of oxygen must be at
+1R. W. Olson, R. W. Schuler, and J. M. Smith, Chern. Eng. Progr., 46, 614 (1950).
+20. Uyehara and K. M. Watson, Ind. Eng. Chern., 35, 541 (1943).
+
+
+=== PDF PAGE 77 ===
+SECTION 9-6
+QUANTITATIVE INTERPRETATION OF KINETIC DATA
+349
+equilibrium. Then the concentration of adsorbed atomic oxygen is given by the
+equilibrium equation
+C0
+2
+Ko=-=z
+,;
+POZ Cu
+where Co" represents the concentration of adsorbed atomic oxygen and Ct. represents
+the concentration of vacant centers. Solving this expression for Co yields
+~o =
+Ko±.POz±-Cu.----------·
+The surface-reaction step is represented by
+--~(Ajf----
+(B)
+The concentration ofS03 adsorbed on the catalyst is given by the conventional equilib-
+rium expression
+/
+(C)
+Substituting the values of Co and CS03 in Eq. (B) gives
+- k (x t
+t _ KS03
+) C
+f s -
+s
+0 PsozPoz
+K
+s Ps03
+u
+The total concentration of centers is the summation
+(D)
+(E)
+(G)
+The last tenn is included to take into account the possibility that N 2 may be adsorbed
+on the catalyst. Eliminating Cu from Eq. (D) by introducing Eq. (E) and noting that
+Kot Ks/Ks03 = K, we may write Eq. (D) as
+r =
+ksCm~otU:sozPozt - (l/K)PsoJ
+(F)
+1 + Ko 2 Paz- + KS03Ps0 3 + KNzPNz
+Because the partial pressures ofsulfur dioxide and sulfur trioxide are both small,
+the value of PNz will not vary significantly with conversion. Hence KNzPNz may be
+regarded as a constant in Eq. (F). Since conversion was the only variable causing the
+composition to change, POz and Ps03 and Psoz are not independent, but are related to
+the initial-constant composition and the conversion. Hence POz in the denominator
+of Eq. (F) can be expressed in tenns of conversion or, more conveniently, in tenns of
+Ps03 • Thus Eq. (F) may be simplified to
+kscmKOt[Psozpozt - (1/R)ps03]
+r = ------=---=-------:;..-
+A' + B'Ps03
+Combining the constants and rearranging leads to the fonn
+A + B
+- PS02P02t - (l!K)Pso 3 = R
+Ps03
+-
+f
+
+
+=== PDF PAGE 78 ===
+350
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+Since conversion was the only variable, the rate equation contains only two constants,
+A and B. This means that individual adsorption equilibrium constants cannot be
+determined.
+From the overall equilibrium constant K and the data for the partial pressur.es
+and rates, the right-hand side of Eq. (G), designated as R, can be evaluated for each
+rate. The equilibrium constant decreases with temperature, the reaction being exo-
+thermic. However, it is still about 73 at 480°C, as·estimated from the expression
+22,200
+.
+InK= -- -10.5
+RgT
+Table 9-2
+r,
+PS03 , atm
+R
+RPso3
+PS03
+2
+X 104
+g moles/(hr)(g catalyst)
+0.02
+0.0428
+0.521
+0.0223
+18.3
+0.04
+0.0331
+0.372
+0.0123
+11.0
+0.06
+0.0272
+0.294
+0.0081
+7.40
+0.08
+0.0236
+0.241
+0.00569
+5.57
+0.10
+0.0214
+0.203
+0.00433
+4.58
+0.12
+0.0201
+0.174
+0.00349
+4.03
+Total
+0.168
+1.805
+0.0562
+50.8
+Table 9-2 shows the values of R computed from the data, with K = 73. The most
+probable values of the constants are those corresponding to a least-mean-square fit
+of the data to a straight line of the general form
+a + bx = y
+Comparing Eqs. (G) and (H), we have
+(H)
+y=R
+a=A
+·b = B
+The values of a and b are given by the two expressions 1
+b = Lyx - LxLyln
+Lx2 -
+(Lx?In
+Ly - bLx
+a=----
+n
+(1)
+(1)
+where n is the number of measurements.
+Equations (1) and (1) may be applied to the present case. Thus yx = Rps0
+3
+, etc.
+IThese equations are obtain~d by writing an expression for the sum of the squares of the
+deviations of the data points from the line of Eq. (H), 'differentiating this equation with respect
+to both a and b, setting the differentiated equations equal to zero to apply the minimum-
+deviation restriction, and then solving the two equations for the values of a and b.
+
+
+=== PDF PAGE 79 ===
+'SECTION 9-6
+QUANTITATIVE INTERPRETATION OF KINETIC DATA
+351
+The necessary values and summations'are given in the last four columns of Table 9-2.
+Solving for the constants, we have
+b = B = 0.0562 - 0.168(1.805)/6 = 15.3
+.{
+0.00508 - 0.1682/6
+1.805 -
+15.3(0.168)
+a = A =
+= -0.127
+6
+Wtrh-rheseval[fes~(J) may De wrtt1en-
+R = 15.3psoJ
+-
+0.127
+(K)
+Figure 9-4 is a plot of the experimental data and Eg. (K). Equation (K) can be
+used to compute values of the rate for comparison with the experimental results.
+For example, using Eg. (K) for the first set of data, at PsoJ = 0.0428 atm,
+R = 15.3(0.0428) - 0.127 = 0.525
+Then, from Eq. (G)
+0.0255(0.18641 -
+713 (0.0428)
+0.525 = ----------
+r
+0.05
+0.04
+0.03
+0.02
+0.01
+II
+/
+lJ
+/I
+~
+o = Exp. data
+V
+~R = 15.3 Pso, -
+0.127
+I
+I
+oo
+0.1
+Fig. 9-4
+Correlation of rate data for oxidation of
+SO]. [Eq.(K)]
+0.7
+0.2
+0.3
+0.4
+0.5
+0.6
+!
+I
+L
+
+
+=== PDF PAGE 80 ===
+352
+Solving for the rate, we have
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+r = 0.020 g mole/(hr)(g catalyst)
+The results for the other points are compared with the experimental rates in Table 9:-3.
+Table 9-3
+PSOJ
+R
+Calculated
+Experimental
+0.0428
+0.525
+0.020
+0.020
+0.0331
+0.371
+0.039
+0.040
+0.0272
+0.287
+0.061
+0.060
+0.0236
+0.232
+0.083
+0.080
+0.0214
+0.199
+0.102
+0.100
+0.0201
+0.179
+0.117
+0.120
+Problems
+9-1.
+Can the Freundlich isotherm, Eq. (9-13), represent the physical-adsorption
+data for n-hexane given in Prob. 8-1? What are the appropriate values of c
+and n?
+9-2.
+Will the Temkin isotherm fit the l1-hexane data shown in Prob. 8-1?
+9-3.
+Ward! studied the chemisorption of hydrogen on copper powder and found
+the heat of adsorption to be independent of surface coverage. Equilibrium
+data from experiments at 25°C are as follows:
+Hydrogen pressure,
+mmHg
+1.05
+2.95
+5.40
+10.65
+21.5
+45.1
+95.8
+204.8
+Volume adsorbed,
+0.239
+0.564
+0.659
+0.800
+0.995
+1.160
+1.300
+1.471
+cm3 at O°C and
+1 atm
+What kind of isotherm fits these results?
+9-4.
+Brunauer et al.l concluded that the Temkin isotherm, Eq. (9-11), explained
+equilibrium chemisorption data for N 2 on an ammonia-synthesis catalyst
+(promoted iron powder). Data taken at 396°C are as follows:
+Nitrogen pressure,
+mmHg
+25
+53
+150
+397
+768
+Volume adsorbed,
+2.83
+3.22
+3.69
+4.14
+4.55
+cm 3 at O°C and
+I atm
+IA. F. H. Ward, Proc. Roy. Soc. (London), A133, 506 (1931).
+2S. Brunauer, K. S. Love, and R. G. Keenan, J. Am. Chem. Soc., 64, 751 (1942).
+
+
+=== PDF PAGE 81 ===
+PROBL.EMS
+353
+Can Brunauer's conclusion be reached by plotting the data according to linear-
+ized forms of the Langmuir, Temkin, and Freundlich isotherms? Explain
+your answer.
+9-5.
+Plot the isosteric heat of adsorption vs the amount adsorbed from the following
+dala of Shen and Smith 1 for benzene on silica gel. Using a constant value of
+34.8 x 10- 16 cm 2 for the surface area occupied by one benzene molecule,
+convert the coordinate showing the amount adsorbed to fraction of the surface
+-~--- ----G0V€F€d-ftotal-suFfaee-aFea-=-8?/1-m:J.!g1c-.---
+Moles adsorbed/g gel x 105
+Partial pressure
+of benzene, atm
+70°C
+90°C
+110°C
+130°C
+5.0 x 10- 4
+14.0
+6.7
+2.6
+I.I3
+1.0 x 10- 3
+22.0
+I l.2
+4.5
+2.0
+2.0 x 10- 3
+34.0
+18.0
+7.8
+3.9
+5.0 x 10- 3
+68.0
+33.0
+17.0
+8.6
+l.0 x 10- 2
+\ 88.0
+51.0
+27.0
+16.0
+2.0 x 10- 2
+78.0
+42.0
+26.0
+9-6.
+Show that the Elovich equation for the rate of chemisorption can be integrated
+with respect to surface coverage (at constant pressure of the adsorbing gas)
+to give
+e= a In (1 + bt)
+where t is the time from the start of the adsorption process and a and bare
+constants. If the activation energy for chemisorption is a linear function of
+surface coverage, according to E = Eo + ce, derive the integrated fonn of the
+Elovich equation.
+9-7.
+A gas-solid catalytic reaction of the type A + B --+ C is believed to occur by a
+molecule of B in the gas phase reacting with a molecule of A adsorbed on the
+catalyst surface. Preliminary experimental studies indicate that both external
+and internal diffusional resistances are negligible. Also, the equilibrium con-
+stant for the homogeneous reaction K = (Pc/pAPB)g is very large.
+The rate ofreaction per gram ofcatalyst is measured at varying total pressures,
+but constant composition of reactants. The results show a linear relationship
+between rand Pt all the way down to pressures approaching zero. What con-
+clusions may be drawn from these data concerning the controlling steps in the
+reaction?
+9-8.
+Two gas-solid catalytic reactions, (1) and (2), are studied in fixed-bed reactors.
+Rates of reaction per unit mass of catalyst, at constant composition and total
+pressure, indicate the variations with mass velocity and temperature shown in
+the figure. The interior pore surface in each case is fully effective. What do the
+results shown suggest about the two reactions?
+1<
+~'JOhn Shen and J~ M~ Smith, Ind. Eng. Chern. Fund, 7,100 (1968).
+
+
+=== PDF PAGE 82 ===
+354
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS'
+(1)
+t
+Temperature -
+t
+________ (If
+~(2)
+Mass velocity -
+Fig. 9-5
+Rate \IS temperature and mass velocity
+9-9.
+In a study of the kinetics of two different gas-solid catalytic reactions it is found
+that all diffusional resistances are negligible. Also, both reactions are irrever-
+sible. As an aid in establishing the mechanism of the reactions the rate is
+measured at a constant composition over a wide range of temperature. For the
+first reaction, (I), the rate increases exponentially over the complete temperature
+range. For the second reaction, (2), the rate first increases and then decreases
+as the temperature continues to rise. What does this information mean with
+regard to the controlling step in each of the reactions?
+9-10.
+An isomerization reaction has the simple form A -+ B. Assuming that operating
+conditions and the condition of the catalyst are such that the external- and
+internal-diffusion steps have negligible concentration gradients, propose rate
+equations for the following cases:
+(a)
+The adsorption of A on the catalyst is controlling.
+.(b)
+The surface interaction between adsorbed A and an adjacent vacant
+center is controlling.
+(c)
+The desorption of B from the surface is controlling.
+In all cases the mechanism is adsorption of A, reaction on the surface to form
+adsorbed B, and desorption of B into the gas phase. Sketch the rate of reaction
+(per unit mass of catalyst) vs total pressure in each of the above three cases.
+Also, for comparison, include a sketch of the rate of the homogeneous reaction,
+assuming that it is first order. Sketches should be for constant composition.
+9-11.
+Thodos and Stutzman 1 studied the formation ofethyl chloride, using a zirconium
+oxide catalyst (on silica gel) in the presence of inert methane,
+C 2H 4 + HCI:;;:: CzHsCI
+If the surface reaction between adsorbed ethylene and adsorbed HCI controls
+the overall kinetics, derive an expression for the rate. Neglecting external and
+internal transport resistances, evaluate the constants in the rate equation at
+350°F from the following data:
+lG. Thodos and L. F. Stutzman, Ind. Eng. Chern., 50, 413 (1958).
+
+
+=== PDF PAGE 83 ===
+PROBLEMS
+355
+r x 104 ,
+lb moles/(hr)(Ib catalyst)
+Partial pressures, atm
+HCI
+F.'
+2.71
+7.005
+0.300
+0.370
+0.149
+2.63
+7.090
+0.416
+0.215
+0.102
+2.44
+7.001
+0.343
+0.289
+0.18 I
+---'7.~._.5)_';:g.)
+I_-----'q-889__Qjl.L-_OA8.9_-0."334
+2.69
+10.169
+0.420
+0.460
+0.175
+The equilibrium constant for the overall reaction at 350°F is 35.
+9-12.
+Potter and Baron! studied the reaction
+co + Cll
+--.,. COCl2
+at atmospheric pressure, using an activated carbon catalyst. Preliminary studies
+showed that the rate of reaction did not depend on the mass velocity of gases
+through the reactor. Analysis ofthe rate data indicated that the reaction occurred
+by adsorption of Cl2 an~ CO on the catalyst and surface reaction between the
+adsorption complexes. It appeared that the surface reaction, rather than the
+adsorption or
+des~rption steps, was controlling the overall reaction rate.
+Furthermore, preliminary adsorption measurements indicated that chlorine
+and phosgene were readily adsorbed on the catalyst, while carbon monoxide
+was not. Hence the adsorption equilibrium constant of carbon monoxide,
+although it was not zero, was considered negligible with respect to those for
+Cll and COCI1 .
+(a) On the basis of this information, develop an expression for the rate of
+reaction in terms of the bulk partial pressures in the gas phase. The reaction is
+irreversible. (b) Determine the best values for the adsorption equilibrium
+constants for Cll and COCl2 and the product EmksKeo from the following
+experimental data, where the temperature was 30.6°C, the catalyst size was
+6 to 8 mesh, and
+Em = total concentration ofactive centers, in moles per gram ofcatalyst
+ks = specific reaction-rate constant for surface reaction
+Keo ;, adsorption equilibrium constant for CO
+i
+I!
+L
+Partial pressure, atm
+f,
+g moles/(hr)(g catalyst)
+CO
+Cl2
+COClz
+0.00414
+0.406
+0.352
+0.226
+0.00440
+0.396
+0.363
+0.231
+0.00241
+0.310
+0.320
+0.356
+0.00245
+0.287
+0.333
+0.376
+0.00157
+0.253
+0.218
+0.522
+0.00390
+0.610
+0.113
+0.231
+0.00200
+0.179
+0.608
+0.206
+Ie. Potter and S. Baron, Chern. Eng. Progr., 47, 473 (1951).
+
+
+=== PDF PAGE 84 ===
+356
+CHAPTER 9
+KINETICS OF FLUID-SOLID CATALYTIC REACTIONS
+Assume that the 6- to 8-mesh catalyst particles are small enough that the pore
+surface was fully effective.
+9-13.
+Potter and Baron also made rate measurements at other temperatures, and
+their results at 42.7, 52.5, and 64.0°C are as shown below. Assume that the '.
+adsorption equilibrium constants and the rate constant k s follow an equation
+of the form y = ae- b/RgT, where a and b are constant and y is Kc12, KCOCh, or
+CmksKco·
+Partial pressure, atm
+r x 103,
+T,oC
+g molesj(hr)(g catalyst)
+CO
+Cl~
+COClz
+42.7
+4.83
+0.206
+0.578
+0.219
+42.7
+10.73
+0.569
+0.194
+0.226
+42.7
+1.34
+0.128
+0.128
+0.845
+42.7
+9.18
+0.397
+0.370
+0.209
+42.7
+9.iO
+0.394
+0.373
+0.213
+52.5
+14.28
+0.380
+0.386
+0.234
+52.5
+15.46
+0.410
+0.380
+0.210
+52.5
+6.00
+0.139
+0.742
+0.118
+52.5
+3.68
+0.218
+0.122
+0.660
+64.0
+25.74
+0.412
+0.372
+0.216
+64.0
+24.46
+0.392
+0.374
+0.234
+64.0
+13.78
+0.185
+0.697
+0.118
+64.0
+8.29
+0.264
+0.131
+0.605
+Determine values of a and b for each case.
